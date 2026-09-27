@@ -21,6 +21,8 @@ targets:
         PRODUCT_BUNDLE_IDENTIFIER: dev.armstrong.swipego
         GENERATE_INFOPLIST_FILE: YES
         INFOPLIST_KEY_CFBundleDisplayName: 时光
+        INFOPLIST_KEY_NSPhotoLibraryUsageDescription: 用于回顾你选择的照片与视频，收藏和删除仅在你明确操作后执行。
+        INFOPLIST_KEY_PHPhotoLibraryPreventAutomaticLimitedAccessAlert: YES
         INFOPLIST_KEY_UILaunchScreen_Generation: YES
         INFOPLIST_KEY_UIApplicationSceneManifest_Generation: YES
         INFOPLIST_KEY_UISupportedInterfaceOrientations: UIInterfaceOrientationPortrait

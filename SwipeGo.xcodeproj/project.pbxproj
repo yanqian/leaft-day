@@ -10,10 +10,15 @@
 		02C57F9DC9E77AA92F30D937 /* LocalState.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFD20A8DAE1DD31B5E793721 /* LocalState.swift */; };
 		2A28773FE534F676EAF5A386 /* LaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 144CB126D134E13E3B503982 /* LaunchTests.swift */; };
 		5FCAE7ACCCB7B379C1674A05 /* SwipeGoApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED4F5CA740674D7D05E3BE6D /* SwipeGoApp.swift */; };
+		62A095E51BB5CF83DFF4F8B8 /* PermissionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4463A773C8ED6C0FA58BD53 /* PermissionTests.swift */; };
+		66B9A877AA76F4E40F961ACC /* LibraryAccessView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A83B1CEB268F320207CDE198 /* LibraryAccessView.swift */; };
 		AAEF1AD4E5F1010D10561303 /* AppConfigurationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26F5635CBCA41D6FF20D2A60 /* AppConfigurationTests.swift */; };
 		B62999C78774B247A022F6EB /* IntentSchema.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2CFC6824312583BB703CF61 /* IntentSchema.swift */; };
 		C2586B61F502CDDF7BC8F0F4 /* LocalStateStoreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69994E037463B36D9C9A9B1E /* LocalStateStoreTests.swift */; };
 		DBBE0ADE39AC35A44F6765D4 /* LocalStateStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8027511CFC2E855512E8E452 /* LocalStateStore.swift */; };
+		F1A9908841A41AB4758DCC25 /* PhotoLibraryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A33B92FF9B9E2946BACD25B7 /* PhotoLibraryTests.swift */; };
+		F44D8AC5B54364DEE9C90AF5 /* PhotoLibraryGateway.swift in Sources */ = {isa = PBXBuildFile; fileRef = 497FA0FA202AAF7FA9A989F0 /* PhotoLibraryGateway.swift */; };
+		FE9A2EC9BDBFAB462B764CA9 /* PhotoLibraryState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8825AE5D5B9E8A39204D4614 /* PhotoLibraryState.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -37,13 +42,18 @@
 		0C6AAD92DD5565AD736E8ED7 /* SwipeGoTests.xctest */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.cfbundle; path = SwipeGoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		144CB126D134E13E3B503982 /* LaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchTests.swift; sourceTree = "<group>"; };
 		26F5635CBCA41D6FF20D2A60 /* AppConfigurationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppConfigurationTests.swift; sourceTree = "<group>"; };
+		497FA0FA202AAF7FA9A989F0 /* PhotoLibraryGateway.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoLibraryGateway.swift; sourceTree = "<group>"; };
 		67FC6D021BC9297E2A3E4C4F /* SwipeGo.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = SwipeGo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		69994E037463B36D9C9A9B1E /* LocalStateStoreTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalStateStoreTests.swift; sourceTree = "<group>"; };
 		8027511CFC2E855512E8E452 /* LocalStateStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalStateStore.swift; sourceTree = "<group>"; };
+		8825AE5D5B9E8A39204D4614 /* PhotoLibraryState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoLibraryState.swift; sourceTree = "<group>"; };
 		A2CFC6824312583BB703CF61 /* IntentSchema.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntentSchema.swift; sourceTree = "<group>"; };
+		A33B92FF9B9E2946BACD25B7 /* PhotoLibraryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoLibraryTests.swift; sourceTree = "<group>"; };
+		A83B1CEB268F320207CDE198 /* LibraryAccessView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryAccessView.swift; sourceTree = "<group>"; };
 		B90BD7AB8E242342DC127E20 /* SwipeGoUITests.xctest */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.cfbundle; path = SwipeGoUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		BFD20A8DAE1DD31B5E793721 /* LocalState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalState.swift; sourceTree = "<group>"; };
 		ED4F5CA740674D7D05E3BE6D /* SwipeGoApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipeGoApp.swift; sourceTree = "<group>"; };
+		F4463A773C8ED6C0FA58BD53 /* PermissionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PermissionTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXGroup section */
@@ -62,6 +72,14 @@
 				ED4F5CA740674D7D05E3BE6D /* SwipeGoApp.swift */,
 			);
 			path = App;
+			sourceTree = "<group>";
+		};
+		20948FA7F5F90B07147E1669 /* Features */ = {
+			isa = PBXGroup;
+			children = (
+				B1DB69C0DFA02F26CCEB3375 /* Permissions */,
+			);
+			path = Features;
 			sourceTree = "<group>";
 		};
 		4D689F54193820E1C679490C /* Products */ = {
@@ -88,6 +106,7 @@
 			isa = PBXGroup;
 			children = (
 				BFD20A8DAE1DD31B5E793721 /* LocalState.swift */,
+				8825AE5D5B9E8A39204D4614 /* PhotoLibraryState.swift */,
 			);
 			path = Domain;
 			sourceTree = "<group>";
@@ -96,6 +115,7 @@
 			isa = PBXGroup;
 			children = (
 				144CB126D134E13E3B503982 /* LaunchTests.swift */,
+				F4463A773C8ED6C0FA58BD53 /* PermissionTests.swift */,
 			);
 			path = SwipeGoUITests;
 			sourceTree = "<group>";
@@ -105,14 +125,32 @@
 			children = (
 				26F5635CBCA41D6FF20D2A60 /* AppConfigurationTests.swift */,
 				69994E037463B36D9C9A9B1E /* LocalStateStoreTests.swift */,
+				A33B92FF9B9E2946BACD25B7 /* PhotoLibraryTests.swift */,
 			);
 			path = SwipeGoTests;
+			sourceTree = "<group>";
+		};
+		B1DB69C0DFA02F26CCEB3375 /* Permissions */ = {
+			isa = PBXGroup;
+			children = (
+				A83B1CEB268F320207CDE198 /* LibraryAccessView.swift */,
+			);
+			path = Permissions;
+			sourceTree = "<group>";
+		};
+		EF2F6C9F05D15FD07BB0C0DE /* PhotoLibrary */ = {
+			isa = PBXGroup;
+			children = (
+				497FA0FA202AAF7FA9A989F0 /* PhotoLibraryGateway.swift */,
+			);
+			path = PhotoLibrary;
 			sourceTree = "<group>";
 		};
 		F2EB648205D417A0C04058D6 /* Infrastructure */ = {
 			isa = PBXGroup;
 			children = (
 				013D8433250C625330BF466F /* Persistence */,
+				EF2F6C9F05D15FD07BB0C0DE /* PhotoLibrary */,
 			);
 			path = Infrastructure;
 			sourceTree = "<group>";
@@ -122,6 +160,7 @@
 			children = (
 				0DD6A33F52974E868DCC21F1 /* App */,
 				6CE3E44486A46AA7E39C7270 /* Domain */,
+				20948FA7F5F90B07147E1669 /* Features */,
 				F2EB648205D417A0C04058D6 /* Infrastructure */,
 			);
 			path = SwipeGo;
@@ -225,6 +264,7 @@
 			files = (
 				AAEF1AD4E5F1010D10561303 /* AppConfigurationTests.swift in Sources */,
 				C2586B61F502CDDF7BC8F0F4 /* LocalStateStoreTests.swift in Sources */,
+				F1A9908841A41AB4758DCC25 /* PhotoLibraryTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -233,6 +273,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2A28773FE534F676EAF5A386 /* LaunchTests.swift in Sources */,
+				62A095E51BB5CF83DFF4F8B8 /* PermissionTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -241,8 +282,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				B62999C78774B247A022F6EB /* IntentSchema.swift in Sources */,
+				66B9A877AA76F4E40F961ACC /* LibraryAccessView.swift in Sources */,
 				02C57F9DC9E77AA92F30D937 /* LocalState.swift in Sources */,
 				DBBE0ADE39AC35A44F6765D4 /* LocalStateStore.swift in Sources */,
+				F44D8AC5B54364DEE9C90AF5 /* PhotoLibraryGateway.swift in Sources */,
+				FE9A2EC9BDBFAB462B764CA9 /* PhotoLibraryState.swift in Sources */,
 				5FCAE7ACCCB7B379C1674A05 /* SwipeGoApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -270,6 +314,8 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_CFBundleDisplayName = "时光";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "用于回顾你选择的照片与视频，收藏和删除仅在你明确操作后执行。";
+				INFOPLIST_KEY_PHPhotoLibraryPreventAutomaticLimitedAccessAlert = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
@@ -400,6 +446,8 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_CFBundleDisplayName = "时光";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "用于回顾你选择的照片与视频，收藏和删除仅在你明确操作后执行。";
+				INFOPLIST_KEY_PHPhotoLibraryPreventAutomaticLimitedAccessAlert = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;

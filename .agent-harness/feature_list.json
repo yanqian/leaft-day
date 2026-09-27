@@ -107,9 +107,9 @@
         "通过公开 API 查询照片/视频元信息；隐藏/共享内容范围按 A08 验证，无法区分则记录能力缺口。",
         "可更新授权范围；测试无权限、空库和部分图库，真实系统证据与 fake 测试分别记录。"
       ],
-      "passes": false,
-      "status": "todo",
-      "attempts": 0,
+      "passes": true,
+      "status": "done",
+      "attempts": 1,
       "last_error": "",
       "priority": "P0",
       "depends_on": [

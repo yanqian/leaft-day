@@ -42,6 +42,6 @@ CoreSimulator 需要访问用户级服务；受限沙箱可能报 XPC/日志权�
 
 `DerivedData/` 与 `.build/test-run.*/Tests.xcresult` 是忽略的本机产物。删除 DerivedData 可验证干净构建；重复运行不清除图库或应用数据，不创建/删除模拟器。日志打印真实启动设备及结果包路径。
 
-当前 Bundle ID `dev.armstrong.swipego` 是本地开发默认值，不代表上架注册；模拟器测试关闭签名。真机需用户指定签名团队、连接设备并启用开发者模式，不能用模拟器替代真机或 iCloud 验证。
+当前 Bundle ID `dev.armstrong.swipego` 是本地开发默认值，不代表上架注册；模拟器测试使用本地 ad-hoc 签名（CODE_SIGN_IDENTITY=-），无需证书或团队；这避免无签名 App/runner 复用旧二进制。真机需用户指定签名团队、连接设备并启用开发者模式，不能用模拟器替代真机或 iCloud 验证。
 
 2026-09-27 用户指定继续使用 work-fast：当前会话实施，每项由独立 Evaluator 验收后提交，再开始下一项。不启动独立 Coding Agent。此前尝试切换其权限的命令被用户中断，没有修改 provider 配置。

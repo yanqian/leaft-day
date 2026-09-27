@@ -42,3 +42,15 @@ F018 是真实设备整体验证面，不替代各 Feature 自己的测试。缺
 6. **iCloud 同步影响与真机性能（F018）**：前置为上述测试账户及两台自愿测试设备。第5步删除后在另一设备检查同一测试内容同步变化，记录同步等待时间，不承诺立即同步。冷/热加载各测固定路径，记录图库规模、缓存状态、设备型号/OS、加载时间、滑动与内存峰值；动态字体、减弱透明度和 VoiceOver 分别走回顾/比较/复核。无第二设备、iCloud账户或签名团队时逐项写明未执行。
 
 测试账户登录、签名团队和设备由用户提供；脚本不处理 Apple ID 密码，不改变个人 iCloud 设置。数据删除仅限上述明确的可丢弃素材。执行协议发现问题时回到对应 Feature，不能靠调整完成状态掩盖缺口。
+
+### F005 权限与范围证据边界
+
+iOS26.5 公开 SDK `PHFetchOptions.includeHiddenAssets=false` 与 `.includeAssetSourceTypes=.typeUserLibrary` 排除隐藏项目及 CloudShared 类型的共享相簿；这些字段**不证明**排除了 iCloud Shared Photo Library。检查 PHAsset/PHFetchOptions/PhotosTypes 公开头文件未发现可靠的共享图库成员标识，`LibrarySnapshot.sharedLibraryMembershipVerified` 因而明确为 false。首版共享图库能力尚未完成；使用共享图库的账户不得用于当前验收或后续删除流程。用户范围选择待确认，F016 不得把此状态当成安全删除授权。
+
+权限映射包括 notDetermined/restricted/denied/limited/authorized/unknown，读取统一使用 `.readWrite`，不使用会把 limited 当 authorized 的旧接口。系统查询只在可读权限下执行；返回 Sendable 元信息而非跨 actor 的 PHAsset，日期相同以资产ID排序。空有限范围只说所选内容为空，不说整个图库为空。授权变化和用户管理选择后重新读取系统状态。
+
+真实弹窗验证通过 XCTest 重置**当前测试 App**的照片权限并点击系统允许/拒绝按钮；只在隔离模拟器执行。受设备管理限制的 restricted 状态当前仅映射单测，未伪造真实受管设备。真实有限授权测试选取网格项目并断言 App 查询数量随选择改变。
+
+发现 CoreSimulator 对无签名 UI runner 复用旧测试二进制，恢复脚本在测试前只卸载本项目 `dev.armstrong.swipego.uitests.xctrunner`，保留 App 状态与图库。测试日志必须确认实际执行测试项，零项运行不算通过。
+
+F005 后续修正：仅卸载 runner 仍不足以保证完整运行更新 App 二进制；恢复命令改为 simulator 本地 ad-hoc 签名（无需证书/团队），实际完整运行的全部权限测试通过。该变化不提供任何真机签名能力。
