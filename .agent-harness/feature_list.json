@@ -233,9 +233,9 @@
         "上滑/下滑生成绑定当前资产的一次动作意图，由 F011/F012 接入；未接入前不得显示成功或触碰原片。",
         "手势方向锁定与阈值防重复；按钮、缩放、视频进度优先，不触发照片动作；可用按钮完成等价操作。"
       ],
-      "passes": false,
-      "status": "todo",
-      "attempts": 0,
+      "passes": true,
+      "status": "done",
+      "attempts": 1,
       "last_error": "",
       "priority": "P0",
       "depends_on": [

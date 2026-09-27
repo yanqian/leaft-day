@@ -1,19 +1,62 @@
 import SwiftUI
 
-// F009 real navigation destination. F010 adds the immersive gesture composition.
 struct ReviewEntryView: View {
     let review: ReviewSession
+    var onIntent: (ReviewIntent) -> Void = { _ in }
     @State private var loader = PhotoLoader()
+    @State private var controls = false
+    @State private var router = ReviewGestureRouter()
+    @State private var scale: CGFloat = 1
+    @State private var baseScale: CGFloat = 1
+    @State private var offset = CGSize.zero
+    @State private var baseOffset = CGSize.zero
+    @State private var pinching = false
+    @State private var error: String?
     @Environment(\.dismiss) private var dismiss
+    @Environment(\.dynamicTypeSize) private var typeSize
+    private var toolbarHeight: CGFloat { typeSize.isAccessibilitySize ? 360 : 190 }
     var body: some View {
-        ZStack {
-            Color.black.ignoresSafeArea()
-            switch review.current {
-            case .available(let asset):
-                if asset.kind == .video { VideoReviewView(assetID: asset.id, showControls: true) }
-                else {
+        GeometryReader { geometry in
+            ZStack(alignment: .bottom) {
+                Color.black.ignoresSafeArea()
+                media(size: geometry.size)
+                    .frame(width: geometry.size.width, height: geometry.size.height)
+                    .clipped()
+                VStack {
+                    Button { controls.toggle() } label: { Color.clear.contentShape(Rectangle()) }
+                        .frame(height: min(150, geometry.size.height * 0.2))
+                        .accessibilityLabel(controls ? "收起回顾操作" : "显示回顾操作")
+                        .accessibilityHint("点按画面上部，在底部展开操作")
+                        .accessibilityIdentifier("review.toggle")
+                        .simultaneousGesture(drag(size: geometry.size))
+                    Spacer()
+                }
+                if controls {
+                    toolbar.frame(height: toolbarHeight).padding(.horizontal, 12).padding(.bottom, 12)
+                }
+            }
+        }
+        .statusBarHidden(true)
+        .task(id: review.currentID) { loadCurrent() }
+        .onChange(of: review.currentID) { _, _ in scale = 1; baseScale = 1; offset = .zero; baseOffset = .zero; router.reset() }
+        .onDisappear { loader.releaseMemory(); router.cancel() }
+        .alert("回顾位置未保存", isPresented: Binding(get: { error != nil }, set: { if !$0 { error = nil } })) {
+            Button("好", role: .cancel) { error = nil }
+        } message: { Text(error ?? "") }
+    }
+    @ViewBuilder private func media(size: CGSize) -> some View {
+        switch review.current {
+        case .available(let asset):
+            if asset.kind == .video {
+                VideoReviewView(assetID: asset.id, showControls: controls,
+                                onMediaDrag: { finish($0) }, onMediaDragChanged: { update($0) })
+                    .padding(.bottom, controls ? toolbarHeight + 24 : 0)
+            } else {
+                ZStack {
                     switch loader.state {
-                    case .ready(let image): PhotoContentView(image: image)
+                    case .ready(let image):
+                        PhotoContentView(image: image).scaleEffect(scale).offset(offset)
+                            .frame(width: size.width, height: size.height)
                     case .loading(let progress): ProgressView(value: progress).tint(.white)
                     case .offline: retry("当前离线，连接后重试")
                     case .needsDownload: retry("从 iCloud 加载照片")
@@ -21,20 +64,96 @@ struct ReviewEntryView: View {
                     case .idle: ProgressView().tint(.white)
                     }
                 }
-            case .unavailable(let message): Text(message).foregroundStyle(.white).padding()
-            case .noSession: Text("暂无回顾片段").foregroundStyle(.white)
+                .frame(width: size.width, height: size.height).clipped().contentShape(Rectangle())
+                .accessibilityElement(children: .contain)
+                .accessibilityLabel("回顾照片")
+                .accessibilityValue("第\((review.state?.cursor ?? 0) + 1)项，缩放\(Int(scale * 100))%")
+                .accessibilityIdentifier("review.photo")
+                .gesture(drag(size: size))
+                .simultaneousGesture(MagnifyGesture().onChanged { value in
+                    pinching = true; router.cancel(); scale = min(4, max(1, baseScale * value.magnification))
+                }.onEnded { _ in
+                    baseScale = scale; pinching = false
+                    if scale == 1 { offset = .zero; baseOffset = .zero }
+                })
             }
+        case .unavailable(let message): Text(message).foregroundStyle(.white).padding().gesture(drag(size: size))
+        case .noSession: Text("暂无回顾片段").foregroundStyle(.white)
         }
-        .safeAreaInset(edge: .bottom) {
-            Button("返回回顾", systemImage: "chevron.left") { dismiss() }.buttonStyle(.glass).padding().accessibilityIdentifier("review.back")
+    }
+    private var toolbar: some View {
+        ScrollView {
+            VStack(spacing: 14) {
+                HStack(spacing: 8) {
+                    Button("返回回顾", systemImage: "chevron.left") { dismiss() }
+                        .labelStyle(.iconOnly).frame(minWidth: 44, minHeight: 44).accessibilityIdentifier("review.back")
+                    VStack(alignment: .leading) {
+                        if case .available(let asset) = review.current {
+                            Text(asset.creationDate.map { $0.formatted(.dateTime.year().month().day()) } ?? "日期未知")
+                        } else { Text("当前项目不可用") }
+                        Text("\((review.state?.cursor ?? 0) + 1) / \(review.state?.assetIDs.count ?? 0)")
+                            .accessibilityIdentifier("review.position")
+                    }.font(.caption).frame(maxWidth: .infinity, alignment: .leading)
+                    Button(scale > 1 ? "还原照片" : "放大照片", systemImage: scale > 1 ? "arrow.down.right.and.arrow.up.left" : "plus.magnifyingglass") {
+                        scale = scale > 1 ? 1 : 2; baseScale = scale; offset = .zero; baseOffset = .zero; router.cancel()
+                    }.labelStyle(.iconOnly).frame(minWidth: 44, minHeight: 44)
+                        .disabled(!isPhoto).accessibilityIdentifier("review.zoom")
+                }
+                HStack {
+                    Button("上一项", systemImage: "chevron.left") { navigate(.previous) }.disabled(!review.canGoBack || review.isSaving)
+                    Spacer()
+                    Button("下一项", systemImage: "chevron.right") { navigate(.next) }.disabled(!review.canGoForward || review.isSaving)
+                }.font(.caption).buttonStyle(.glass)
+                LazyVGrid(columns: Array(repeating: GridItem(.flexible()), count: typeSize.isAccessibilitySize ? 2 : 4)) {
+                    action("收藏", icon: "heart", kind: .favorite)
+                    action("待删", icon: "trash", kind: .pending)
+                    Button("相似", systemImage: "rectangle.on.rectangle") {}.disabled(true)
+                    Button("撤销", systemImage: "arrow.uturn.backward") {}.disabled(true)
+                }.font(.caption)
+            }.padding(14)
+        }.scrollIndicators(.hidden).glassPanel(radius: 26)
+    }
+    private var isPhoto: Bool { if case .available(let asset) = review.current { return asset.kind == .photo }; return false }
+    private func action(_ title: String, icon: String, kind: ReviewIntent.Kind) -> some View {
+        Button { if let id = review.currentID { emit(ReviewIntent(assetID: id, kind: kind)) } } label: {
+            VStack(spacing: 5) { Image(systemName: icon).font(.title3); Text(title) }.frame(maxWidth: .infinity, minHeight: 44)
+        }.disabled(review.isSaving || !isAvailable).accessibilityIdentifier("review.\(kind.rawValue)")
+    }
+    private var isAvailable: Bool { if case .available = review.current { return true }; return false }
+    private func navigate(_ kind: ReviewIntent.Kind) { if let id = review.currentID { emit(ReviewIntent(assetID: id, kind: kind)) } }
+    private func emit(_ intent: ReviewIntent) {
+        guard intent.assetID == review.currentID, !review.isSaving else { return }
+        if intent.kind == .next || intent.kind == .previous {
+            Task { do { try await review.move(by: intent.kind == .next ? 1 : -1) } catch { self.error = "请重试，仍停留在原来的位置。" } }
+        } else if isAvailable {
+            // F011/F012 receive this captured asset intent. No success or mutation here.
+            onIntent(intent)
         }
-        .task(id: review.currentID) {
-            loader.cancel()
-            if case .available(let asset) = review.current, asset.kind == .photo {
-                loader.load(PhotoRequestKey(assetID: asset.id, version: asset.modificationDate, width: 1600, height: 2400))
+    }
+    private func update(_ translation: CGSize) {
+        router.update(x: translation.width, y: translation.height, assetID: review.currentID, blocked: pinching || scale > 1 || review.isSaving)
+    }
+    private func finish(_ translation: CGSize) {
+        if let intent = router.end(x: translation.width, y: translation.height, currentID: review.currentID, blocked: pinching || scale > 1 || review.isSaving) { emit(intent) }
+    }
+    private func drag(size: CGSize) -> some Gesture {
+        DragGesture(minimumDistance: 18).onChanged { value in
+            if scale > 1 && !pinching {
+                offset = CGSize(width: min(size.width * (scale - 1) / 2, max(-size.width * (scale - 1) / 2, baseOffset.width + value.translation.width)),
+                                height: min(size.height * (scale - 1) / 2, max(-size.height * (scale - 1) / 2, baseOffset.height + value.translation.height)))
             }
+            update(value.translation)
+        }.onEnded { value in baseOffset = offset; finish(value.translation) }
+    }
+    private func loadCurrent() {
+        loader.cancel()
+        guard case .available(let asset) = review.current, asset.kind == .photo else { return }
+        let neighbors = [-1, 1].compactMap { delta -> PhotoRequestKey? in
+            guard let state = review.state, state.assetIDs.indices.contains(state.cursor + delta),
+                  let neighbor = review.snapshot.assets.first(where: { $0.id == state.assetIDs[state.cursor + delta] && $0.kind == .photo }) else { return nil }
+            return PhotoRequestKey(assetID: neighbor.id, version: neighbor.modificationDate, width: 1600, height: 2400)
         }
-        .onDisappear { loader.releaseMemory() }
+        loader.load(PhotoRequestKey(assetID: asset.id, version: asset.modificationDate, width: 1600, height: 2400), neighbors: neighbors)
     }
     private func retry(_ title: String) -> some View { Button(title) { loader.retry() }.buttonStyle(.glass).padding() }
 }

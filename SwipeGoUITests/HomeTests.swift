@@ -1,6 +1,11 @@
 import XCTest
 
 @MainActor final class HomeTests: XCTestCase {
+    private func showReviewControls(_ app: XCUIApplication) {
+        XCTAssertTrue(app.buttons["review.toggle"].waitForExistence(timeout: 15))
+        app.buttons["review.toggle"].tap()
+        XCTAssertTrue(app.buttons["review.back"].waitForExistence(timeout: 10))
+    }
     func testRealHomeRandomAndPersistedContinue() throws {
         continueAfterFailure = false
         let app = XCUIApplication()
@@ -17,13 +22,14 @@ import XCTest
         let home = XCTAttachment(screenshot: app.screenshot()); home.name = "F009-home-real-library"; home.lifetime = .keepAlways; add(home)
         if !app.buttons["home.random"].isHittable { app.swipeUp() }
         app.buttons["home.random"].tap()
-        XCTAssertTrue(app.buttons["review.back"].waitForExistence(timeout: 15))
+        showReviewControls(app)
+        let review = XCTAttachment(screenshot: app.screenshot()); review.name = "F010-real-bottom-controls"; review.lifetime = .keepAlways; add(review)
         app.buttons["review.back"].tap()
         app.terminate(); app.launch()
         XCTAssertTrue(app.buttons["home.continue"].waitForExistence(timeout: 15))
         XCTAssertTrue(app.buttons["home.continue"].label.contains("继续回顾"))
         app.buttons["home.continue"].tap()
-        XCTAssertTrue(app.buttons["review.back"].waitForExistence(timeout: 15))
+        showReviewControls(app)
     }
     func testReducedTransparencyUsesReadableControls() throws {
         let app = XCUIApplication()
@@ -55,6 +61,6 @@ import XCTest
         XCTAssertTrue(app.buttons["home.random"].exists)
         let attachment = XCTAttachment(screenshot: app.screenshot()); attachment.name = "F009-home-large-text"; attachment.lifetime = .keepAlways; add(attachment)
         app.buttons["home.random"].tap()
-        XCTAssertTrue(app.buttons["review.back"].waitForExistence(timeout: 15))
+        showReviewControls(app)
     }
 }

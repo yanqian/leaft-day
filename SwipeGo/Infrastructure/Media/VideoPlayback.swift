@@ -159,9 +159,10 @@ struct VideoReviewView: View {
     let assetID: String
     var showControls: Bool
     var onMediaDrag: (CGSize) -> Void
+    var onMediaDragChanged: (CGSize) -> Void
     @State private var playback: VideoPlayback
-    init(assetID: String, showControls: Bool, playback: VideoPlayback = VideoPlayback(), onMediaDrag: @escaping (CGSize) -> Void = { _ in }) {
-        self.assetID = assetID; self.showControls = showControls; self.onMediaDrag = onMediaDrag; _playback = State(initialValue: playback)
+    init(assetID: String, showControls: Bool, playback: VideoPlayback = VideoPlayback(), onMediaDrag: @escaping (CGSize) -> Void = { _ in }, onMediaDragChanged: @escaping (CGSize) -> Void = { _ in }) {
+        self.assetID = assetID; self.showControls = showControls; self.onMediaDrag = onMediaDrag; self.onMediaDragChanged = onMediaDragChanged; _playback = State(initialValue: playback)
     }
     @Environment(\.scenePhase) private var scenePhase
     var body: some View {
@@ -170,7 +171,7 @@ struct VideoReviewView: View {
                 .background(.black)
                 .contentShape(Rectangle())
                 .onTapGesture { playback.togglePlayback() }
-                .simultaneousGesture(DragGesture(minimumDistance: 30).onEnded { onMediaDrag($0.translation) })
+                .simultaneousGesture(DragGesture(minimumDistance: 18).onChanged { onMediaDragChanged($0.translation) }.onEnded { onMediaDrag($0.translation) })
                 .accessibilityIdentifier("video.surface")
                 .accessibilityLabel("视频画面")
                 .accessibilityAddTraits(.isButton)

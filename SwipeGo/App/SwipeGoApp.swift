@@ -6,6 +6,7 @@ struct SwipeGoApp: App {
         WindowGroup {
             #if DEBUG
             if ProcessInfo.processInfo.arguments.contains("--video-test-host") { VideoTestHost() }
+            else if ProcessInfo.processInfo.arguments.contains("--review-test-host") { ReviewTestHost() }
             else { LibraryAccessView() }
             #else
             LibraryAccessView()
