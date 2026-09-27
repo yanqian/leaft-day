@@ -90,3 +90,11 @@ stateDiagram-v2
 - [后台策略](https://developer.apple.com/documentation/backgroundtasks/choosing-background-strategies-for-your-app)：调度由系统控制，不作为回顾可用性前提。
 
 后续 App 进度同步、云端模型与跨平台属于新需求，不预先引入后端或 CloudKit 数据同步。
+
+## F004 存储实现约定
+
+`LocalStateRepository` 只接受/返回 Codable + Sendable 值；`LocalStateStore` ModelActor 使用 DefaultSerialModelExecutor 约束 SwiftData container/context，关闭自动保存，每次变更显式 save，失败 rollback 后丢弃工作 context，重新从磁盘读取并抛错。App 组合层应共享一个该 actor，不在 UI 或分析任务间传递 PersistentModel。第一版 `IntentSchemaV1` 与显式迁移计划固定 1.0.0；后续字段/负载演进需新版本与真实迁移测试。
+
+会话（有序ID/游标）、待删（唯一资产ID）和操作日志分别建模，JSON payload 属于 V1 schema 的一部分。重复待删保留最初来源和时间；无效游标/重复会话ID列表失败，不静默纠正用户意图。原片/系统收藏不存入意图库。操作日志只持久化事实，不在存储层执行删除或自动重试。
+
+`LocalStoragePaths.application()` 把意图库放 Application Support，把可重建媒体缓存放 Caches/SwipeGoMedia；缓存清理不得覆盖意图库。SwiftData 显式禁用 CloudKit。只读配置由真实 SwiftData 保存失败并抛出错误；不可用路径、解码错误和真实 save 错误向调用者传播。后续业务层只在 await 保存成功后更新成功反馈。

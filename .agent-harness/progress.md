@@ -2,15 +2,15 @@
 
 ## Current System Status
 
-2026-09-27：F001–F003 已独立验收完成。F002 恢复脚本可生成 iPhone-only SwiftUI 工程、启动模拟器、执行 XCTest/XCUITest 并启动 App。F004–F018 未开始。用户授权持续推进全部功能，明确使用 work-fast；每项独立 Evaluator 通过后提交，再开始下一项。
+2026-09-27：F001–F004 已独立验收完成。F002 恢复脚本可生成 iPhone-only SwiftUI 工程、启动模拟器、执行 XCTest/XCUITest 并启动 App。F005–F018 未开始。用户授权持续推进全部功能，明确使用 work-fast；每项独立 Evaluator 通过后提交，再开始下一项。
 
 ## Last Completed Feature
 
-F003 — 可重复媒体测试素材。复验记录：runs/20260927T0938Z-F003-reevaluation.md。素材、导入、重复生成与真实系统验证协议均通过独立验收。
+F004 — 本地状态持久化。证据：runs/20260927T0953Z-F004-reevaluation.md。ModelActor 执行器隔离、真实磁盘重开和保存错误后重建上下文已验证；恢复入口拒绝 SwiftData Unbinding 警告。
 
 ## Next Feature
 
-提交 F003 后使用 make -C .agent-harness work-fast 获取 F004 本地状态持久化 handoff。
+提交 F004 后用 make -C .agent-harness work-fast 获取 F005 图库权限与查询 handoff。
 
 ## Known Issues
 

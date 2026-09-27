@@ -31,7 +31,11 @@ xcodebuild -project SwipeGo.xcodeproj -scheme SwipeGo -configuration Debug \
   -destination "platform=iOS Simulator,id=$simulator_id" \
   -derivedDataPath "$ROOT_DIR/DerivedData" \
   -resultBundlePath "$result_dir/Tests.xcresult" \
-  -parallel-testing-enabled NO CODE_SIGNING_ALLOWED=NO test
+  -parallel-testing-enabled NO CODE_SIGNING_ALLOWED=NO test 2>&1 | tee "$result_dir/xcodebuild.log"
+if grep -q "SwiftData.ModelContext: Unbinding" "$result_dir/xcodebuild.log"; then
+  printf "FAILED: SwiftData ModelContext crossed its creation queue; see %s\n" "$result_dir/xcodebuild.log" >&2
+  exit 1
+fi
 printf '== Install and launch reviewable app ==\n'
 xcrun simctl install "$simulator_id" "$ROOT_DIR/DerivedData/Build/Products/Debug-iphonesimulator/SwipeGo.app"
 xcrun simctl launch --terminate-running-process "$simulator_id" dev.armstrong.swipego

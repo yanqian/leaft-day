@@ -82,9 +82,9 @@
         "用户意图与可重建缓存分离；待删 asset ID 唯一；重开存储保留记录，写失败返回错误。",
         "明确 actor 隔离，不跨执行边界裸传存储对象；测试使用真实临时存储而非只用内存替身。"
       ],
-      "passes": false,
-      "status": "todo",
-      "attempts": 0,
+      "passes": true,
+      "status": "done",
+      "attempts": 1,
       "last_error": "",
       "priority": "P0",
       "depends_on": [

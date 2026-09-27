@@ -7,9 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		02C57F9DC9E77AA92F30D937 /* LocalState.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFD20A8DAE1DD31B5E793721 /* LocalState.swift */; };
 		2A28773FE534F676EAF5A386 /* LaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 144CB126D134E13E3B503982 /* LaunchTests.swift */; };
 		5FCAE7ACCCB7B379C1674A05 /* SwipeGoApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED4F5CA740674D7D05E3BE6D /* SwipeGoApp.swift */; };
 		AAEF1AD4E5F1010D10561303 /* AppConfigurationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26F5635CBCA41D6FF20D2A60 /* AppConfigurationTests.swift */; };
+		B62999C78774B247A022F6EB /* IntentSchema.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2CFC6824312583BB703CF61 /* IntentSchema.swift */; };
+		C2586B61F502CDDF7BC8F0F4 /* LocalStateStoreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69994E037463B36D9C9A9B1E /* LocalStateStoreTests.swift */; };
+		DBBE0ADE39AC35A44F6765D4 /* LocalStateStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8027511CFC2E855512E8E452 /* LocalStateStore.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -34,11 +38,24 @@
 		144CB126D134E13E3B503982 /* LaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchTests.swift; sourceTree = "<group>"; };
 		26F5635CBCA41D6FF20D2A60 /* AppConfigurationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppConfigurationTests.swift; sourceTree = "<group>"; };
 		67FC6D021BC9297E2A3E4C4F /* SwipeGo.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = SwipeGo.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		69994E037463B36D9C9A9B1E /* LocalStateStoreTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalStateStoreTests.swift; sourceTree = "<group>"; };
+		8027511CFC2E855512E8E452 /* LocalStateStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalStateStore.swift; sourceTree = "<group>"; };
+		A2CFC6824312583BB703CF61 /* IntentSchema.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntentSchema.swift; sourceTree = "<group>"; };
 		B90BD7AB8E242342DC127E20 /* SwipeGoUITests.xctest */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.cfbundle; path = SwipeGoUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		BFD20A8DAE1DD31B5E793721 /* LocalState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalState.swift; sourceTree = "<group>"; };
 		ED4F5CA740674D7D05E3BE6D /* SwipeGoApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipeGoApp.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXGroup section */
+		013D8433250C625330BF466F /* Persistence */ = {
+			isa = PBXGroup;
+			children = (
+				A2CFC6824312583BB703CF61 /* IntentSchema.swift */,
+				8027511CFC2E855512E8E452 /* LocalStateStore.swift */,
+			);
+			path = Persistence;
+			sourceTree = "<group>";
+		};
 		0DD6A33F52974E868DCC21F1 /* App */ = {
 			isa = PBXGroup;
 			children = (
@@ -67,6 +84,14 @@
 			);
 			sourceTree = "<group>";
 		};
+		6CE3E44486A46AA7E39C7270 /* Domain */ = {
+			isa = PBXGroup;
+			children = (
+				BFD20A8DAE1DD31B5E793721 /* LocalState.swift */,
+			);
+			path = Domain;
+			sourceTree = "<group>";
+		};
 		8D3B02CB40AE9FFA0957764E /* SwipeGoUITests */ = {
 			isa = PBXGroup;
 			children = (
@@ -79,14 +104,25 @@
 			isa = PBXGroup;
 			children = (
 				26F5635CBCA41D6FF20D2A60 /* AppConfigurationTests.swift */,
+				69994E037463B36D9C9A9B1E /* LocalStateStoreTests.swift */,
 			);
 			path = SwipeGoTests;
+			sourceTree = "<group>";
+		};
+		F2EB648205D417A0C04058D6 /* Infrastructure */ = {
+			isa = PBXGroup;
+			children = (
+				013D8433250C625330BF466F /* Persistence */,
+			);
+			path = Infrastructure;
 			sourceTree = "<group>";
 		};
 		F5C7D2FDA7C7B16B65F1E867 /* SwipeGo */ = {
 			isa = PBXGroup;
 			children = (
 				0DD6A33F52974E868DCC21F1 /* App */,
+				6CE3E44486A46AA7E39C7270 /* Domain */,
+				F2EB648205D417A0C04058D6 /* Infrastructure */,
 			);
 			path = SwipeGo;
 			sourceTree = "<group>";
@@ -188,6 +224,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				AAEF1AD4E5F1010D10561303 /* AppConfigurationTests.swift in Sources */,
+				C2586B61F502CDDF7BC8F0F4 /* LocalStateStoreTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -203,6 +240,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B62999C78774B247A022F6EB /* IntentSchema.swift in Sources */,
+				02C57F9DC9E77AA92F30D937 /* LocalState.swift in Sources */,
+				DBBE0ADE39AC35A44F6765D4 /* LocalStateStore.swift in Sources */,
 				5FCAE7ACCCB7B379C1674A05 /* SwipeGoApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
