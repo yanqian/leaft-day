@@ -1,0 +1,42 @@
+{
+  "provider": "codex",
+  "providers": {
+    "codex": {
+      "cwd": "..",
+      "command": [
+        "codex",
+        "exec",
+        "--model",
+        "gpt-5.4",
+        "-"
+      ],
+      "runtime_check_command": [
+        "codex",
+        "exec",
+        "--model",
+        "gpt-5.4",
+        "--ephemeral",
+        "-"
+      ],
+      "verified": "2026-07-13: Codex CLI reads the harness-supplied prompt from stdin when `-` is used. Keep the prompt out of argv because the harness also writes it to stdin. The project-local model override avoids inheriting an unavailable model from the user's global Codex configuration. Verify that gpt-5.4 is available before execution."
+    },
+    "claude-code": {
+      "cwd": "..",
+      "command": [],
+      "runtime_check_command": [],
+      "verified": "Configure only after verifying the local Claude Code CLI command, stdin behavior, output, exit-code semantics, and runtime permission behavior."
+    },
+    "cursor-agent": {
+      "cwd": "..",
+      "command": [],
+      "runtime_check_command": [],
+      "verified": "Configure only after verifying the local Cursor Agent CLI command, stdin behavior, output, exit-code semantics, and runtime permission behavior."
+    },
+    "custom": {
+      "cwd": "..",
+      "command": [],
+      "runtime_check_command": [],
+      "verified": "Set command and runtime_check_command to non-empty string arrays after verifying the provider accepts prompts on stdin, returns meaningful exit codes, and can access required runtime state."
+    }
+  }
+}

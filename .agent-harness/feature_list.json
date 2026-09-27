@@ -1,0 +1,473 @@
+{
+  "features": [
+    {
+      "id": "F001",
+      "title": "iOS 工具链与模拟器能力",
+      "description": "iOS 工具链与模拟器能力；对应 R01，边界与默认值以 SPEC 为准。",
+      "acceptance": [
+        "提供可重现检查，识别 Full Xcode、iOS 26+ SDK、模拟器 runtime 与目标设备；缺失时明确失败，不冒充可构建。",
+        "记录实际工具版本和开发目录；不要求修改全局 xcode-select，可明确使用项目指定 DEVELOPER_DIR。",
+        "文档区分无签名模拟器与签名真机需求；缺失设备或工具不得通过 mock 宣称能力就绪。"
+      ],
+      "passes": true,
+      "status": "done",
+      "attempts": 1,
+      "last_error": "",
+      "priority": "P0",
+      "depends_on": [],
+      "requirement_refs": "R01",
+      "implementation_paths": [
+        "scripts/doctor.sh",
+        "docs/development.md"
+      ],
+      "verification_surface": "真实工具命令与缺失依赖失败用例"
+    },
+    {
+      "id": "F002",
+      "title": "可运行 iOS 骨架与项目恢复",
+      "description": "可运行 iOS 骨架与项目恢复；对应 R01，边界与默认值以 SPEC 为准。",
+      "acceptance": [
+        "创建 iPhone / iOS 26+ SwiftUI 工程及可运行测试 target；产品代码位于项目路径，不在 Harness examples。",
+        "根 ./init.sh 幂等验证依赖、启动测试模拟器、构建并运行真实 App smoke，阶段日志清晰，失败非零。",
+        "根恢复流程包含 Harness 检查，项目 evaluator evidence 基线从 F001 起；记录真实构建/启动证据。"
+      ],
+      "passes": false,
+      "status": "todo",
+      "attempts": 0,
+      "last_error": "",
+      "priority": "P0",
+      "depends_on": [
+        "F001"
+      ],
+      "requirement_refs": "R01",
+      "implementation_paths": [
+        "SwipeGo.xcodeproj/",
+        "SwipeGo/App/",
+        "scripts/",
+        "init.sh"
+      ],
+      "verification_surface": "干净构建、启动与真实 UI smoke"
+    },
+    {
+      "id": "F003",
+      "title": "可重复媒体测试素材",
+      "description": "可重复媒体测试素材；对应 R03/R05/R08，边界与默认值以 SPEC 为准。",
+      "acceptance": [
+        "提供非私人可丢弃照片、短视频、相似照片与不同表情反例，涵盖不同日期、方向与尺寸。",
+        "同一 seed 可恢复相同测试集合；文档列出来源/生成方式和预期关系，禁止个人图库自动删除测试。",
+        "明确本地 fixture 无法证明 iCloud 下载/系统授权等真实行为，并单列对应验证步骤。"
+      ],
+      "passes": false,
+      "status": "todo",
+      "attempts": 0,
+      "last_error": "",
+      "priority": "P0",
+      "depends_on": [
+        "F002"
+      ],
+      "requirement_refs": "R03/R05/R08",
+      "implementation_paths": [
+        "Fixtures/",
+        "scripts/seed-fixtures.*",
+        "docs/verification.md"
+      ],
+      "verification_surface": "fixture 安装、重复运行与素材清单"
+    },
+    {
+      "id": "F004",
+      "title": "本地状态持久化边界",
+      "description": "本地状态持久化边界；对应 R03/R07/R10，边界与默认值以 SPEC 为准。",
+      "acceptance": [
+        "用 SwiftData 存储会话、待删意图与操作记录，schema 有版本，接口与 UI 解耦。",
+        "用户意图与可重建缓存分离；待删 asset ID 唯一；重开存储保留记录，写失败返回错误。",
+        "明确 actor 隔离，不跨执行边界裸传存储对象；测试使用真实临时存储而非只用内存替身。"
+      ],
+      "passes": false,
+      "status": "todo",
+      "attempts": 0,
+      "last_error": "",
+      "priority": "P0",
+      "depends_on": [
+        "F002"
+      ],
+      "requirement_refs": "R03/R07/R10",
+      "implementation_paths": [
+        "SwipeGo/Domain/",
+        "SwipeGo/Infrastructure/Persistence/",
+        "SwipeGoTests/"
+      ],
+      "verification_surface": "真实本地数据库重开和写失败测试"
+    },
+    {
+      "id": "F005",
+      "title": "图库权限与资产查询",
+      "description": "图库权限与资产查询；对应 R02/R05，边界与默认值以 SPEC 为准。",
+      "acceptance": [
+        "封装拒绝、受限、部分和完整授权状态及用户引导；只读取允许范围，空结果不等于全库无照片。",
+        "通过公开 API 查询照片/视频元信息；隐藏/共享内容范围按 A08 验证，无法区分则记录能力缺口。",
+        "可更新授权范围；测试无权限、空库和部分图库，真实系统证据与 fake 测试分别记录。"
+      ],
+      "passes": false,
+      "status": "todo",
+      "attempts": 0,
+      "last_error": "",
+      "priority": "P0",
+      "depends_on": [
+        "F003"
+      ],
+      "requirement_refs": "R02/R05",
+      "implementation_paths": [
+        "SwipeGo/Infrastructure/PhotoLibrary/",
+        "SwipeGoTests/"
+      ],
+      "verification_surface": "授权矩阵与真实图库查询"
+    },
+    {
+      "id": "F006",
+      "title": "照片加载与缓存",
+      "description": "照片加载与缓存；对应 R05，边界与默认值以 SPEC 为准。",
+      "acceptance": [
+        "按目标尺寸加载当前照片，有限预取邻近项，支持取消并设明确缓存容量；不整库下载原片。",
+        "请求绑定资产与代次，迟到结果不可覆盖当前画面；iCloud 加载进度、离线与错误可区分且可重试。",
+        "照片默认完整比例；Live Photo 静态资源可加载；真实云端行为留有证据，失败场景不假成功。"
+      ],
+      "passes": false,
+      "status": "todo",
+      "attempts": 0,
+      "last_error": "",
+      "priority": "P0",
+      "depends_on": [
+        "F005"
+      ],
+      "requirement_refs": "R05",
+      "implementation_paths": [
+        "SwipeGo/Infrastructure/Media/",
+        "SwipeGoTests/"
+      ],
+      "verification_surface": "取消、迟到结果、缓存上限及离线场景"
+    },
+    {
+      "id": "F007",
+      "title": "视频播放资源生命周期",
+      "description": "视频播放资源生命周期；对应 R05，边界与默认值以 SPEC 为准。",
+      "acceptance": [
+        "通过系统 API 获取和播放视频，提供播放暂停、进度、声音状态，按 A02 默认值实施前复核。",
+        "切出/退后台/切会话停止不需要的播放与请求，不同时无限持有播放器。",
+        "处理资源下载、取消、失败与离线；操作进度条不得被识别成照片切换或待删手势。"
+      ],
+      "passes": false,
+      "status": "todo",
+      "attempts": 0,
+      "last_error": "",
+      "priority": "P0",
+      "depends_on": [
+        "F005"
+      ],
+      "requirement_refs": "R05",
+      "implementation_paths": [
+        "SwipeGo/Infrastructure/Media/Video*",
+        "SwipeGo/Features/Review/",
+        "SwipeGoTests/"
+      ],
+      "verification_surface": "视频切换与资源释放、云端资源实测"
+    },
+    {
+      "id": "F008",
+      "title": "连续时间片段与会话恢复",
+      "description": "连续时间片段与会话恢复；对应 R03，边界与默认值以 SPEC 为准。",
+      "acceptance": [
+        "生成连续日期/时间片段，照片视频按稳定顺序混排；随机只决定片段，不每次翻页重排。",
+        "实现继续、随机和去年的今天，明确 A04/A05 的日期、闰日、空态规则；无可信事件名只显示日期。",
+        "保存会话有序 ID 与游标，重开继续；看过不代表保留；授权缩减或项目不可用时提供明确状态。"
+      ],
+      "passes": false,
+      "status": "todo",
+      "attempts": 0,
+      "last_error": "",
+      "priority": "P0",
+      "depends_on": [
+        "F004",
+        "F005"
+      ],
+      "requirement_refs": "R03",
+      "implementation_paths": [
+        "SwipeGo/Domain/Review/",
+        "SwipeGoTests/"
+      ],
+      "verification_surface": "确定性日期/随机选择与重开恢复"
+    },
+    {
+      "id": "F009",
+      "title": "回顾首页与玻璃视觉",
+      "description": "回顾首页与玻璃视觉；对应 R01/R02，边界与默认值以 SPEC 为准。",
+      "acceptance": [
+        "按确认图实现继续回顾、去年的今天、随机时光；不出现顺手整理、大视频清理或清理排行榜。",
+        "统一原生玻璃控件，默认媒体清晰；动态字体、减弱透明度和 VoiceOver 下仍能操作。",
+        "待删入口低强调，其真实计数与复核导航由 F015 接入；无会话、无日期内容和无权限有空态。"
+      ],
+      "passes": false,
+      "status": "todo",
+      "attempts": 0,
+      "last_error": "",
+      "priority": "P0",
+      "depends_on": [
+        "F006",
+        "F008"
+      ],
+      "requirement_refs": "R01/R02",
+      "implementation_paths": [
+        "SwipeGo/DesignSystem/",
+        "SwipeGo/Features/Home/",
+        "SwipeGoUITests/"
+      ],
+      "verification_surface": "首页截图与空态/恢复导航验证"
+    },
+    {
+      "id": "F010",
+      "title": "沉浸浏览与手势路由",
+      "description": "沉浸浏览与手势路由；对应 R04，边界与默认值以 SPEC 为准。",
+      "acceptance": [
+        "默认隐藏应用控件；左滑下一项、右滑上一项；上部点按只切换底部功能栏，顶部不出现操作面板。",
+        "上滑/下滑生成绑定当前资产的一次动作意图，由 F011/F012 接入；未接入前不得显示成功或触碰原片。",
+        "手势方向锁定与阈值防重复；按钮、缩放、视频进度优先，不触发照片动作；可用按钮完成等价操作。"
+      ],
+      "passes": false,
+      "status": "todo",
+      "attempts": 0,
+      "last_error": "",
+      "priority": "P0",
+      "depends_on": [
+        "F006",
+        "F007",
+        "F008",
+        "F009"
+      ],
+      "requirement_refs": "R04",
+      "implementation_paths": [
+        "SwipeGo/Features/Review/",
+        "SwipeGoUITests/"
+      ],
+      "verification_surface": "手势、缩放与底部控件 UI 测试"
+    },
+    {
+      "id": "F011",
+      "title": "系统收藏与撤销",
+      "description": "系统收藏与撤销；对应 R06，边界与默认值以 SPEC 为准。",
+      "acceptance": [
+        "下滑或收藏按钮经系统请求设置收藏，成功才反馈；已有收藏不重复反转，遵循 A01。",
+        "失败/取消恢复真实显示，撤销绑定原资产且避免覆盖外部已改变的收藏状态。",
+        "收藏后是否前进按 A01 记录；用真实测试素材验证系统相册状态，重入时读取系统事实。"
+      ],
+      "passes": false,
+      "status": "todo",
+      "attempts": 0,
+      "last_error": "",
+      "priority": "P0",
+      "depends_on": [
+        "F004",
+        "F005",
+        "F010"
+      ],
+      "requirement_refs": "R06",
+      "implementation_paths": [
+        "SwipeGo/Domain/Actions/",
+        "SwipeGo/Infrastructure/PhotoLibrary/",
+        "SwipeGoTests/"
+      ],
+      "verification_surface": "系统收藏成功/失败/外部修改测试"
+    },
+    {
+      "id": "F012",
+      "title": "待删标记与本地撤销",
+      "description": "待删标记与本地撤销；对应 R07，边界与默认值以 SPEC 为准。",
+      "acceptance": [
+        "上滑/按钮只保存待删意图，不调用系统删除；保存成功后短暂反馈并支持撤销。",
+        "重复标记同一资产不累加，撤销针对原资产，重启保留有效标记；写失败不显示成功。",
+        "已收藏资产的显式标记按 A06 处理，不自动取消收藏；标记后前进规则遵循 A01。"
+      ],
+      "passes": false,
+      "status": "todo",
+      "attempts": 0,
+      "last_error": "",
+      "priority": "P0",
+      "depends_on": [
+        "F004",
+        "F010"
+      ],
+      "requirement_refs": "R07",
+      "implementation_paths": [
+        "SwipeGo/Domain/Actions/",
+        "SwipeGo/Features/Review/",
+        "SwipeGoTests/"
+      ],
+      "verification_surface": "幂等保存、撤销、进程重开和失败测试"
+    },
+    {
+      "id": "F013",
+      "title": "片段内相似照片分析",
+      "description": "片段内相似照片分析；对应 R08，边界与默认值以 SPEC 为准。",
+      "acceptance": [
+        "对当前/邻近片段候选计算 Vision 特征并形成保守组；不会阻塞可浏览内容。",
+        "缓存含资产内容与算法版本，编辑后失效；分析可取消、限并发、恢复，不依赖后台必定运行。",
+        "记录阈值和样本结果，不把距离当重复概率、不用相似传递链强行合组；不覆盖视频或承诺跨日期找全。"
+      ],
+      "passes": false,
+      "status": "todo",
+      "attempts": 0,
+      "last_error": "",
+      "priority": "P1",
+      "depends_on": [
+        "F003",
+        "F004",
+        "F006",
+        "F008"
+      ],
+      "requirement_refs": "R08",
+      "implementation_paths": [
+        "SwipeGo/Domain/Similarity/",
+        "SwipeGo/Infrastructure/Analysis/",
+        "SwipeGoTests/"
+      ],
+      "verification_surface": "已标注正例/反例和暂停恢复测试"
+    },
+    {
+      "id": "F014",
+      "title": "人工相似比较与保留决定",
+      "description": "人工相似比较与保留决定；对应 R08，边界与默认值以 SPEC 为准。",
+      "acceptance": [
+        "展示同组清晰缩略图、多选保留、放大比较、全部保留与以后再看，允许保留多张。",
+        "默认不建议删除收藏项；建议理由仅来自验证过的分析，否则只分组不编造理由。",
+        "确认选择后仅把其余明确项目加入待删；不允许无保留项的误触批量处理；未分析/失败可返回回顾。"
+      ],
+      "passes": false,
+      "status": "todo",
+      "attempts": 0,
+      "last_error": "",
+      "priority": "P1",
+      "depends_on": [
+        "F010",
+        "F012",
+        "F013"
+      ],
+      "requirement_refs": "R08",
+      "implementation_paths": [
+        "SwipeGo/Features/Comparison/",
+        "SwipeGoUITests/"
+      ],
+      "verification_surface": "多选/放大/跳过与标记边界"
+    },
+    {
+      "id": "F015",
+      "title": "待删集中复核",
+      "description": "待删集中复核；对应 R09，边界与默认值以 SPEC 为准。",
+      "acceptance": [
+        "首页弱入口显示有效待删数并进入复核；展示分组待删与同组保留项，视频可播放确认。",
+        "允许撤回单项或退出稍后处理；权限/资源变化时显示需核对，不能直接抹除意图或称已删除。",
+        "最终确认展示固定目标及 iCloud 删除影响与系统恢复边界；不显示伪造的已释放空间；执行委托 F016。"
+      ],
+      "passes": false,
+      "status": "todo",
+      "attempts": 0,
+      "last_error": "",
+      "priority": "P0",
+      "depends_on": [
+        "F009",
+        "F012",
+        "F014"
+      ],
+      "requirement_refs": "R09",
+      "implementation_paths": [
+        "SwipeGo/Features/DeletionReview/",
+        "SwipeGoUITests/"
+      ],
+      "verification_surface": "真实计数、分组保留对照和取消"
+    },
+    {
+      "id": "F016",
+      "title": "实际删除的系统边界",
+      "description": "实际删除的系统边界；对应 R10，边界与默认值以 SPEC 为准。",
+      "acceptance": [
+        "唯一删除入口：明确复核后保存固定操作集合，重新校验权限、目标与保留项，变化时重新复核。",
+        "调用公开系统变更接口并尊重系统确认，按真实批次回执处理成功、取消、失败，不假定逐项回执。",
+        "重复点击不重复提交，执行期间冻结集合；只清除有成功证据的记录，不自动清空最近删除。"
+      ],
+      "passes": false,
+      "status": "todo",
+      "attempts": 0,
+      "last_error": "",
+      "priority": "P0",
+      "depends_on": [
+        "F004",
+        "F005",
+        "F015"
+      ],
+      "requirement_refs": "R10",
+      "implementation_paths": [
+        "SwipeGo/Domain/Deletion/",
+        "SwipeGo/Infrastructure/PhotoLibrary/",
+        "SwipeGoTests/"
+      ],
+      "verification_surface": "可丢弃图库上的确认/取消/失败验证"
+    },
+    {
+      "id": "F017",
+      "title": "图库变化与未完成操作核对",
+      "description": "图库变化与未完成操作核对；对应 R10/R11，边界与默认值以 SPEC 为准。",
+      "acceptance": [
+        "观察图库变化且前台恢复时核对，更新会话可用性、收藏事实和分析缓存版本。",
+        "系统成功与本地保存之间退出时可识别未完成操作；资源不可见不被直接视为本次删除成功。",
+        "未知结果不自动重试删除；保留待核对记录并重新复核；测试取消、崩溃、权限缩减与外部变更。"
+      ],
+      "passes": false,
+      "status": "todo",
+      "attempts": 0,
+      "last_error": "",
+      "priority": "P0",
+      "depends_on": [
+        "F008",
+        "F011",
+        "F013",
+        "F016"
+      ],
+      "requirement_refs": "R10/R11",
+      "implementation_paths": [
+        "SwipeGo/Domain/Reconciliation/",
+        "SwipeGoTests/"
+      ],
+      "verification_surface": "崩溃注入、权限缩减、编辑和外部删除"
+    },
+    {
+      "id": "F018",
+      "title": "真机端到端与体验验证",
+      "description": "真机端到端与体验验证；对应 R01–R11，边界与默认值以 SPEC 为准。",
+      "acceptance": [
+        "在明确型号/OS 的真机走完回顾、播放、收藏、标记、比较、复核、取消和受控删除，仅用可丢弃素材。",
+        "记录真实 iCloud 未下载/离线、部分权限、外部变更和重启恢复；缺少能力时不得以模拟替身代替通过。",
+        "记录冷/热加载、图库规模、滑动/内存/缓存证据，检查玻璃可读性与辅助功能；发现问题回到对应 Feature 修复。"
+      ],
+      "passes": false,
+      "status": "todo",
+      "attempts": 0,
+      "last_error": "",
+      "priority": "P0",
+      "depends_on": [
+        "F003",
+        "F009",
+        "F010",
+        "F011",
+        "F012",
+        "F014",
+        "F015",
+        "F016",
+        "F017"
+      ],
+      "requirement_refs": "R01–R11",
+      "implementation_paths": [
+        "SwipeGoUITests/",
+        "docs/verification.md",
+        ".agent-harness/runs/"
+      ],
+      "verification_surface": "iOS26+ 真机测试图库与性能证据"
+    }
+  ]
+}

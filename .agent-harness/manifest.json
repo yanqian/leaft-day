@@ -1,0 +1,317 @@
+{
+  "files": {
+    ".agent-harness/.agent-harness-template.json": {
+      "category": "template manifest",
+      "sha256": "11705af106a412a47dd4a17e3314090eba59eb4a1f6f9d4897547bf65b6e3112"
+    },
+    ".agent-harness/.github/ISSUE_TEMPLATE/bug_report.md": {
+      "category": "optional integration",
+      "sha256": "a50d4403a3cf87b0f797912eaa5342ed9abe950f7fe2341814a885d3c857a5d3"
+    },
+    ".agent-harness/.github/ISSUE_TEMPLATE/config.yml": {
+      "category": "optional integration",
+      "sha256": "13064e7bea658e01e718b414fbb7b3b244f36411fe25ee2055c151f7b534547a"
+    },
+    ".agent-harness/.github/ISSUE_TEMPLATE/feature_request.md": {
+      "category": "optional integration",
+      "sha256": "291b59fb019d3d0f8dc93704a733c3d4621f41313682ab036ec17ad0badde5da"
+    },
+    ".agent-harness/.github/workflows/ci.yml": {
+      "category": "optional integration",
+      "sha256": "43748bfe3e5b175998df72d894ec9797c52075066753e2bdcc2e7cd129a2c1fd"
+    },
+    ".agent-harness/.gitignore": {
+      "category": "harness-owned static",
+      "sha256": "6feaded4e28ea86e001a6751b4e3d960e8b7c31b9616ff9936b79297086e809b"
+    },
+    ".agent-harness/AGENTS.md": {
+      "category": "harness-owned static",
+      "sha256": "822f373495004d035372d346d14acb658f89d082f6cb553fbbefc07bb01310a2"
+    },
+    ".agent-harness/CHANGELOG.md": {
+      "category": "harness-owned static",
+      "sha256": "0b4416875612ac468013500679de5a8ccdf5c3ba93e7c5c9824b395913aafc79"
+    },
+    ".agent-harness/CONTRIBUTING.md": {
+      "category": "harness-owned static",
+      "sha256": "cd0c4b21544e3250a389ac65ac519aabeb2f01e10cbf3fe5e47f383ec1bacd8f"
+    },
+    ".agent-harness/LICENSE": {
+      "category": "harness-owned static",
+      "sha256": "aeaf403d8686f052f37d4c9bdb6298f76c4af8d9141e721b7ad8aa651111006c"
+    },
+    ".agent-harness/Makefile": {
+      "category": "harness-owned static",
+      "sha256": "63b1fad957d6cf068a9e442d6e83cccf2e60d0d74dc78931a33b0a51eeaaa914"
+    },
+    ".agent-harness/QUALITY.md": {
+      "category": "harness-owned static",
+      "sha256": "a1b672518acee9a11a060a8d282239153669e76a882947571100f772827d7847"
+    },
+    ".agent-harness/README.md": {
+      "category": "harness-owned static",
+      "sha256": "37dc3b6f0860ee9d7886d25eefa48aede451c6dfcf1c9238335591e70b67563c"
+    },
+    ".agent-harness/SECURITY.md": {
+      "category": "harness-owned static",
+      "sha256": "2af59716105085f2179468d407ba84f300d576bdfc983ef59bdf8fd7577f712d"
+    },
+    ".agent-harness/SPEC.md": {
+      "category": "project-owned state",
+      "sha256": "5eef782f3364607257086d5b570c7a2a861d89e2e7c1abd27c2b848790f6db8b"
+    },
+    ".agent-harness/agent-provider.example.json": {
+      "category": "harness-owned static",
+      "sha256": "409dfc10b3a30a68c5e8c2d16d55f6e183e8f03028af644142886208ff000bfa"
+    },
+    ".agent-harness/agent-provider.json": {
+      "category": "harness-owned static",
+      "sha256": "90e5549229a833a8a7e5d5067deb84e63b755f156dfda0028b25225acaebaacc"
+    },
+    ".agent-harness/docs/README.md": {
+      "category": "harness-owned static",
+      "sha256": "d1684eb24dad0fd2736a06325e234abd9a245d55caf9c1d62266d8f7d6cfb232"
+    },
+    ".agent-harness/docs/agent-provider-configuration.md": {
+      "category": "harness-owned static",
+      "sha256": "5659afcb7cbdb7e94dc2bbfdd3ff05d6d69237ed09f9a66c47627d87b6161f2e"
+    },
+    ".agent-harness/docs/agent-workflow.md": {
+      "category": "harness-owned static",
+      "sha256": "edb20a2293bfc7195e387a411945cfa2b5c202e8e41017d97a6104fa8e4202d0"
+    },
+    ".agent-harness/docs/architecture.md": {
+      "category": "harness-owned static",
+      "sha256": "c7bf42c602f32185fe828fc0a4367421acd2ba2626ceabc8437feb6550a80d9c"
+    },
+    ".agent-harness/docs/capability-gaps.md": {
+      "category": "harness-owned static",
+      "sha256": "1584aa9cc037a0147b6659b5e815fe33cbb16a6bd37c6bed507069404eb54b5f"
+    },
+    ".agent-harness/docs/commit-messages.md": {
+      "category": "harness-owned static",
+      "sha256": "f72d75425b4489d47bcbe94e3133060e86d9638ce77e8dd0c311b4ba7af5e7ec"
+    },
+    ".agent-harness/docs/decisions/README.md": {
+      "category": "harness-owned static",
+      "sha256": "415c048ec0bb4fae49d23e6d2a279f5059e6cce64d839525a9de6b2eb318c9ba"
+    },
+    ".agent-harness/docs/evaluator-evidence.md": {
+      "category": "harness-owned static",
+      "sha256": "725a567306a79382e0a21a85d5ab998057ec96bd1b5e3f81f5a26e0835c9f430"
+    },
+    ".agent-harness/docs/example-boundaries.md": {
+      "category": "harness-owned static",
+      "sha256": "309494b601f6a847ab38faa7ea08c859a525c56c47a56a716ba379af1bbc6213"
+    },
+    ".agent-harness/docs/external-behavior.md": {
+      "category": "harness-owned static",
+      "sha256": "1a58ae9748ba549ac6d11f4d2bea1499b783719cb325c845ddca4ad58d3a9993"
+    },
+    ".agent-harness/docs/failure-domains.md": {
+      "category": "harness-owned static",
+      "sha256": "ef0b33c1f22f3ffca8bb3bc80dd8c0e069e28e1ec8eb73c3ccc0064352db2655"
+    },
+    ".agent-harness/docs/feature-decomposition.md": {
+      "category": "harness-owned static",
+      "sha256": "d77888c9d7467e9e380ce628773eca3aecccae5844a24bb73a42ef724aa45d7c"
+    },
+    ".agent-harness/docs/new-project-flow.md": {
+      "category": "harness-owned static",
+      "sha256": "5168fc53753a045edb68071c7edb80a779c88c5e38888c93b92bc96b3242e574"
+    },
+    ".agent-harness/docs/project-recovery-init.md": {
+      "category": "harness-owned static",
+      "sha256": "eb4135b4d7211d4ce53c6985d27108cf72a2ae04712841cb75f1788ca42d55ab"
+    },
+    ".agent-harness/docs/real-world-usage.md": {
+      "category": "harness-owned static",
+      "sha256": "c7f52bf69f4488a5b256bb2e322e9cf62c7a32b9ed0f4a3233f68e5c41f01c51"
+    },
+    ".agent-harness/docs/spec-normalization.md": {
+      "category": "harness-owned static",
+      "sha256": "626ac365afe0380ac52cbf80b465e74758c6632f128cf0b1b034edf532fc1428"
+    },
+    ".agent-harness/docs/testing.md": {
+      "category": "harness-owned static",
+      "sha256": "f3dc731c83a7b79ca3f9488480e0b2d1c7e5abae945c5d5a55247294932707aa"
+    },
+    ".agent-harness/examples/go-server/README.md": {
+      "category": "optional integration",
+      "sha256": "3c36853e3801a37fe55f63963b410cc29a105bc25c16b279aa768c7ff5c2892e"
+    },
+    ".agent-harness/examples/go-server/go.mod": {
+      "category": "optional integration",
+      "sha256": "5c51e96fd5c75a024b1b8eb1515cf44ae168a527161b3abd9315b6b446e3e564"
+    },
+    ".agent-harness/examples/go-server/main.go": {
+      "category": "optional integration",
+      "sha256": "e114a42401fe8e6563a611367d50c883eb481c55273959b7eab1917f07a46f23"
+    },
+    ".agent-harness/examples/go-server/server.go": {
+      "category": "optional integration",
+      "sha256": "6a7ad3756639e393879848f0351660a20179c99cc8fa11194178df66fc109960"
+    },
+    ".agent-harness/examples/go-server/server_test.go": {
+      "category": "optional integration",
+      "sha256": "63eadb70575e0493c4483fe63a1dbe63a65cf46b9b32fbe4f0d6a504f7bec24d"
+    },
+    ".agent-harness/examples/tiny-cli/test_tiny_cli.py": {
+      "category": "optional integration",
+      "sha256": "d7053791b145d91a6363bdbf44e874d24a7f9435271e9e0f44381c4285b39761"
+    },
+    ".agent-harness/examples/tiny-cli/tiny_cli.py": {
+      "category": "optional integration",
+      "sha256": "7dd70557c6e3cf741ef57eb88a79ff35ffbee9b48f6795f1f9da75052af3f684"
+    },
+    ".agent-harness/feature_list.json": {
+      "category": "project-owned state",
+      "sha256": "7000bffd3c217bb2eb6ad63ee8bcd3c196be36e8e5145bfd0127865b2dc53628"
+    },
+    ".agent-harness/init.sh": {
+      "category": "harness-owned static",
+      "sha256": "35b5d80425bd7b4b1aee920adeeac39204154775962ac1add08b03b0bf68afba"
+    },
+    ".agent-harness/orchestrator.py": {
+      "category": "harness-owned static",
+      "sha256": "85b2482f51afc5003e0f48f3b0468ce54d515ae4efe3d00f3ece09ff088c3295"
+    },
+    ".agent-harness/progress.md": {
+      "category": "project-owned state",
+      "sha256": "00ea731ec5546976fc45325eae56bc916e76d87bcbd02fb44d36811fce325265"
+    },
+    ".agent-harness/prompts/continue.md": {
+      "category": "harness-owned static",
+      "sha256": "6f6a3107706b19e4d04afe2599f59d722bf918dbe4748e0bbcc06dbf2fc4f2e7"
+    },
+    ".agent-harness/prompts/evaluate.md": {
+      "category": "harness-owned static",
+      "sha256": "eaa90a7d987443afa6232c664d5c4542d1476c86ab9b853d52eef7a5a088b1ae"
+    },
+    ".agent-harness/prompts/plan.md": {
+      "category": "harness-owned static",
+      "sha256": "c3b9bc6a8d2da152339180e3dc7e0fe9e1ef8912c252bac1b16874f94b566315"
+    },
+    ".agent-harness/prompts/work-fast.md": {
+      "category": "harness-owned static",
+      "sha256": "e3f0f81dff94edd82c534d4b030dc38e4475471799826628b7827daa5a4b31cb"
+    },
+    ".agent-harness/prompts/work.md": {
+      "category": "harness-owned static",
+      "sha256": "7fdff340f69847a96a584a0d3d66b803148a8be7609187042b6af9dcdf1738d4"
+    },
+    ".agent-harness/runs/.gitkeep": {
+      "category": "harness-owned static",
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+    },
+    ".agent-harness/runs/RUN_TEMPLATE.md": {
+      "category": "harness-owned static",
+      "sha256": "2474832f45135d2cf91ef60be7200a0131da767c81536a25f7cd59751b665215"
+    },
+    ".agent-harness/schemas/feature_list.schema.json": {
+      "category": "harness-owned static",
+      "sha256": "dcb780908c02fd3ee1a960c2ffcd9bf3b7cc33d36d311741ada6b07626a00d41"
+    },
+    ".agent-harness/scripts/check-evaluator-evidence.sh": {
+      "category": "harness-owned static",
+      "sha256": "c56f682924a9bdefd7ef3b6f3934bdda69db6890d07022df3a986be6cdb29183"
+    },
+    ".agent-harness/scripts/check-failure-domains.sh": {
+      "category": "harness-owned static",
+      "sha256": "de918bb12da4adabe816ea724c7a74bfaad843141ec28e88d7bb059760e50706"
+    },
+    ".agent-harness/scripts/clean-state.py": {
+      "category": "harness-owned static",
+      "sha256": "1a511c3e9189dd84e856acd9f7103c0b8c7cc5894e9ac5c1166b39f4adc2fb8e"
+    },
+    ".agent-harness/scripts/human-eval.py": {
+      "category": "harness-owned static",
+      "sha256": "2154614e74565077586da7d51e8439044e8e3509de05be61f2ff7eaa043cb760"
+    },
+    ".agent-harness/scripts/init.sh": {
+      "category": "harness-owned static",
+      "sha256": "263eac1cac3ebba975d6c457429cf7ba173876e90a5ed627443369ac594e7ad5"
+    },
+    ".agent-harness/scripts/run-agent-provider.py": {
+      "category": "harness-owned static",
+      "sha256": "3fb4322c81027a40621a61a22af5211968ec982ddcdac97c0fab0a2919973d74"
+    },
+    ".agent-harness/scripts/run-coding-agent.sh": {
+      "category": "harness-owned static",
+      "sha256": "386f4813de9ed141e426589b26e575b454c8e157fc2c72bb1e94596d0397fe1b"
+    },
+    ".agent-harness/scripts/run-evaluator-agent.sh": {
+      "category": "harness-owned static",
+      "sha256": "6611a4088bb823a1c7e41947aea3859299f8e871f2865e2615da852416f6b7bc"
+    },
+    ".agent-harness/scripts/summarize-progress.sh": {
+      "category": "harness-owned static",
+      "sha256": "9b244c5cc3c194164a71b474cfcbc202d891915b6f83341997e31eafd7725bc9"
+    },
+    ".agent-harness/scripts/summarize-runs.sh": {
+      "category": "harness-owned static",
+      "sha256": "15e88ce08aacc040350e3abead5267c8f5694d82de819a0636dc829b00fca0fc"
+    },
+    ".agent-harness/scripts/validate-feature.sh": {
+      "category": "harness-owned static",
+      "sha256": "e54de27390f70a1cc920181af05fd6d54bf1113eb0e9a428020bc87033860964"
+    },
+    ".agent-harness/scripts/validate-state.py": {
+      "category": "harness-owned static",
+      "sha256": "16432c0f60025163dda0bf36a70a4da3929d09409388bab1eed68991242bfe5f"
+    },
+    ".agent-harness/skills/ai-agent-harness/SKILL.md": {
+      "category": "harness-owned static",
+      "sha256": "a1f6d12e2ef6fdc29d1be4a836a763f5d76ea416056f23aba38f1684ca7b0c2d"
+    },
+    ".agent-harness/skills/ai-agent-harness/agents/openai.yaml": {
+      "category": "harness-owned static",
+      "sha256": "aa4b768afb8ca570e54753a82750562a87779f006850bc26844b2de2841e5ad4"
+    },
+    ".agent-harness/skills/ai-agent-harness/references/workflows.md": {
+      "category": "harness-owned static",
+      "sha256": "23a135bd584b74047b9d3b6ba4437febdc2379f9a4eaeff4d2f4f2b30d145887"
+    },
+    ".agent-harness/skills/ai-agent-harness/scripts/init_harness.py": {
+      "category": "harness-owned static",
+      "sha256": "be7dd19ac23a704f80994d3a926bf66337afcab43d9b82f25b13b2697d2ce1c7"
+    },
+    ".agent-harness/test/contract/test_repository_contract.py": {
+      "category": "harness-owned static",
+      "sha256": "95c9e081937a53c17fadbe5870aca1bdad7a2cff2a85a591bb75d30a1e469697"
+    },
+    ".agent-harness/test/harness/test_skill_initializer.py": {
+      "category": "harness-owned static",
+      "sha256": "34eb5a79fe4adadf06e4d5d1f0c103c3c5cefc1a8524fb4d0e4fbad69101c23b"
+    },
+    ".agent-harness/test/smoke/test_smoke.py": {
+      "category": "harness-owned static",
+      "sha256": "9f93514a4c10aa6679ad395134f1f882f3bad8dcb3e55e9bc9b111a83235e44e"
+    },
+    ".agent-harness/test/unit/test_scripts.py": {
+      "category": "harness-owned static",
+      "sha256": "dbd81cbfc462b75280a27efeb8d3e10b81996eb65e3bcc431333c94e130519a4"
+    },
+    ".agent-harness/test/unit/test_unborn_repository.py": {
+      "category": "harness-owned static",
+      "sha256": "1f250734640028e145cbea93282970a943d832ecf368924492a56846d9f5c17e"
+    },
+    ".agent-harness/test_plan.md": {
+      "category": "harness-owned static",
+      "sha256": "c9c59c44eea93553cfbd7ef38c6a466d6854946ab7d762bcba2a47962d47673d"
+    },
+    "AGENTS.md": {
+      "category": "merge-sensitive",
+      "sha256": "501bd0ab412ec9b5a21835ab00f979b886006a5bfb4cc1616640aee274ced86c"
+    },
+    "init.sh": {
+      "category": "merge-sensitive",
+      "sha256": "ef0eef031725e8777b86786a45a31ef3980cf6be800b89128231bbca2dfb807c"
+    }
+  },
+  "installed_at": "2026-09-26T16:02:31Z",
+  "layout": "hidden",
+  "mode": "repair",
+  "schema_version": 1,
+  "template_version": "0.3.9"
+}
