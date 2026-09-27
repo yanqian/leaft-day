@@ -98,3 +98,11 @@ stateDiagram-v2
 会话（有序ID/游标）、待删（唯一资产ID）和操作日志分别建模，JSON payload 属于 V1 schema 的一部分。重复待删保留最初来源和时间；无效游标/重复会话ID列表失败，不静默纠正用户意图。原片/系统收藏不存入意图库。操作日志只持久化事实，不在存储层执行删除或自动重试。
 
 `LocalStoragePaths.application()` 把意图库放 Application Support，把可重建媒体缓存放 Caches/SwipeGoMedia；缓存清理不得覆盖意图库。SwiftData 显式禁用 CloudKit。只读配置由真实 SwiftData 保存失败并抛出错误；不可用路径、解码错误和真实 save 错误向调用者传播。后续业务层只在 await 保存成功后更新成功反馈。
+
+## F006 照片加载实现与待验收边界
+
+PhotoLoader 在 MainActor 管理当前内容、请求代次和 UI 状态；NativePhotoTransport 使用公开 PhotoKit 高质量静态图请求、aspectFit 和目标像素尺寸，不请求全库原片。Live Photo 通过静态 requestImage 路径，实际 Live Photo 与云端样本尚未验证。预取最多两项且禁止联网；当前项可允许网络，明确 progress / needsDownload / offline / unavailable / failed，重试会建立新代次。
+
+自有 LRU 缓存最多12项、32MiB已解码像素成本，单项超预算不入缓存；key包括资产ID、修改时间和目标尺寸，提供按资产失效与释放入口。该上限只约束 App 自有缓存，不是 PhotoKit 系统内部或整个进程的总内存承诺。当前画面单张图片可超缓存预算；显示使用完整比例 scaledToFit。每次切换取消当前和预取请求，代次不匹配的回调不入缓存、不改画面。
+
+受控 transport 测试验证迟到结果、取消、预取数量、离线状态和重试状态机，不能证明真实 iCloud 下载/网络错误。devicectl 当前报告 No devices found；用户已批准把真实云端与设备证据集中到 F018，F006 按实现及本地验证独立验收；未执行项见 deferred-device-verification.md。

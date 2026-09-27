@@ -129,11 +129,11 @@
       "acceptance": [
         "按目标尺寸加载当前照片，有限预取邻近项，支持取消并设明确缓存容量；不整库下载原片。",
         "请求绑定资产与代次，迟到结果不可覆盖当前画面；iCloud 加载进度、离线与错误可区分且可重试。",
-        "照片默认完整比例；Live Photo 静态资源可加载；真实云端行为留有证据，失败场景不假成功。"
+        "照片默认完整比例；Live Photo 走静态资源请求路径；真实本地加载与受控失败测试分别留证，失败不假成功。用户批准真实真机/iCloud/Live Photo素材实测集中到 F018，见 SPEC 2026-09-27 追加约定。"
       ],
-      "passes": false,
-      "status": "todo",
-      "attempts": 0,
+      "passes": true,
+      "status": "done",
+      "attempts": 1,
       "last_error": "",
       "priority": "P0",
       "depends_on": [
@@ -144,7 +144,8 @@
         "SwipeGo/Infrastructure/Media/",
         "SwipeGoTests/"
       ],
-      "verification_surface": "取消、迟到结果、缓存上限及离线场景"
+      "verification_surface": "取消、迟到结果、缓存上限及离线场景",
+      "deferred_device_verification": "F018: docs/deferred-device-verification.md"
     },
     {
       "id": "F007",
@@ -169,7 +170,8 @@
         "SwipeGo/Features/Review/",
         "SwipeGoTests/"
       ],
-      "verification_surface": "视频切换与资源释放、云端资源实测"
+      "verification_surface": "模拟器真实视频切换、资源释放和受控失败；真机/云端资源实测集中 F018",
+      "deferred_device_verification": "F018: docs/deferred-device-verification.md"
     },
     {
       "id": "F008",
@@ -442,7 +444,7 @@
       "description": "真机端到端与体验验证；对应 R01–R11，边界与默认值以 SPEC 为准。",
       "acceptance": [
         "在明确型号/OS 的真机走完回顾、播放、收藏、标记、比较、复核、取消和受控删除，仅用可丢弃素材。",
-        "记录真实 iCloud 未下载/离线、部分权限、外部变更和重启恢复；缺少能力时不得以模拟替身代替通过。",
+        "按 docs/deferred-device-verification.md 补齐集中转入的真实 iCloud 未下载/离线照片、Live Photo、视频、同步影响、部分权限、外部变更和重启恢复；缺少能力时不得以模拟替身代替通过。",
         "记录冷/热加载、图库规模、滑动/内存/缓存证据，检查玻璃可读性与辅助功能；发现问题回到对应 Feature 修复。"
       ],
       "passes": false,

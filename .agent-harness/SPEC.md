@@ -91,3 +91,15 @@ F002 将根 `./init.sh` 改为幂等工程恢复入口：验证依赖、启动�
 ## Feature decomposition
 
 见 [路线图](../docs/roadmap.md) 和 [任务状态](feature_list.json)。从 F001 编号，按工具链、恢复、fixtures、持久化、授权、媒体、会话、交互、系统副作用分别拆分。删除复核、执行和崩溃恢复分别可验收，因此不合并。每项最多五条验收，列出依赖、实施路径与验证面；当前完成状态以 feature_list.json 和独立验收记录为准。
+
+## 2026-09-27 用户批准：集中真机与 iCloud 验收
+
+- Goal：允许持续开发，同时把只能通过真实设备/账户证明的行为集中到 F018，保持证据真实。
+- Scope included：F006–F017 保留代码、状态机、故障分支、真实本地模拟器和对应 UI 验收；真实真机/iCloud 未下载、离线、同步、Live Photo 及设备性能证据由 F018 统一收集。
+- Scope excluded：不把模拟器或 fake 结果称为真机/iCloud 成功，不免除 F018，不更改人工确认删除、安全范围或隐私约束。
+- Core flows：每项当前会话实施 → 独立 Evaluator 检查本项实现与适用模拟器证据 → 通过后提交 → 下一项；F018 补齐设备协议并回归前项，失败回到对应 Feature 修复。
+- Constraints：每个 Feature 仍独立验收和提交；F018 未通过前不能声称全部功能验收完成或真实云端可靠。未提供设备时只报告缺口。
+- Assumptions：用户“可以，继续”明确批准上一条建议。共享图库范围问题不是本次批准的内容，仍记录未支持能力。
+- Required capabilities：当前使用 Full Xcode、模拟器及可丢弃素材；F018 需用户提供设备、签名团队和测试 iCloud 账户/素材。
+- Implementation paths：既有 SwipeGo/、tests 与对应文档；feature_list.json 调整验收归属，docs/deferred-device-verification.md 跟踪未执行项。
+- Verification surface：前项本地真实测试 + 受控失败测试明确区分；F018 按 docs/verification.md 真实系统矩阵取证，不允许以本地替代。
