@@ -57,9 +57,9 @@
         "同一 seed 可恢复相同测试集合；文档列出来源/生成方式和预期关系，禁止个人图库自动删除测试。",
         "明确本地 fixture 无法证明 iCloud 下载/系统授权等真实行为，并单列对应验证步骤。"
       ],
-      "passes": false,
-      "status": "todo",
-      "attempts": 0,
+      "passes": true,
+      "status": "done",
+      "attempts": 1,
       "last_error": "",
       "priority": "P0",
       "depends_on": [

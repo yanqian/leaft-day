@@ -6,3 +6,4 @@ DerivedData/
 .build/
 xcuserdata/
 *.xcuserstate
+Fixtures/generated/
