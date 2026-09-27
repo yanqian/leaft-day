@@ -2,8 +2,11 @@ import Foundation
 import Photos
 import Synchronization
 
-protocol FavoriteWriting: Sendable {
+protocol PhotoAssetReading: Sendable {
     func asset(id: String) async throws -> PhotoAssetSnapshot
+}
+
+protocol FavoriteWriting: PhotoAssetReading {
     func setFavorite(id: String, value: Bool, expected: PhotoAssetSnapshot) async throws -> PhotoAssetSnapshot
 }
 

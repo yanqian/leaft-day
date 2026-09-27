@@ -4,6 +4,8 @@ import Photos
 
 struct ReviewTestHost: View {
     var enableFavorites = false
+    var enablePending = false
+    @State private var pending: PendingCoordinator?
     @State private var favorites: FavoriteCoordinator?
     @State private var review: ReviewSession?
     @State private var intents: [ReviewIntent] = []
@@ -11,9 +13,9 @@ struct ReviewTestHost: View {
     var body: some View {
         Group {
             if let review {
-                ReviewEntryView(review: review, favorites: favorites) { intents.append($0) }
+                ReviewEntryView(review: review, favorites: favorites, pending: pending) { intents.append($0) }
                     .overlay(alignment: .topLeading) {
-                        Text("cursor=\(review.state?.cursor ?? -1) intents=\(intents.count) kind=\(intents.last?.kind.rawValue ?? "none") target=\(intents.last?.assetID ?? "none") current=\(review.currentID ?? "none") firstFavorite=\(review.snapshot.assets.first { $0.id == review.state?.assetIDs.first }?.isFavorite ?? false)")
+                        Text("cursor=\(review.state?.cursor ?? -1) intents=\(intents.count) kind=\(intents.last?.kind.rawValue ?? "none") target=\(intents.last?.assetID ?? "none") current=\(review.currentID ?? "none") firstFavorite=\(review.snapshot.assets.first { $0.id == review.state?.assetIDs.first }?.isFavorite ?? false) pending=\(pending?.items.count ?? 0) firstPending=\(pending?.contains(review.state?.assetIDs.first) ?? false)")
                             .font(.caption2).foregroundStyle(.yellow).lineLimit(3)
                             .accessibilityIdentifier("review.test-state").allowsHitTesting(false)
                     }
@@ -24,7 +26,7 @@ struct ReviewTestHost: View {
                 if await !gateway.snapshot().permission.canRead { _ = await gateway.requestAccess() }
                 var snapshot = await gateway.snapshot()
                 var eligible = snapshot.assets.filter { $0.kind == .photo }
-                if enableFavorites {
+                if enableFavorites || enablePending {
                     var fixtureIDs = Set<String>()
                     PHAsset.fetchAssets(withLocalIdentifiers: eligible.map(\.id), options: nil).enumerateObjects { asset, _, _ in
                         if PHAssetResource.assetResources(for: asset).contains(where: { ["landscape.jpg", "portrait-smile.jpg"].contains($0.originalFilename) }) { fixtureIDs.insert(asset.localIdentifier) }
@@ -38,11 +40,12 @@ struct ReviewTestHost: View {
                 let photos = Array(eligible.prefix(2))
                 guard photos.count == 2, let video = snapshot.assets.first(where: { $0.kind == .video }) else { failure = "测试需要两张照片和视频"; return }
                 let directory = FileManager.default.urls(for: .cachesDirectory, in: .userDomainMask)[0].appendingPathComponent("ReviewUITestOnly")
-                if FileManager.default.fileExists(atPath: directory.path) { try FileManager.default.removeItem(at: directory) }
+                if !ProcessInfo.processInfo.arguments.contains("--preserve-review-store"), FileManager.default.fileExists(atPath: directory.path) { try FileManager.default.removeItem(at: directory) }
                 try FileManager.default.createDirectory(at: directory, withIntermediateDirectories: true)
                 let store = try LocalStateStore(url: directory.appendingPathComponent("Intent.store"))
                 let session = ReviewSession(store: store)
-                if enableFavorites { favorites = FavoriteCoordinator(store: store) }
+                if enableFavorites || enablePending { favorites = FavoriteCoordinator(store: store) }
+                if enablePending { pending = PendingCoordinator(store: store); try await pending?.reload() }
                 session.updateLibrary(snapshot)
                 try await session.start(ReviewSegment(assetIDs: photos.map(\.id) + [video.id], start: photos.first?.creationDate, end: video.creationDate))
                 review = session

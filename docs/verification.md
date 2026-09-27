@@ -80,3 +80,9 @@ HomeTests从正常App首页进入、展开底部控件并重开继续，保留�
 FavoriteTests使用真实临时SwiftData存储验证重复收藏、撤销原目标、实际只读存储失败不触碰系统writer；受控writer验证外部版本变化和系统取消；受控完成日志保存失败验证submitted证据保留。NativeFavoriteWriter测试只在模拟器对生成的landscape.jpg执行真实收藏、重复收藏、撤销、另一原生写入后拒绝撤销，恢复原始收藏值。
 
 FavoriteUITests使用DEBUG隔离存储和明确生成的landscape.jpg/portrait-smile.jpg，真实系统授权后下滑收藏、重复按钮收藏、翻页后撤销第一项，并检查图库快照与游标。该入口在测试前重置这两张可丢弃素材的收藏值；正常App不走测试入口。真实iCloud同步与硬件验证仍在F018。
+
+### F012 待删验证
+
+PendingTests使用真实临时SwiftData验证重复标记、磁盘重开、原目标撤销、已收藏的确认门槛、只读磁盘写失败不公布成功及替换记录保护。PhotoAssetReading测试记录证明这些流程未调用系统写入。PendingUITests在生成素材上走真实收藏、取消/确认收藏项待删提示、进程重开、翻页后撤销；测试宿主可保留专用Caches数据库验证重启，不读取或重建产品数据库。没有系统删除调用。
+
+F012首次UI回归发现系统confirmationDialog把提示呈现为popover并省略cancel按钮；失败附件的真实可访问性树只含“仍加入待删”。改为双按钮原生alert以明确提供取消，保留原有完整测试断言；针对复现的PendingUITests复验通过（.build/F012-pending-retry.xcresult）。失败记录保留在.build/test-run.cxXyTN。

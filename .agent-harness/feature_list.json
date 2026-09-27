@@ -287,9 +287,9 @@
         "重复标记同一资产不累加，撤销针对原资产，重启保留有效标记；写失败不显示成功。",
         "已收藏资产的显式标记按 A06 处理，不自动取消收藏；标记后前进规则遵循 A01。"
       ],
-      "passes": false,
-      "status": "todo",
-      "attempts": 0,
+      "passes": true,
+      "status": "done",
+      "attempts": 1,
       "last_error": "",
       "priority": "P0",
       "depends_on": [

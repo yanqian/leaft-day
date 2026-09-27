@@ -2,21 +2,21 @@
 
 ## Current System Status
 
-2026-09-27：F001–F011 已通过独立 Evaluator，F006 已提交d53e99d；F007已提交e601114；F008已提交c94b2ea；F009已提交a17e137；F010已提交d3008c9；F011系统收藏与撤销已实现，独立验收通过，30 XCTest/11 XCUITest通过，准备提交。真实 iCloud 实测按批准集中到 F018；F012–F018 未开始。用户授权持续完成所有功能，明确 work-fast：当前会话实施，每项独立验收通过后提交，再进入下一项；最后用户统一体验验收。
+2026-09-28：F001–F011 已通过独立 Evaluator 并提交，最新7a87c47。F012本地待删、收藏确认和原目标撤销独立验收通过，准备提交。用户授权持续完成所有功能，work-fast：当前会话实施，每项独立验收通过后提交，再进入下一项；最后用户统一体验验收。
 
 ## Last Completed Feature
 
-F010 沉浸浏览与手势路由独立通过；24 XCTest及10 XCUITest通过，底部控件截图docs/design/F010-review-controls.png；真实设备/iCloud留在F018。
+F011 系统收藏与原目标撤销，提交7a87c47，30 XCTest及11 XCUITest独立通过。
 
 ## Next Feature
 
-提交F011后运行 make -C .agent-harness work-fast 开始F012待删标记。
+提交F012后运行 make -C .agent-harness work-fast 开始F013片段内相似分析。
 
 ## Known Issues
 
 - iCloud 共享图库成员无法由已核实公开 API 可靠区分；共享相簿/隐藏项已过滤，共享图库明确暂不支持，不能假称排除。用户范围选项尚未回复；F016 不得据此自动执行删除。
 - 真机、签名团队和真实 iCloud 未下载素材尚未提供；此前已向用户询问，不能以模拟器替代相关验收。
-- 首页已接实际图库/会话与原生玻璃，F010已接入沉浸手势；F011已接系统收藏，待删仍仅产生意图，F012接入；尚无业务删除。
+- 首页已接实际图库/会话与原生玻璃，F010已接入沉浸手势；F011已接系统收藏，F012已接本地待删、等待验收；尚无业务删除。
 - Harness 有本地 unborn Git startup 修复，见 F001 runs；未来升级需审查。
 
 ## Recovery Notes

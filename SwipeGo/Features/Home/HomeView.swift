@@ -3,11 +3,12 @@ import SwiftUI
 @MainActor @Observable final class HomeModel {
     let review: ReviewSession
     let favorites: FavoriteCoordinator
+    let pending: PendingCoordinator
     let timeline = ReviewTimeline()
     let cache = PhotoMemoryCache(byteLimit: 12 * 1024 * 1024, countLimit: 6)
     var presentingReview = false
     var message: String?
-    init(store: any LocalStateRepository) { review = ReviewSession(store: store); favorites = FavoriteCoordinator(store: store) }
+    init(store: any LocalStateRepository) { review = ReviewSession(store: store); favorites = FavoriteCoordinator(store: store); pending = PendingCoordinator(store: store) }
     var segments: [ReviewSegment] { timeline.segments(in: review.snapshot.assets) }
     var anniversary: ReviewSegment? { timeline.lastYearToday(in: review.snapshot.assets) }
     var initialSegment: ReviewSegment? { segments.last(where: { $0.start != nil }) ?? segments.last }
@@ -79,7 +80,7 @@ struct HomeView: View {
         .onChange(of: snapshot.assets) { _, _ in model?.review.updateLibrary(snapshot) }
         .onChange(of: snapshot.permission) { _, _ in model?.review.updateLibrary(snapshot) }
         .fullScreenCover(isPresented: Binding(get: { model?.presentingReview ?? false }, set: { model?.presentingReview = $0 })) {
-            if let model { ReviewEntryView(review: model.review, favorites: model.favorites) }
+            if let model { ReviewEntryView(review: model.review, favorites: model.favorites, pending: model.pending) }
         }
         .alert("回顾提示", isPresented: Binding(get: { model?.message != nil }, set: { if !$0 { model?.message = nil } })) {
             Button("好", role: .cancel) { model?.message = nil }

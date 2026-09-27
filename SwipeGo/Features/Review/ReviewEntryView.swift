@@ -3,6 +3,10 @@ import SwiftUI
 struct ReviewEntryView: View {
     let review: ReviewSession
     var favorites: FavoriteCoordinator? = nil
+    var pending: PendingCoordinator? = nil
+    private enum UndoKind { case favorite, pending }
+    @State private var lastUndo: UndoKind?
+    @State private var favoritePendingID: String?
     var onIntent: (ReviewIntent) -> Void = { _ in }
     @State private var loader = PhotoLoader()
     @State private var controls = false
@@ -45,6 +49,11 @@ struct ReviewEntryView: View {
         }
         .statusBarHidden(true)
         .task(id: review.currentID) { loadCurrent() }
+        .task { do { try await pending?.reload() } catch { showFeedback("待删记录暂时无法读取，请重试") } }
+        .alert("这张照片已收藏，仍加入待删？", isPresented: Binding(get: { favoritePendingID != nil }, set: { if !$0 { favoritePendingID = nil } })) {
+            if let id = favoritePendingID { Button("仍加入待删", role: .destructive) { favoritePendingID = nil; Task { await markPending(id, confirmed: true) } } }
+            Button("取消", role: .cancel) { favoritePendingID = nil }
+        } message: { Text("只加入待删记录，保留系统收藏。原片要在集中复核后才会删除。") }
         .onChange(of: review.currentID) { _, _ in scale = 1; baseScale = 1; offset = .zero; baseOffset = .zero; router.reset() }
         .onDisappear { loader.releaseMemory(); router.cancel() }
         .alert("回顾位置未保存", isPresented: Binding(get: { error != nil }, set: { if !$0 { error = nil } })) {
@@ -113,9 +122,9 @@ struct ReviewEntryView: View {
                 }.font(.caption).buttonStyle(.glass)
                 LazyVGrid(columns: Array(repeating: GridItem(.flexible()), count: typeSize.isAccessibilitySize ? 2 : 4)) {
                     action(isFavorite ? "已收藏" : "收藏", icon: isFavorite ? "heart.fill" : "heart", kind: .favorite)
-                    action("待删", icon: "trash", kind: .pending)
+                    action(pending?.contains(review.currentID) == true ? "已待删" : "待删", icon: "trash", kind: .pending)
                     Button("相似", systemImage: "rectangle.on.rectangle") {}.disabled(true)
-                    Button("撤销", systemImage: "arrow.uturn.backward") { Task { await undoFavorite() } }.disabled(favorites?.undoRecord == nil || favorites?.isBusy == true).accessibilityIdentifier("review.undo")
+                    Button("撤销", systemImage: "arrow.uturn.backward") { Task { await undoLastAction() } }.disabled(!canUndo || actionBusy).accessibilityIdentifier("review.undo")
                 }.font(.caption)
             }.padding(14)
         }.scrollIndicators(.hidden).glassPanel(radius: 26)
@@ -125,7 +134,7 @@ struct ReviewEntryView: View {
     private func action(_ title: String, icon: String, kind: ReviewIntent.Kind) -> some View {
         Button { if let id = review.currentID { emit(ReviewIntent(assetID: id, kind: kind)) } } label: {
             VStack(spacing: 5) { Image(systemName: icon).font(.title3); Text(title) }.frame(maxWidth: .infinity, minHeight: 44)
-        }.disabled(review.isSaving || !isAvailable || (kind == .favorite && favorites?.isBusy == true)).accessibilityIdentifier("review.\(kind.rawValue)")
+        }.disabled(review.isSaving || !isAvailable || actionBusy).accessibilityIdentifier("review.\(kind.rawValue)")
     }
     private var isAvailable: Bool { if case .available = review.current { return true }; return false }
     private func navigate(_ kind: ReviewIntent.Kind) { if let id = review.currentID { emit(ReviewIntent(assetID: id, kind: kind)) } }
@@ -134,11 +143,13 @@ struct ReviewEntryView: View {
         if intent.kind == .next || intent.kind == .previous {
             Task { do { try await review.move(by: intent.kind == .next ? 1 : -1) } catch { self.error = "请重试，仍停留在原来的位置。" } }
         } else if isAvailable {
+            guard !actionBusy else { return }
             onIntent(intent)
             if intent.kind == .favorite, let favorites {
                 Task {
                     do {
                         let result = try await favorites.favorite(intent.assetID)
+                        if result.changed { lastUndo = result.journalSaved ? .favorite : nil }
                         await refreshFacts()
                         showFeedback(!result.journalSaved ? "已收藏，本地记录待核对" : result.changed ? (intent.assetID == review.currentID ? "已收藏" : "已收藏刚才操作的照片") : "这张照片已收藏")
                     } catch FavoriteError.cancelled { await refreshFacts(); showFeedback("已取消收藏操作") }
@@ -146,8 +157,32 @@ struct ReviewEntryView: View {
                     catch { await refreshFacts(); showFeedback("收藏未完成，请重试") }
                 }
             }
-            // F012 receives pending intents; no deletion or pending write here.
+            if intent.kind == .pending, pending != nil { Task { await markPending(intent.assetID) } }
         }
+    }
+    private var actionBusy: Bool { favorites?.isBusy == true || pending?.isBusy == true }
+    private var canUndo: Bool {
+        switch lastUndo {
+        case .pending: pending?.undoRecord != nil
+        case .favorite: favorites?.undoRecord != nil
+        case nil: false
+        }
+    }
+    private func markPending(_ id: String, confirmed: Bool = false) async {
+        guard let pending, !actionBusy else { return }
+        do {
+            let changed = try await pending.mark(id, confirmedFavorite: confirmed)
+            if changed { lastUndo = .pending }
+            showFeedback(changed ? "已加入待删，原片仍保留" : "已经在待删中")
+        } catch PendingCoordinator.Failure.confirmFavorite { favoritePendingID = id }
+        catch { showFeedback("待删标记未保存，请重试") }
+    }
+    private func undoLastAction() async {
+        guard !actionBusy else { return }
+        if lastUndo == .pending, let pending {
+            do { try await pending.undo(); lastUndo = nil; showFeedback("已撤回待删标记") }
+            catch { showFeedback("撤回未完成，请核对待删记录") }
+        } else if lastUndo == .favorite { await undoFavorite(); if favorites?.undoRecord == nil { lastUndo = nil } }
     }
     private func refreshFacts() async { review.updateLibrary(await PhotoLibraryGateway().snapshot()) }
     private func undoFavorite() async {
