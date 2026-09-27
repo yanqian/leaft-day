@@ -60,3 +60,11 @@ F005 后续修正：仅卸载 runner 仍不足以保证完整运行更新 App �
 Debug 启动参数 `--video-test-host` 仅用于本地测试，正常启动不进入该页。VideoTests 使用系统完整授权弹窗和图库中的可丢弃视频，操作实际 VideoReviewView：静音自动播放事件、暂停/声音按钮、真实 AVPlayer currentTime 的 seek 完成、媒体拖动计数与 Slider 隔离、会话替换的旧播放器释放、Home/activate 后释放计数、关闭/重开。
 
 短素材只有2秒，不以“测试取快照时仍在播放”作为自动播放的唯一证据；记录实际播放事件，并由 AVPlayer 单元测试断言时间前进。宿主按钮固定布局，避免媒体消失时 XCTest 坐标过期导致漏点。每个可见会话有自己的播放器所有权；测试保留已退出控制器引用仅用于观察其 player 已清空。失败截图/录像位于 XCTest result bundle。该本地证据不覆盖真机音频、iCloud 或后续 F010 全部照片手势组合。
+
+### F009 首页与辅助功能回归
+
+HomeTests走真实授权、随机片段、媒体入口、进程重开及继续；PermissionTests通过真实首页设置管理范围，并在空的有限图库验证去年的今天空态。普通/减弱透明度渲染执行XCTest辅助功能审计：hitRegion、sufficientElementDescription、textClipped，未过滤审计问题。最大辅助字号采用纵排卡片并实际进入回顾。
+
+本轮真实失败与修复：SwiftUI副标题连续报告文字边界问题，改用原生动态字号多行UILabel按可用宽度测量后审计通过。图库照片的scaledToFill内容曾在视觉裁切区域之外截获设置按钮点击；XCTest事件坐标与录像证明点击坐标正确而进入了回顾。最终为卡片设contentShape并让装饰图片/边框不接收触摸，普通及实色降级下设置导航都通过。不能只凭截图认定按钮可用。
+
+`--reduced-transparency-test`只在DEBUG使GlassPanel走与系统偏好相同的实色分支，属于受控偏好渲染验证；没有宣称切换真实系统设置或完成真机VoiceOver测试。后者仍属于F018。

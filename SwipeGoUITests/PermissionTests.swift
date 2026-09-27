@@ -15,6 +15,11 @@ final class PermissionTests: XCTestCase {
         return (app, system)
     }
 
+    private func openSettings(_ app: XCUIApplication) {
+        XCTAssertTrue(app.buttons["home.settings"].waitForExistence(timeout: 10))
+        app.buttons["home.settings"].tap()
+    }
+
     func testDeniedGuidance() {
         let (app, system) = request()
         system.buttons["Don’t Allow"].tap()
@@ -25,6 +30,7 @@ final class PermissionTests: XCTestCase {
     func testFullAccessQueriesRealLibrary() {
         let (app, system) = request()
         system.buttons["Allow Full Access"].tap()
+        openSettings(app)
         XCTAssertTrue(app.staticTexts["library.count"].waitForExistence(timeout: 10))
         XCTAssertFalse(app.buttons["管理所选照片"].exists)
         print("REAL_FULL_QUERY: \(app.staticTexts["library.count"].label)")
@@ -37,6 +43,14 @@ final class PermissionTests: XCTestCase {
         XCTAssertTrue(app.images.matching(identifier: "PXGGridLayout-Info").firstMatch.waitForExistence(timeout: 15))
         app.buttons["Update"].tap()
         XCTAssertTrue(app.buttons["Update"].waitForNonExistence(timeout: 10))
+        XCTAssertTrue(app.buttons["home.anniversary"].waitForExistence(timeout: 10))
+        if !app.buttons["home.anniversary"].isHittable { app.swipeUp() }
+        app.buttons["home.anniversary"].tap()
+        XCTAssertTrue(app.alerts["回顾提示"].waitForExistence(timeout: 10))
+        XCTAssertTrue(app.staticTexts["这段时光暂无可回顾内容。"].exists)
+        app.alerts.buttons["好"].tap()
+        app.swipeDown()
+        openSettings(app)
         expectation(for: NSPredicate(format: "label == %@", "所选范围内暂无可回顾内容。"), evaluatedWith: app.staticTexts["library.count"])
         waitForExpectations(timeout: 10)
         XCTAssertTrue(app.buttons["管理所选照片"].exists)
@@ -51,6 +65,7 @@ final class PermissionTests: XCTestCase {
         items.element(boundBy: 1).coordinate(withNormalizedOffset: CGVector(dx: 0.5, dy: 0.5)).tap()
         app.buttons["Update"].tap()
         XCTAssertTrue(app.buttons["Update"].waitForNonExistence(timeout: 10))
+        openSettings(app)
         let count = app.staticTexts["library.count"]
         let two = NSPredicate(format: "label == %@", "可回顾 2 项")
         expectation(for: two, evaluatedWith: count)

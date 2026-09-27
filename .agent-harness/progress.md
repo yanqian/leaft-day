@@ -2,21 +2,21 @@
 
 ## Current System Status
 
-2026-09-27：F001–F008 已通过独立 Evaluator，F006 已提交d53e99d；F007已提交e601114；F008连续片段与真实磁盘恢复已独立验收，准备提交。真实 iCloud 实测按批准集中到 F018；F009–F018 未开始。用户授权持续完成所有功能，明确 work-fast：当前会话实施，每项独立验收通过后提交，再进入下一项；最后用户统一体验验收。
+2026-09-27：F001–F009 已通过独立 Evaluator，F006 已提交d53e99d；F007已提交e601114；F008已提交c94b2ea；F009真实首页、原生玻璃、权限导航和辅助功能已独立验收，准备提交。真实 iCloud 实测按批准集中到 F018；F010–F018 未开始。用户授权持续完成所有功能，明确 work-fast：当前会话实施，每项独立验收通过后提交，再进入下一项；最后用户统一体验验收。
 
 ## Last Completed Feature
 
-F008 连续片段与会话恢复已独立通过；21 XCTest及6 XCUITest通过；真实设备/iCloud留在F018。
+F009 回顾首页与玻璃视觉独立验收通过；21 XCTest及9 XCUITest通过，截图保存在docs/design/F009-*；真实设备/iCloud留在F018。
 
 ## Next Feature
 
-提交F008后用 make -C .agent-harness work-fast 开始F009回顾首页与玻璃视觉。
+提交F009后用 make -C .agent-harness work-fast 开始F010沉浸浏览与手势路由。
 
 ## Known Issues
 
 - iCloud 共享图库成员无法由已核实公开 API 可靠区分；共享相簿/隐藏项已过滤，共享图库明确暂不支持，不能假称排除。用户范围选项尚未回复；F016 不得据此自动执行删除。
 - 真机、签名团队和真实 iCloud 未下载素材尚未提供；此前已向用户询问，不能以模拟器替代相关验收。
-- 界面目前为权限入口，批准的回顾/玻璃 UI 由 F009–F010 实施。尚无业务删除。
+- 首页已接实际图库/会话与原生玻璃，F010接入沉浸手势；尚无业务删除。
 - Harness 有本地 unborn Git startup 修复，见 F001 runs；未来升级需审查。
 
 ## Recovery Notes

@@ -28,10 +28,26 @@ final class LibraryAccessModel: NSObject, PHPhotoLibraryChangeObserver {
 struct LibraryAccessView: View {
     @State private var model = LibraryAccessModel()
     @State private var showPicker = false
+    @State private var showSettings = false
     @Environment(\.scenePhase) private var scenePhase
     @Environment(\.openURL) private var openURL
 
     var body: some View {
+        Group {
+            if model.snapshot.permission.canRead {
+                HomeView(snapshot: model.snapshot) { showSettings = true }
+            } else { permissionContent }
+        }
+        .task { await model.refresh() }
+        .onChange(of: scenePhase) { _, value in
+            if value == .active { Task { await model.refresh() } }
+        }
+        .sheet(isPresented: $showSettings) {
+            VStack { permissionContent; Button("完成") { showSettings = false }.buttonStyle(.glass) }
+                .presentationBackground(.regularMaterial)
+        }
+    }
+    private var permissionContent: some View {
         VStack(spacing: 20) {
             Text("时光").font(.largeTitle.bold())
             Text("回顾照片与视频")
@@ -55,10 +71,6 @@ struct LibraryAccessView: View {
             }
         }
         .padding(32)
-        .task { await model.refresh() }
-        .onChange(of: scenePhase) { _, value in
-            if value == .active { Task { await model.refresh() } }
-        }
         .sheet(isPresented: $showPicker, onDismiss: { Task { await model.refresh() } }) {
             LimitedLibraryPicker { showPicker = false }
         }

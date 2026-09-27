@@ -207,9 +207,9 @@
         "统一原生玻璃控件，默认媒体清晰；动态字体、减弱透明度和 VoiceOver 下仍能操作。",
         "待删入口低强调，其真实计数与复核导航由 F015 接入；无会话、无日期内容和无权限有空态。"
       ],
-      "passes": false,
-      "status": "todo",
-      "attempts": 0,
+      "passes": true,
+      "status": "done",
+      "attempts": 1,
       "last_error": "",
       "priority": "P0",
       "depends_on": [

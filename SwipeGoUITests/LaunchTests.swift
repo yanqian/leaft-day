@@ -2,13 +2,18 @@ import XCTest
 
 @MainActor
 final class LaunchTests: XCTestCase {
+    private func assertRoot(_ app: XCUIApplication) {
+        let expectation = XCTNSPredicateExpectation(predicate: NSPredicate { _, _ in
+            app.buttons["home.settings"].exists || app.staticTexts["时光"].exists
+        }, object: app)
+        XCTAssertEqual(XCTWaiter.wait(for: [expectation], timeout: 15), .completed)
+    }
     func testColdLaunchAndRelaunchShowRoot() {
         let app = XCUIApplication()
         app.launch()
-        XCTAssertTrue(app.staticTexts["时光"].waitForExistence(timeout: 15))
-        XCTAssertTrue(app.staticTexts["回顾照片与视频"].exists)
+        assertRoot(app)
         app.terminate()
         app.launch()
-        XCTAssertTrue(app.staticTexts["时光"].waitForExistence(timeout: 15))
+        assertRoot(app)
     }
 }
