@@ -16,7 +16,7 @@ import XCTest
         let photo = app.descendants(matching: .any)["review.photo"]
         photo.swipeLeft(); expect("cursor=1")
         photo.swipeRight(); expect("cursor=0")
-        let original = state.label.components(separatedBy: "current=").last!
+        let original = state.label.components(separatedBy: "current=").last!.components(separatedBy: " ").first!
         photo.swipeUp(); expect("intents=1"); expect("kind=pending"); expect("target=\(original)"); expect("cursor=0")
         photo.swipeDown(); expect("intents=2"); expect("kind=favorite"); expect("cursor=0")
         app.buttons["review.toggle"].tap()

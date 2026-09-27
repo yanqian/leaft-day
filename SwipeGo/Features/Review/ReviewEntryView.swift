@@ -2,6 +2,7 @@ import SwiftUI
 
 struct ReviewEntryView: View {
     let review: ReviewSession
+    var favorites: FavoriteCoordinator? = nil
     var onIntent: (ReviewIntent) -> Void = { _ in }
     @State private var loader = PhotoLoader()
     @State private var controls = false
@@ -12,6 +13,8 @@ struct ReviewEntryView: View {
     @State private var baseOffset = CGSize.zero
     @State private var pinching = false
     @State private var error: String?
+    @State private var feedback: String?
+    @State private var feedbackToken = UUID()
     @Environment(\.dismiss) private var dismiss
     @Environment(\.dynamicTypeSize) private var typeSize
     private var toolbarHeight: CGFloat { typeSize.isAccessibilitySize ? 360 : 190 }
@@ -30,6 +33,10 @@ struct ReviewEntryView: View {
                         .accessibilityIdentifier("review.toggle")
                         .simultaneousGesture(drag(size: geometry.size))
                     Spacer()
+                }
+                if let feedback {
+                    Text(feedback).font(.callout).padding(12).glassPanel().padding(.bottom, controls ? toolbarHeight + 30 : 24)
+                        .accessibilityIdentifier("review.feedback").allowsHitTesting(false)
                 }
                 if controls {
                     toolbar.frame(height: toolbarHeight).padding(.horizontal, 12).padding(.bottom, 12)
@@ -105,19 +112,20 @@ struct ReviewEntryView: View {
                     Button("下一项", systemImage: "chevron.right") { navigate(.next) }.disabled(!review.canGoForward || review.isSaving)
                 }.font(.caption).buttonStyle(.glass)
                 LazyVGrid(columns: Array(repeating: GridItem(.flexible()), count: typeSize.isAccessibilitySize ? 2 : 4)) {
-                    action("收藏", icon: "heart", kind: .favorite)
+                    action(isFavorite ? "已收藏" : "收藏", icon: isFavorite ? "heart.fill" : "heart", kind: .favorite)
                     action("待删", icon: "trash", kind: .pending)
                     Button("相似", systemImage: "rectangle.on.rectangle") {}.disabled(true)
-                    Button("撤销", systemImage: "arrow.uturn.backward") {}.disabled(true)
+                    Button("撤销", systemImage: "arrow.uturn.backward") { Task { await undoFavorite() } }.disabled(favorites?.undoRecord == nil || favorites?.isBusy == true).accessibilityIdentifier("review.undo")
                 }.font(.caption)
             }.padding(14)
         }.scrollIndicators(.hidden).glassPanel(radius: 26)
     }
+    private var isFavorite: Bool { if case .available(let asset) = review.current { return asset.isFavorite }; return false }
     private var isPhoto: Bool { if case .available(let asset) = review.current { return asset.kind == .photo }; return false }
     private func action(_ title: String, icon: String, kind: ReviewIntent.Kind) -> some View {
         Button { if let id = review.currentID { emit(ReviewIntent(assetID: id, kind: kind)) } } label: {
             VStack(spacing: 5) { Image(systemName: icon).font(.title3); Text(title) }.frame(maxWidth: .infinity, minHeight: 44)
-        }.disabled(review.isSaving || !isAvailable).accessibilityIdentifier("review.\(kind.rawValue)")
+        }.disabled(review.isSaving || !isAvailable || (kind == .favorite && favorites?.isBusy == true)).accessibilityIdentifier("review.\(kind.rawValue)")
     }
     private var isAvailable: Bool { if case .available = review.current { return true }; return false }
     private func navigate(_ kind: ReviewIntent.Kind) { if let id = review.currentID { emit(ReviewIntent(assetID: id, kind: kind)) } }
@@ -126,9 +134,34 @@ struct ReviewEntryView: View {
         if intent.kind == .next || intent.kind == .previous {
             Task { do { try await review.move(by: intent.kind == .next ? 1 : -1) } catch { self.error = "请重试，仍停留在原来的位置。" } }
         } else if isAvailable {
-            // F011/F012 receive this captured asset intent. No success or mutation here.
             onIntent(intent)
+            if intent.kind == .favorite, let favorites {
+                Task {
+                    do {
+                        let result = try await favorites.favorite(intent.assetID)
+                        await refreshFacts()
+                        showFeedback(!result.journalSaved ? "已收藏，本地记录待核对" : result.changed ? (intent.assetID == review.currentID ? "已收藏" : "已收藏刚才操作的照片") : "这张照片已收藏")
+                    } catch FavoriteError.cancelled { await refreshFacts(); showFeedback("已取消收藏操作") }
+                    catch FavoriteError.busy { }
+                    catch { await refreshFacts(); showFeedback("收藏未完成，请重试") }
+                }
+            }
+            // F012 receives pending intents; no deletion or pending write here.
         }
+    }
+    private func refreshFacts() async { review.updateLibrary(await PhotoLibraryGateway().snapshot()) }
+    private func undoFavorite() async {
+        guard let favorites else { return }
+        do {
+            let result = try await favorites.undo()
+            await refreshFacts()
+            showFeedback(result.journalSaved ? "已撤销收藏" : "收藏已还原，本地记录待核对")
+        } catch FavoriteError.changed { await refreshFacts(); showFeedback("照片状态已变化，未覆盖新的收藏状态") }
+        catch { await refreshFacts(); showFeedback("撤销未完成，请重试") }
+    }
+    private func showFeedback(_ text: String) {
+        let token = UUID(); feedbackToken = token; feedback = text
+        Task { try? await Task.sleep(for: .seconds(2)); if feedbackToken == token { feedback = nil } }
     }
     private func update(_ translation: CGSize) {
         router.update(x: translation.width, y: translation.height, assetID: review.currentID, blocked: pinching || scale > 1 || review.isSaving)

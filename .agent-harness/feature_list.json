@@ -260,9 +260,9 @@
         "失败/取消恢复真实显示，撤销绑定原资产且避免覆盖外部已改变的收藏状态。",
         "收藏后是否前进按 A01 记录；用真实测试素材验证系统相册状态，重入时读取系统事实。"
       ],
-      "passes": false,
-      "status": "todo",
-      "attempts": 0,
+      "passes": true,
+      "status": "done",
+      "attempts": 1,
       "last_error": "",
       "priority": "P0",
       "depends_on": [
