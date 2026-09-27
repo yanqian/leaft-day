@@ -54,6 +54,12 @@ actor LocalStateStore: ModelActor, LocalStateRepository {
         return try rows.first.map { try JSONDecoder().decode(SessionState.self, from: $0.payload) }
     }
 
+    func latestSession() throws -> SessionState? {
+        try context.fetch(FetchDescriptor<IntentSchemaV1.Session>())
+            .map { try JSONDecoder().decode(SessionState.self, from: $0.payload) }
+            .sorted { ($0.updatedAt, $0.id.uuidString) > ($1.updatedAt, $1.id.uuidString) }.first
+    }
+
     func markPending(_ value: PendingIntent) throws {
         guard !value.assetID.isEmpty else { throw LocalStateError.invalidAsset }
         let assetID = value.assetID

@@ -182,9 +182,9 @@
         "实现继续、随机和去年的今天，明确 A04/A05 的日期、闰日、空态规则；无可信事件名只显示日期。",
         "保存会话有序 ID 与游标，重开继续；看过不代表保留；授权缩减或项目不可用时提供明确状态。"
       ],
-      "passes": false,
-      "status": "todo",
-      "attempts": 0,
+      "passes": true,
+      "status": "done",
+      "attempts": 1,
       "last_error": "",
       "priority": "P0",
       "depends_on": [

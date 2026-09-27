@@ -25,6 +25,7 @@ struct OperationState: Codable, Sendable, Equatable {
 
 protocol LocalStateRepository: Sendable {
     func saveSession(_ value: SessionState) async throws
+    func latestSession() async throws -> SessionState?
     func session(id: UUID) async throws -> SessionState?
     func markPending(_ value: PendingIntent) async throws
     func pending() async throws -> [PendingIntent]
