@@ -29,7 +29,10 @@ targets:
   SwipeGoTests:
     type: bundle.unit-test
     platform: iOS
-    sources: [SwipeGoTests]
+    sources:
+      - SwipeGoTests
+      - path: Fixtures/generated/clip.mp4
+        buildPhase: resources
     dependencies:
       - target: SwipeGo
     settings:

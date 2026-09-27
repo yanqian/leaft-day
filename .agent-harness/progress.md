@@ -2,15 +2,15 @@
 
 ## Current System Status
 
-2026-09-27：F001–F006 已通过独立 Evaluator，F005 已提交272f7d3。F006 已独立验收，真实 iCloud 实测按批准集中到 F018；F007–F018 未开始。用户授权持续完成所有功能，明确 work-fast：当前会话实施，每项独立验收通过后提交，再进入下一项；最后用户统一体验验收。
+2026-09-27：F001–F007 已通过独立 Evaluator，F006 已提交d53e99d；F007通过真实视频UI与资源生命周期复验，准备提交。真实 iCloud 实测按批准集中到 F018；F008–F018 未开始。用户授权持续完成所有功能，明确 work-fast：当前会话实施，每项独立验收通过后提交，再进入下一项；最后用户统一体验验收。
 
 ## Last Completed Feature
 
-F006 照片加载与缓存，独立 Evaluator 已通过；真实设备与iCloud仍在F018待测清单。
+F007 视频资源生命周期，独立 Evaluator 复验通过；16 XCTest和6 XCUITest通过，真实设备与iCloud仍在F018待测清单。
 
 ## Next Feature
 
-提交F006后，用 make -C .agent-harness work-fast 开始F007视频资源生命周期。
+提交F007后用 make -C .agent-harness work-fast 开始F008连续片段与会话恢复。
 
 ## Known Issues
 

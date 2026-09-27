@@ -156,9 +156,9 @@
         "切出/退后台/切会话停止不需要的播放与请求，不同时无限持有播放器。",
         "处理资源下载、取消、失败与离线；操作进度条不得被识别成照片切换或待删手势。"
       ],
-      "passes": false,
-      "status": "todo",
-      "attempts": 0,
+      "passes": true,
+      "status": "done",
+      "attempts": 1,
       "last_error": "",
       "priority": "P0",
       "depends_on": [

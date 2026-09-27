@@ -54,3 +54,9 @@ iOS26.5 公开 SDK `PHFetchOptions.includeHiddenAssets=false` 与 `.includeAsset
 发现 CoreSimulator 对无签名 UI runner 复用旧测试二进制，恢复脚本在测试前只卸载本项目 `dev.armstrong.swipego.uitests.xctrunner`，保留 App 状态与图库。测试日志必须确认实际执行测试项，零项运行不算通过。
 
 F005 后续修正：仅卸载 runner 仍不足以保证完整运行更新 App 二进制；恢复命令改为 simulator 本地 ad-hoc 签名（无需证书/团队），实际完整运行的全部权限测试通过。该变化不提供任何真机签名能力。
+
+### F007 真实视频视图回归
+
+Debug 启动参数 `--video-test-host` 仅用于本地测试，正常启动不进入该页。VideoTests 使用系统完整授权弹窗和图库中的可丢弃视频，操作实际 VideoReviewView：静音自动播放事件、暂停/声音按钮、真实 AVPlayer currentTime 的 seek 完成、媒体拖动计数与 Slider 隔离、会话替换的旧播放器释放、Home/activate 后释放计数、关闭/重开。
+
+短素材只有2秒，不以“测试取快照时仍在播放”作为自动播放的唯一证据；记录实际播放事件，并由 AVPlayer 单元测试断言时间前进。宿主按钮固定布局，避免媒体消失时 XCTest 坐标过期导致漏点。每个可见会话有自己的播放器所有权；测试保留已退出控制器引用仅用于观察其 player 已清空。失败截图/录像位于 XCTest result bundle。该本地证据不覆盖真机音频、iCloud 或后续 F010 全部照片手势组合。

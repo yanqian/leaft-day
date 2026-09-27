@@ -106,3 +106,11 @@ PhotoLoader 在 MainActor 管理当前内容、请求代次和 UI 状态；Nativ
 自有 LRU 缓存最多12项、32MiB已解码像素成本，单项超预算不入缓存；key包括资产ID、修改时间和目标尺寸，提供按资产失效与释放入口。该上限只约束 App 自有缓存，不是 PhotoKit 系统内部或整个进程的总内存承诺。当前画面单张图片可超缓存预算；显示使用完整比例 scaledToFit。每次切换取消当前和预取请求，代次不匹配的回调不入缓存、不改画面。
 
 受控 transport 测试验证迟到结果、取消、预取数量、离线状态和重试状态机，不能证明真实 iCloud 下载/网络错误。devicectl 当前报告 No devices found；用户已批准把真实云端与设备证据集中到 F018，F006 按实现及本地验证独立验收；未执行项见 deferred-device-verification.md。
+
+## F007 视频生命周期
+
+按 A02 默认进入静音播放，点画面暂停/继续，底部展开时显示进度和声音按钮。VideoReviewView 的进度/按钮区域与媒体区域分开，F010 的翻页/标记手势只接入媒体区。缩放与控制手势的整合验证属于 F010。
+
+NativeVideoTransport 通过 PhotoKit requestPlayerItem 按需联网请求当前视频，VideoPlayback 单实例持有一个 AVPlayer，资源请求及 KVO/时间/结束通知绑定请求代次。切换资产、消失及非活跃场景取消请求、停止播放、移除观察者并释放当前 item；旧回调不能写入新状态。重新进入建立新的播放请求，默认静音。失败/离线有重试入口；不预下载邻近视频。
+
+测试使用生成的 clip.mp4 作为测试 bundle 资源，验证实际 AVPlayer 就绪、暂停、静音、seek 及清理；另有真实 PhotoKit 授权素材请求。受控 transport 只证明失败和取消状态机。真实云端视频、硬件声音和后台行为留在 F018，不以本地 clip 代替。

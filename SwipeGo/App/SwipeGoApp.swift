@@ -3,6 +3,13 @@ import SwiftUI
 @main
 struct SwipeGoApp: App {
     var body: some Scene {
-        WindowGroup { LibraryAccessView() }
+        WindowGroup {
+            #if DEBUG
+            if ProcessInfo.processInfo.arguments.contains("--video-test-host") { VideoTestHost() }
+            else { LibraryAccessView() }
+            #else
+            LibraryAccessView()
+            #endif
+        }
     }
 }
