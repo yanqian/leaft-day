@@ -33,3 +33,15 @@ CoreSimulator 需要访问用户级服务；受限沙箱可能报 XPC/日志权�
 测试：`python3 -m unittest discover -s tests -v`。`tests/fixtures/simctl-ios26.json` 来自本机真实 `xcrun simctl list -j`（2026-09-27），裁去路径和不用字段；派生负例只验证解析/失败逻辑，不证明真实环境就绪。真实 doctor 结果必须单独记录。
 
 2026-09-27 用户明确批准独立 Evaluator 加入 `--approve-for-me`：保留 workspace-write 沙箱，通过自动审批处理 CoreSimulator 权限。仅 evaluator_command 增加该选项，模型与其他命令不变；不使用 bypass 或 danger-full-access。
+
+## F002 工程恢复
+
+本项目使用 XcodeGen 2.46.0（最低 2.46），工程定义位于 `project.yml`，生成的 `SwipeGo.xcodeproj` 纳入版本控制；修改配置后运行 `xcodegen generate --spec project.yml`，不要手改生成内容。安装依赖：`HOMEBREW_NO_INSTALL_CLEANUP=1 brew install xcodegen`。工程格式依据 XcodeGen 2.46.0 官方 ProjectSpec；无远程 Swift Package。
+
+从项目根执行 `./init.sh`：验证 Harness（独立验收证据从 F001 起）、Python 环境检查测试、真实工具链检查、生成工程、启动选定 iPhone 模拟器、运行 XCTest 和 XCUITest、安装并启动 App。`DEVELOPER_DIR` 支持指定 Full Xcode，`SWIPE_SIMULATOR_UDID` 可指定已存在的 iOS 26+ iPhone。失败非零退出，不能把 Harness pass 当成 App pass；首次模拟器启动可能需要较长时间。
+
+`DerivedData/` 与 `.build/test-run.*/Tests.xcresult` 是忽略的本机产物。删除 DerivedData 可验证干净构建；重复运行不清除图库或应用数据，不创建/删除模拟器。日志打印真实启动设备及结果包路径。
+
+当前 Bundle ID `dev.armstrong.swipego` 是本地开发默认值，不代表上架注册；模拟器测试关闭签名。真机需用户指定签名团队、连接设备并启用开发者模式，不能用模拟器替代真机或 iCloud 验证。
+
+2026-09-27 用户指定继续使用 work-fast：当前会话实施，每项由独立 Evaluator 验收后提交，再开始下一项。不启动独立 Coding Agent。此前尝试切换其权限的命令被用户中断，没有修改 provider 配置。

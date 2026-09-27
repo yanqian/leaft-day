@@ -1,0 +1,62 @@
+== Required files ==
+== Harness state ==
+validated 18 features
+== Failure domains ==
+failure_records=5
+domain[agent_workflow_gap]=2
+domain[capability_gap]=2
+domain[none outstanding; prior capability_gap resolved in this evaluation.]=1
+missing_failure_domain=0
+missing_harness_improvement=0
+== Evaluator evidence ==
+evaluator_evidence_baseline=F001
+evaluator_evidence_checked=1
+missing_evaluator_evidence=0
+== Orchestrator syntax ==
+== Tiny example ==
+..
+----------------------------------------------------------------------
+Ran 2 tests in 0.000s
+
+OK
+== Go server example ==
+ok  	example.com/ai-agent-harness-template/examples/go-server	(cached)
+== Unit tests ==
+..............................Accepted F039; it remains complete.
+Run record: /var/folders/ww/wrxzkc9n7rs60hbt_g7mgcl40000gn/T/tmptgz3qoo_/runs/20260927T090143Z-human-eval-batch.md
+Reopened F039; continue the same Feature.
+Recorded a new-requirement candidate for F040; no Feature was appended.
+Run record: /var/folders/ww/wrxzkc9n7rs60hbt_g7mgcl40000gn/T/tmpeui9ckxl/runs/20260927T090143Z-human-eval-batch.md
+Next: normalize the requirement in SPEC.md, then let Planning Agent append a separate Feature.
+Recorded a new-requirement candidate for F039; no Feature was appended.
+Run record: /var/folders/ww/wrxzkc9n7rs60hbt_g7mgcl40000gn/T/tmpqhbxv0w7/runs/20260927T090143Z-F039-human-eval.md
+Next: normalize the requirement in SPEC.md, then let Planning Agent append a separate Feature.
+Reopened F039; continue the same Feature.
+Run record: /var/folders/ww/wrxzkc9n7rs60hbt_g7mgcl40000gn/T/tmpgmfahjtq/runs/20260927T090143Z-F039-human-eval.md
+Reading progress.md and feature_list.json.
+.Reading progress.md and feature_list.json.
+Git repository has no commits yet; continuing initialization checks.
+.
+----------------------------------------------------------------------
+Ran 32 tests in 2.775s
+
+OK
+== Contract tests ==
+................................
+----------------------------------------------------------------------
+Ran 32 tests in 0.008s
+
+OK
+== Harness tests ==
+...........
+----------------------------------------------------------------------
+Ran 11 tests in 39.349s
+
+OK
+== Smoke tests ==
+..
+----------------------------------------------------------------------
+Ran 2 tests in 0.151s
+
+OK
+init verification passed

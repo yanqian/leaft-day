@@ -1,0 +1,5 @@
+== iOS dependencies ==
+== Developer directory ==
+/nonexistent
+NOT_READY: Full Xcode with iPhoneOS platform is required. Install Xcode or set DEVELOPER_DIR to its Contents/Developer directory.
+Recovery failed at line 14 (exit 1)

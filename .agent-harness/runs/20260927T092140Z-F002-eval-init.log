@@ -1,0 +1,279 @@
+== Harness verification ==
+== Required files ==
+== Harness state ==
+validated 18 features
+== Failure domains ==
+failure_records=7
+domain[agent_workflow_gap]=3
+domain[capability_gap]=3
+domain[none outstanding; prior capability_gap resolved in this evaluation.]=1
+missing_failure_domain=0
+missing_harness_improvement=0
+== Evaluator evidence ==
+evaluator_evidence_baseline=F001
+evaluator_evidence_checked=1
+missing_evaluator_evidence=0
+== Orchestrator syntax ==
+== Tiny example ==
+..
+----------------------------------------------------------------------
+Ran 2 tests in 0.000s
+
+OK
+== Go server example ==
+ok  	example.com/ai-agent-harness-template/examples/go-server	(cached)
+== Unit tests ==
+..............................Accepted F039; it remains complete.
+Run record: /var/folders/ww/wrxzkc9n7rs60hbt_g7mgcl40000gn/T/tmp86jwja40/runs/20260927T092005Z-human-eval-batch.md
+Reopened F039; continue the same Feature.
+Recorded a new-requirement candidate for F040; no Feature was appended.
+Run record: /var/folders/ww/wrxzkc9n7rs60hbt_g7mgcl40000gn/T/tmpi1hj4yhp/runs/20260927T092005Z-human-eval-batch.md
+Next: normalize the requirement in SPEC.md, then let Planning Agent append a separate Feature.
+Recorded a new-requirement candidate for F039; no Feature was appended.
+Run record: /var/folders/ww/wrxzkc9n7rs60hbt_g7mgcl40000gn/T/tmpp304bw83/runs/20260927T092005Z-F039-human-eval.md
+Next: normalize the requirement in SPEC.md, then let Planning Agent append a separate Feature.
+Reopened F039; continue the same Feature.
+Run record: /var/folders/ww/wrxzkc9n7rs60hbt_g7mgcl40000gn/T/tmpvpfu_d6b/runs/20260927T092005Z-F039-human-eval.md
+Reading progress.md and feature_list.json.
+.Reading progress.md and feature_list.json.
+Git repository has no commits yet; continuing initialization checks.
+.
+----------------------------------------------------------------------
+Ran 32 tests in 2.427s
+
+OK
+== Contract tests ==
+................................
+----------------------------------------------------------------------
+Ran 32 tests in 0.007s
+
+OK
+== Harness tests ==
+...........
+----------------------------------------------------------------------
+Ran 11 tests in 38.015s
+
+OK
+== Smoke tests ==
+..
+----------------------------------------------------------------------
+Ran 2 tests in 0.137s
+
+OK
+init verification passed
+test_invalid_explicit_xcode_is_not_silently_replaced (test_doctor.InventoryTests.test_invalid_explicit_xcode_is_not_silently_replaced) ... ok
+test_no_runtime_no_device_or_unavailable_fail (test_doctor.InventoryTests.test_no_runtime_no_device_or_unavailable_fail) ... ok
+test_real_inventory_selects_iphone (test_doctor.InventoryTests.test_real_inventory_selects_iphone) ... ok
+test_unknown_schema_or_requested_device_fails (test_doctor.InventoryTests.test_unknown_schema_or_requested_device_fails) ... ok
+
+----------------------------------------------------------------------
+Ran 4 tests in 0.005s
+
+OK
+== iOS dependencies ==
+== Developer directory ==
+/Applications/Xcode.app/Contents/Developer
+== Xcode ==
+Xcode 26.6
+Build version 17F113
+== iPhoneOS SDK ==
+26.5
+== iPhoneSimulator SDK ==
+26.5
+== Simulator tool ==
+/Applications/Xcode.app/Contents/Developer/usr/bin/simctl
+== Simulator selection ==
+{"name": "iPhone 17", "udid": "028EB1A4-1DFC-4A7D-8468-759F542E4036", "state": "Booted", "runtime": "com.apple.CoreSimulator.SimRuntime.iOS-26-5", "version": "26.5"}
+READY: toolchain inventory validated; App build/launch and device signing are separate checks.
+Version: 2.46.0
+== Generate project ==
+⚙️  Generating plists...
+⚙️  Generating project...
+⚙️  Writing project...
+Created project at /Users/armstrong/Project/swipe-go/SwipeGo.xcodeproj
+== Boot selected simulator ==
+Monitoring boot status for iPhone 17 (028EB1A4-1DFC-4A7D-8468-759F542E4036).
+Device already booted, nothing to do.
+
+== Build and run app tests ==
+Command line invocation:
+    /Applications/Xcode.app/Contents/Developer/usr/bin/xcodebuild -project SwipeGo.xcodeproj -scheme SwipeGo -configuration Debug -destination "platform=iOS Simulator,id=028EB1A4-1DFC-4A7D-8468-759F542E4036" -derivedDataPath /Users/armstrong/Project/swipe-go/DerivedData -resultBundlePath /Users/armstrong/Project/swipe-go/.build/test-run.H7rRW5/Tests.xcresult -parallel-testing-enabled NO CODE_SIGNING_ALLOWED=NO test
+
+Build settings from command line:
+    CODE_SIGNING_ALLOWED = NO
+
+Writing result bundle at path:
+	/Users/armstrong/Project/swipe-go/.build/test-run.H7rRW5/Tests.xcresult
+
+ComputePackagePrebuildTargetDependencyGraph
+
+Prepare packages
+
+CreateBuildRequest
+
+SendProjectDescription
+
+CreateBuildOperation
+
+ComputeTargetDependencyGraph
+note: Building targets in dependency order
+note: Target dependency graph (3 targets)
+    Target 'SwipeGoUITests' in project 'SwipeGo'
+        ➜ Explicit dependency on target 'SwipeGo' in project 'SwipeGo'
+    Target 'SwipeGoTests' in project 'SwipeGo'
+        ➜ Explicit dependency on target 'SwipeGo' in project 'SwipeGo'
+    Target 'SwipeGo' in project 'SwipeGo' (no dependencies)
+
+GatherProvisioningInputs
+
+CreateBuildDescription
+
+ExecuteExternalTool /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/swiftc --version
+
+ExecuteExternalTool /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -v -E -dM -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator26.5.sdk -x c -c /dev/null
+
+ExecuteExternalTool /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/ld -version_details
+
+Build description signature: f05e0fa5abd03c9db2f54bda0599740a
+Build description path: /Users/armstrong/Project/swipe-go/DerivedData/Build/Intermediates.noindex/XCBuildData/f05e0fa5abd03c9db2f54bda0599740a.xcbuilddata
+ClangStatCache /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang-stat-cache /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator26.5.sdk /Users/armstrong/Project/swipe-go/DerivedData/SDKStatCaches.noindex/iphonesimulator26.5-23F81a-6cfe768891a92b912361537c460fe42b.sdkstatcache
+    cd /Users/armstrong/Project/swipe-go/SwipeGo.xcodeproj
+    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang-stat-cache /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator26.5.sdk -o /Users/armstrong/Project/swipe-go/DerivedData/SDKStatCaches.noindex/iphonesimulator26.5-23F81a-6cfe768891a92b912361537c460fe42b.sdkstatcache
+
+Ld /Users/armstrong/Project/swipe-go/DerivedData/Build/Products/Debug-iphonesimulator/SwipeGo.app/SwipeGo.debug.dylib normal (in target 'SwipeGo' from project 'SwipeGo')
+    cd /Users/armstrong/Project/swipe-go
+    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -Xlinker -reproducible -target arm64-apple-ios26.0-simulator -dynamiclib -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator26.5.sdk -O0 -L/Users/armstrong/Project/swipe-go/DerivedData/Build/Intermediates.noindex/EagerLinkingTBDs/Debug-iphonesimulator -L/Users/armstrong/Project/swipe-go/DerivedData/Build/Products/Debug-iphonesimulator -F/Users/armstrong/Project/swipe-go/DerivedData/Build/Intermediates.noindex/EagerLinkingTBDs/Debug-iphonesimulator -F/Users/armstrong/Project/swipe-go/DerivedData/Build/Products/Debug-iphonesimulator -filelist /Users/armstrong/Project/swipe-go/DerivedData/Build/Intermediates.noindex/SwipeGo.build/Debug-iphonesimulator/SwipeGo.build/Objects-normal/arm64/SwipeGo.LinkFileList -install_name @rpath/SwipeGo.debug.dylib -Xlinker -rpath -Xlinker @executable_path/Frameworks -Xlinker -dead_strip -Xlinker -object_path_lto -Xlinker /Users/armstrong/Project/swipe-go/DerivedData/Build/Intermediates.noindex/SwipeGo.build/Debug-iphonesimulator/SwipeGo.build/Objects-normal/arm64/SwipeGo_lto.o -rdynamic -Xlinker -no_deduplicate -Xlinker -objc_abi_version -Xlinker 2 -Xlinker -dependency_info -Xlinker /Users/armstrong/Project/swipe-go/DerivedData/Build/Intermediates.noindex/SwipeGo.build/Debug-iphonesimulator/SwipeGo.build/Objects-normal/arm64/SwipeGo_dependency_info.dat -fobjc-link-runtime -L/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator -L/usr/lib/swift -Xlinker -add_ast_path -Xlinker /Users/armstrong/Project/swipe-go/DerivedData/Build/Intermediates.noindex/SwipeGo.build/Debug-iphonesimulator/SwipeGo.build/Objects-normal/arm64/SwipeGo.swiftmodule @/Users/armstrong/Project/swipe-go/DerivedData/Build/Intermediates.noindex/SwipeGo.build/Debug-iphonesimulator/SwipeGo.build/Objects-normal/arm64/SwipeGo-linker-args.resp -Xlinker -alias -Xlinker _main -Xlinker ___debug_main_executable_dylib_entry_point -o /Users/armstrong/Project/swipe-go/DerivedData/Build/Products/Debug-iphonesimulator/SwipeGo.app/SwipeGo.debug.dylib
+
+ConstructStubExecutorLinkFileList /Users/armstrong/Project/swipe-go/DerivedData/Build/Intermediates.noindex/SwipeGo.build/Debug-iphonesimulator/SwipeGo.build/SwipeGo-ExecutorLinkFileList-normal-arm64.txt (in target 'SwipeGo' from project 'SwipeGo')
+    cd /Users/armstrong/Project/swipe-go
+    construct-stub-executor-link-file-list /Users/armstrong/Project/swipe-go/DerivedData/Build/Products/Debug-iphonesimulator/SwipeGo.app/SwipeGo.debug.dylib /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/lib/libPreviewsJITStubExecutor_no_swift_entry_point.a /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/lib/libPreviewsJITStubExecutor.a --output /Users/armstrong/Project/swipe-go/DerivedData/Build/Intermediates.noindex/SwipeGo.build/Debug-iphonesimulator/SwipeGo.build/SwipeGo-ExecutorLinkFileList-normal-arm64.txt
+note: Using stub executor library with Swift entry point. (in target 'SwipeGo' from project 'SwipeGo')
+
+Ld /Users/armstrong/Project/swipe-go/DerivedData/Build/Products/Debug-iphonesimulator/SwipeGo.app/SwipeGo normal (in target 'SwipeGo' from project 'SwipeGo')
+    cd /Users/armstrong/Project/swipe-go
+    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -Xlinker -reproducible -target arm64-apple-ios26.0-simulator -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator26.5.sdk -O0 -L/Users/armstrong/Project/swipe-go/DerivedData/Build/Products/Debug-iphonesimulator -F/Users/armstrong/Project/swipe-go/DerivedData/Build/Products/Debug-iphonesimulator -Xlinker -rpath -Xlinker @executable_path -Xlinker -rpath -Xlinker @executable_path/Frameworks -rdynamic -Xlinker -no_deduplicate -Xlinker -objc_abi_version -Xlinker 2 -e ___debug_blank_executor_main -Xlinker -sectcreate -Xlinker __TEXT -Xlinker __debug_dylib -Xlinker /Users/armstrong/Project/swipe-go/DerivedData/Build/Intermediates.noindex/SwipeGo.build/Debug-iphonesimulator/SwipeGo.build/SwipeGo-DebugDylibPath-normal-arm64.txt -Xlinker -sectcreate -Xlinker __TEXT -Xlinker __debug_instlnm -Xlinker /Users/armstrong/Project/swipe-go/DerivedData/Build/Intermediates.noindex/SwipeGo.build/Debug-iphonesimulator/SwipeGo.build/SwipeGo-DebugDylibInstallName-normal-arm64.txt -Xlinker -filelist -Xlinker /Users/armstrong/Project/swipe-go/DerivedData/Build/Intermediates.noindex/SwipeGo.build/Debug-iphonesimulator/SwipeGo.build/SwipeGo-ExecutorLinkFileList-normal-arm64.txt /Users/armstrong/Project/swipe-go/DerivedData/Build/Products/Debug-iphonesimulator/SwipeGo.app/SwipeGo.debug.dylib -o /Users/armstrong/Project/swipe-go/DerivedData/Build/Products/Debug-iphonesimulator/SwipeGo.app/SwipeGo
+
+Ld /Users/armstrong/Project/swipe-go/DerivedData/Build/Products/Debug-iphonesimulator/SwipeGo.app/__preview.dylib normal (in target 'SwipeGo' from project 'SwipeGo')
+    cd /Users/armstrong/Project/swipe-go
+    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -Xlinker -reproducible -target arm64-apple-ios26.0-simulator -dynamiclib -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator26.5.sdk -O0 -L/Users/armstrong/Project/swipe-go/DerivedData/Build/Products/Debug-iphonesimulator -F/Users/armstrong/Project/swipe-go/DerivedData/Build/Products/Debug-iphonesimulator -install_name @rpath/SwipeGo.debug.dylib -Xlinker -dead_strip -rdynamic -Xlinker -no_deduplicate -Xlinker -objc_abi_version -Xlinker 2 -Xlinker -dependency_info -Xlinker /Users/armstrong/Project/swipe-go/DerivedData/Build/Intermediates.noindex/SwipeGo.build/Debug-iphonesimulator/SwipeGo.build/Objects-normal/arm64/SwipeGo_dependency_info.dat -o /Users/armstrong/Project/swipe-go/DerivedData/Build/Products/Debug-iphonesimulator/SwipeGo.app/__preview.dylib
+
+ExtractAppIntentsMetadata (in target 'SwipeGo' from project 'SwipeGo')
+    cd /Users/armstrong/Project/swipe-go
+    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/appintentsmetadataprocessor --toolchain-dir /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain --module-name SwipeGo --sdk-root /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator26.5.sdk --xcode-version 17F113 --platform-family iOS --deployment-target 26.0 --bundle-identifier dev.armstrong.swipego --output /Users/armstrong/Project/swipe-go/DerivedData/Build/Products/Debug-iphonesimulator/SwipeGo.app --target-triple arm64-apple-ios26.0-simulator --binary-file /Users/armstrong/Project/swipe-go/DerivedData/Build/Products/Debug-iphonesimulator/SwipeGo.app/SwipeGo --dependency-file /Users/armstrong/Project/swipe-go/DerivedData/Build/Intermediates.noindex/SwipeGo.build/Debug-iphonesimulator/SwipeGo.build/Objects-normal/arm64/SwipeGo_dependency_info.dat --stringsdata-file /Users/armstrong/Project/swipe-go/DerivedData/Build/Intermediates.noindex/SwipeGo.build/Debug-iphonesimulator/SwipeGo.build/Objects-normal/arm64/ExtractedAppShortcutsMetadata.stringsdata --source-file-list /Users/armstrong/Project/swipe-go/DerivedData/Build/Intermediates.noindex/SwipeGo.build/Debug-iphonesimulator/SwipeGo.build/Objects-normal/arm64/SwipeGo.SwiftFileList --metadata-file-list /Users/armstrong/Project/swipe-go/DerivedData/Build/Intermediates.noindex/SwipeGo.build/Debug-iphonesimulator/SwipeGo.build/SwipeGo.DependencyMetadataFileList --static-metadata-file-list /Users/armstrong/Project/swipe-go/DerivedData/Build/Intermediates.noindex/SwipeGo.build/Debug-iphonesimulator/SwipeGo.build/SwipeGo.DependencyStaticMetadataFileList --swift-const-vals-list /Users/armstrong/Project/swipe-go/DerivedData/Build/Intermediates.noindex/SwipeGo.build/Debug-iphonesimulator/SwipeGo.build/Objects-normal/arm64/SwipeGo.SwiftConstValuesFileList --compile-time-extraction --deployment-aware-processing --validate-assistant-intents --no-app-shortcuts-localization
+2026-09-27 17:20:47.272 appintentsmetadataprocessor[560:125001989] Starting appintentsmetadataprocessor export
+2026-09-27 17:20:47.276 appintentsmetadataprocessor[560:125001989] warning: Metadata extraction skipped. No AppIntents.framework dependency found.
+
+ProcessInfoPlistFile /Users/armstrong/Project/swipe-go/DerivedData/Build/Products/Debug-iphonesimulator/SwipeGo.app/Info.plist /Users/armstrong/Project/swipe-go/DerivedData/Build/Intermediates.noindex/SwipeGo.build/Debug-iphonesimulator/SwipeGo.build/empty-SwipeGo.plist (in target 'SwipeGo' from project 'SwipeGo')
+    cd /Users/armstrong/Project/swipe-go
+    builtin-infoPlistUtility /Users/armstrong/Project/swipe-go/DerivedData/Build/Intermediates.noindex/SwipeGo.build/Debug-iphonesimulator/SwipeGo.build/empty-SwipeGo.plist -producttype com.apple.product-type.application -genpkginfo /Users/armstrong/Project/swipe-go/DerivedData/Build/Products/Debug-iphonesimulator/SwipeGo.app/PkgInfo -expandbuildsettings -format binary -platform iphonesimulator -o /Users/armstrong/Project/swipe-go/DerivedData/Build/Products/Debug-iphonesimulator/SwipeGo.app/Info.plist
+
+CopySwiftLibs /Users/armstrong/Project/swipe-go/DerivedData/Build/Products/Debug-iphonesimulator/SwipeGo.app (in target 'SwipeGo' from project 'SwipeGo')
+    cd /Users/armstrong/Project/swipe-go
+    builtin-swiftStdLibTool --copy --verbose --scan-executable /Users/armstrong/Project/swipe-go/DerivedData/Build/Products/Debug-iphonesimulator/SwipeGo.app/SwipeGo.debug.dylib --scan-folder /Users/armstrong/Project/swipe-go/DerivedData/Build/Products/Debug-iphonesimulator/SwipeGo.app/Frameworks --scan-folder /Users/armstrong/Project/swipe-go/DerivedData/Build/Products/Debug-iphonesimulator/SwipeGo.app/PlugIns --scan-folder /Users/armstrong/Project/swipe-go/DerivedData/Build/Products/Debug-iphonesimulator/SwipeGo.app/SystemExtensions --scan-folder /Users/armstrong/Project/swipe-go/DerivedData/Build/Products/Debug-iphonesimulator/SwipeGo.app/Extensions --platform iphonesimulator --toolchain /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain --destination /Users/armstrong/Project/swipe-go/DerivedData/Build/Products/Debug-iphonesimulator/SwipeGo.app/Frameworks --strip-bitcode --strip-bitcode-tool /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/bitcode_strip --emit-dependency-info /Users/armstrong/Project/swipe-go/DerivedData/Build/Intermediates.noindex/SwipeGo.build/Debug-iphonesimulator/SwipeGo.build/SwiftStdLibToolInputDependencies.dep --filter-for-swift-os
+Ignoring --strip-bitcode because --sign was not passed
+
+Ld /Users/armstrong/Project/swipe-go/DerivedData/Build/Products/Debug-iphonesimulator/SwipeGo.app/PlugIns/SwipeGoTests.xctest/SwipeGoTests normal (in target 'SwipeGoTests' from project 'SwipeGo')
+    cd /Users/armstrong/Project/swipe-go
+    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -Xlinker -reproducible -target arm64-apple-ios26.0-simulator -bundle -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator26.5.sdk -O0 -L/Users/armstrong/Project/swipe-go/DerivedData/Build/Intermediates.noindex/EagerLinkingTBDs/Debug-iphonesimulator -L/Users/armstrong/Project/swipe-go/DerivedData/Build/Products/Debug-iphonesimulator -L/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/lib -F/Users/armstrong/Project/swipe-go/DerivedData/Build/Intermediates.noindex/EagerLinkingTBDs/Debug-iphonesimulator -F/Users/armstrong/Project/swipe-go/DerivedData/Build/Products/Debug-iphonesimulator -iframework /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/Library/Frameworks -iframework /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator26.5.sdk/Developer/Library/Frameworks -filelist /Users/armstrong/Project/swipe-go/DerivedData/Build/Intermediates.noindex/SwipeGo.build/Debug-iphonesimulator/SwipeGoTests.build/Objects-normal/arm64/SwipeGoTests.LinkFileList -Xlinker -rpath -Xlinker @loader_path/Frameworks -Xlinker -rpath -Xlinker @executable_path/Frameworks -Xlinker -dead_strip -bundle_loader /Users/armstrong/Project/swipe-go/DerivedData/Build/Products/Debug-iphonesimulator/SwipeGo.app/SwipeGo -Xlinker -object_path_lto -Xlinker /Users/armstrong/Project/swipe-go/DerivedData/Build/Intermediates.noindex/SwipeGo.build/Debug-iphonesimulator/SwipeGoTests.build/Objects-normal/arm64/SwipeGoTests_lto.o -rdynamic -Xlinker -no_deduplicate -Xlinker -objc_abi_version -Xlinker 2 -Xlinker -dependency_info -Xlinker /Users/armstrong/Project/swipe-go/DerivedData/Build/Intermediates.noindex/SwipeGo.build/Debug-iphonesimulator/SwipeGoTests.build/Objects-normal/arm64/SwipeGoTests_dependency_info.dat -fobjc-link-runtime -L/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator -L/usr/lib/swift -Xlinker -add_ast_path -Xlinker /Users/armstrong/Project/swipe-go/DerivedData/Build/Intermediates.noindex/SwipeGo.build/Debug-iphonesimulator/SwipeGoTests.build/Objects-normal/arm64/SwipeGoTests.swiftmodule @/Users/armstrong/Project/swipe-go/DerivedData/Build/Intermediates.noindex/SwipeGo.build/Debug-iphonesimulator/SwipeGoTests.build/Objects-normal/arm64/SwipeGoTests-linker-args.resp -Xlinker -needed_framework -Xlinker XCTest -framework XCTest -Xlinker -needed-lXCTestSwiftSupport -lXCTestSwiftSupport /Users/armstrong/Project/swipe-go/DerivedData/Build/Products/Debug-iphonesimulator/SwipeGo.app/SwipeGo.debug.dylib -o /Users/armstrong/Project/swipe-go/DerivedData/Build/Products/Debug-iphonesimulator/SwipeGo.app/PlugIns/SwipeGoTests.xctest/SwipeGoTests
+
+ProcessInfoPlistFile /Users/armstrong/Project/swipe-go/DerivedData/Build/Products/Debug-iphonesimulator/SwipeGo.app/PlugIns/SwipeGoTests.xctest/Info.plist /Users/armstrong/Project/swipe-go/DerivedData/Build/Intermediates.noindex/SwipeGo.build/Debug-iphonesimulator/SwipeGoTests.build/empty-SwipeGoTests.plist (in target 'SwipeGoTests' from project 'SwipeGo')
+    cd /Users/armstrong/Project/swipe-go
+    builtin-infoPlistUtility /Users/armstrong/Project/swipe-go/DerivedData/Build/Intermediates.noindex/SwipeGo.build/Debug-iphonesimulator/SwipeGoTests.build/empty-SwipeGoTests.plist -producttype com.apple.product-type.bundle.unit-test -expandbuildsettings -format binary -platform iphonesimulator -o /Users/armstrong/Project/swipe-go/DerivedData/Build/Products/Debug-iphonesimulator/SwipeGo.app/PlugIns/SwipeGoTests.xctest/Info.plist
+
+ExtractAppIntentsMetadata (in target 'SwipeGoTests' from project 'SwipeGo')
+    cd /Users/armstrong/Project/swipe-go
+    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/appintentsmetadataprocessor --toolchain-dir /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain --module-name SwipeGoTests --sdk-root /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator26.5.sdk --xcode-version 17F113 --platform-family iOS --deployment-target 26.0 --bundle-identifier dev.armstrong.swipego.tests --output /Users/armstrong/Project/swipe-go/DerivedData/Build/Products/Debug-iphonesimulator/SwipeGo.app/PlugIns/SwipeGoTests.xctest --target-triple arm64-apple-ios26.0-simulator --binary-file /Users/armstrong/Project/swipe-go/DerivedData/Build/Products/Debug-iphonesimulator/SwipeGo.app/PlugIns/SwipeGoTests.xctest/SwipeGoTests --dependency-file /Users/armstrong/Project/swipe-go/DerivedData/Build/Intermediates.noindex/SwipeGo.build/Debug-iphonesimulator/SwipeGoTests.build/Objects-normal/arm64/SwipeGoTests_dependency_info.dat --stringsdata-file /Users/armstrong/Project/swipe-go/DerivedData/Build/Intermediates.noindex/SwipeGo.build/Debug-iphonesimulator/SwipeGoTests.build/Objects-normal/arm64/ExtractedAppShortcutsMetadata.stringsdata --source-file-list /Users/armstrong/Project/swipe-go/DerivedData/Build/Intermediates.noindex/SwipeGo.build/Debug-iphonesimulator/SwipeGoTests.build/Objects-normal/arm64/SwipeGoTests.SwiftFileList --metadata-file-list /Users/armstrong/Project/swipe-go/DerivedData/Build/Intermediates.noindex/SwipeGo.build/Debug-iphonesimulator/SwipeGoTests.build/SwipeGoTests.DependencyMetadataFileList --static-metadata-file-list /Users/armstrong/Project/swipe-go/DerivedData/Build/Intermediates.noindex/SwipeGo.build/Debug-iphonesimulator/SwipeGoTests.build/SwipeGoTests.DependencyStaticMetadataFileList --swift-const-vals-list /Users/armstrong/Project/swipe-go/DerivedData/Build/Intermediates.noindex/SwipeGo.build/Debug-iphonesimulator/SwipeGoTests.build/Objects-normal/arm64/SwipeGoTests.SwiftConstValuesFileList --compile-time-extraction --deployment-aware-processing --validate-assistant-intents --no-app-shortcuts-localization
+2026-09-27 17:20:47.482 appintentsmetadataprocessor[567:125002007] Starting appintentsmetadataprocessor export
+2026-09-27 17:20:47.483 appintentsmetadataprocessor[567:125002007] warning: Metadata extraction skipped. No AppIntents.framework dependency found.
+
+CopySwiftLibs /Users/armstrong/Project/swipe-go/DerivedData/Build/Products/Debug-iphonesimulator/SwipeGo.app/PlugIns/SwipeGoTests.xctest (in target 'SwipeGoTests' from project 'SwipeGo')
+    cd /Users/armstrong/Project/swipe-go
+    builtin-swiftStdLibTool --copy --verbose --scan-executable /Users/armstrong/Project/swipe-go/DerivedData/Build/Products/Debug-iphonesimulator/SwipeGo.app/PlugIns/SwipeGoTests.xctest/SwipeGoTests --scan-folder /Users/armstrong/Project/swipe-go/DerivedData/Build/Products/Debug-iphonesimulator/SwipeGo.app/PlugIns/SwipeGoTests.xctest/Frameworks --scan-folder /Users/armstrong/Project/swipe-go/DerivedData/Build/Products/Debug-iphonesimulator/SwipeGo.app/PlugIns/SwipeGoTests.xctest/PlugIns --scan-folder /Users/armstrong/Project/swipe-go/DerivedData/Build/Products/Debug-iphonesimulator/SwipeGo.app/PlugIns/SwipeGoTests.xctest/SystemExtensions --scan-folder /Users/armstrong/Project/swipe-go/DerivedData/Build/Products/Debug-iphonesimulator/SwipeGo.app/PlugIns/SwipeGoTests.xctest/Extensions --platform iphonesimulator --toolchain /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain --destination /Users/armstrong/Project/swipe-go/DerivedData/Build/Products/Debug-iphonesimulator/SwipeGo.app/PlugIns/SwipeGoTests.xctest/Frameworks --strip-bitcode --scan-executable /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/lib/libXCTestSwiftSupport.dylib --strip-bitcode-tool /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/bitcode_strip --emit-dependency-info /Users/armstrong/Project/swipe-go/DerivedData/Build/Intermediates.noindex/SwipeGo.build/Debug-iphonesimulator/SwipeGoTests.build/SwiftStdLibToolInputDependencies.dep --filter-for-swift-os
+Ignoring --strip-bitcode because --sign was not passed
+
+Validate /Users/armstrong/Project/swipe-go/DerivedData/Build/Products/Debug-iphonesimulator/SwipeGo.app (in target 'SwipeGo' from project 'SwipeGo')
+    cd /Users/armstrong/Project/swipe-go
+    builtin-validationUtility /Users/armstrong/Project/swipe-go/DerivedData/Build/Products/Debug-iphonesimulator/SwipeGo.app -shallow-bundle -infoplist-subpath Info.plist
+
+ProcessInfoPlistFile /Users/armstrong/Project/swipe-go/DerivedData/Build/Products/Debug-iphonesimulator/SwipeGoUITests-Runner.app/PlugIns/SwipeGoUITests.xctest/Info.plist /Users/armstrong/Project/swipe-go/DerivedData/Build/Intermediates.noindex/SwipeGo.build/Debug-iphonesimulator/SwipeGoUITests.build/empty-SwipeGoUITests.plist (in target 'SwipeGoUITests' from project 'SwipeGo')
+    cd /Users/armstrong/Project/swipe-go
+    builtin-infoPlistUtility /Users/armstrong/Project/swipe-go/DerivedData/Build/Intermediates.noindex/SwipeGo.build/Debug-iphonesimulator/SwipeGoUITests.build/empty-SwipeGoUITests.plist -producttype com.apple.product-type.bundle.ui-testing -expandbuildsettings -format binary -platform iphonesimulator -additionalcontentfile /Users/armstrong/Project/swipe-go/DerivedData/Build/Intermediates.noindex/SwipeGo.build/Debug-iphonesimulator/SwipeGoUITests.build/ProductTypeInfoPlistAdditions.plist -o /Users/armstrong/Project/swipe-go/DerivedData/Build/Products/Debug-iphonesimulator/SwipeGoUITests-Runner.app/PlugIns/SwipeGoUITests.xctest/Info.plist
+
+Ld /Users/armstrong/Project/swipe-go/DerivedData/Build/Products/Debug-iphonesimulator/SwipeGoUITests-Runner.app/PlugIns/SwipeGoUITests.xctest/SwipeGoUITests normal (in target 'SwipeGoUITests' from project 'SwipeGo')
+    cd /Users/armstrong/Project/swipe-go
+    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -Xlinker -reproducible -target arm64-apple-ios26.0-simulator -bundle -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator26.5.sdk -O0 -L/Users/armstrong/Project/swipe-go/DerivedData/Build/Intermediates.noindex/EagerLinkingTBDs/Debug-iphonesimulator -L/Users/armstrong/Project/swipe-go/DerivedData/Build/Products/Debug-iphonesimulator -L/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/lib -F/Users/armstrong/Project/swipe-go/DerivedData/Build/Intermediates.noindex/EagerLinkingTBDs/Debug-iphonesimulator -F/Users/armstrong/Project/swipe-go/DerivedData/Build/Products/Debug-iphonesimulator -iframework /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/Library/Frameworks -iframework /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator26.5.sdk/Developer/Library/Frameworks -filelist /Users/armstrong/Project/swipe-go/DerivedData/Build/Intermediates.noindex/SwipeGo.build/Debug-iphonesimulator/SwipeGoUITests.build/Objects-normal/arm64/SwipeGoUITests.LinkFileList -Xlinker -rpath -Xlinker @loader_path/Frameworks -Xlinker -rpath -Xlinker @executable_path/Frameworks -Xlinker -dead_strip -Xlinker -object_path_lto -Xlinker /Users/armstrong/Project/swipe-go/DerivedData/Build/Intermediates.noindex/SwipeGo.build/Debug-iphonesimulator/SwipeGoUITests.build/Objects-normal/arm64/SwipeGoUITests_lto.o -rdynamic -Xlinker -no_deduplicate -Xlinker -objc_abi_version -Xlinker 2 -Xlinker -dependency_info -Xlinker /Users/armstrong/Project/swipe-go/DerivedData/Build/Intermediates.noindex/SwipeGo.build/Debug-iphonesimulator/SwipeGoUITests.build/Objects-normal/arm64/SwipeGoUITests_dependency_info.dat -fobjc-link-runtime -L/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphonesimulator -L/usr/lib/swift -Xlinker -add_ast_path -Xlinker /Users/armstrong/Project/swipe-go/DerivedData/Build/Intermediates.noindex/SwipeGo.build/Debug-iphonesimulator/SwipeGoUITests.build/Objects-normal/arm64/SwipeGoUITests.swiftmodule @/Users/armstrong/Project/swipe-go/DerivedData/Build/Intermediates.noindex/SwipeGo.build/Debug-iphonesimulator/SwipeGoUITests.build/Objects-normal/arm64/SwipeGoUITests-linker-args.resp -Xlinker -needed_framework -Xlinker XCTest -framework XCTest -Xlinker -needed-lXCTestSwiftSupport -lXCTestSwiftSupport -o /Users/armstrong/Project/swipe-go/DerivedData/Build/Products/Debug-iphonesimulator/SwipeGoUITests-Runner.app/PlugIns/SwipeGoUITests.xctest/SwipeGoUITests
+
+CopySwiftLibs /Users/armstrong/Project/swipe-go/DerivedData/Build/Products/Debug-iphonesimulator/SwipeGoUITests-Runner.app/PlugIns/SwipeGoUITests.xctest (in target 'SwipeGoUITests' from project 'SwipeGo')
+    cd /Users/armstrong/Project/swipe-go
+    builtin-swiftStdLibTool --copy --verbose --scan-executable /Users/armstrong/Project/swipe-go/DerivedData/Build/Products/Debug-iphonesimulator/SwipeGoUITests-Runner.app/PlugIns/SwipeGoUITests.xctest/SwipeGoUITests --scan-folder /Users/armstrong/Project/swipe-go/DerivedData/Build/Products/Debug-iphonesimulator/SwipeGoUITests-Runner.app/PlugIns/SwipeGoUITests.xctest/Frameworks --scan-folder /Users/armstrong/Project/swipe-go/DerivedData/Build/Products/Debug-iphonesimulator/SwipeGoUITests-Runner.app/PlugIns/SwipeGoUITests.xctest/PlugIns --scan-folder /Users/armstrong/Project/swipe-go/DerivedData/Build/Products/Debug-iphonesimulator/SwipeGoUITests-Runner.app/PlugIns/SwipeGoUITests.xctest/SystemExtensions --scan-folder /Users/armstrong/Project/swipe-go/DerivedData/Build/Products/Debug-iphonesimulator/SwipeGoUITests-Runner.app/PlugIns/SwipeGoUITests.xctest/Extensions --platform iphonesimulator --toolchain /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain --destination /Users/armstrong/Project/swipe-go/DerivedData/Build/Products/Debug-iphonesimulator/SwipeGoUITests-Runner.app/PlugIns/SwipeGoUITests.xctest/Frameworks --strip-bitcode --scan-executable /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/lib/libXCTestSwiftSupport.dylib --strip-bitcode-tool /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/bitcode_strip --emit-dependency-info /Users/armstrong/Project/swipe-go/DerivedData/Build/Intermediates.noindex/SwipeGo.build/Debug-iphonesimulator/SwipeGoUITests.build/SwiftStdLibToolInputDependencies.dep --filter-for-swift-os
+Ignoring --strip-bitcode because --sign was not passed
+
+ExtractAppIntentsMetadata (in target 'SwipeGoUITests' from project 'SwipeGo')
+    cd /Users/armstrong/Project/swipe-go
+    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/appintentsmetadataprocessor --toolchain-dir /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain --module-name SwipeGoUITests --sdk-root /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator26.5.sdk --xcode-version 17F113 --platform-family iOS --deployment-target 26.0 --bundle-identifier dev.armstrong.swipego.uitests --output /Users/armstrong/Project/swipe-go/DerivedData/Build/Products/Debug-iphonesimulator/SwipeGoUITests-Runner.app/PlugIns/SwipeGoUITests.xctest --target-triple arm64-apple-ios26.0-simulator --binary-file /Users/armstrong/Project/swipe-go/DerivedData/Build/Products/Debug-iphonesimulator/SwipeGoUITests-Runner.app/PlugIns/SwipeGoUITests.xctest/SwipeGoUITests --dependency-file /Users/armstrong/Project/swipe-go/DerivedData/Build/Intermediates.noindex/SwipeGo.build/Debug-iphonesimulator/SwipeGoUITests.build/Objects-normal/arm64/SwipeGoUITests_dependency_info.dat --stringsdata-file /Users/armstrong/Project/swipe-go/DerivedData/Build/Intermediates.noindex/SwipeGo.build/Debug-iphonesimulator/SwipeGoUITests.build/Objects-normal/arm64/ExtractedAppShortcutsMetadata.stringsdata --source-file-list /Users/armstrong/Project/swipe-go/DerivedData/Build/Intermediates.noindex/SwipeGo.build/Debug-iphonesimulator/SwipeGoUITests.build/Objects-normal/arm64/SwipeGoUITests.SwiftFileList --metadata-file-list /Users/armstrong/Project/swipe-go/DerivedData/Build/Intermediates.noindex/SwipeGo.build/Debug-iphonesimulator/SwipeGoUITests.build/SwipeGoUITests.DependencyMetadataFileList --static-metadata-file-list /Users/armstrong/Project/swipe-go/DerivedData/Build/Intermediates.noindex/SwipeGo.build/Debug-iphonesimulator/SwipeGoUITests.build/SwipeGoUITests.DependencyStaticMetadataFileList --swift-const-vals-list /Users/armstrong/Project/swipe-go/DerivedData/Build/Intermediates.noindex/SwipeGo.build/Debug-iphonesimulator/SwipeGoUITests.build/Objects-normal/arm64/SwipeGoUITests.SwiftConstValuesFileList --compile-time-extraction --deployment-aware-processing --validate-assistant-intents --no-app-shortcuts-localization
+2026-09-27 17:20:47.627 appintentsmetadataprocessor[572:125002033] Starting appintentsmetadataprocessor export
+2026-09-27 17:20:47.627 appintentsmetadataprocessor[572:125002033] warning: Metadata extraction skipped. No AppIntents.framework dependency found.
+
+Test Suite 'All tests' started at 2026-09-27 17:20:49.144.
+Test Suite 'SwipeGoTests.xctest' started at 2026-09-27 17:20:49.144.
+Test Suite 'AppConfigurationTests' started at 2026-09-27 17:20:49.144.
+Test Case '-[SwipeGoTests.AppConfigurationTests testApplicationBundleTargetsIPhone]' started.
+Test Case '-[SwipeGoTests.AppConfigurationTests testApplicationBundleTargetsIPhone]' passed (0.001 seconds).
+Test Suite 'AppConfigurationTests' passed at 2026-09-27 17:20:49.146.
+	 Executed 1 test, with 0 failures (0 unexpected) in 0.001 (0.001) seconds
+Test Suite 'SwipeGoTests.xctest' passed at 2026-09-27 17:20:49.146.
+	 Executed 1 test, with 0 failures (0 unexpected) in 0.001 (0.001) seconds
+Test Suite 'All tests' passed at 2026-09-27 17:20:49.146.
+	 Executed 1 test, with 0 failures (0 unexpected) in 0.001 (0.002) seconds
+2026-09-27 17:20:49.926280+0800 SwipeGoUITests-Runner[581:125002414] [Default] Running tests...
+2026-09-27 17:20:49.963544+0800 SwipeGoUITests-Runner[581:125002464] [General] Failed to send CA Event for app launch measurements for ca_event_type: 0 event_name: com.apple.app_launch_measurement.FirstFramePresentationMetric
+    t =      nans Interface orientation changed to Portrait
+Test Suite 'All tests' started at 2026-09-27 17:20:50.448.
+Test Suite 'SwipeGoUITests.xctest' started at 2026-09-27 17:20:50.448.
+Test Suite 'LaunchTests' started at 2026-09-27 17:20:50.448.
+Test Case '-[SwipeGoUITests.LaunchTests testColdLaunchAndRelaunchShowRoot]' started.
+    t =     0.00s Start Test at 2026-09-27 17:20:50.449
+    t =     0.02s Set Up
+    t =     0.02s Open dev.armstrong.swipego
+    t =     0.02s     Launch dev.armstrong.swipego
+2026-09-27 17:20:50.512 xcodebuild[538:125001801] [MT] IDELaunchParametersSnapshot: The operation couldn’t be completed. (DebuggerLLDB.DebuggerVersionStore.StoreError error 0.)
+2026-09-27 17:20:50.512 xcodebuild[538:125001801] [MT] IDELaunchParametersSnapshot: no debugger version
+2026-09-27 17:20:50.488341+0800 SwipeGoUITests-Runner[581:125002468] [General] Failed to send CA Event for app launch measurements for ca_event_type: 1 event_name: com.apple.app_launch_measurement.ExtendedLaunchMetrics
+    t =     0.27s         Setting up automation session
+objc[581]: Class UIAccessibilityLoaderWebShared is implemented in both /Library/Developer/CoreSimulator/Volumes/iOS_23F77/Library/Developer/CoreSimulator/Profiles/Runtimes/iOS 26.5.simruntime/Contents/Resources/RuntimeRoot/System/Library/AccessibilityBundles/WebCore.axbundle/WebCore (0x1057b4310) and /Library/Developer/CoreSimulator/Volumes/iOS_23F77/Library/Developer/CoreSimulator/Profiles/Runtimes/iOS 26.5.simruntime/Contents/Resources/RuntimeRoot/System/Library/AccessibilityBundles/WebKit.axbundle/WebKit (0x105c68398). This may cause spurious casting failures and mysterious crashes. One of the duplicates must be removed or renamed.
+    t =     0.89s         Wait for dev.armstrong.swipego to idle
+    t =     2.03s Waiting 15.0s for "时光" StaticText to exist
+    t =     3.07s     Checking `Expect predicate `existsNoRetry == 1` for object "时光" StaticText`
+    t =     3.07s         Checking existence of `"时光" StaticText`
+    t =     3.11s Checking existence of `"回顾照片与视频" StaticText`
+    t =     3.11s Terminate dev.armstrong.swipego:582
+    t =     4.17s Open dev.armstrong.swipego
+    t =     4.17s     Launch dev.armstrong.swipego
+2026-09-27 17:20:54.625 xcodebuild[538:125001801] [MT] IDELaunchParametersSnapshot: The operation couldn’t be completed. (DebuggerLLDB.DebuggerVersionStore.StoreError error 0.)
+2026-09-27 17:20:54.625 xcodebuild[538:125001801] [MT] IDELaunchParametersSnapshot: no debugger version
+    t =     4.39s         Setting up automation session
+    t =     5.00s         Wait for dev.armstrong.swipego to idle
+    t =     6.14s Waiting 15.0s for "时光" StaticText to exist
+    t =     7.17s     Checking `Expect predicate `existsNoRetry == 1` for object "时光" StaticText`
+    t =     7.18s         Checking existence of `"时光" StaticText`
+    t =     7.22s Tear Down
+Test Case '-[SwipeGoUITests.LaunchTests testColdLaunchAndRelaunchShowRoot]' passed (7.467 seconds).
+Test Suite 'LaunchTests' passed at 2026-09-27 17:20:57.917.
+	 Executed 1 test, with 0 failures (0 unexpected) in 7.467 (7.469) seconds
+Test Suite 'SwipeGoUITests.xctest' passed at 2026-09-27 17:20:57.918.
+	 Executed 1 test, with 0 failures (0 unexpected) in 7.467 (7.470) seconds
+Test Suite 'All tests' passed at 2026-09-27 17:20:57.919.
+	 Executed 1 test, with 0 failures (0 unexpected) in 7.467 (7.471) seconds
+2026-09-27 17:20:58.235 xcodebuild[538:125001801] [MT] IDETestOperationsObserverDebug: 10.603 elapsed -- Testing started completed.
+2026-09-27 17:20:58.235 xcodebuild[538:125001801] [MT] IDETestOperationsObserverDebug: 0.000 sec, +0.000 sec -- start
+2026-09-27 17:20:58.235 xcodebuild[538:125001801] [MT] IDETestOperationsObserverDebug: 10.603 sec, +10.603 sec -- end
+
+Test session results, code coverage, and logs:
+	/Users/armstrong/Project/swipe-go/.build/test-run.H7rRW5/Tests.xcresult
+
+** TEST SUCCEEDED **
+
+Testing started
+== Install and launch reviewable app ==
+dev.armstrong.swipego: 593
+APP_READY: tests passed and app launched on 028EB1A4-1DFC-4A7D-8468-759F542E4036; results: /Users/armstrong/Project/swipe-go/.build/test-run.H7rRW5/Tests.xcresult

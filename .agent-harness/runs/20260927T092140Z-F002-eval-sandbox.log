@@ -1,0 +1,108 @@
+== Harness verification ==
+== Required files ==
+== Harness state ==
+validated 18 features
+== Failure domains ==
+failure_records=7
+domain[agent_workflow_gap]=3
+domain[capability_gap]=3
+domain[none outstanding; prior capability_gap resolved in this evaluation.]=1
+missing_failure_domain=0
+missing_harness_improvement=0
+== Evaluator evidence ==
+evaluator_evidence_baseline=F001
+evaluator_evidence_checked=1
+missing_evaluator_evidence=0
+== Orchestrator syntax ==
+== Tiny example ==
+..
+----------------------------------------------------------------------
+Ran 2 tests in 0.000s
+
+OK
+== Go server example ==
+ok  	example.com/ai-agent-harness-template/examples/go-server	(cached)
+== Unit tests ==
+..............................Accepted F039; it remains complete.
+Run record: /var/folders/ww/wrxzkc9n7rs60hbt_g7mgcl40000gn/T/tmpvaxhgh5u/runs/20260927T091918Z-human-eval-batch.md
+Reopened F039; continue the same Feature.
+Recorded a new-requirement candidate for F040; no Feature was appended.
+Run record: /var/folders/ww/wrxzkc9n7rs60hbt_g7mgcl40000gn/T/tmpel3nz_aj/runs/20260927T091918Z-human-eval-batch.md
+Next: normalize the requirement in SPEC.md, then let Planning Agent append a separate Feature.
+Recorded a new-requirement candidate for F039; no Feature was appended.
+Run record: /var/folders/ww/wrxzkc9n7rs60hbt_g7mgcl40000gn/T/tmpy_6c0y8m/runs/20260927T091918Z-F039-human-eval.md
+Next: normalize the requirement in SPEC.md, then let Planning Agent append a separate Feature.
+Reopened F039; continue the same Feature.
+Run record: /var/folders/ww/wrxzkc9n7rs60hbt_g7mgcl40000gn/T/tmpbp2p6_li/runs/20260927T091918Z-F039-human-eval.md
+Reading progress.md and feature_list.json.
+.Reading progress.md and feature_list.json.
+Git repository has no commits yet; continuing initialization checks.
+.
+----------------------------------------------------------------------
+Ran 32 tests in 2.913s
+
+OK
+== Contract tests ==
+................................
+----------------------------------------------------------------------
+Ran 32 tests in 0.007s
+
+OK
+== Harness tests ==
+...........
+----------------------------------------------------------------------
+Ran 11 tests in 38.530s
+
+OK
+== Smoke tests ==
+..
+----------------------------------------------------------------------
+Ran 2 tests in 0.134s
+
+OK
+init verification passed
+test_invalid_explicit_xcode_is_not_silently_replaced (test_doctor.InventoryTests.test_invalid_explicit_xcode_is_not_silently_replaced) ... ok
+test_no_runtime_no_device_or_unavailable_fail (test_doctor.InventoryTests.test_no_runtime_no_device_or_unavailable_fail) ... ok
+test_real_inventory_selects_iphone (test_doctor.InventoryTests.test_real_inventory_selects_iphone) ... ok
+test_unknown_schema_or_requested_device_fails (test_doctor.InventoryTests.test_unknown_schema_or_requested_device_fails) ... ok
+
+----------------------------------------------------------------------
+Ran 4 tests in 0.005s
+
+OK
+== iOS dependencies ==
+== Developer directory ==
+/Applications/Xcode.app/Contents/Developer
+== Xcode ==
+Xcode 26.6
+Build version 17F113
+== iPhoneOS SDK ==
+26.5
+== iPhoneSimulator SDK ==
+26.5
+== Simulator tool ==
+/Applications/Xcode.app/Contents/Developer/usr/bin/simctl
+== Simulator selection ==
+2026-09-27 17:19:57.475 simctl[98486:124991933] CoreSimulatorService connection became invalid.  Simulator services will no longer be available.
+2026-09-27 17:19:57.475 simctl[98486:124991934] Logging connecton invalid: <OS_xpc_error: <dictionary: 0x1f6469560> { count = 1, transaction: 0, voucher = 0x0, contents =
+	"XPCErrorDescription" => <string: 0x1f64696a0> { string cache = 0x0, length = 18, contents = "Connection invalid" }
+}>
+2026-09-27 17:19:57.475 simctl[98486:124991934] Error opening log file (/Users/armstrong/Library/Logs/CoreSimulator/CoreSimulator.com.apple.CoreSimulator.simctl.log): Operation not permitted
+[-[SimServiceContext sendRequest:]:1751] ERROR : Unable to deliver request ({
+    "developer_dir" = "/Applications/Xcode.app/Contents/Developer";
+    request = "set_developer_dir";
+}) because we are not connected to CoreSimulatorService.
+[-[SimServiceContext initWithDeveloperDir:connectionType:error:]:432] WARN  : Unable to discover any Simulator runtimes. Developer Directory is /Applications/Xcode.app/Contents/Developer.
+[-[SimDiskImageManager init]:175] ERROR : Could not kickstart simdiskimaged; SimDiskImageManager services will not be available: Error Domain=NSPOSIXErrorDomain Code=53 "Software caused connection abort" UserInfo={NSLocalizedDescription=Error returned in reply from CoreSimulatorService: Connection invalid}
+[-[SimDiskImageManager _onQueue_checkConnection:]:239] ERROR : simdiskimaged returned error (invalid), marking disconnected.
+[-[SimDiskImageManager _onQueue_checkConnection:]:239] ERROR : simdiskimaged returned error (invalid), marking disconnected.
+[-[SimServiceContext initWithDeveloperDir:connectionType:error:]_block_invoke:468] ERROR : Could not get list of trusted mount directories: Error Domain=com.apple.CoreSimulator.SimError Code=410 "The service used to manage runtime disk images (simdiskimaged) crashed or is not responding" UserInfo={NSLocalizedDescription=The service used to manage runtime disk images (simdiskimaged) crashed or is not responding}
+[-[SimServiceContext sendRequest:reply:error:]:1771] ERROR : Unable to deliver request ({
+    request = "notification_subscription";
+    "set_path" = "/Users/armstrong/Library/Developer/CoreSimulator/Devices";
+}) because we are not connected to CoreSimulatorService.
+2026-09-27 17:19:57.520 simctl[98486:124991932] Error Domain=NSPOSIXErrorDomain Code=61 "Connection refused" UserInfo={NSLocalizedDescription=CoreSimulatorService connection became invalid.  Simulator services will no longer be available.}
+Unable to locate device set: Error Domain=NSPOSIXErrorDomain Code=61 "Connection refused" UserInfo={NSLocalizedFailureReason=Failed to subscribe to notifications from CoreSimulatorService., NSLocalizedDescription=Failed to initialize simulator device set., NSUnderlyingError=0x7d32246c0 {Error Domain=NSPOSIXErrorDomain Code=61 "Connection refused" UserInfo={NSLocalizedDescription=CoreSimulatorService connection became invalid.  Simulator services will no longer be available.}}}
+NOT_READY: Expecting value: line 1 column 1 (char 0)
+NOT_READY: Simulator inventory unavailable or no compatible iPhone. Check runtime installation and CoreSimulator permissions.
+Recovery failed at line 14 (exit 1)

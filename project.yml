@@ -1,0 +1,57 @@
+name: SwipeGo
+options:
+  minimumXcodeGenVersion: 2.46.0
+  deploymentTarget:
+    iOS: '26.0'
+  developmentLanguage: zh-Hans
+settings:
+  base:
+    SWIFT_VERSION: '6.0'
+    TARGETED_DEVICE_FAMILY: '1'
+    MARKETING_VERSION: '0.1.0'
+    CURRENT_PROJECT_VERSION: '1'
+targets:
+  SwipeGo:
+    type: application
+    platform: iOS
+    sources: [SwipeGo]
+    settings:
+      base:
+        TARGETED_DEVICE_FAMILY: '1'
+        PRODUCT_BUNDLE_IDENTIFIER: dev.armstrong.swipego
+        GENERATE_INFOPLIST_FILE: YES
+        INFOPLIST_KEY_CFBundleDisplayName: 时光
+        INFOPLIST_KEY_UILaunchScreen_Generation: YES
+        INFOPLIST_KEY_UIApplicationSceneManifest_Generation: YES
+        INFOPLIST_KEY_UISupportedInterfaceOrientations: UIInterfaceOrientationPortrait
+  SwipeGoTests:
+    type: bundle.unit-test
+    platform: iOS
+    sources: [SwipeGoTests]
+    dependencies:
+      - target: SwipeGo
+    settings:
+      base:
+        TARGETED_DEVICE_FAMILY: '1'
+        PRODUCT_BUNDLE_IDENTIFIER: dev.armstrong.swipego.tests
+        GENERATE_INFOPLIST_FILE: YES
+  SwipeGoUITests:
+    type: bundle.ui-testing
+    platform: iOS
+    sources: [SwipeGoUITests]
+    dependencies:
+      - target: SwipeGo
+    settings:
+      base:
+        TARGETED_DEVICE_FAMILY: '1'
+        PRODUCT_BUNDLE_IDENTIFIER: dev.armstrong.swipego.uitests
+        GENERATE_INFOPLIST_FILE: YES
+schemes:
+  SwipeGo:
+    build:
+      targets:
+        SwipeGo: all
+    test:
+      targets:
+        - SwipeGoTests
+        - SwipeGoUITests

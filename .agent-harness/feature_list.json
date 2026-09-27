@@ -31,9 +31,9 @@
         "根 ./init.sh 幂等验证依赖、启动测试模拟器、构建并运行真实 App smoke，阶段日志清晰，失败非零。",
         "根恢复流程包含 Harness 检查，项目 evaluator evidence 基线从 F001 起；记录真实构建/启动证据。"
       ],
-      "passes": false,
-      "status": "todo",
-      "attempts": 0,
+      "passes": true,
+      "status": "done",
+      "attempts": 2,
       "last_error": "",
       "priority": "P0",
       "depends_on": [

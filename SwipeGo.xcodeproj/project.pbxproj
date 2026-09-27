@@ -1,0 +1,501 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 77;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		2A28773FE534F676EAF5A386 /* LaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 144CB126D134E13E3B503982 /* LaunchTests.swift */; };
+		5FCAE7ACCCB7B379C1674A05 /* SwipeGoApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED4F5CA740674D7D05E3BE6D /* SwipeGoApp.swift */; };
+		AAEF1AD4E5F1010D10561303 /* AppConfigurationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26F5635CBCA41D6FF20D2A60 /* AppConfigurationTests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		20FCE1B261B4014AB7CDCD43 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D4F424C42DEB865750663310 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 3D3DA6C45576E291FCA28AD2;
+			remoteInfo = SwipeGo;
+		};
+		DDFDDF3C496C462C1101F9EA /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D4F424C42DEB865750663310 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 3D3DA6C45576E291FCA28AD2;
+			remoteInfo = SwipeGo;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		0C6AAD92DD5565AD736E8ED7 /* SwipeGoTests.xctest */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.cfbundle; path = SwipeGoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		144CB126D134E13E3B503982 /* LaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchTests.swift; sourceTree = "<group>"; };
+		26F5635CBCA41D6FF20D2A60 /* AppConfigurationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppConfigurationTests.swift; sourceTree = "<group>"; };
+		67FC6D021BC9297E2A3E4C4F /* SwipeGo.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = SwipeGo.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		B90BD7AB8E242342DC127E20 /* SwipeGoUITests.xctest */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.cfbundle; path = SwipeGoUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		ED4F5CA740674D7D05E3BE6D /* SwipeGoApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipeGoApp.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXGroup section */
+		0DD6A33F52974E868DCC21F1 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				ED4F5CA740674D7D05E3BE6D /* SwipeGoApp.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		4D689F54193820E1C679490C /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				67FC6D021BC9297E2A3E4C4F /* SwipeGo.app */,
+				0C6AAD92DD5565AD736E8ED7 /* SwipeGoTests.xctest */,
+				B90BD7AB8E242342DC127E20 /* SwipeGoUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		5BC9B46614EA0F2CF5A62D63 = {
+			isa = PBXGroup;
+			children = (
+				F5C7D2FDA7C7B16B65F1E867 /* SwipeGo */,
+				AA1109FD5C2AE52AFB3F21C4 /* SwipeGoTests */,
+				8D3B02CB40AE9FFA0957764E /* SwipeGoUITests */,
+				4D689F54193820E1C679490C /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		8D3B02CB40AE9FFA0957764E /* SwipeGoUITests */ = {
+			isa = PBXGroup;
+			children = (
+				144CB126D134E13E3B503982 /* LaunchTests.swift */,
+			);
+			path = SwipeGoUITests;
+			sourceTree = "<group>";
+		};
+		AA1109FD5C2AE52AFB3F21C4 /* SwipeGoTests */ = {
+			isa = PBXGroup;
+			children = (
+				26F5635CBCA41D6FF20D2A60 /* AppConfigurationTests.swift */,
+			);
+			path = SwipeGoTests;
+			sourceTree = "<group>";
+		};
+		F5C7D2FDA7C7B16B65F1E867 /* SwipeGo */ = {
+			isa = PBXGroup;
+			children = (
+				0DD6A33F52974E868DCC21F1 /* App */,
+			);
+			path = SwipeGo;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		17D86AEC5F0309AE6CAE4125 /* SwipeGoTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1136D4382E56335978FB3F7C /* Build configuration list for PBXNativeTarget "SwipeGoTests" */;
+			buildPhases = (
+				40D63B443B3EAB2DDDD4335C /* Sources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				1FC31E7862A44088FF7195B7 /* PBXTargetDependency */,
+			);
+			name = SwipeGoTests;
+			packageProductDependencies = (
+			);
+			productName = SwipeGoTests;
+			productReference = 0C6AAD92DD5565AD736E8ED7 /* SwipeGoTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		3D3DA6C45576E291FCA28AD2 /* SwipeGo */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 8185E99A60E7C8DE0870DF22 /* Build configuration list for PBXNativeTarget "SwipeGo" */;
+			buildPhases = (
+				D9436D497EFCCBCFB536CB5D /* Sources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = SwipeGo;
+			packageProductDependencies = (
+			);
+			productName = SwipeGo;
+			productReference = 67FC6D021BC9297E2A3E4C4F /* SwipeGo.app */;
+			productType = "com.apple.product-type.application";
+		};
+		54611F94BE40D6C6DC887904 /* SwipeGoUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 530BE93BB204A75DA4A31054 /* Build configuration list for PBXNativeTarget "SwipeGoUITests" */;
+			buildPhases = (
+				5391B298CE2BB8B1E1AAA781 /* Sources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				B317B6CFFE752C714EE222EC /* PBXTargetDependency */,
+			);
+			name = SwipeGoUITests;
+			packageProductDependencies = (
+			);
+			productName = SwipeGoUITests;
+			productReference = B90BD7AB8E242342DC127E20 /* SwipeGoUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		D4F424C42DEB865750663310 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = YES;
+				LastUpgradeCheck = 1430;
+				TargetAttributes = {
+					54611F94BE40D6C6DC887904 = {
+						TestTargetID = 3D3DA6C45576E291FCA28AD2;
+					};
+				};
+			};
+			buildConfigurationList = C74E7E294302C58A33D78523 /* Build configuration list for PBXProject "SwipeGo" */;
+			developmentRegion = "zh-Hans";
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				Base,
+				"zh-Hans",
+			);
+			mainGroup = 5BC9B46614EA0F2CF5A62D63;
+			minimizedProjectReferenceProxies = 1;
+			preferredProjectObjectVersion = 77;
+			productRefGroup = 4D689F54193820E1C679490C /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				3D3DA6C45576E291FCA28AD2 /* SwipeGo */,
+				17D86AEC5F0309AE6CAE4125 /* SwipeGoTests */,
+				54611F94BE40D6C6DC887904 /* SwipeGoUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		40D63B443B3EAB2DDDD4335C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AAEF1AD4E5F1010D10561303 /* AppConfigurationTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5391B298CE2BB8B1E1AAA781 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2A28773FE534F676EAF5A386 /* LaunchTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D9436D497EFCCBCFB536CB5D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5FCAE7ACCCB7B379C1674A05 /* SwipeGoApp.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		1FC31E7862A44088FF7195B7 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 3D3DA6C45576E291FCA28AD2 /* SwipeGo */;
+			targetProxy = 20FCE1B261B4014AB7CDCD43 /* PBXContainerItemProxy */;
+		};
+		B317B6CFFE752C714EE222EC /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 3D3DA6C45576E291FCA28AD2 /* SwipeGo */;
+			targetProxy = DDFDDF3C496C462C1101F9EA /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		0A1ACC9A798612BA22234D34 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = "时光";
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = dev.armstrong.swipego;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Debug;
+		};
+		1A7679AE3C499E6A376F1C8B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				GENERATE_INFOPLIST_FILE = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = dev.armstrong.swipego.tests;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = 1;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SwipeGo.app/SwipeGo";
+			};
+			name = Debug;
+		};
+		1CDD008A496163DDA9BAA3CB /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 26.0;
+				MARKETING_VERSION = 0.1.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 6.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
+		};
+		35F9EF1164B2B1D9B7BE19AE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				GENERATE_INFOPLIST_FILE = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = dev.armstrong.swipego.uitests;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = 1;
+				TEST_TARGET_NAME = SwipeGo;
+			};
+			name = Debug;
+		};
+		5155FEE87DBFBCFA41175255 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				GENERATE_INFOPLIST_FILE = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = dev.armstrong.swipego.uitests;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = 1;
+				TEST_TARGET_NAME = SwipeGo;
+			};
+			name = Release;
+		};
+		8C574E1C9A4DAC4D6B7093D3 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = "时光";
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = dev.armstrong.swipego;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
+		};
+		C6E524A63B085917E5016777 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					"DEBUG=1",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 26.0;
+				MARKETING_VERSION = 0.1.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 6.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Debug;
+		};
+		F3F5919CF03728CF63A4F4EE /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				GENERATE_INFOPLIST_FILE = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = dev.armstrong.swipego.tests;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = 1;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SwipeGo.app/SwipeGo";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		1136D4382E56335978FB3F7C /* Build configuration list for PBXNativeTarget "SwipeGoTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1A7679AE3C499E6A376F1C8B /* Debug */,
+				F3F5919CF03728CF63A4F4EE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		530BE93BB204A75DA4A31054 /* Build configuration list for PBXNativeTarget "SwipeGoUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				35F9EF1164B2B1D9B7BE19AE /* Debug */,
+				5155FEE87DBFBCFA41175255 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		8185E99A60E7C8DE0870DF22 /* Build configuration list for PBXNativeTarget "SwipeGo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0A1ACC9A798612BA22234D34 /* Debug */,
+				8C574E1C9A4DAC4D6B7093D3 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		C74E7E294302C58A33D78523 /* Build configuration list for PBXProject "SwipeGo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C6E524A63B085917E5016777 /* Debug */,
+				1CDD008A496163DDA9BAA3CB /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = D4F424C42DEB865750663310 /* Project object */;
+}
