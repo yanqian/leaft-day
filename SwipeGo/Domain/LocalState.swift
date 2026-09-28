@@ -22,6 +22,9 @@ struct ComparisonContext: Codable, Sendable, Equatable {
 struct OperationState: Codable, Sendable, Equatable {
     enum Kind: String, Codable, Sendable { case favorite, deletion }
     enum Phase: String, Codable, Sendable { case prepared, submitted, succeeded, failed, needsReview }
+    enum DeletionOutcome: String, Codable, Sendable { case success, cancelled, notSubmitted, unknown }
+    var deletion: FrozenDeletion? = nil
+    var deletionOutcome: DeletionOutcome? = nil
     var id: UUID
     var kind: Kind
     var targetIDs: [String]
@@ -39,6 +42,8 @@ protocol LocalStateRepository: Sendable {
     func removePending(assetID: String) async throws
     func removePending(ifMatching expected: PendingIntent) async throws
     func saveOperation(_ value: OperationState) async throws
+    func prepareDeletion(_ frozen: FrozenDeletion) async throws -> OperationState
+    func completeDeletion(_ operation: OperationState) async throws
     func operations() async throws -> [OperationState]
 }
 

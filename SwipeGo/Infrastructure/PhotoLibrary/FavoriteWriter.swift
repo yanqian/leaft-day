@@ -3,6 +3,7 @@ import Photos
 import Synchronization
 
 protocol PhotoAssetReading: Sendable {
+    func accessScope() async -> PhotoAccessScope
     func asset(id: String) async throws -> PhotoAssetSnapshot
 }
 
@@ -13,6 +14,7 @@ protocol FavoriteWriting: PhotoAssetReading {
 enum FavoriteError: Error { case unavailable, permission, changed, busy, noUndo, cancelled }
 
 actor NativeFavoriteWriter: FavoriteWriting {
+    func accessScope() -> PhotoAccessScope { NativePhotoFacts.scope() }
     func asset(id: String) throws -> PhotoAssetSnapshot {
         guard PhotoLibraryGateway.permission(PHPhotoLibrary.authorizationStatus(for: .readWrite)).canRead else { throw FavoriteError.permission }
         guard let asset = PHAsset.fetchAssets(withLocalIdentifiers: [id], options: nil).firstObject,

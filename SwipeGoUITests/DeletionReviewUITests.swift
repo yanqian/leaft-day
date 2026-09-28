@@ -22,7 +22,7 @@ import XCTest
         XCTAssertTrue(app.staticTexts["deletion.frozen-count"].waitForExistence(timeout: 5))
         XCTAssertEqual(app.staticTexts["deletion.frozen-count"].label, "本次共 2 项")
         let confirmImage = XCTAttachment(screenshot: app.screenshot()); confirmImage.name = "F015-fixed-confirmation"; confirmImage.lifetime = .keepAlways; add(confirmImage)
-        XCTAssertFalse(app.buttons["deletion.execute"].isEnabled, "F016 not connected yet")
+        XCTAssertFalse(app.buttons["deletion.execute"].isEnabled, "Explicit personal-library confirmation is required")
         app.buttons["deletion.cancel"].tap()
         app.buttons["deletion.close"].tap()
         XCTAssertTrue(app.buttons["home.pending"].waitForExistence(timeout: 5))

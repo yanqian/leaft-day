@@ -9,22 +9,24 @@ struct DeletionReviewRow: Identifiable, Equatable {
     var id: String { intent.assetID }
 }
 
-struct FrozenDeletion: Identifiable, Equatable, Sendable {
+struct FrozenDeletion: Identifiable, Codable, Equatable, Sendable {
     let id: UUID
     let intents: [PendingIntent]
     let targets: [PhotoAssetSnapshot]
     let keepers: [PhotoAssetSnapshot]
+    var scope: PhotoAccessScope = PhotoAccessScope(permission: .full)
 }
 
 @MainActor @Observable final class DeletionReviewModel {
     enum Failure: Error { case changed, unavailable, busy }
     private(set) var rows: [DeletionReviewRow] = []
     private(set) var isBusy = false
+    let deletion: DeletionCoordinator
     var error: String?
     var frozen: FrozenDeletion?
     @ObservationIgnored let store: any LocalStateRepository
     @ObservationIgnored private let reader: any PhotoAssetReading
-    init(store: any LocalStateRepository, reader: any PhotoAssetReading = NativeFavoriteWriter()) { self.store = store; self.reader = reader }
+    init(store: any LocalStateRepository, reader: any PhotoAssetReading = NativeFavoriteWriter()) { self.store = store; self.reader = reader; self.deletion = DeletionCoordinator(store: store) }
     var readyCount: Int { rows.filter { !$0.needsReview }.count }
     var needsReviewCount: Int { rows.count - readyCount }
     static func readyCount(_ intents: [PendingIntent], assets: [PhotoAssetSnapshot]) -> Int {
@@ -45,8 +47,9 @@ struct FrozenDeletion: Identifiable, Equatable, Sendable {
         }
     }
     func refresh() async {
+        guard !isBusy && !deletion.isBusy else { return }
+        if let frozen, deletion.lastAttemptID == frozen.id { return }
         frozen = nil
-        guard !isBusy else { return }
         isBusy = true; defer { isBusy = false }
         do { rows = try await readRows(); error = nil }
         catch { self.error = "待删记录暂时无法读取，请重试。" }
@@ -65,12 +68,14 @@ struct FrozenDeletion: Identifiable, Equatable, Sendable {
         guard !isBusy else { return }; isBusy = true; defer { isBusy = false }
         frozen = nil
         do {
+            let scope = await reader.accessScope()
             let latest = try await readRows()
+            guard scope.permission.canRead, await reader.accessScope() == scope else { throw Failure.changed }
             guard latest == rows else { rows = latest; throw Failure.changed }
             guard !latest.isEmpty, latest.allSatisfy({ !$0.needsReview }) else { throw Failure.unavailable }
             var seen = Set<String>()
             frozen = FrozenDeletion(id: UUID(), intents: latest.map(\.intent), targets: latest.compactMap(\.asset),
-                keepers: latest.flatMap(\.keepers).filter { seen.insert($0.id).inserted })
+                keepers: latest.flatMap(\.keepers).filter { seen.insert($0.id).inserted }, scope: scope)
             error = nil
         } catch { self.error = "内容或授权范围可能已变化，请重新复核。" }
     }

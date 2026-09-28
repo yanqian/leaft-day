@@ -393,9 +393,9 @@
         "调用公开系统变更接口并尊重系统确认，按真实批次回执处理成功、取消、失败，不假定逐项回执。",
         "重复点击不重复提交，执行期间冻结集合；只清除有成功证据的记录，不自动清空最近删除。"
       ],
-      "passes": false,
-      "status": "todo",
-      "attempts": 0,
+      "passes": true,
+      "status": "done",
+      "attempts": 1,
       "last_error": "",
       "priority": "P0",
       "depends_on": [

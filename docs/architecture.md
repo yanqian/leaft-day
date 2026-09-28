@@ -93,7 +93,7 @@ stateDiagram-v2
 
 ## F004 存储实现约定
 
-`LocalStateRepository` 只接受/返回 Codable + Sendable 值；`LocalStateStore` ModelActor 使用 DefaultSerialModelExecutor 约束 SwiftData container/context，关闭自动保存，每次变更显式 save，失败 rollback 后丢弃工作 context，重新从磁盘读取并抛错。App 组合层应共享一个该 actor，不在 UI 或分析任务间传递 PersistentModel。第一版 `IntentSchemaV1` 与显式迁移计划固定 1.0.0；后续字段/负载演进需新版本与真实迁移测试。
+`LocalStateRepository` 只接受/返回 Codable + Sendable 值；`LocalStateStore` 使用显式 MainActor 约束 SwiftData container/context 的创建、访问及失败后重建，关闭自动保存，每次变更显式 save，失败 rollback 后丢弃工作 context，重新从磁盘读取并抛错。App 组合层共享该存储实例，不在 UI 或分析任务间传递 PersistentModel。第一版 `IntentSchemaV1` 与显式迁移计划固定 1.0.0；后续字段/负载演进需新版本与真实迁移测试。
 
 会话（有序ID/游标）、待删（唯一资产ID）和操作日志分别建模，JSON payload 属于 V1 schema 的一部分。重复待删保留最初来源和时间；无效游标/重复会话ID列表失败，不静默纠正用户意图。原片/系统收藏不存入意图库。操作日志只持久化事实，不在存储层执行删除或自动重试。
 
@@ -164,3 +164,11 @@ LocalStateStore在一次SwiftData事务中撤回保留项并保存其余待删�
 首页低强调待删入口按当前可见资产及保留上下文显示可复核数/待核对数，读取失败单独提示。复核页重新读取本地记录及每个目标/保留项，按比较组展示待删与保留照片；单独标记的视频可进入独立播放器，退出释放资源。照片可完整比例放大。缺失/权限缩减/保留冲突保留原始意图并阻止确认，不把缺失当删除成功。
 
 撤回使用store内事务核对完整原记录，避免删除已被其他决定替换的记录。冻结确认前再次读取并与用户刚看的行比较；变化则更新显示并要求重新复核。FrozenDeletion保存固定意图、目标快照与保留快照，新标记不会追加到既有清单。确认页展示具体照片/视频、iCloud同步影响、最近删除恢复边界与个人图库范围，不估算已释放空间。最终执行回调由F016接入；F015不能触发PhotoKit删除。
+
+## F016：固定批次的系统删除
+
+FrozenDeletion额外保存授权范围（limited时含可访问ID）与完整目标/保留快照。DeletionCoordinator在提交前读取系统事实，LocalStateStore以事务校验原意图、保留冲突及未决重叠操作，写prepared；submitted持久化成功后才进入唯一NativeDeletionWriter。原生变更块再次核对授权和快照后一次deleteAssets；结果按系统整批回执处理，不编造逐项回执。
+
+成功回执与匹配意图清理同一SwiftData事务，后来新增/替换记录不被误清。取消记录failed/cancelled并保留意图；无法确认的错误记录needsReview；系统成功后本地提交失败仍留submitted待核对，不重试。旧Operation JSON的新增载荷均可选。确认页需明确个人图库确认，执行期间不可关闭、重复执行，系统返回后保留结果直至用户返回。此实现无法从公共API鉴别共享照片图库成员，不宣称自动排除。
+
+F016完整回归曾在跨actor故障注入时捕获工作ModelContext的Unbinding警告（.build/test-run.JDjW8w），即使断言通过也判失败。改用MainActor元数据存储，保留异步Sendable接口、事务及失败重建；照片像素、下载和Vision不进入此存储。首版意图数据量较小，但大量历史操作读取/编码可能增加主线程工作，F018必须记录规模/延迟，不据此宣称性能已通过。

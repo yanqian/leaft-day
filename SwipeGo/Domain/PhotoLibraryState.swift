@@ -1,6 +1,6 @@
 import Foundation
 
-enum LibraryPermission: String, Sendable, CaseIterable {
+enum LibraryPermission: String, Codable, Sendable, CaseIterable {
     case notDetermined, restricted, denied, limited, full, unknown
     var canRead: Bool { self == .limited || self == .full }
     var guidance: String {
@@ -15,8 +15,8 @@ enum LibraryPermission: String, Sendable, CaseIterable {
     }
 }
 
-struct PhotoAssetSnapshot: Identifiable, Sendable, Equatable {
-    enum Kind: String, Sendable { case photo, video }
+struct PhotoAssetSnapshot: Identifiable, Codable, Sendable, Equatable {
+    enum Kind: String, Codable, Sendable { case photo, video }
     let id: String
     let kind: Kind
     let creationDate: Date?

@@ -8,6 +8,7 @@ import Photos
                            width: 100, height: 100, duration: 0, isFavorite: favorite, isLivePhoto: false)
     }
     actor Writer: FavoriteWriting {
+        func accessScope() -> PhotoAccessScope { PhotoAccessScope(permission: .full) }
         var assets: [String: PhotoAssetSnapshot]
         var calls: [String] = []
         var fail = false
@@ -25,6 +26,8 @@ import Photos
         func setFailure() { fail = true }
     }
     actor CompletionFailStore: LocalStateRepository {
+        func prepareDeletion(_ frozen: FrozenDeletion) async throws -> OperationState { try await base.prepareDeletion(frozen) }
+        func completeDeletion(_ operation: OperationState) async throws { throw CocoaError(.fileWriteNoPermission) }
         func removePending(ifMatching expected: PendingIntent) async throws { throw LocalStateError.readOnly }
         func saveComparison(_ values: [PendingIntent], keeping: [String]) async throws { throw LocalStateError.readOnly }
         let base: LocalStateStore

@@ -1,9 +1,8 @@
 import Foundation
 import SwiftData
 
-actor LocalStateStore: ModelActor, LocalStateRepository {
-    nonisolated let modelContainer: ModelContainer
-    nonisolated let modelExecutor: any ModelExecutor
+@MainActor final class LocalStateStore: LocalStateRepository {
+    private let modelContainer: ModelContainer
     private var activeContext: ModelContext?
     private var context: ModelContext {
         if let activeContext { return activeContext }
@@ -19,10 +18,7 @@ actor LocalStateStore: ModelActor, LocalStateRepository {
                                                allowsSave: allowsSave, cloudKitDatabase: .none)
         let container = try ModelContainer(for: schema, migrationPlan: IntentMigrations.self,
                                            configurations: [configuration])
-        let context = ModelContext(container)
-        context.autosaveEnabled = false
         self.modelContainer = container
-        self.modelExecutor = DefaultSerialModelExecutor(modelContext: context)
     }
 
     private func transaction(_ mutation: () throws -> Void) throws {
@@ -120,6 +116,46 @@ actor LocalStateStore: ModelActor, LocalStateRepository {
             guard let row = rows.first,
                   try JSONDecoder().decode(PendingIntent.self, from: row.payload) == expected else { throw LocalStateError.invalidAsset }
             context.delete(row)
+        }
+    }
+
+    func prepareDeletion(_ frozen: FrozenDeletion) throws -> OperationState {
+        let targets = frozen.targets.map(\.id)
+        let keepers = frozen.keepers.map(\.id)
+        guard !targets.isEmpty, Set(targets).count == targets.count,
+              targets == frozen.intents.map(\.assetID), Set(targets).isDisjoint(with: keepers),
+              frozen.scope.permission.canRead else { throw LocalStateError.invalidOperation }
+        var operation = OperationState(id: frozen.id, kind: .deletion, targetIDs: targets, phase: .prepared, updatedAt: .now)
+        operation.deletion = frozen
+        let payload = try JSONEncoder().encode(operation)
+        try transaction {
+            let existing = try operations()
+            guard !existing.contains(where: { $0.id == frozen.id || ($0.kind == .deletion && [.prepared, .submitted, .needsReview].contains($0.phase) && !Set($0.targetIDs).isDisjoint(with: targets)) }) else { throw DeletionError.alreadySubmitted }
+            let current = try pending()
+            guard frozen.intents.allSatisfy({ current.contains($0) }),
+                  Set(current.flatMap { $0.comparison?.keptIDs ?? [] }).isDisjoint(with: targets),
+                  Set(frozen.intents.flatMap { $0.comparison?.keptIDs ?? [] }).isSubset(of: Set(keepers)) else { throw DeletionError.changed }
+            context.insert(IntentSchemaV1.Operation(id: operation.id, payload: payload))
+        }
+        return operation
+    }
+
+    func completeDeletion(_ operation: OperationState) throws {
+        guard operation.kind == .deletion, operation.phase == .succeeded,
+              operation.deletionOutcome == .success, let frozen = operation.deletion,
+              frozen.id == operation.id, frozen.targets.map(\.id) == operation.targetIDs else { throw LocalStateError.invalidOperation }
+        let payload = try JSONEncoder().encode(operation)
+        try transaction {
+            let id = operation.id
+            guard let row = try context.fetch(FetchDescriptor<IntentSchemaV1.Operation>(predicate: #Predicate { $0.id == id })).first,
+                  let original = try? JSONDecoder().decode(OperationState.self, from: row.payload),
+                  original.phase == .submitted, original.deletion == frozen else { throw LocalStateError.invalidOperation }
+            let pendingRows = try context.fetch(FetchDescriptor<IntentSchemaV1.Pending>())
+            for pendingRow in pendingRows {
+                let value = try JSONDecoder().decode(PendingIntent.self, from: pendingRow.payload)
+                if frozen.intents.contains(value) { context.delete(pendingRow) }
+            }
+            row.payload = payload
         }
     }
 

@@ -3,7 +3,6 @@ import SwiftUI
 struct DeletionReviewView: View {
     @State var model: DeletionReviewModel
     let snapshot: LibrarySnapshot
-    var onConfirm: ((FrozenDeletion) -> Void)? = nil
     @Environment(\.dismiss) private var dismiss
     @Environment(\.scenePhase) private var scenePhase
     @State private var preview: PhotoAssetSnapshot?
@@ -63,8 +62,8 @@ struct DeletionReviewView: View {
                 .onChange(of: snapshot.assets) { _, _ in Task { await model.refresh() } }
                 .onChange(of: snapshot.permission) { _, _ in Task { await model.refresh() } }
                 .onChange(of: scenePhase) { _, value in if value == .active { Task { await model.refresh() } } }
-                .sheet(item: $model.frozen) { frozen in
-                    DeletionConfirmationView(frozen: frozen, onConfirm: onConfirm)
+                .sheet(item: $model.frozen, onDismiss: { Task { await model.refresh() } }) { frozen in
+                    DeletionConfirmationView(frozen: frozen, coordinator: model.deletion) { model.frozen = nil; Task { await model.refresh() } }
                 }
                 .fullScreenCover(item: $preview) { asset in
                     if asset.kind == .video { DeletionVideoPreview(asset: asset) }
@@ -83,7 +82,11 @@ struct DeletionReviewView: View {
 
 struct DeletionConfirmationView: View {
     let frozen: FrozenDeletion
-    var onConfirm: ((FrozenDeletion) -> Void)?
+    let coordinator: DeletionCoordinator
+    var finished: () -> Void
+    @State private var personalLibrary = false
+    @State private var resultMessage: String?
+    @State private var attempted = false
     @Environment(\.dismiss) private var dismiss
     var body: some View {
         NavigationStack {
@@ -104,11 +107,28 @@ struct DeletionConfirmationView: View {
                             }
                         }
                     }
-                    Button("确认删除这 \(frozen.targets.count) 项", role: .destructive) { onConfirm?(frozen) }
-                        .buttonStyle(.glassProminent).disabled(onConfirm == nil).accessibilityIdentifier("deletion.execute")
-                    Button("返回复核") { dismiss() }.buttonStyle(.glass).accessibilityIdentifier("deletion.cancel")
+                    Toggle("我使用个人图库，未加入共享照片图库", isOn: $personalLibrary)
+                        .disabled(coordinator.isBusy || attempted).accessibilityIdentifier("deletion.personal-library")
+                    if coordinator.isBusy { ProgressView("等待系统删除结果") }
+                    if let resultMessage { Text(resultMessage).accessibilityIdentifier("deletion.result") }
+                    Button("确认删除这 \(frozen.targets.count) 项", role: .destructive) {
+                        attempted = true
+                        Task {
+                            do {
+                                switch try await coordinator.execute(frozen) {
+                                case .succeeded: resultMessage = "系统已确认删除本次清单。"
+                                case .cancelled: resultMessage = "已取消删除，待删记录仍保留。"
+                                case .failed: resultMessage = "内容发生变化，未提交删除，请重新复核。"
+                                case .needsReview: resultMessage = "结果暂不确定，记录已保留，请返回核对。不会自动重试。"
+                                case .succeededJournalPending: resultMessage = "系统已确认删除，但本地记录保存失败，请返回核对。"
+                                }
+                            } catch { resultMessage = "清单、权限或操作记录已变化，请返回重新核对。未发起新的删除。" }
+                        }
+                    }.buttonStyle(.glassProminent).disabled(!personalLibrary || coordinator.isBusy || attempted).accessibilityIdentifier("deletion.execute")
+                    Button("返回复核") { dismiss(); finished() }.buttonStyle(.glass).disabled(coordinator.isBusy).accessibilityIdentifier("deletion.cancel")
                 }.padding(20)
             }.navigationTitle("确认清单").navigationBarTitleDisplayMode(.inline)
+                .interactiveDismissDisabled(coordinator.isBusy)
         }
     }
 }

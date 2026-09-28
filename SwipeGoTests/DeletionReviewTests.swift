@@ -3,6 +3,7 @@ import XCTest
 
 @MainActor final class DeletionReviewTests: XCTestCase {
     actor Assets: PhotoAssetReading {
+        func accessScope() -> PhotoAccessScope { PhotoAccessScope(permission: .full) }
         var values: [String: PhotoAssetSnapshot]
         init(_ assets: [PhotoAssetSnapshot]) { values = Dictionary(uniqueKeysWithValues: assets.map { ($0.id, $0) }) }
         func asset(id: String) throws -> PhotoAssetSnapshot { guard let value = values[id] else { throw FavoriteError.unavailable }; return value }
