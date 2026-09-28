@@ -31,6 +31,18 @@ targets:
     platform: iOS
     sources:
       - SwipeGoTests
+      - path: Fixtures/generated/landscape.jpg
+        buildPhase: resources
+      - path: Fixtures/generated/landscape-copy.jpg
+        buildPhase: resources
+      - path: Fixtures/generated/landscape-near.jpg
+        buildPhase: resources
+      - path: Fixtures/generated/portrait-smile.jpg
+        buildPhase: resources
+      - path: Fixtures/generated/portrait-frown.jpg
+        buildPhase: resources
+      - path: Fixtures/generated/square.jpg
+        buildPhase: resources
       - path: Fixtures/generated/clip.mp4
         buildPhase: resources
     dependencies:

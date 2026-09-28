@@ -313,11 +313,11 @@
         "缓存含资产内容与算法版本，编辑后失效；分析可取消、限并发、恢复，不依赖后台必定运行。",
         "记录阈值和样本结果，不把距离当重复概率、不用相似传递链强行合组；不覆盖视频或承诺跨日期找全。"
       ],
-      "passes": false,
-      "status": "todo",
-      "attempts": 0,
+      "passes": true,
+      "status": "done",
+      "attempts": 2,
       "last_error": "",
-      "priority": "P1",
+      "priority": "P0",
       "depends_on": [
         "F003",
         "F004",
@@ -345,7 +345,7 @@
       "status": "todo",
       "attempts": 0,
       "last_error": "",
-      "priority": "P1",
+      "priority": "P0",
       "depends_on": [
         "F010",
         "F012",
@@ -369,8 +369,8 @@
       ],
       "passes": false,
       "status": "todo",
-      "attempts": 0,
-      "last_error": "",
+      "attempts": 1,
+      "last_error": "agent_workflow_gap: premature selection; F013/F014 dependencies unfinished. No coding occurred. Priority order repaired before retry.",
       "priority": "P0",
       "depends_on": [
         "F009",

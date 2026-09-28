@@ -86,3 +86,13 @@ FavoriteUITests使用DEBUG隔离存储和明确生成的landscape.jpg/portrait-s
 PendingTests使用真实临时SwiftData验证重复标记、磁盘重开、原目标撤销、已收藏的确认门槛、只读磁盘写失败不公布成功及替换记录保护。PhotoAssetReading测试记录证明这些流程未调用系统写入。PendingUITests在生成素材上走真实收藏、取消/确认收藏项待删提示、进程重开、翻页后撤销；测试宿主可保留专用Caches数据库验证重启，不读取或重建产品数据库。没有系统删除调用。
 
 F012首次UI回归发现系统confirmationDialog把提示呈现为popover并省略cancel按钮；失败附件的真实可访问性树只含“仍加入待删”。改为双按钮原生alert以明确提供取消，保留原有完整测试断言；针对复现的PendingUITests复验通过（.build/F012-pending-retry.xcresult）。失败记录保留在.build/test-run.cxXyTN。
+
+## F013 Vision 真机必需验证
+
+本机 iOS26.0/26.5 模拟器的原生特征计算曾把不同图片输出为近乎相同向量。模拟器测试验证 PhotoKit 读取与运行时拒绝路径；质量正反例编译到真机测试中，不能用模拟器通过替代。根 `./init.sh` 在模拟器完整测试之后强制执行 `scripts/verify-device-vision.sh`，没有真机配置、连接、签名或测试失败均非零退出，不使用历史收据代替本次执行。
+
+配置免费 Personal Team 即可，无需购买开发者计划。在 Xcode 登录并创建 Apple Development 证书，选择自己的团队配置自动签名，把 iPhone 连接、配对、开启开发者模式，并在设备“设置 > 通用 > VPN与设备管理”信任开发者 App。首次 profile 可由 Xcode 自动管理；脚本本身不注册账户或购买服务。设置 `SWIPE_DEVICE_UDID` 和 `SWIPE_DEVELOPMENT_TEAM`，或者在忽略的 `.build/device-test.json` 保存 `{"udid":"你的物理设备UDID","team":"10位团队ID"}`。不要提交设备/账户配置或私钥。
+
+真机脚本只运行 `testBundledVisionNegativeControl` 和 `testBundledProductionVisionPipeline`：生成素材随 XCTest 打包，验证 Vision 原生距离、产品归一化/健康检查/归档路径及完整分组、缓存重算一致性。不读写个人图库，不运行收藏、删除或权限 UI 测试。每次保存独立 xcresult 和日志；仍需 F018 补充真实图库/iCloud/性能验收。
+
+2026-09-28 iPhone12 Pro / iOS26.6.2：原生 exact=0、expression=0.3276948、unrelated=0.18718757；产品512px路径 exact=0、near=0.038620003、expression=0.37500426、unrelated=0.5411682。阈值0.12只基于此小型合成正反例集作保守分组，不是相似概率或真实照片泛化保证，最终必须人工比较。

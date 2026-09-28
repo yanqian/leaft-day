@@ -7,3 +7,5 @@ printf '== Harness verification ==\n'
 python3 "$ROOT_DIR/scripts/seed-fixtures.py" --seed 27
 python3 -m unittest discover -s "$ROOT_DIR/tests" -v
 "$ROOT_DIR/scripts/recover-ios.sh"
+printf '== Physical Vision quality gate (bundled images only) ==\n'
+"$ROOT_DIR/scripts/verify-device-vision.sh"

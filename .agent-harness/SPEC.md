@@ -103,3 +103,8 @@ F002 将根 `./init.sh` 改为幂等工程恢复入口：验证依赖、启动�
 - Required capabilities：当前使用 Full Xcode、模拟器及可丢弃素材；F018 需用户提供设备、签名团队和测试 iCloud 账户/素材。
 - Implementation paths：既有 SwipeGo/、tests 与对应文档；feature_list.json 调整验收归属，docs/deferred-device-verification.md 跟踪未执行项。
 - Verification surface：前项本地真实测试 + 受控失败测试明确区分；F018 按 docs/verification.md 真实系统矩阵取证，不允许以本地替代。
+
+
+## 2026-09-28 个人图库范围确认
+
+用户在解释“与家人共用、彼此可增删的iCloud共享照片图库”后明确回答“没有”。当前验收按个人图库执行，首版可继续实现人工复核后的实际删除。仍不支持共享照片图库，不能宣称公开API已自动排除其成员；产品在实际删除前明确个人图库适用范围。该确认不授权自动删除用户私人照片，测试只用明确可丢弃素材，系统确认和恢复边界仍保留。

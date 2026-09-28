@@ -9,6 +9,8 @@ struct ReviewEntryView: View {
     @State private var favoritePendingID: String?
     var onIntent: (ReviewIntent) -> Void = { _ in }
     @State private var loader = PhotoLoader()
+    @State private var similarity = SimilarityModel()
+    @Environment(\.scenePhase) private var scenePhase
     @State private var controls = false
     @State private var router = ReviewGestureRouter()
     @State private var scale: CGFloat = 1
@@ -48,14 +50,17 @@ struct ReviewEntryView: View {
             }
         }
         .statusBarHidden(true)
-        .task(id: review.currentID) { loadCurrent() }
+        .task(id: review.currentID) { loadCurrent(); similarity.start(currentID: review.currentID, assets: review.snapshot.assets) }
+        .onChange(of: scenePhase) { _, phase in
+            if phase == .active { similarity.start(currentID: review.currentID, assets: review.snapshot.assets) } else { similarity.pause() }
+        }
         .task { do { try await pending?.reload() } catch { showFeedback("待删记录暂时无法读取，请重试") } }
         .alert("这张照片已收藏，仍加入待删？", isPresented: Binding(get: { favoritePendingID != nil }, set: { if !$0 { favoritePendingID = nil } })) {
             if let id = favoritePendingID { Button("仍加入待删", role: .destructive) { favoritePendingID = nil; Task { await markPending(id, confirmed: true) } } }
             Button("取消", role: .cancel) { favoritePendingID = nil }
         } message: { Text("只加入待删记录，保留系统收藏。原片要在集中复核后才会删除。") }
         .onChange(of: review.currentID) { _, _ in scale = 1; baseScale = 1; offset = .zero; baseOffset = .zero; router.reset() }
-        .onDisappear { loader.releaseMemory(); router.cancel() }
+        .onDisappear { loader.releaseMemory(); router.cancel(); similarity.pause() }
         .alert("回顾位置未保存", isPresented: Binding(get: { error != nil }, set: { if !$0 { error = nil } })) {
             Button("好", role: .cancel) { error = nil }
         } message: { Text(error ?? "") }
@@ -123,7 +128,7 @@ struct ReviewEntryView: View {
                 LazyVGrid(columns: Array(repeating: GridItem(.flexible()), count: typeSize.isAccessibilitySize ? 2 : 4)) {
                     action(isFavorite ? "已收藏" : "收藏", icon: isFavorite ? "heart.fill" : "heart", kind: .favorite)
                     action(pending?.contains(review.currentID) == true ? "已待删" : "待删", icon: "trash", kind: .pending)
-                    Button("相似", systemImage: "rectangle.on.rectangle") {}.disabled(true)
+                    Button(similarity.groups.isEmpty ? "相似" : "相似 \(similarity.groups.count)", systemImage: "rectangle.on.rectangle") {}.disabled(true)
                     Button("撤销", systemImage: "arrow.uturn.backward") { Task { await undoLastAction() } }.disabled(!canUndo || actionBusy).accessibilityIdentifier("review.undo")
                 }.font(.caption)
             }.padding(14)
