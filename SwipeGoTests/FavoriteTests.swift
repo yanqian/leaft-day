@@ -25,6 +25,7 @@ import Photos
         func setFailure() { fail = true }
     }
     actor CompletionFailStore: LocalStateRepository {
+        func saveComparison(_ values: [PendingIntent], keeping: [String]) async throws { throw LocalStateError.readOnly }
         let base: LocalStateStore
         init(_ base: LocalStateStore) { self.base = base }
         func saveSession(_ value: SessionState) async throws { try await base.saveSession(value) }

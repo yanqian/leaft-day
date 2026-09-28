@@ -96,3 +96,7 @@ F012首次UI回归发现系统confirmationDialog把提示呈现为popover并省�
 真机脚本只运行 `testBundledVisionNegativeControl` 和 `testBundledProductionVisionPipeline`：生成素材随 XCTest 打包，验证 Vision 原生距离、产品归一化/健康检查/归档路径及完整分组、缓存重算一致性。不读写个人图库，不运行收藏、删除或权限 UI 测试。每次保存独立 xcresult 和日志；仍需 F018 补充真实图库/iCloud/性能验收。
 
 2026-09-28 iPhone12 Pro / iOS26.6.2：原生 exact=0、expression=0.3276948、unrelated=0.18718757；产品512px路径 exact=0、near=0.038620003、expression=0.37500426、unrelated=0.5411682。阈值0.12只基于此小型合成正反例集作保守分组，不是相似概率或真实照片泛化保证，最终必须人工比较。
+
+## F014 比较验证
+
+ComparisonTests使用真实磁盘SwiftData：多项保留/重开后上下文、全部保留撤回、空保留/收藏/资产变化拒绝、只读保存失败保持旧记录、旧JSON兼容。ComparisonUITests在模拟器生成素材上验证缩放、多选、零保留禁用、保存、跳过和全部保留；不声称这证明模拟器Vision可用。实际UI截图为docs/design/F014-comparison.png。比较素材仅为程序绘制的山景，不是用户照片。

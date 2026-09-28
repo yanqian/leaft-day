@@ -77,6 +77,23 @@ actor LocalStateStore: ModelActor, LocalStateRepository {
             .sorted { ($0.markedAt, $0.assetID) < ($1.markedAt, $1.assetID) }
     }
 
+    func saveComparison(_ values: [PendingIntent], keeping: [String]) throws {
+        let targets = values.map(\.assetID)
+        guard !keeping.isEmpty, keeping.allSatisfy({ !$0.isEmpty }), Set(keeping).count == keeping.count,
+              Set(targets).count == targets.count, Set(targets).isDisjoint(with: keeping),
+              values.allSatisfy({ !$0.assetID.isEmpty && $0.comparison?.keptIDs == keeping }) else { throw LocalStateError.invalidAsset }
+        let encoded = try values.map { ($0.assetID, try JSONEncoder().encode($0)) }
+        try transaction {
+            let rows = try context.fetch(FetchDescriptor<IntentSchemaV1.Pending>())
+            // An explicit keep choice retracts earlier pending intent in the same transaction.
+            for row in rows where keeping.contains(row.assetID) { context.delete(row) }
+            for (id, payload) in encoded {
+                if let row = rows.first(where: { $0.assetID == id }) { row.payload = payload }
+                else { context.insert(IntentSchemaV1.Pending(assetID: id, payload: payload)) }
+            }
+        }
+    }
+
     func removePending(assetID: String) throws {
         try transaction {
             let rows = try context.fetch(FetchDescriptor<IntentSchemaV1.Pending>(predicate: #Predicate { $0.assetID == assetID }))

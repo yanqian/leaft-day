@@ -2,7 +2,7 @@ import Foundation
 import Observation
 
 @MainActor @Observable final class PendingCoordinator {
-    enum Failure: Error { case busy, confirmFavorite, noUndo, changed }
+    enum Failure: Error { case busy, confirmFavorite, noUndo, changed, invalidSelection }
     private(set) var items: [PendingIntent] = []
     private(set) var undoRecord: PendingIntent?
     private(set) var isBusy = false
@@ -35,5 +35,29 @@ import Observation
         }
         try await store.removePending(assetID: record.assetID)
         items = current.filter { $0.assetID != record.assetID }; undoRecord = nil
+    }
+    @discardableResult
+    func compare(_ assets: [PhotoAssetSnapshot], keeping: Set<String>) async throws -> Int {
+        guard !isBusy else { throw Failure.busy }
+        let ids = assets.map(\.id)
+        guard assets.count >= 2, Set(ids).count == ids.count, !keeping.isEmpty,
+              keeping.isSubset(of: Set(ids)), assets.allSatisfy({ $0.kind == .photo }) else { throw Failure.invalidSelection }
+        isBusy = true; defer { isBusy = false }
+        for expected in assets {
+            let latest = try await reader.asset(id: expected.id)
+            guard latest == expected else { throw Failure.changed }
+            guard !latest.isFavorite || keeping.contains(latest.id) else { throw Failure.confirmFavorite }
+        }
+        let kept = ids.filter { keeping.contains($0) }
+        let context = ComparisonContext(assetIDs: ids, keptIDs: kept)
+        let groupID = UUID().uuidString; let date = Date.now
+        let values = ids.filter { !keeping.contains($0) }.map {
+            PendingIntent(assetID: $0, groupID: groupID, markedAt: date, comparison: context)
+        }
+        let before = try await store.pending()
+        try await store.saveComparison(values, keeping: kept)
+        undoRecord = nil
+        items = before.filter { !ids.contains($0.assetID) } + values
+        return values.count
     }
 }

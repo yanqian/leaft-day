@@ -11,6 +11,12 @@ struct PendingIntent: Codable, Sendable, Equatable {
     var assetID: String
     var groupID: String?
     var markedAt: Date
+    var comparison: ComparisonContext? = nil
+}
+
+struct ComparisonContext: Codable, Sendable, Equatable {
+    let assetIDs: [String]
+    let keptIDs: [String]
 }
 
 struct OperationState: Codable, Sendable, Equatable {
@@ -28,6 +34,7 @@ protocol LocalStateRepository: Sendable {
     func latestSession() async throws -> SessionState?
     func session(id: UUID) async throws -> SessionState?
     func markPending(_ value: PendingIntent) async throws
+    func saveComparison(_ values: [PendingIntent], keeping: [String]) async throws
     func pending() async throws -> [PendingIntent]
     func removePending(assetID: String) async throws
     func saveOperation(_ value: OperationState) async throws

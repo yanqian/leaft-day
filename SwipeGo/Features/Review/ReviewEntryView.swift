@@ -10,6 +10,12 @@ struct ReviewEntryView: View {
     var onIntent: (ReviewIntent) -> Void = { _ in }
     @State private var loader = PhotoLoader()
     @State private var similarity = SimilarityModel()
+    private struct ComparisonPresentation: Identifiable {
+        let id = UUID()
+        let groups: [SimilarityGroup]
+        let assets: [PhotoAssetSnapshot]
+    }
+    @State private var comparison: ComparisonPresentation?
     @Environment(\.scenePhase) private var scenePhase
     @State private var controls = false
     @State private var router = ReviewGestureRouter()
@@ -61,6 +67,9 @@ struct ReviewEntryView: View {
         } message: { Text("只加入待删记录，保留系统收藏。原片要在集中复核后才会删除。") }
         .onChange(of: review.currentID) { _, _ in scale = 1; baseScale = 1; offset = .zero; baseOffset = .zero; router.reset() }
         .onDisappear { loader.releaseMemory(); router.cancel(); similarity.pause() }
+        .sheet(item: $comparison) { selection in
+            if let pending { ComparisonView(groups: selection.groups, assets: selection.assets, pending: pending) }
+        }
         .alert("回顾位置未保存", isPresented: Binding(get: { error != nil }, set: { if !$0 { error = nil } })) {
             Button("好", role: .cancel) { error = nil }
         } message: { Text(error ?? "") }
@@ -128,13 +137,23 @@ struct ReviewEntryView: View {
                 LazyVGrid(columns: Array(repeating: GridItem(.flexible()), count: typeSize.isAccessibilitySize ? 2 : 4)) {
                     action(isFavorite ? "已收藏" : "收藏", icon: isFavorite ? "heart.fill" : "heart", kind: .favorite)
                     action(pending?.contains(review.currentID) == true ? "已待删" : "待删", icon: "trash", kind: .pending)
-                    Button(similarity.groups.isEmpty ? "相似" : "相似 \(similarity.groups.count)", systemImage: "rectangle.on.rectangle") {}.disabled(true)
+                    Button(similarityLabel, systemImage: "rectangle.on.rectangle") {
+                        comparison = ComparisonPresentation(groups: similarity.groups, assets: review.snapshot.assets)
+                    }.disabled(similarity.groups.isEmpty || pending == nil || actionBusy).accessibilityIdentifier("review.similar")
                     Button("撤销", systemImage: "arrow.uturn.backward") { Task { await undoLastAction() } }.disabled(!canUndo || actionBusy).accessibilityIdentifier("review.undo")
                 }.font(.caption)
             }.padding(14)
         }.scrollIndicators(.hidden).glassPanel(radius: 26)
     }
     private var isFavorite: Bool { if case .available(let asset) = review.current { return asset.isFavorite }; return false }
+    private var similarityLabel: String {
+        switch similarity.state {
+        case .analyzing: "分析中"
+        case .failed: "分析不可用"
+        case .ready: similarity.groups.isEmpty ? "暂无相似" : "相似 \(similarity.groups.count)"
+        default: "相似"
+        }
+    }
     private var isPhoto: Bool { if case .available(let asset) = review.current { return asset.kind == .photo }; return false }
     private func action(_ title: String, icon: String, kind: ReviewIntent.Kind) -> some View {
         Button { if let id = review.currentID { emit(ReviewIntent(assetID: id, kind: kind)) } } label: {

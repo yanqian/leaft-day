@@ -341,9 +341,9 @@
         "默认不建议删除收藏项；建议理由仅来自验证过的分析，否则只分组不编造理由。",
         "确认选择后仅把其余明确项目加入待删；不允许无保留项的误触批量处理；未分析/失败可返回回顾。"
       ],
-      "passes": false,
-      "status": "todo",
-      "attempts": 0,
+      "passes": true,
+      "status": "done",
+      "attempts": 1,
       "last_error": "",
       "priority": "P0",
       "depends_on": [
