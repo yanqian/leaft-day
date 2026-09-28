@@ -5,13 +5,15 @@ import SwiftUI
     let review: ReviewSession
     let favorites: FavoriteCoordinator
     let pending: PendingCoordinator
+    let reconciliation: ReconciliationCoordinator
+    var presentingReconciliation = false
     let timeline = ReviewTimeline()
     let cache = PhotoMemoryCache(byteLimit: 12 * 1024 * 1024, countLimit: 6)
     var presentingReview = false
     var presentingDeletionReview = false
     var pendingReadError = false
     var message: String?
-    init(store: any LocalStateRepository) { self.store = store; review = ReviewSession(store: store); favorites = FavoriteCoordinator(store: store); pending = PendingCoordinator(store: store) }
+    init(store: any LocalStateRepository) { self.store = store; review = ReviewSession(store: store); favorites = FavoriteCoordinator(store: store); pending = PendingCoordinator(store: store); reconciliation = ReconciliationCoordinator(store: store) }
     func reloadPending() async {
         do { try await pending.reload(); pendingReadError = false } catch { pendingReadError = true }
     }
@@ -46,6 +48,7 @@ struct HomeView: View {
     var storeOverride: (any LocalStateRepository)? = nil
     @State private var model: HomeModel?
     @State private var storageError: String?
+    @Environment(\.scenePhase) private var scenePhase
     @Environment(\.dynamicTypeSize) private var typeSize
     var body: some View {
         ZStack {
@@ -74,6 +77,12 @@ struct HomeView: View {
                             Label(pendingTitle(model), systemImage: "tray").font(.footnote).foregroundStyle(.secondary)
                                 .frame(minWidth: 44, minHeight: 44).contentShape(Rectangle())
                         }.buttonStyle(.glass).controlSize(.large).accessibilityIdentifier("home.pending"); Spacer() }
+                        if !model.reconciliation.records.isEmpty || model.reconciliation.error != nil {
+                            Button { model.presentingReconciliation = true } label: {
+                                Text(model.reconciliation.error == nil ? "有 \(model.reconciliation.records.count) 项操作待核对" : "操作记录需要核对")
+                                    .font(.footnote).frame(minHeight: 44).contentShape(Rectangle())
+                            }.buttonStyle(.glass).accessibilityIdentifier("home.reconciliation")
+                        }
                     } else if let storageError {
                         Text(storageError).foregroundStyle(.secondary)
                         Button("重试") { Task { await prepare() } }.buttonStyle(.glass)
@@ -85,12 +94,16 @@ struct HomeView: View {
             }.accessibilityIdentifier("home.scroll")
         }
         .task { await prepare() }
-        .onChange(of: snapshot.assets) { _, _ in model?.review.updateLibrary(snapshot) }
-        .onChange(of: snapshot.permission) { _, _ in model?.review.updateLibrary(snapshot) }
-        .fullScreenCover(isPresented: Binding(get: { model?.presentingReview ?? false }, set: { model?.presentingReview = $0 }), onDismiss: { Task { await model?.reloadPending() } }) {
+        .onChange(of: snapshot.assets) { _, _ in model?.review.updateLibrary(snapshot); Task { await model?.reconciliation.refresh(); await model?.reloadPending() } }
+        .onChange(of: snapshot.permission) { _, _ in model?.review.updateLibrary(snapshot); Task { await model?.reconciliation.refresh(); await model?.reloadPending() } }
+        .onChange(of: scenePhase) { _, phase in if phase == .active { Task { await model?.reconciliation.refresh(); await model?.reloadPending() } } }
+        .sheet(isPresented: Binding(get: { model?.presentingReconciliation ?? false }, set: { model?.presentingReconciliation = $0 })) {
+            if let model { ReconciliationView(model: model.reconciliation) }
+        }
+        .fullScreenCover(isPresented: Binding(get: { model?.presentingReview ?? false }, set: { model?.presentingReview = $0 }), onDismiss: { Task { await model?.reloadPending(); await model?.reconciliation.refresh() } }) {
             if let model { ReviewEntryView(review: model.review, favorites: model.favorites, pending: model.pending) }
         }
-        .sheet(isPresented: Binding(get: { model?.presentingDeletionReview ?? false }, set: { model?.presentingDeletionReview = $0 }), onDismiss: { Task { await model?.reloadPending() } }) {
+        .sheet(isPresented: Binding(get: { model?.presentingDeletionReview ?? false }, set: { model?.presentingDeletionReview = $0 }), onDismiss: { Task { await model?.reloadPending(); await model?.reconciliation.refresh() } }) {
             if let model { DeletionReviewView(model: DeletionReviewModel(store: model.store), snapshot: snapshot) }
         }
         .alert("回顾提示", isPresented: Binding(get: { model?.message != nil }, set: { if !$0 { model?.message = nil } })) {
@@ -105,6 +118,7 @@ struct HomeView: View {
             created.review.updateLibrary(snapshot)
             try await created.review.restore()
             await created.reloadPending()
+            await created.reconciliation.refresh()
             model = created; storageError = nil
         } catch { storageError = "回顾记录暂时无法读取，已有记录会保留。" }
     }

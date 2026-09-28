@@ -420,9 +420,9 @@
         "系统成功与本地保存之间退出时可识别未完成操作；资源不可见不被直接视为本次删除成功。",
         "未知结果不自动重试删除；保留待核对记录并重新复核；测试取消、崩溃、权限缩减与外部变更。"
       ],
-      "passes": false,
-      "status": "todo",
-      "attempts": 0,
+      "passes": true,
+      "status": "done",
+      "attempts": 1,
       "last_error": "",
       "priority": "P0",
       "depends_on": [

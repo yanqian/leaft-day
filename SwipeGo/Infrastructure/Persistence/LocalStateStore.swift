@@ -130,7 +130,7 @@ import SwiftData
         let payload = try JSONEncoder().encode(operation)
         try transaction {
             let existing = try operations()
-            guard !existing.contains(where: { $0.id == frozen.id || ($0.kind == .deletion && [.prepared, .submitted, .needsReview].contains($0.phase) && !Set($0.targetIDs).isDisjoint(with: targets)) }) else { throw DeletionError.alreadySubmitted }
+            guard !existing.contains(where: { $0.id == frozen.id || ($0.kind == .deletion && $0.requiresReview && !Set($0.targetIDs).isDisjoint(with: targets)) }) else { throw DeletionError.alreadySubmitted }
             let current = try pending()
             guard frozen.intents.allSatisfy({ current.contains($0) }),
                   Set(current.flatMap { $0.comparison?.keptIDs ?? [] }).isDisjoint(with: targets),
@@ -157,6 +157,20 @@ import SwiftData
             }
             row.payload = payload
         }
+    }
+
+    func replaceOperation(ifMatching expected: OperationState, with next: OperationState) throws -> Bool {
+        guard expected.id == next.id, expected.kind == next.kind, expected.targetIDs == next.targetIDs,
+              expected.deletion == next.deletion else { throw LocalStateError.invalidOperation }
+        let id = expected.id
+        var replaced = false
+        try transaction {
+            if let row = try context.fetch(FetchDescriptor<IntentSchemaV1.Operation>(predicate: #Predicate { $0.id == id })).first,
+               try JSONDecoder().decode(OperationState.self, from: row.payload) == expected {
+                row.payload = try JSONEncoder().encode(next); replaced = true
+            }
+        }
+        return replaced
     }
 
     func operations() throws -> [OperationState] {

@@ -22,6 +22,7 @@ struct FrozenDeletion: Identifiable, Codable, Equatable, Sendable {
     private(set) var rows: [DeletionReviewRow] = []
     private(set) var isBusy = false
     let deletion: DeletionCoordinator
+    private(set) var unresolvedCount = 0
     var error: String?
     var frozen: FrozenDeletion?
     @ObservationIgnored let store: any LocalStateRepository
@@ -51,7 +52,7 @@ struct FrozenDeletion: Identifiable, Codable, Equatable, Sendable {
         if let frozen, deletion.lastAttemptID == frozen.id { return }
         frozen = nil
         isBusy = true; defer { isBusy = false }
-        do { rows = try await readRows(); error = nil }
+        do { rows = try await readRows(); unresolvedCount = try await store.operations().filter { $0.kind == .deletion && $0.requiresReview }.count; error = nil }
         catch { self.error = "待删记录暂时无法读取，请重试。" }
     }
     func retract(_ intent: PendingIntent) async {
@@ -60,7 +61,7 @@ struct FrozenDeletion: Identifiable, Codable, Equatable, Sendable {
         do {
             try await store.removePending(ifMatching: intent)
             rows.removeAll { $0.intent == intent }
-            do { rows = try await readRows(); error = nil }
+            do { rows = try await readRows(); unresolvedCount = try await store.operations().filter { $0.kind == .deletion && $0.requiresReview }.count; error = nil }
             catch { self.error = "已撤回这条标记，其余记录需要刷新核对。" }
         } catch { self.error = "记录可能已变化，撤回未完成，请刷新核对。" }
     }
@@ -68,6 +69,8 @@ struct FrozenDeletion: Identifiable, Codable, Equatable, Sendable {
         guard !isBusy else { return }; isBusy = true; defer { isBusy = false }
         frozen = nil
         do {
+            let unresolved = try await store.operations().filter { $0.kind == .deletion && $0.requiresReview }
+            guard !unresolved.contains(where: { !Set($0.targetIDs).isDisjoint(with: rows.map(\.id)) }) else { throw Failure.changed }
             let scope = await reader.accessScope()
             let latest = try await readRows()
             guard scope.permission.canRead, await reader.accessScope() == scope else { throw Failure.changed }

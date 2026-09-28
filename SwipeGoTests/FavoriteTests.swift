@@ -26,6 +26,7 @@ import Photos
         func setFailure() { fail = true }
     }
     actor CompletionFailStore: LocalStateRepository {
+        func replaceOperation(ifMatching expected: OperationState, with next: OperationState) async throws -> Bool { try await base.replaceOperation(ifMatching: expected, with: next) }
         func prepareDeletion(_ frozen: FrozenDeletion) async throws -> OperationState { try await base.prepareDeletion(frozen) }
         func completeDeletion(_ operation: OperationState) async throws { throw CocoaError(.fileWriteNoPermission) }
         func removePending(ifMatching expected: PendingIntent) async throws { throw LocalStateError.readOnly }

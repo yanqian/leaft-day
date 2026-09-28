@@ -20,7 +20,9 @@ protocol DeletionWriting: PhotoAssetReading {
     init(store: any LocalStateRepository, writer: any DeletionWriting = NativeDeletionWriter()) { self.store = store; self.writer = writer }
     func execute(_ frozen: FrozenDeletion) async throws -> Result {
         guard !isBusy else { throw DeletionError.busy }
-        isBusy = true; lastAttemptID = frozen.id; defer { isBusy = false }
+        isBusy = true; lastAttemptID = frozen.id
+        OperationActivity.shared.ids.insert(frozen.id)
+        defer { isBusy = false; OperationActivity.shared.ids.remove(frozen.id) }
         guard frozen.scope.permission.canRead, await writer.accessScope() == frozen.scope else { throw DeletionError.changed }
         for expected in frozen.targets + frozen.keepers {
             guard try await writer.asset(id: expected.id) == expected else { throw DeletionError.changed }

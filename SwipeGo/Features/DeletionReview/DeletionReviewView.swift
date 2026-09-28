@@ -5,6 +5,7 @@ struct DeletionReviewView: View {
     let snapshot: LibrarySnapshot
     @Environment(\.dismiss) private var dismiss
     @Environment(\.scenePhase) private var scenePhase
+    @State private var showReconciliation = false
     @State private var preview: PhotoAssetSnapshot?
     private var groups: [[DeletionReviewRow]] {
         var ordered: [String] = []; var values: [String: [DeletionReviewRow]] = [:]
@@ -23,6 +24,10 @@ struct DeletionReviewView: View {
                     Text("待删 \(model.readyCount) 项" + (model.needsReviewCount > 0 ? " · 待核对 \(model.needsReviewCount) 项" : ""))
                         .accessibilityIdentifier("deletion.count")
                     Text("标记还没有删除原片，随时可以撤回。").foregroundStyle(.secondary)
+                    if model.unresolvedCount > 0 {
+                        Text("有未完成的删除操作，请先核对系统当前状态。不会自动重试。")
+                        Button("核对操作记录") { showReconciliation = true }.buttonStyle(.glass).accessibilityIdentifier("deletion.reconcile")
+                    }
                     if model.isBusy { ProgressView("正在核对") }
                     if let error = model.error { Text(error).foregroundStyle(.red); Button("刷新") { Task { await model.refresh() } } }
                     if model.rows.isEmpty && !model.isBusy && model.error == nil { ContentUnavailableView("没有待删记录", systemImage: "tray") }
@@ -62,6 +67,9 @@ struct DeletionReviewView: View {
                 .onChange(of: snapshot.assets) { _, _ in Task { await model.refresh() } }
                 .onChange(of: snapshot.permission) { _, _ in Task { await model.refresh() } }
                 .onChange(of: scenePhase) { _, value in if value == .active { Task { await model.refresh() } } }
+                .sheet(isPresented: $showReconciliation, onDismiss: { Task { await model.refresh() } }) {
+                    ReconciliationView(model: ReconciliationCoordinator(store: model.store))
+                }
                 .sheet(item: $model.frozen, onDismiss: { Task { await model.refresh() } }) { frozen in
                     DeletionConfirmationView(frozen: frozen, coordinator: model.deletion) { model.frozen = nil; Task { await model.refresh() } }
                 }

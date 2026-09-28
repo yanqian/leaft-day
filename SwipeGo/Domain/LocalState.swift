@@ -25,6 +25,8 @@ struct OperationState: Codable, Sendable, Equatable {
     enum DeletionOutcome: String, Codable, Sendable { case success, cancelled, notSubmitted, unknown }
     var deletion: FrozenDeletion? = nil
     var deletionOutcome: DeletionOutcome? = nil
+    var reviewedAt: Date? = nil
+    var requiresReview: Bool { reviewedAt == nil && [.prepared, .submitted, .needsReview].contains(phase) }
     var id: UUID
     var kind: Kind
     var targetIDs: [String]
@@ -44,6 +46,7 @@ protocol LocalStateRepository: Sendable {
     func saveOperation(_ value: OperationState) async throws
     func prepareDeletion(_ frozen: FrozenDeletion) async throws -> OperationState
     func completeDeletion(_ operation: OperationState) async throws
+    func replaceOperation(ifMatching expected: OperationState, with next: OperationState) async throws -> Bool
     func operations() async throws -> [OperationState]
 }
 

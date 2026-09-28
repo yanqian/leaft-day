@@ -172,3 +172,9 @@ FrozenDeletion额外保存授权范围（limited时含可访问ID）与完整目
 成功回执与匹配意图清理同一SwiftData事务，后来新增/替换记录不被误清。取消记录failed/cancelled并保留意图；无法确认的错误记录needsReview；系统成功后本地提交失败仍留submitted待核对，不重试。旧Operation JSON的新增载荷均可选。确认页需明确个人图库确认，执行期间不可关闭、重复执行，系统返回后保留结果直至用户返回。此实现无法从公共API鉴别共享照片图库成员，不宣称自动排除。
 
 F016完整回归曾在跨actor故障注入时捕获工作ModelContext的Unbinding警告（.build/test-run.JDjW8w），即使断言通过也判失败。改用MainActor元数据存储，保留异步Sendable接口、事务及失败重建；照片像素、下载和Vision不进入此存储。首版意图数据量较小，但大量历史操作读取/编码可能增加主线程工作，F018必须记录规模/延迟，不据此宣称性能已通过。
+
+## F017：图库变化和未完成操作核对
+
+LibraryAccessModel观察真实PhotoKit变更并在前台恢复时重新读取，generation拒绝迟到快照；Home同步会话与待删事实。ReviewEntry同时监听资产内容/权限变化，重新加载照片并重启相似分析，视频修改时间变化时重建播放器。相似特征缓存仍按修改时间/尺寸/算法键失效，旧任务不能发布过时分组。
+
+ReconciliationCoordinator在启动、图库变化、前台恢复或操作页退出时读取日志；进程内OperationActivity排除正在执行的收藏/删除，重启后该集合为空。遗留prepared/submitted转needsReview，使用整条旧记录比较后替换，不能覆盖后来成功回执。可访问资产只显示系统当前事实，不证明原操作成功；缺失不清除意图、不重试系统操作。用户结束提示只持久化reviewedAt，原phase/outcome仍保留为未知；如需再次删除，必须回到待删页重新冻结/确认。新的reviewedAt为可选JSON字段，兼容旧记录。核对过程没有删除接口能力。

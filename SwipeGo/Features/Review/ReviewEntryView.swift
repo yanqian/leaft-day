@@ -57,6 +57,8 @@ struct ReviewEntryView: View {
         }
         .statusBarHidden(true)
         .task(id: review.currentID) { loadCurrent(); similarity.start(currentID: review.currentID, assets: review.snapshot.assets) }
+        .onChange(of: review.snapshot.assets) { _, _ in loadCurrent(); similarity.start(currentID: review.currentID, assets: review.snapshot.assets) }
+        .onChange(of: review.snapshot.permission) { _, _ in loadCurrent(); similarity.start(currentID: review.currentID, assets: review.snapshot.assets) }
         .onChange(of: scenePhase) { _, phase in
             if phase == .active { similarity.start(currentID: review.currentID, assets: review.snapshot.assets) } else { similarity.pause() }
         }
@@ -80,6 +82,7 @@ struct ReviewEntryView: View {
             if asset.kind == .video {
                 VideoReviewView(assetID: asset.id, showControls: controls,
                                 onMediaDrag: { finish($0) }, onMediaDragChanged: { update($0) })
+                    .id(asset.modificationDate)
                     .padding(.bottom, controls ? toolbarHeight + 24 : 0)
             } else {
                 ZStack {

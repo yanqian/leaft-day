@@ -31,6 +31,8 @@ import Observation
     }
     private func change(_ before: PhotoAssetSnapshot, to value: Bool) async throws -> Result {
         var operation = OperationState(id: UUID(), kind: .favorite, targetIDs: [before.id], phase: .prepared, updatedAt: .now)
+        OperationActivity.shared.ids.insert(operation.id)
+        defer { OperationActivity.shared.ids.remove(operation.id) }
         try await store.saveOperation(operation)
         operation.phase = .submitted; operation.updatedAt = .now
         try await store.saveOperation(operation)
