@@ -89,7 +89,7 @@ F012首次UI回归发现系统confirmationDialog把提示呈现为popover并省�
 
 ## F013 Vision 真机必需验证
 
-本机 iOS26.0/26.5 模拟器的原生特征计算曾把不同图片输出为近乎相同向量。模拟器测试验证 PhotoKit 读取与运行时拒绝路径；质量正反例编译到真机测试中，不能用模拟器通过替代。根 `./init.sh` 在模拟器完整测试之后强制执行 `scripts/verify-device-vision.sh`，没有真机配置、连接、签名或测试失败均非零退出，不使用历史收据代替本次执行。
+本机 iOS26.0/26.5 模拟器的原生特征计算曾把不同图片输出为近乎相同向量。模拟器测试验证 PhotoKit 读取与运行时拒绝路径；质量正反例编译到真机测试中，不能用模拟器通过替代。2026-09-28用户明确要求断开手机继续开发。根 `./init.sh` 默认完整模拟器验证并输出 `DEVICE_VERIFICATION_DEFERRED`；`SWIPE_VERIFICATION_MODE=device ./init.sh` 在模拟器完整测试之后强制执行 `scripts/verify-device-vision.sh`，没有真机配置、连接、签名或测试失败均非零退出，不使用历史收据代替本次执行。F018仍要求真实设备/iCloud证据。
 
 配置免费 Personal Team 即可，无需购买开发者计划。在 Xcode 登录并创建 Apple Development 证书，选择自己的团队配置自动签名，把 iPhone 连接、配对、开启开发者模式，并在设备“设置 > 通用 > VPN与设备管理”信任开发者 App。首次 profile 可由 Xcode 自动管理；脚本本身不注册账户或购买服务。设置 `SWIPE_DEVICE_UDID` 和 `SWIPE_DEVELOPMENT_TEAM`，或者在忽略的 `.build/device-test.json` 保存 `{"udid":"你的物理设备UDID","team":"10位团队ID"}`。不要提交设备/账户配置或私钥。
 
@@ -100,3 +100,7 @@ F012首次UI回归发现系统confirmationDialog把提示呈现为popover并省�
 ## F014 比较验证
 
 ComparisonTests使用真实磁盘SwiftData：多项保留/重开后上下文、全部保留撤回、空保留/收藏/资产变化拒绝、只读保存失败保持旧记录、旧JSON兼容。ComparisonUITests在模拟器生成素材上验证缩放、多选、零保留禁用、保存、跳过和全部保留；不声称这证明模拟器Vision可用。实际UI截图为docs/design/F014-comparison.png。比较素材仅为程序绘制的山景，不是用户照片。
+
+## F015 复核验证
+
+DeletionReviewTests验证不可访问目标/保留项保持原记录、保留冲突禁止确认、撤回原记录匹配和固定清单不吸收新增意图。DeletionReviewUITests使用模拟器生成素材及独立临时store，验证首页真实计数、同组保留对照、视频播放、撤回缺失标记、固定确认清单、取消返回及计数更新。测试只修改本地意图，不删除Photos素材。XCTest保留复核页及最终确认页截图附件。

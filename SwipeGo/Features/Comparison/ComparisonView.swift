@@ -93,8 +93,9 @@ struct ComparisonPhoto: View {
     }
 }
 
-private struct ComparisonZoomView: View {
+struct ComparisonZoomView: View {
     let asset: PhotoAssetSnapshot
+    var closeTitle = "返回比较"
     @Environment(\.dismiss) private var dismiss
     @State private var scale: CGFloat = 1
     @State private var base: CGFloat = 1
@@ -109,7 +110,7 @@ private struct ComparisonZoomView: View {
             HStack {
                 Button(scale == 1 ? "放大" : "还原") { scale = scale == 1 ? 2 : 1; base = scale; offset = .zero; origin = .zero }
                     .accessibilityIdentifier("comparison.zoom-toggle")
-                Button("返回比较") { dismiss() }.accessibilityIdentifier("comparison.zoom-close")
+                Button(closeTitle) { dismiss() }.accessibilityIdentifier("comparison.zoom-close")
             }.buttonStyle(.glass).padding(16).glassPanel().padding(20)
         }.clipped().statusBarHidden(true)
     }

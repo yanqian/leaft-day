@@ -113,6 +113,16 @@ actor LocalStateStore: ModelActor, LocalStateRepository {
         }
     }
 
+    func removePending(ifMatching expected: PendingIntent) throws {
+        let id = expected.assetID
+        try transaction {
+            let rows = try context.fetch(FetchDescriptor<IntentSchemaV1.Pending>(predicate: #Predicate { $0.assetID == id }))
+            guard let row = rows.first,
+                  try JSONDecoder().decode(PendingIntent.self, from: row.payload) == expected else { throw LocalStateError.invalidAsset }
+            context.delete(row)
+        }
+    }
+
     func operations() throws -> [OperationState] {
         try context.fetch(FetchDescriptor<IntentSchemaV1.Operation>())
             .map { try JSONDecoder().decode(OperationState.self, from: $0.payload) }

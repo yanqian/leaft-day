@@ -1,14 +1,20 @@
 import SwiftUI
 
 @MainActor @Observable final class HomeModel {
+    let store: any LocalStateRepository
     let review: ReviewSession
     let favorites: FavoriteCoordinator
     let pending: PendingCoordinator
     let timeline = ReviewTimeline()
     let cache = PhotoMemoryCache(byteLimit: 12 * 1024 * 1024, countLimit: 6)
     var presentingReview = false
+    var presentingDeletionReview = false
+    var pendingReadError = false
     var message: String?
-    init(store: any LocalStateRepository) { review = ReviewSession(store: store); favorites = FavoriteCoordinator(store: store); pending = PendingCoordinator(store: store) }
+    init(store: any LocalStateRepository) { self.store = store; review = ReviewSession(store: store); favorites = FavoriteCoordinator(store: store); pending = PendingCoordinator(store: store) }
+    func reloadPending() async {
+        do { try await pending.reload(); pendingReadError = false } catch { pendingReadError = true }
+    }
     var segments: [ReviewSegment] { timeline.segments(in: review.snapshot.assets) }
     var anniversary: ReviewSegment? { timeline.lastYearToday(in: review.snapshot.assets) }
     var initialSegment: ReviewSegment? { segments.last(where: { $0.start != nil }) ?? segments.last }
@@ -37,6 +43,7 @@ import SwiftUI
 struct HomeView: View {
     let snapshot: LibrarySnapshot
     let settings: () -> Void
+    var storeOverride: (any LocalStateRepository)? = nil
     @State private var model: HomeModel?
     @State private var storageError: String?
     @Environment(\.dynamicTypeSize) private var typeSize
@@ -63,9 +70,10 @@ struct HomeView: View {
                         if typeSize.isAccessibilitySize {
                             anniversary(model); random(model)
                         } else { HStack(alignment: .top, spacing: 12) { anniversary(model); random(model) } }
-                        HStack { Spacer(); Label("待删记录", systemImage: "tray").font(.footnote).foregroundStyle(.secondary).padding(12).glassPanel(); Spacer() }
-                            .accessibilityHint("待删复核入口")
-                        // F015 supplies the actual count and review navigation. Never fabricate a count.
+                        HStack { Spacer(); Button { model.presentingDeletionReview = true } label: {
+                            Label(pendingTitle(model), systemImage: "tray").font(.footnote).foregroundStyle(.secondary)
+                                .frame(minWidth: 44, minHeight: 44).contentShape(Rectangle())
+                        }.buttonStyle(.glass).controlSize(.large).accessibilityIdentifier("home.pending"); Spacer() }
                     } else if let storageError {
                         Text(storageError).foregroundStyle(.secondary)
                         Button("重试") { Task { await prepare() } }.buttonStyle(.glass)
@@ -79,8 +87,11 @@ struct HomeView: View {
         .task { await prepare() }
         .onChange(of: snapshot.assets) { _, _ in model?.review.updateLibrary(snapshot) }
         .onChange(of: snapshot.permission) { _, _ in model?.review.updateLibrary(snapshot) }
-        .fullScreenCover(isPresented: Binding(get: { model?.presentingReview ?? false }, set: { model?.presentingReview = $0 })) {
+        .fullScreenCover(isPresented: Binding(get: { model?.presentingReview ?? false }, set: { model?.presentingReview = $0 }), onDismiss: { Task { await model?.reloadPending() } }) {
             if let model { ReviewEntryView(review: model.review, favorites: model.favorites, pending: model.pending) }
+        }
+        .sheet(isPresented: Binding(get: { model?.presentingDeletionReview ?? false }, set: { model?.presentingDeletionReview = $0 }), onDismiss: { Task { await model?.reloadPending() } }) {
+            if let model { DeletionReviewView(model: DeletionReviewModel(store: model.store), snapshot: snapshot) }
         }
         .alert("回顾提示", isPresented: Binding(get: { model?.message != nil }, set: { if !$0 { model?.message = nil } })) {
             Button("好", role: .cancel) { model?.message = nil }
@@ -90,11 +101,18 @@ struct HomeView: View {
         guard model == nil else { model?.review.updateLibrary(snapshot); return }
         do {
             let paths = try LocalStoragePaths.application()
-            let created = HomeModel(store: try LocalStateStore(url: paths.intentStore))
+            let created = HomeModel(store: try storeOverride ?? LocalStateStore(url: paths.intentStore))
             created.review.updateLibrary(snapshot)
             try await created.review.restore()
+            await created.reloadPending()
             model = created; storageError = nil
         } catch { storageError = "回顾记录暂时无法读取，已有记录会保留。" }
+    }
+    private func pendingTitle(_ model: HomeModel) -> String {
+        if model.pendingReadError { return "待删记录 · 读取失败" }
+        let ready = DeletionReviewModel.readyCount(model.pending.items, assets: snapshot.assets)
+        let unknown = model.pending.items.count - ready
+        return "待删 \(ready) 项" + (unknown > 0 ? " · 待核对 \(unknown) 项" : "")
     }
     private func hero(_ model: HomeModel) -> some View {
         Button { Task { await model.resume() } } label: {

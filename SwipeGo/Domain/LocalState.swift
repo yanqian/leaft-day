@@ -37,6 +37,7 @@ protocol LocalStateRepository: Sendable {
     func saveComparison(_ values: [PendingIntent], keeping: [String]) async throws
     func pending() async throws -> [PendingIntent]
     func removePending(assetID: String) async throws
+    func removePending(ifMatching expected: PendingIntent) async throws
     func saveOperation(_ value: OperationState) async throws
     func operations() async throws -> [OperationState]
 }

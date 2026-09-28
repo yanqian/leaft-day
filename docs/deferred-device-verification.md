@@ -11,4 +11,11 @@
 | F009–F015 | 真机玻璃可读性、手势/控件冲突、动态字体、VoiceOver、减弱透明度/动态效果 | 未执行 |
 | F013/F018 | 自愿真实样本相似效果、冷/热加载、图库规模、内存及缓存预算 | 未执行 |
 
-具体前置条件、步骤、预期结果与取证格式见 verification.md。记录设备型号/OS、commit、样本、日志/录屏、通过或失败；缺少条件写未执行。F018 失败必须修复对应 Feature 并重新验收。当前 devicectl 无已连接设备；不提供个人照片自动删除测试，不处理 Apple ID 密码。
+具体前置条件、步骤、预期结果与取证格式见 verification.md。记录设备型号/OS、commit、样本、日志/录屏、通过或失败；缺少条件写未执行。F018 失败必须修复对应 Feature 并重新验收。2026-09-28用户主动断开设备；不提供个人照片自动删除测试，不处理 Apple ID 密码。
+
+
+## 2026-09-28：手机断开期间的验证范围
+
+用户明确要求拔掉手机后先完成不需要手机的功能。默认 `./init.sh`（或 `SWIPE_VERIFICATION_MODE=simulator ./init.sh`）运行完整 Harness、Python、模拟器单元/UI 和启动验证，并明确输出 DEVICE_VERIFICATION_DEFERRED。`SWIPE_VERIFICATION_MODE=device ./init.sh` 另外强制运行两项真机内置 Vision 控制测试；缺少设备必须失败，不自动降级。此调整不更改 F018 验收标准，也不把模拟器 Vision 异常或历史真机通过当成当前真机证据。F015–F017可继续独立Evaluator验收和提交，F018的真实设备、iCloud、性能与体验仍须连接后补齐。
+
+断开前曾有真机内置 Vision 通过记录；这仅覆盖生成图算法控制，不覆盖上表。2026-09-28 F015完整模拟器回归46 XCTest/14 XCUITest通过，随后真机步骤因设备断开退出失败（/private/tmp/swipe-F015-final-gate.log）；保留该失败，不称完整命令通过。

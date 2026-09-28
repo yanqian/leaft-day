@@ -367,10 +367,10 @@
         "允许撤回单项或退出稍后处理；权限/资源变化时显示需核对，不能直接抹除意图或称已删除。",
         "最终确认展示固定目标及 iCloud 删除影响与系统恢复边界；不显示伪造的已释放空间；执行委托 F016。"
       ],
-      "passes": false,
-      "status": "todo",
-      "attempts": 1,
-      "last_error": "agent_workflow_gap: premature selection; F013/F014 dependencies unfinished. No coding occurred. Priority order repaired before retry.",
+      "passes": true,
+      "status": "done",
+      "attempts": 2,
+      "last_error": "",
       "priority": "P0",
       "depends_on": [
         "F009",

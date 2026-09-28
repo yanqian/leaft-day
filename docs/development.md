@@ -45,3 +45,14 @@ CoreSimulator 需要访问用户级服务；受限沙箱可能报 XPC/日志权�
 当前 Bundle ID `dev.armstrong.swipego` 是本地开发默认值，不代表上架注册；模拟器测试使用本地 ad-hoc 签名（CODE_SIGN_IDENTITY=-），无需证书或团队；这避免无签名 App/runner 复用旧二进制。真机需用户指定签名团队、连接设备并启用开发者模式，不能用模拟器替代真机或 iCloud 验证。
 
 2026-09-27 用户指定继续使用 work-fast：当前会话实施，每项由独立 Evaluator 验收后提交，再开始下一项。不启动独立 Coding Agent。此前尝试切换其权限的命令被用户中断，没有修改 provider 配置。
+
+### Desktop CLI path changes after app updates
+
+If work-fast reports a missing provider executable after a desktop update, inspect the installed application bundle before changing models/providers. On2026-09-28 the desktop executable moved from `Contents/Resources/codex` to `/Applications/ChatGPT.app/Contents/Resources/codex-cli/bin/codex` (CLI0.158.0-alpha.2.1). Verify `--version` and `exec --help`, update executable[0] consistently in ignored `.agent-harness/agent-provider.json` command/evaluator_command/runtime_check_command, retain cwd=`..` and the user-selected model/flags. Run `python3 scripts/run-agent-provider.py --role evaluator --check` from `.agent-harness/` and require a real successful runtime check before rerunning work-fast. Do not infer failure means the user needs another account or model.
+
+
+## 2026-09-28：手机断开期间的验证范围
+
+用户明确要求拔掉手机后先完成不需要手机的功能。默认 `./init.sh`（或 `SWIPE_VERIFICATION_MODE=simulator ./init.sh`）运行完整 Harness、Python、模拟器单元/UI 和启动验证，并明确输出 DEVICE_VERIFICATION_DEFERRED。`SWIPE_VERIFICATION_MODE=device ./init.sh` 另外强制运行两项真机内置 Vision 控制测试；缺少设备必须失败，不自动降级。此调整不更改 F018 验收标准，也不把模拟器 Vision 异常或历史真机通过当成当前真机证据。F015–F017可继续独立Evaluator验收和提交，F018的真实设备、iCloud、性能与体验仍须连接后补齐。
+
+断开前曾有真机内置 Vision 通过记录；这仅覆盖生成图算法控制，不覆盖上表。2026-09-28 F015完整模拟器回归46 XCTest/14 XCUITest通过，随后真机步骤因设备断开退出失败（/private/tmp/swipe-F015-final-gate.log）；保留该失败，不称完整命令通过。

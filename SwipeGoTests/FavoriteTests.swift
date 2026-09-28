@@ -25,6 +25,7 @@ import Photos
         func setFailure() { fail = true }
     }
     actor CompletionFailStore: LocalStateRepository {
+        func removePending(ifMatching expected: PendingIntent) async throws { throw LocalStateError.readOnly }
         func saveComparison(_ values: [PendingIntent], keeping: [String]) async throws { throw LocalStateError.readOnly }
         let base: LocalStateStore
         init(_ base: LocalStateStore) { self.base = base }
