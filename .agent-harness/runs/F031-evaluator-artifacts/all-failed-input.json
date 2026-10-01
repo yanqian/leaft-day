@@ -1,0 +1,56 @@
+{
+  "devicesAndConfigurations": [
+    {
+      "device": {
+        "architecture": "arm64",
+        "deviceId": "1DF82DB5-2A3B-450A-9EB5-098FC4E8F812",
+        "deviceName": "SwipeGo Fixtures seed 27",
+        "modelName": "iPhone 17",
+        "osBuildNumber": "23F77",
+        "osVersion": "26.5",
+        "platform": "iOS Simulator"
+      },
+      "expectedFailures": 0,
+      "failedTests": 1,
+      "passedTests": 128,
+      "skippedTests": 0,
+      "testPlanConfiguration": {
+        "configurationId": "1",
+        "configurationName": "Test Scheme Action"
+      }
+    }
+  ],
+  "environmentDescription": "SwipeGo \u00b7 Built with macOS 26.5",
+  "expectedFailures": 0,
+  "failedTests": 1,
+  "finishTime": 1790837561.433,
+  "passedTests": 0,
+  "result": "Failed",
+  "skippedTests": 0,
+  "startTime": 1790836632.001,
+  "statistics": [],
+  "testFailures": [
+    {
+      "failureText": "XCTAssertTrue failed",
+      "targetName": "SwipeGoUITests",
+      "testIdentifier": 102,
+      "testIdentifierString": "LaunchTests/testColdLaunchAndRelaunchShowRoot()",
+      "testIdentifierURL": "test://com.apple.xcode/SwipeGo/SwipeGoUITests/LaunchTests/testColdLaunchAndRelaunchShowRoot",
+      "testName": "testColdLaunchAndRelaunchShowRoot()"
+    }
+  ],
+  "title": "Test - SwipeGo",
+  "topInsights": [
+    {
+      "category": "Longest Test Runs",
+      "impact": "6% of duration",
+      "text": "1 longest test run with outlier durations exceeding 58.42s (three standard deviations)"
+    },
+    {
+      "category": "Longest Test Runs",
+      "impact": "46% of duration",
+      "text": "4 longest test runs with outlier durations exceeding 0.35s (three standard deviations)"
+    }
+  ],
+  "totalTestCount": 1
+}

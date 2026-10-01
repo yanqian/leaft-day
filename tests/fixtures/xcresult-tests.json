@@ -1,0 +1,1549 @@
+{
+  "devices" : [
+    {
+      "architecture" : "arm64",
+      "deviceId" : "1DF82DB5-2A3B-450A-9EB5-098FC4E8F812",
+      "deviceName" : "SwipeGo Fixtures seed 27",
+      "modelName" : "iPhone 17",
+      "osBuildNumber" : "23F77",
+      "osVersion" : "26.5",
+      "platform" : "iOS Simulator"
+    }
+  ],
+  "testNodes" : [
+    {
+      "children" : [
+        {
+          "children" : [
+            {
+              "children" : [
+                {
+                  "duration" : "0.0013s",
+                  "durationInSeconds" : 0.0013170242309570312,
+                  "name" : "testApplicationBundleTargetsIPhone()",
+                  "nodeIdentifier" : "AppConfigurationTests/testApplicationBundleTargetsIPhone()",
+                  "nodeIdentifierURL" : "test://com.apple.xcode/SwipeGo/SwipeGoTests/AppConfigurationTests/testApplicationBundleTargetsIPhone",
+                  "nodeType" : "Test Case",
+                  "result" : "Passed"
+                }
+              ],
+              "name" : "AppConfigurationTests",
+              "nodeIdentifierURL" : "test://com.apple.xcode/SwipeGo/SwipeGoTests/AppConfigurationTests",
+              "nodeType" : "Test Suite",
+              "result" : "Passed"
+            },
+            {
+              "children" : [
+                {
+                  "duration" : "0.0086s",
+                  "durationInSeconds" : 0.008556008338928223,
+                  "name" : "testBundledAtmosphereDecodesWithoutPhotoAuthorization()",
+                  "nodeIdentifier" : "BundledBackdropTests/testBundledAtmosphereDecodesWithoutPhotoAuthorization()",
+                  "nodeIdentifierURL" : "test://com.apple.xcode/SwipeGo/SwipeGoTests/BundledBackdropTests/testBundledAtmosphereDecodesWithoutPhotoAuthorization",
+                  "nodeType" : "Test Case",
+                  "result" : "Passed"
+                }
+              ],
+              "name" : "BundledBackdropTests",
+              "nodeIdentifierURL" : "test://com.apple.xcode/SwipeGo/SwipeGoTests/BundledBackdropTests",
+              "nodeType" : "Test Suite",
+              "result" : "Passed"
+            },
+            {
+              "children" : [
+                {
+                  "duration" : "0.096s",
+                  "durationInSeconds" : 0.09553194046020508,
+                  "name" : "testAtomicSelectionRetainsContextAndRetractsKeptPending()",
+                  "nodeIdentifier" : "ComparisonTests/testAtomicSelectionRetainsContextAndRetractsKeptPending()",
+                  "nodeIdentifierURL" : "test://com.apple.xcode/SwipeGo/SwipeGoTests/ComparisonTests/testAtomicSelectionRetainsContextAndRetractsKeptPending",
+                  "nodeType" : "Test Case",
+                  "result" : "Passed"
+                },
+                {
+                  "duration" : "0.00089s",
+                  "durationInSeconds" : 0.000885009765625,
+                  "name" : "testOldPendingPayloadDecodesWithoutComparison()",
+                  "nodeIdentifier" : "ComparisonTests/testOldPendingPayloadDecodesWithoutComparison()",
+                  "nodeIdentifierURL" : "test://com.apple.xcode/SwipeGo/SwipeGoTests/ComparisonTests/testOldPendingPayloadDecodesWithoutComparison",
+                  "nodeType" : "Test Case",
+                  "result" : "Passed"
+                },
+                {
+                  "duration" : "0.03s",
+                  "durationInSeconds" : 0.02997004985809326,
+                  "name" : "testReadOnlyBatchFailurePreservesOriginalIntent()",
+                  "nodeIdentifier" : "ComparisonTests/testReadOnlyBatchFailurePreservesOriginalIntent()",
+                  "nodeIdentifierURL" : "test://com.apple.xcode/SwipeGo/SwipeGoTests/ComparisonTests/testReadOnlyBatchFailurePreservesOriginalIntent",
+                  "nodeType" : "Test Case",
+                  "result" : "Passed"
+                },
+                {
+                  "duration" : "0.012s",
+                  "durationInSeconds" : 0.011624932289123535,
+                  "name" : "testZeroKeepFavoriteAndChangedAssetCannotSave()",
+                  "nodeIdentifier" : "ComparisonTests/testZeroKeepFavoriteAndChangedAssetCannotSave()",
+                  "nodeIdentifierURL" : "test://com.apple.xcode/SwipeGo/SwipeGoTests/ComparisonTests/testZeroKeepFavoriteAndChangedAssetCannotSave",
+                  "nodeType" : "Test Case",
+                  "result" : "Passed"
+                }
+              ],
+              "name" : "ComparisonTests",
+              "nodeIdentifierURL" : "test://com.apple.xcode/SwipeGo/SwipeGoTests/ComparisonTests",
+              "nodeType" : "Test Suite",
+              "result" : "Passed"
+            },
+            {
+              "children" : [
+                {
+                  "duration" : "0.018s",
+                  "durationInSeconds" : 0.018417000770568848,
+                  "name" : "testConflictingKeepDecisionIsExcludedFromReadyCount()",
+                  "nodeIdentifier" : "DeletionReviewTests/testConflictingKeepDecisionIsExcludedFromReadyCount()",
+                  "nodeIdentifierURL" : "test://com.apple.xcode/SwipeGo/SwipeGoTests/DeletionReviewTests/testConflictingKeepDecisionIsExcludedFromReadyCount",
+                  "nodeType" : "Test Case",
+                  "result" : "Passed"
+                },
+                {
+                  "duration" : "0.018s",
+                  "durationInSeconds" : 0.017692923545837402,
+                  "name" : "testFrozenTargetsStayFixedAndNewRecordsRequireReview()",
+                  "nodeIdentifier" : "DeletionReviewTests/testFrozenTargetsStayFixedAndNewRecordsRequireReview()",
+                  "nodeIdentifierURL" : "test://com.apple.xcode/SwipeGo/SwipeGoTests/DeletionReviewTests/testFrozenTargetsStayFixedAndNewRecordsRequireReview",
+                  "nodeType" : "Test Case",
+                  "result" : "Passed"
+                },
+                {
+                  "duration" : "0.018s",
+                  "durationInSeconds" : 0.017929911613464355,
+                  "name" : "testMissingKeeperAndPermissionLossPreserveIntent()",
+                  "nodeIdentifier" : "DeletionReviewTests/testMissingKeeperAndPermissionLossPreserveIntent()",
+                  "nodeIdentifierURL" : "test://com.apple.xcode/SwipeGo/SwipeGoTests/DeletionReviewTests/testMissingKeeperAndPermissionLossPreserveIntent",
+                  "nodeType" : "Test Case",
+                  "result" : "Passed"
+                },
+                {
+                  "duration" : "0.00044s",
+                  "durationInSeconds" : 0.00044095516204833984,
+                  "name" : "testResultNeverClaimsClearForUnknownCancelOrJournalFailure()",
+                  "nodeIdentifier" : "DeletionReviewTests/testResultNeverClaimsClearForUnknownCancelOrJournalFailure()",
+                  "nodeIdentifierURL" : "test://com.apple.xcode/SwipeGo/SwipeGoTests/DeletionReviewTests/testResultNeverClaimsClearForUnknownCancelOrJournalFailure",
+                  "nodeType" : "Test Case",
+                  "result" : "Passed"
+                },
+                {
+                  "duration" : "0.018s",
+                  "durationInSeconds" : 0.017904043197631836,
+                  "name" : "testRetractionCannotRemoveReplacedDecision()",
+                  "nodeIdentifier" : "DeletionReviewTests/testRetractionCannotRemoveReplacedDecision()",
+                  "nodeIdentifierURL" : "test://com.apple.xcode/SwipeGo/SwipeGoTests/DeletionReviewTests/testRetractionCannotRemoveReplacedDecision",
+                  "nodeType" : "Test Case",
+                  "result" : "Passed"
+                },
+                {
+                  "duration" : "0.023s",
+                  "durationInSeconds" : 0.023107051849365234,
+                  "name" : "testSuccessfulReceiptRefreshRemovesOnlyCompletedRowsWhileConfirmationRemains()",
+                  "nodeIdentifier" : "DeletionReviewTests/testSuccessfulReceiptRefreshRemovesOnlyCompletedRowsWhileConfirmationRemains()",
+                  "nodeIdentifierURL" : "test://com.apple.xcode/SwipeGo/SwipeGoTests/DeletionReviewTests/testSuccessfulReceiptRefreshRemovesOnlyCompletedRowsWhileConfirmationRemains",
+                  "nodeType" : "Test Case",
+                  "result" : "Passed"
+                }
+              ],
+              "name" : "DeletionReviewTests",
+              "nodeIdentifierURL" : "test://com.apple.xcode/SwipeGo/SwipeGoTests/DeletionReviewTests",
+              "nodeType" : "Test Suite",
+              "result" : "Passed"
+            },
+            {
+              "children" : [
+                {
+                  "duration" : "0.053s",
+                  "durationInSeconds" : 0.05346798896789551,
+                  "name" : "testCancelUnknownAndCompletionSaveFailurePreserveIntent()",
+                  "nodeIdentifier" : "DeletionTests/testCancelUnknownAndCompletionSaveFailurePreserveIntent()",
+                  "nodeIdentifierURL" : "test://com.apple.xcode/SwipeGo/SwipeGoTests/DeletionTests/testCancelUnknownAndCompletionSaveFailurePreserveIntent",
+                  "nodeType" : "Test Case",
+                  "result" : "Passed"
+                },
+                {
+                  "duration" : "0.093s",
+                  "durationInSeconds" : 0.09280097484588623,
+                  "name" : "testChangedPermissionKeeperIntentAndReadOnlyStopBeforeNativeWrite()",
+                  "nodeIdentifier" : "DeletionTests/testChangedPermissionKeeperIntentAndReadOnlyStopBeforeNativeWrite()",
+                  "nodeIdentifierURL" : "test://com.apple.xcode/SwipeGo/SwipeGoTests/DeletionTests/testChangedPermissionKeeperIntentAndReadOnlyStopBeforeNativeWrite",
+                  "nodeType" : "Test Case",
+                  "result" : "Passed"
+                },
+                {
+                  "duration" : "0.12s",
+                  "durationInSeconds" : 0.12255704402923584,
+                  "name" : "testConcurrentClickCannotDuplicateNativeSubmission()",
+                  "nodeIdentifier" : "DeletionTests/testConcurrentClickCannotDuplicateNativeSubmission()",
+                  "nodeIdentifierURL" : "test://com.apple.xcode/SwipeGo/SwipeGoTests/DeletionTests/testConcurrentClickCannotDuplicateNativeSubmission",
+                  "nodeType" : "Test Case",
+                  "result" : "Passed"
+                },
+                {
+                  "duration" : "0.00041s",
+                  "durationInSeconds" : 0.0004140138626098633,
+                  "name" : "testOldOperationJSONStillDecodes()",
+                  "nodeIdentifier" : "DeletionTests/testOldOperationJSONStillDecodes()",
+                  "nodeIdentifierURL" : "test://com.apple.xcode/SwipeGo/SwipeGoTests/DeletionTests/testOldOperationJSONStillDecodes",
+                  "nodeType" : "Test Case",
+                  "result" : "Passed"
+                },
+                {
+                  "duration" : "0.02s",
+                  "durationInSeconds" : 0.019523024559020996,
+                  "name" : "testSuccessIsAtomicAndBatchCannotBeResubmitted()",
+                  "nodeIdentifier" : "DeletionTests/testSuccessIsAtomicAndBatchCannotBeResubmitted()",
+                  "nodeIdentifierURL" : "test://com.apple.xcode/SwipeGo/SwipeGoTests/DeletionTests/testSuccessIsAtomicAndBatchCannotBeResubmitted",
+                  "nodeType" : "Test Case",
+                  "result" : "Passed"
+                }
+              ],
+              "name" : "DeletionTests",
+              "nodeIdentifierURL" : "test://com.apple.xcode/SwipeGo/SwipeGoTests/DeletionTests",
+              "nodeType" : "Test Suite",
+              "result" : "Passed"
+            },
+            {
+              "children" : [
+                {
+                  "duration" : "0.017s",
+                  "durationInSeconds" : 0.017279982566833496,
+                  "name" : "testFixtureSessionCannotExpandOnNativeLibraryRefresh()",
+                  "nodeIdentifier" : "DeviceScopeTests/testFixtureSessionCannotExpandOnNativeLibraryRefresh()",
+                  "nodeIdentifierURL" : "test://com.apple.xcode/SwipeGo/SwipeGoTests/DeviceScopeTests/testFixtureSessionCannotExpandOnNativeLibraryRefresh",
+                  "nodeType" : "Test Case",
+                  "result" : "Passed"
+                }
+              ],
+              "name" : "DeviceScopeTests",
+              "nodeIdentifierURL" : "test://com.apple.xcode/SwipeGo/SwipeGoTests/DeviceScopeTests",
+              "nodeType" : "Test Suite",
+              "result" : "Passed"
+            },
+            {
+              "children" : [
+                {
+                  "duration" : "0.032s",
+                  "durationInSeconds" : 0.03190004825592041,
+                  "name" : "testExternalStateOrVersionChangePreventsUndo()",
+                  "nodeIdentifier" : "FavoriteTests/testExternalStateOrVersionChangePreventsUndo()",
+                  "nodeIdentifierURL" : "test://com.apple.xcode/SwipeGo/SwipeGoTests/FavoriteTests/testExternalStateOrVersionChangePreventsUndo",
+                  "nodeType" : "Test Case",
+                  "result" : "Passed"
+                },
+                {
+                  "duration" : "0.017s",
+                  "durationInSeconds" : 0.017462968826293945,
+                  "name" : "testIdempotentFavoriteAndUndoOriginalAsset()",
+                  "nodeIdentifier" : "FavoriteTests/testIdempotentFavoriteAndUndoOriginalAsset()",
+                  "nodeIdentifierURL" : "test://com.apple.xcode/SwipeGo/SwipeGoTests/FavoriteTests/testIdempotentFavoriteAndUndoOriginalAsset",
+                  "nodeType" : "Test Case",
+                  "result" : "Passed"
+                },
+                {
+                  "duration" : "0.015s",
+                  "durationInSeconds" : 0.015287995338439941,
+                  "name" : "testPostSystemJournalFailurePreservesSubmittedEvidence()",
+                  "nodeIdentifier" : "FavoriteTests/testPostSystemJournalFailurePreservesSubmittedEvidence()",
+                  "nodeIdentifierURL" : "test://com.apple.xcode/SwipeGo/SwipeGoTests/FavoriteTests/testPostSystemJournalFailurePreservesSubmittedEvidence",
+                  "nodeType" : "Test Case",
+                  "result" : "Passed"
+                },
+                {
+                  "duration" : "0.46s",
+                  "durationInSeconds" : 0.4642150402069092,
+                  "name" : "testRealPhotoKitFavoriteAndUndoOnGeneratedFixture()",
+                  "nodeIdentifier" : "FavoriteTests/testRealPhotoKitFavoriteAndUndoOnGeneratedFixture()",
+                  "nodeIdentifierURL" : "test://com.apple.xcode/SwipeGo/SwipeGoTests/FavoriteTests/testRealPhotoKitFavoriteAndUndoOnGeneratedFixture",
+                  "nodeType" : "Test Case",
+                  "result" : "Passed"
+                },
+                {
+                  "duration" : "0.018s",
+                  "durationInSeconds" : 0.018266916275024414,
+                  "name" : "testRealReadOnlySaveFailureNeverCallsWriter()",
+                  "nodeIdentifier" : "FavoriteTests/testRealReadOnlySaveFailureNeverCallsWriter()",
+                  "nodeIdentifierURL" : "test://com.apple.xcode/SwipeGo/SwipeGoTests/FavoriteTests/testRealReadOnlySaveFailureNeverCallsWriter",
+                  "nodeType" : "Test Case",
+                  "result" : "Passed"
+                },
+                {
+                  "duration" : "0.017s",
+                  "durationInSeconds" : 0.016546964645385742,
+                  "name" : "testSystemCancellationRecordsFailureWithoutUndo()",
+                  "nodeIdentifier" : "FavoriteTests/testSystemCancellationRecordsFailureWithoutUndo()",
+                  "nodeIdentifierURL" : "test://com.apple.xcode/SwipeGo/SwipeGoTests/FavoriteTests/testSystemCancellationRecordsFailureWithoutUndo",
+                  "nodeType" : "Test Case",
+                  "result" : "Passed"
+                }
+              ],
+              "name" : "FavoriteTests",
+              "nodeIdentifierURL" : "test://com.apple.xcode/SwipeGo/SwipeGoTests/FavoriteTests",
+              "nodeType" : "Test Suite",
+              "result" : "Passed"
+            },
+            {
+              "children" : [
+                {
+                  "duration" : "0.0012s",
+                  "durationInSeconds" : 0.0011780261993408203,
+                  "name" : "testCancelledAndPriorCandidateCannotReplaceNewCover()",
+                  "nodeIdentifier" : "HomeCoverTests/testCancelledAndPriorCandidateCannotReplaceNewCover()",
+                  "nodeIdentifierURL" : "test://com.apple.xcode/SwipeGo/SwipeGoTests/HomeCoverTests/testCancelledAndPriorCandidateCannotReplaceNewCover",
+                  "nodeType" : "Test Case",
+                  "result" : "Passed"
+                },
+                {
+                  "duration" : "0.00031s",
+                  "durationInSeconds" : 0.0003069639205932617,
+                  "name" : "testNoPhotosDoesNotRequestVideo()",
+                  "nodeIdentifier" : "HomeCoverTests/testNoPhotosDoesNotRequestVideo()",
+                  "nodeIdentifierURL" : "test://com.apple.xcode/SwipeGo/SwipeGoTests/HomeCoverTests/testNoPhotosDoesNotRequestVideo",
+                  "nodeType" : "Test Case",
+                  "result" : "Passed"
+                },
+                {
+                  "duration" : "0.00091s",
+                  "durationInSeconds" : 0.0009139776229858398,
+                  "name" : "testOfflineStillTriesLocalCandidateThenReportsOfflineAndRetries()",
+                  "nodeIdentifier" : "HomeCoverTests/testOfflineStillTriesLocalCandidateThenReportsOfflineAndRetries()",
+                  "nodeIdentifierURL" : "test://com.apple.xcode/SwipeGo/SwipeGoTests/HomeCoverTests/testOfflineStillTriesLocalCandidateThenReportsOfflineAndRetries",
+                  "nodeType" : "Test Case",
+                  "result" : "Passed"
+                },
+                {
+                  "duration" : "0.001s",
+                  "durationInSeconds" : 0.001049041748046875,
+                  "name" : "testOnlyPhotosAndBoundedFallback()",
+                  "nodeIdentifier" : "HomeCoverTests/testOnlyPhotosAndBoundedFallback()",
+                  "nodeIdentifierURL" : "test://com.apple.xcode/SwipeGo/SwipeGoTests/HomeCoverTests/testOnlyPhotosAndBoundedFallback",
+                  "nodeType" : "Test Case",
+                  "result" : "Passed"
+                }
+              ],
+              "name" : "HomeCoverTests",
+              "nodeIdentifierURL" : "test://com.apple.xcode/SwipeGo/SwipeGoTests/HomeCoverTests",
+              "nodeType" : "Test Suite",
+              "result" : "Passed"
+            },
+            {
+              "children" : [
+                {
+                  "duration" : "0.017s",
+                  "durationInSeconds" : 0.016770005226135254,
+                  "name" : "testConcurrentMarksOnSingleRepositoryRemainUnique()",
+                  "nodeIdentifier" : "LocalStateStoreTests/testConcurrentMarksOnSingleRepositoryRemainUnique()",
+                  "nodeIdentifierURL" : "test://com.apple.xcode/SwipeGo/SwipeGoTests/LocalStateStoreTests/testConcurrentMarksOnSingleRepositoryRemainUnique",
+                  "nodeType" : "Test Case",
+                  "result" : "Passed"
+                },
+                {
+                  "duration" : "0.017s",
+                  "durationInSeconds" : 0.01739799976348877,
+                  "name" : "testInvalidSessionDoesNotReplaceSavedCursor()",
+                  "nodeIdentifier" : "LocalStateStoreTests/testInvalidSessionDoesNotReplaceSavedCursor()",
+                  "nodeIdentifierURL" : "test://com.apple.xcode/SwipeGo/SwipeGoTests/LocalStateStoreTests/testInvalidSessionDoesNotReplaceSavedCursor",
+                  "nodeType" : "Test Case",
+                  "result" : "Passed"
+                },
+                {
+                  "duration" : "0.03s",
+                  "durationInSeconds" : 0.030375003814697266,
+                  "name" : "testReadOnlyWriteFailsAndDoesNotMutateRealStore()",
+                  "nodeIdentifier" : "LocalStateStoreTests/testReadOnlyWriteFailsAndDoesNotMutateRealStore()",
+                  "nodeIdentifierURL" : "test://com.apple.xcode/SwipeGo/SwipeGoTests/LocalStateStoreTests/testReadOnlyWriteFailsAndDoesNotMutateRealStore",
+                  "nodeType" : "Test Case",
+                  "result" : "Passed"
+                },
+                {
+                  "duration" : "0.035s",
+                  "durationInSeconds" : 0.03480195999145508,
+                  "name" : "testRealDiskReopenPreservesAllIntentAndDeduplicates()",
+                  "nodeIdentifier" : "LocalStateStoreTests/testRealDiskReopenPreservesAllIntentAndDeduplicates()",
+                  "nodeIdentifierURL" : "test://com.apple.xcode/SwipeGo/SwipeGoTests/LocalStateStoreTests/testRealDiskReopenPreservesAllIntentAndDeduplicates",
+                  "nodeType" : "Test Case",
+                  "result" : "Passed"
+                }
+              ],
+              "name" : "LocalStateStoreTests",
+              "nodeIdentifierURL" : "test://com.apple.xcode/SwipeGo/SwipeGoTests/LocalStateStoreTests",
+              "nodeType" : "Test Suite",
+              "result" : "Passed"
+            },
+            {
+              "children" : [
+                {
+                  "duration" : "0.019s",
+                  "durationInSeconds" : 0.019478917121887207,
+                  "name" : "testCompletedSessionCanNavigateBackAndNewForwardContent()",
+                  "nodeIdentifier" : "PendingAdvanceTests/testCompletedSessionCanNavigateBackAndNewForwardContent()",
+                  "nodeIdentifierURL" : "test://com.apple.xcode/SwipeGo/SwipeGoTests/PendingAdvanceTests/testCompletedSessionCanNavigateBackAndNewForwardContent",
+                  "nodeType" : "Test Case",
+                  "result" : "Passed"
+                },
+                {
+                  "duration" : "0.02s",
+                  "durationInSeconds" : 0.01970696449279785,
+                  "name" : "testContinuousExtensionSkipsPendingAndScopeWhileAnniversaryCompletes()",
+                  "nodeIdentifier" : "PendingAdvanceTests/testContinuousExtensionSkipsPendingAndScopeWhileAnniversaryCompletes()",
+                  "nodeIdentifierURL" : "test://com.apple.xcode/SwipeGo/SwipeGoTests/PendingAdvanceTests/testContinuousExtensionSkipsPendingAndScopeWhileAnniversaryCompletes",
+                  "nodeType" : "Test Case",
+                  "result" : "Passed"
+                },
+                {
+                  "duration" : "0.033s",
+                  "durationInSeconds" : 0.033023953437805176,
+                  "name" : "testFailedMarkLeavesPhotoAndFailedPositionKeepsSavedMarkForRetry()",
+                  "nodeIdentifier" : "PendingAdvanceTests/testFailedMarkLeavesPhotoAndFailedPositionKeepsSavedMarkForRetry()",
+                  "nodeIdentifierURL" : "test://com.apple.xcode/SwipeGo/SwipeGoTests/PendingAdvanceTests/testFailedMarkLeavesPhotoAndFailedPositionKeepsSavedMarkForRetry",
+                  "nodeType" : "Test Case",
+                  "result" : "Passed"
+                },
+                {
+                  "duration" : "0.028s",
+                  "durationInSeconds" : 0.02777409553527832,
+                  "name" : "testLastItemCompletesDurablyAndUndoReturnsThePhoto()",
+                  "nodeIdentifier" : "PendingAdvanceTests/testLastItemCompletesDurablyAndUndoReturnsThePhoto()",
+                  "nodeIdentifierURL" : "test://com.apple.xcode/SwipeGo/SwipeGoTests/PendingAdvanceTests/testLastItemCompletesDurablyAndUndoReturnsThePhoto",
+                  "nodeType" : "Test Case",
+                  "result" : "Passed"
+                },
+                {
+                  "duration" : "0.029s",
+                  "durationInSeconds" : 0.0291750431060791,
+                  "name" : "testNearbyUndoRestoresOriginalSessionAndRejectsUnavailableTargets()",
+                  "nodeIdentifier" : "PendingAdvanceTests/testNearbyUndoRestoresOriginalSessionAndRejectsUnavailableTargets()",
+                  "nodeIdentifierURL" : "test://com.apple.xcode/SwipeGo/SwipeGoTests/PendingAdvanceTests/testNearbyUndoRestoresOriginalSessionAndRejectsUnavailableTargets",
+                  "nodeType" : "Test Case",
+                  "result" : "Passed"
+                },
+                {
+                  "duration" : "0.017s",
+                  "durationInSeconds" : 0.017086029052734375,
+                  "name" : "testOldPayloadAndAllMarkedSessionAreSafe()",
+                  "nodeIdentifier" : "PendingAdvanceTests/testOldPayloadAndAllMarkedSessionAreSafe()",
+                  "nodeIdentifierURL" : "test://com.apple.xcode/SwipeGo/SwipeGoTests/PendingAdvanceTests/testOldPayloadAndAllMarkedSessionAreSafe",
+                  "nodeType" : "Test Case",
+                  "result" : "Passed"
+                },
+                {
+                  "duration" : "0.02s",
+                  "durationInSeconds" : 0.01977694034576416,
+                  "name" : "testSavedMarkSkipsPendingAndUndoRestoresOriginalOrder()",
+                  "nodeIdentifier" : "PendingAdvanceTests/testSavedMarkSkipsPendingAndUndoRestoresOriginalOrder()",
+                  "nodeIdentifierURL" : "test://com.apple.xcode/SwipeGo/SwipeGoTests/PendingAdvanceTests/testSavedMarkSkipsPendingAndUndoRestoresOriginalOrder",
+                  "nodeType" : "Test Case",
+                  "result" : "Passed"
+                },
+                {
+                  "duration" : "0.037s",
+                  "durationInSeconds" : 0.03674900531768799,
+                  "name" : "testUndoPositionFailureRecoversFromDiskWithoutRepeatingUnmark()",
+                  "nodeIdentifier" : "PendingAdvanceTests/testUndoPositionFailureRecoversFromDiskWithoutRepeatingUnmark()",
+                  "nodeIdentifierURL" : "test://com.apple.xcode/SwipeGo/SwipeGoTests/PendingAdvanceTests/testUndoPositionFailureRecoversFromDiskWithoutRepeatingUnmark",
+                  "nodeType" : "Test Case",
+                  "result" : "Passed"
+                }
+              ],
+              "name" : "PendingAdvanceTests",
+              "nodeIdentifierURL" : "test://com.apple.xcode/SwipeGo/SwipeGoTests/PendingAdvanceTests",
+              "nodeType" : "Test Suite",
+              "result" : "Passed"
+            },
+            {
+              "children" : [
+                {
+                  "duration" : "0.015s",
+                  "durationInSeconds" : 0.014818906784057617,
+                  "name" : "testFavoriteRequiresExplicitConfirmationAndKeepsFavorite()",
+                  "nodeIdentifier" : "PendingTests/testFavoriteRequiresExplicitConfirmationAndKeepsFavorite()",
+                  "nodeIdentifierURL" : "test://com.apple.xcode/SwipeGo/SwipeGoTests/PendingTests/testFavoriteRequiresExplicitConfirmationAndKeepsFavorite",
+                  "nodeType" : "Test Case",
+                  "result" : "Passed"
+                },
+                {
+                  "duration" : "0.023s",
+                  "durationInSeconds" : 0.022995948791503906,
+                  "name" : "testMarkRepeatReopenAndUndoOriginalAsset()",
+                  "nodeIdentifier" : "PendingTests/testMarkRepeatReopenAndUndoOriginalAsset()",
+                  "nodeIdentifierURL" : "test://com.apple.xcode/SwipeGo/SwipeGoTests/PendingTests/testMarkRepeatReopenAndUndoOriginalAsset",
+                  "nodeType" : "Test Case",
+                  "result" : "Passed"
+                },
+                {
+                  "duration" : "0.017s",
+                  "durationInSeconds" : 0.016709089279174805,
+                  "name" : "testRealReadOnlyFailureNeverPublishesSuccess()",
+                  "nodeIdentifier" : "PendingTests/testRealReadOnlyFailureNeverPublishesSuccess()",
+                  "nodeIdentifierURL" : "test://com.apple.xcode/SwipeGo/SwipeGoTests/PendingTests/testRealReadOnlyFailureNeverPublishesSuccess",
+                  "nodeType" : "Test Case",
+                  "result" : "Passed"
+                },
+                {
+                  "duration" : "0.016s",
+                  "durationInSeconds" : 0.015804052352905273,
+                  "name" : "testUndoRejectsReplacedRecord()",
+                  "nodeIdentifier" : "PendingTests/testUndoRejectsReplacedRecord()",
+                  "nodeIdentifierURL" : "test://com.apple.xcode/SwipeGo/SwipeGoTests/PendingTests/testUndoRejectsReplacedRecord",
+                  "nodeType" : "Test Case",
+                  "result" : "Passed"
+                }
+              ],
+              "name" : "PendingTests",
+              "nodeIdentifierURL" : "test://com.apple.xcode/SwipeGo/SwipeGoTests/PendingTests",
+              "nodeType" : "Test Suite",
+              "result" : "Passed"
+            },
+            {
+              "children" : [
+                {
+                  "duration" : "0.00033s",
+                  "durationInSeconds" : 0.0003279447555541992,
+                  "name" : "testPermissionMappingAndLimitedEmptyScope()",
+                  "nodeIdentifier" : "PhotoLibraryTests/testPermissionMappingAndLimitedEmptyScope()",
+                  "nodeIdentifierURL" : "test://com.apple.xcode/SwipeGo/SwipeGoTests/PhotoLibraryTests/testPermissionMappingAndLimitedEmptyScope",
+                  "nodeType" : "Test Case",
+                  "result" : "Passed"
+                },
+                {
+                  "duration" : "0.0042s",
+                  "durationInSeconds" : 0.00418698787689209,
+                  "name" : "testRealSystemQueryRespectsCurrentAuthorization()",
+                  "nodeIdentifier" : "PhotoLibraryTests/testRealSystemQueryRespectsCurrentAuthorization()",
+                  "nodeIdentifierURL" : "test://com.apple.xcode/SwipeGo/SwipeGoTests/PhotoLibraryTests/testRealSystemQueryRespectsCurrentAuthorization",
+                  "nodeType" : "Test Case",
+                  "result" : "Passed"
+                }
+              ],
+              "name" : "PhotoLibraryTests",
+              "nodeIdentifierURL" : "test://com.apple.xcode/SwipeGo/SwipeGoTests/PhotoLibraryTests",
+              "nodeType" : "Test Suite",
+              "result" : "Passed"
+            },
+            {
+              "children" : [
+                {
+                  "duration" : "0.00065s",
+                  "durationInSeconds" : 0.0006530284881591797,
+                  "name" : "testCacheBudgetLRUAndContentVersion()",
+                  "nodeIdentifier" : "PhotoLoaderTests/testCacheBudgetLRUAndContentVersion()",
+                  "nodeIdentifierURL" : "test://com.apple.xcode/SwipeGo/SwipeGoTests/PhotoLoaderTests/testCacheBudgetLRUAndContentVersion",
+                  "nodeType" : "Test Case",
+                  "result" : "Passed"
+                },
+                {
+                  "duration" : "0.00061s",
+                  "durationInSeconds" : 0.0006060600280761719,
+                  "name" : "testLateResultCannotReplaceCurrentAndPrefetchBounded()",
+                  "nodeIdentifier" : "PhotoLoaderTests/testLateResultCannotReplaceCurrentAndPrefetchBounded()",
+                  "nodeIdentifierURL" : "test://com.apple.xcode/SwipeGo/SwipeGoTests/PhotoLoaderTests/testLateResultCannotReplaceCurrentAndPrefetchBounded",
+                  "nodeType" : "Test Case",
+                  "result" : "Passed"
+                },
+                {
+                  "duration" : "0.11s",
+                  "durationInSeconds" : 0.11018598079681396,
+                  "name" : "testNativeLocalPhotoLoadWhenAuthorized()",
+                  "nodeIdentifier" : "PhotoLoaderTests/testNativeLocalPhotoLoadWhenAuthorized()",
+                  "nodeIdentifierURL" : "test://com.apple.xcode/SwipeGo/SwipeGoTests/PhotoLoaderTests/testNativeLocalPhotoLoadWhenAuthorized",
+                  "nodeType" : "Test Case",
+                  "result" : "Passed"
+                },
+                {
+                  "duration" : "0.00042s",
+                  "durationInSeconds" : 0.00041806697845458984,
+                  "name" : "testOfflineAndRetryAreNotSuccess()",
+                  "nodeIdentifier" : "PhotoLoaderTests/testOfflineAndRetryAreNotSuccess()",
+                  "nodeIdentifierURL" : "test://com.apple.xcode/SwipeGo/SwipeGoTests/PhotoLoaderTests/testOfflineAndRetryAreNotSuccess",
+                  "nodeType" : "Test Case",
+                  "result" : "Passed"
+                },
+                {
+                  "duration" : "0.00038s",
+                  "durationInSeconds" : 0.0003800392150878906,
+                  "name" : "testReleaseCancelsOutstandingRequests()",
+                  "nodeIdentifier" : "PhotoLoaderTests/testReleaseCancelsOutstandingRequests()",
+                  "nodeIdentifierURL" : "test://com.apple.xcode/SwipeGo/SwipeGoTests/PhotoLoaderTests/testReleaseCancelsOutstandingRequests",
+                  "nodeType" : "Test Case",
+                  "result" : "Passed"
+                }
+              ],
+              "name" : "PhotoLoaderTests",
+              "nodeIdentifierURL" : "test://com.apple.xcode/SwipeGo/SwipeGoTests/PhotoLoaderTests",
+              "nodeType" : "Test Suite",
+              "result" : "Passed"
+            },
+            {
+              "children" : [
+                {
+                  "duration" : "0.00052s",
+                  "durationInSeconds" : 0.0005249977111816406,
+                  "name" : "testCancelledAndDeinitializedModelsRejectOrCancelPendingWork()",
+                  "nodeIdentifier" : "PhotoPaletteTests/testCancelledAndDeinitializedModelsRejectOrCancelPendingWork()",
+                  "nodeIdentifierURL" : "test://com.apple.xcode/SwipeGo/SwipeGoTests/PhotoPaletteTests/testCancelledAndDeinitializedModelsRejectOrCancelPendingWork",
+                  "nodeType" : "Test Case",
+                  "result" : "Passed"
+                },
+                {
+                  "duration" : "0.034s",
+                  "durationInSeconds" : 0.03449201583862305,
+                  "name" : "testDistinctNaturalColorsAndDarkTextContrast()",
+                  "nodeIdentifier" : "PhotoPaletteTests/testDistinctNaturalColorsAndDarkTextContrast()",
+                  "nodeIdentifierURL" : "test://com.apple.xcode/SwipeGo/SwipeGoTests/PhotoPaletteTests/testDistinctNaturalColorsAndDarkTextContrast",
+                  "nodeType" : "Test Case",
+                  "result" : "Passed"
+                },
+                {
+                  "duration" : "0.005s",
+                  "durationInSeconds" : 0.005035996437072754,
+                  "name" : "testFrozenDeletionPaletteOutlivesSourceAndCancels()",
+                  "nodeIdentifier" : "PhotoPaletteTests/testFrozenDeletionPaletteOutlivesSourceAndCancels()",
+                  "nodeIdentifierURL" : "test://com.apple.xcode/SwipeGo/SwipeGoTests/PhotoPaletteTests/testFrozenDeletionPaletteOutlivesSourceAndCancels",
+                  "nodeType" : "Test Case",
+                  "result" : "Passed"
+                },
+                {
+                  "duration" : "0.0049s",
+                  "durationInSeconds" : 0.004884004592895508,
+                  "name" : "testLocalOnlyStaleCallbacksAndVersionRefresh()",
+                  "nodeIdentifier" : "PhotoPaletteTests/testLocalOnlyStaleCallbacksAndVersionRefresh()",
+                  "nodeIdentifierURL" : "test://com.apple.xcode/SwipeGo/SwipeGoTests/PhotoPaletteTests/testLocalOnlyStaleCallbacksAndVersionRefresh",
+                  "nodeType" : "Test Case",
+                  "result" : "Passed"
+                },
+                {
+                  "duration" : "0.01s",
+                  "durationInSeconds" : 0.010419964790344238,
+                  "name" : "testTransparentMalformedBoundedAndStableSamples()",
+                  "nodeIdentifier" : "PhotoPaletteTests/testTransparentMalformedBoundedAndStableSamples()",
+                  "nodeIdentifierURL" : "test://com.apple.xcode/SwipeGo/SwipeGoTests/PhotoPaletteTests/testTransparentMalformedBoundedAndStableSamples",
+                  "nodeType" : "Test Case",
+                  "result" : "Passed"
+                }
+              ],
+              "name" : "PhotoPaletteTests",
+              "nodeIdentifierURL" : "test://com.apple.xcode/SwipeGo/SwipeGoTests/PhotoPaletteTests",
+              "nodeType" : "Test Suite",
+              "result" : "Passed"
+            },
+            {
+              "children" : [
+                {
+                  "duration" : "0.022s",
+                  "durationInSeconds" : 0.021786093711853027,
+                  "name" : "testAcknowledgementSaveFailureDoesNotHideUnresolvedOperation()",
+                  "nodeIdentifier" : "ReconciliationTests/testAcknowledgementSaveFailureDoesNotHideUnresolvedOperation()",
+                  "nodeIdentifierURL" : "test://com.apple.xcode/SwipeGo/SwipeGoTests/ReconciliationTests/testAcknowledgementSaveFailureDoesNotHideUnresolvedOperation",
+                  "nodeType" : "Test Case",
+                  "result" : "Passed"
+                },
+                {
+                  "duration" : "0.014s",
+                  "durationInSeconds" : 0.014464974403381348,
+                  "name" : "testActiveOperationAndLaterSuccessCannotBeOverwritten()",
+                  "nodeIdentifier" : "ReconciliationTests/testActiveOperationAndLaterSuccessCannotBeOverwritten()",
+                  "nodeIdentifierURL" : "test://com.apple.xcode/SwipeGo/SwipeGoTests/ReconciliationTests/testActiveOperationAndLaterSuccessCannotBeOverwritten",
+                  "nodeType" : "Test Case",
+                  "result" : "Passed"
+                },
+                {
+                  "duration" : "0.015s",
+                  "durationInSeconds" : 0.015174031257629395,
+                  "name" : "testFavoriteFactsAndCancelledReceiptsRemainDistinct()",
+                  "nodeIdentifier" : "ReconciliationTests/testFavoriteFactsAndCancelledReceiptsRemainDistinct()",
+                  "nodeIdentifierURL" : "test://com.apple.xcode/SwipeGo/SwipeGoTests/ReconciliationTests/testFavoriteFactsAndCancelledReceiptsRemainDistinct",
+                  "nodeType" : "Test Case",
+                  "result" : "Passed"
+                },
+                {
+                  "duration" : "0.43s",
+                  "durationInSeconds" : 0.43149101734161377,
+                  "name" : "testRealPhotoKitObserverRefreshesFavoriteAndSessionFacts()",
+                  "nodeIdentifier" : "ReconciliationTests/testRealPhotoKitObserverRefreshesFavoriteAndSessionFacts()",
+                  "nodeIdentifierURL" : "test://com.apple.xcode/SwipeGo/SwipeGoTests/ReconciliationTests/testRealPhotoKitObserverRefreshesFavoriteAndSessionFacts",
+                  "nodeType" : "Test Case",
+                  "result" : "Passed"
+                },
+                {
+                  "duration" : "0.029s",
+                  "durationInSeconds" : 0.029451966285705566,
+                  "name" : "testRestartWithMissingAssetPreservesIntentAndRequiresFreshReview()",
+                  "nodeIdentifier" : "ReconciliationTests/testRestartWithMissingAssetPreservesIntentAndRequiresFreshReview()",
+                  "nodeIdentifierURL" : "test://com.apple.xcode/SwipeGo/SwipeGoTests/ReconciliationTests/testRestartWithMissingAssetPreservesIntentAndRequiresFreshReview",
+                  "nodeType" : "Test Case",
+                  "result" : "Passed"
+                }
+              ],
+              "name" : "ReconciliationTests",
+              "nodeIdentifierURL" : "test://com.apple.xcode/SwipeGo/SwipeGoTests/ReconciliationTests",
+              "nodeType" : "Test Suite",
+              "result" : "Passed"
+            },
+            {
+              "children" : [
+                {
+                  "duration" : "0.015s",
+                  "durationInSeconds" : 0.015231966972351074,
+                  "name" : "testAnniversaryOnlyExpandsAfterExplicitActionAndUsesScopedAssets()",
+                  "nodeIdentifier" : "ReviewContinuityTests/testAnniversaryOnlyExpandsAfterExplicitActionAndUsesScopedAssets()",
+                  "nodeIdentifierURL" : "test://com.apple.xcode/SwipeGo/SwipeGoTests/ReviewContinuityTests/testAnniversaryOnlyExpandsAfterExplicitActionAndUsesScopedAssets",
+                  "nodeType" : "Test Case",
+                  "result" : "Passed"
+                },
+                {
+                  "duration" : "0.022s",
+                  "durationInSeconds" : 0.022315025329589844,
+                  "name" : "testContinuationAppendsAtMostSixtyAndPersistsWithoutReordering()",
+                  "nodeIdentifier" : "ReviewContinuityTests/testContinuationAppendsAtMostSixtyAndPersistsWithoutReordering()",
+                  "nodeIdentifierURL" : "test://com.apple.xcode/SwipeGo/SwipeGoTests/ReviewContinuityTests/testContinuationAppendsAtMostSixtyAndPersistsWithoutReordering",
+                  "nodeType" : "Test Case",
+                  "result" : "Passed"
+                },
+                {
+                  "duration" : "0.024s",
+                  "durationInSeconds" : 0.023959040641784668,
+                  "name" : "testFailedExtensionAndLegacyUpgradePreserveSavedCursorAndIDs()",
+                  "nodeIdentifier" : "ReviewContinuityTests/testFailedExtensionAndLegacyUpgradePreserveSavedCursorAndIDs()",
+                  "nodeIdentifierURL" : "test://com.apple.xcode/SwipeGo/SwipeGoTests/ReviewContinuityTests/testFailedExtensionAndLegacyUpgradePreserveSavedCursorAndIDs",
+                  "nodeType" : "Test Case",
+                  "result" : "Passed"
+                },
+                {
+                  "duration" : "0.014s",
+                  "durationInSeconds" : 0.013821005821228027,
+                  "name" : "testMissingAnchorCannotInventContinuationAndOneItemIsExplicit()",
+                  "nodeIdentifier" : "ReviewContinuityTests/testMissingAnchorCannotInventContinuationAndOneItemIsExplicit()",
+                  "nodeIdentifierURL" : "test://com.apple.xcode/SwipeGo/SwipeGoTests/ReviewContinuityTests/testMissingAnchorCannotInventContinuationAndOneItemIsExplicit",
+                  "nodeType" : "Test Case",
+                  "result" : "Passed"
+                },
+                {
+                  "duration" : "0.0019s",
+                  "durationInSeconds" : 0.0018960237503051758,
+                  "name" : "testRandomPrefersMultipleAndCapsLongSegmentAtSixty()",
+                  "nodeIdentifier" : "ReviewContinuityTests/testRandomPrefersMultipleAndCapsLongSegmentAtSixty()",
+                  "nodeIdentifierURL" : "test://com.apple.xcode/SwipeGo/SwipeGoTests/ReviewContinuityTests/testRandomPrefersMultipleAndCapsLongSegmentAtSixty",
+                  "nodeType" : "Test Case",
+                  "result" : "Passed"
+                },
+                {
+                  "duration" : "0.0012s",
+                  "durationInSeconds" : 0.0011609792709350586,
+                  "name" : "testRecentAndRandomSingleSegmentsHaveBoundedStableRanges()",
+                  "nodeIdentifier" : "ReviewContinuityTests/testRecentAndRandomSingleSegmentsHaveBoundedStableRanges()",
+                  "nodeIdentifierURL" : "test://com.apple.xcode/SwipeGo/SwipeGoTests/ReviewContinuityTests/testRecentAndRandomSingleSegmentsHaveBoundedStableRanges",
+                  "nodeType" : "Test Case",
+                  "result" : "Passed"
+                }
+              ],
+              "name" : "ReviewContinuityTests",
+              "nodeIdentifierURL" : "test://com.apple.xcode/SwipeGo/SwipeGoTests/ReviewContinuityTests",
+              "nodeType" : "Test Suite",
+              "result" : "Passed"
+            },
+            {
+              "children" : [
+                {
+                  "duration" : "0.00035s",
+                  "durationInSeconds" : 0.0003509521484375,
+                  "name" : "testAxisLocksAndEmitsOnceForCapturedAsset()",
+                  "nodeIdentifier" : "ReviewGestureTests/testAxisLocksAndEmitsOnceForCapturedAsset()",
+                  "nodeIdentifierURL" : "test://com.apple.xcode/SwipeGo/SwipeGoTests/ReviewGestureTests/testAxisLocksAndEmitsOnceForCapturedAsset",
+                  "nodeType" : "Test Case",
+                  "result" : "Passed"
+                },
+                {
+                  "duration" : "0.0003s",
+                  "durationInSeconds" : 0.00030303001403808594,
+                  "name" : "testCancellingIdleDoesNotPoisonNextDrag()",
+                  "nodeIdentifier" : "ReviewGestureTests/testCancellingIdleDoesNotPoisonNextDrag()",
+                  "nodeIdentifierURL" : "test://com.apple.xcode/SwipeGo/SwipeGoTests/ReviewGestureTests/testCancellingIdleDoesNotPoisonNextDrag",
+                  "nodeType" : "Test Case",
+                  "result" : "Passed"
+                },
+                {
+                  "duration" : "0.00041s",
+                  "durationInSeconds" : 0.0004119873046875,
+                  "name" : "testCrossAxisFinishCancelsInsteadOfMarkingFavoriteOrPending()",
+                  "nodeIdentifier" : "ReviewGestureTests/testCrossAxisFinishCancelsInsteadOfMarkingFavoriteOrPending()",
+                  "nodeIdentifierURL" : "test://com.apple.xcode/SwipeGo/SwipeGoTests/ReviewGestureTests/testCrossAxisFinishCancelsInsteadOfMarkingFavoriteOrPending",
+                  "nodeType" : "Test Case",
+                  "result" : "Passed"
+                },
+                {
+                  "duration" : "0.0004s",
+                  "durationInSeconds" : 0.0003960132598876953,
+                  "name" : "testInitialOffAxisJitterDoesNotSwallowHorizontalSwipe()",
+                  "nodeIdentifier" : "ReviewGestureTests/testInitialOffAxisJitterDoesNotSwallowHorizontalSwipe()",
+                  "nodeIdentifierURL" : "test://com.apple.xcode/SwipeGo/SwipeGoTests/ReviewGestureTests/testInitialOffAxisJitterDoesNotSwallowHorizontalSwipe",
+                  "nodeType" : "Test Case",
+                  "result" : "Passed"
+                },
+                {
+                  "duration" : "0.00036s",
+                  "durationInSeconds" : 0.0003600120544433594,
+                  "name" : "testThresholdDiagonalZoomAndIntentDirections()",
+                  "nodeIdentifier" : "ReviewGestureTests/testThresholdDiagonalZoomAndIntentDirections()",
+                  "nodeIdentifierURL" : "test://com.apple.xcode/SwipeGo/SwipeGoTests/ReviewGestureTests/testThresholdDiagonalZoomAndIntentDirections",
+                  "nodeType" : "Test Case",
+                  "result" : "Passed"
+                }
+              ],
+              "name" : "ReviewGestureTests",
+              "nodeIdentifierURL" : "test://com.apple.xcode/SwipeGo/SwipeGoTests/ReviewGestureTests",
+              "nodeType" : "Test Suite",
+              "result" : "Passed"
+            },
+            {
+              "children" : [
+                {
+                  "duration" : "0.0011s",
+                  "durationInSeconds" : 0.0010759830474853516,
+                  "name" : "testRandomSelectsWholeSegmentAndEmptyIsNil()",
+                  "nodeIdentifier" : "ReviewSessionTests/testRandomSelectsWholeSegmentAndEmptyIsNil()",
+                  "nodeIdentifierURL" : "test://com.apple.xcode/SwipeGo/SwipeGoTests/ReviewSessionTests/testRandomSelectsWholeSegmentAndEmptyIsNil",
+                  "nodeType" : "Test Case",
+                  "result" : "Passed"
+                },
+                {
+                  "duration" : "0.035s",
+                  "durationInSeconds" : 0.0353010892868042,
+                  "name" : "testRealDiskRestoreCursorAndMissingAssetRetainsIntent()",
+                  "nodeIdentifier" : "ReviewSessionTests/testRealDiskRestoreCursorAndMissingAssetRetainsIntent()",
+                  "nodeIdentifierURL" : "test://com.apple.xcode/SwipeGo/SwipeGoTests/ReviewSessionTests/testRealDiskRestoreCursorAndMissingAssetRetainsIntent",
+                  "nodeType" : "Test Case",
+                  "result" : "Passed"
+                },
+                {
+                  "duration" : "0.032s",
+                  "durationInSeconds" : 0.03249490261077881,
+                  "name" : "testRealSaveFailurePreservesCursorAndLatestSessionWins()",
+                  "nodeIdentifier" : "ReviewSessionTests/testRealSaveFailurePreservesCursorAndLatestSessionWins()",
+                  "nodeIdentifierURL" : "test://com.apple.xcode/SwipeGo/SwipeGoTests/ReviewSessionTests/testRealSaveFailurePreservesCursorAndLatestSessionWins",
+                  "nodeType" : "Test Case",
+                  "result" : "Passed"
+                },
+                {
+                  "duration" : "0.00089s",
+                  "durationInSeconds" : 0.0008939504623413086,
+                  "name" : "testStableMixedOrderDayGapAndUnknownDates()",
+                  "nodeIdentifier" : "ReviewSessionTests/testStableMixedOrderDayGapAndUnknownDates()",
+                  "nodeIdentifierURL" : "test://com.apple.xcode/SwipeGo/SwipeGoTests/ReviewSessionTests/testStableMixedOrderDayGapAndUnknownDates",
+                  "nodeType" : "Test Case",
+                  "result" : "Passed"
+                },
+                {
+                  "duration" : "0.0014s",
+                  "durationInSeconds" : 0.0014300346374511719,
+                  "name" : "testStrictAnniversaryLeapDayEmptyAndTimeZone()",
+                  "nodeIdentifier" : "ReviewSessionTests/testStrictAnniversaryLeapDayEmptyAndTimeZone()",
+                  "nodeIdentifierURL" : "test://com.apple.xcode/SwipeGo/SwipeGoTests/ReviewSessionTests/testStrictAnniversaryLeapDayEmptyAndTimeZone",
+                  "nodeType" : "Test Case",
+                  "result" : "Passed"
+                }
+              ],
+              "name" : "ReviewSessionTests",
+              "nodeIdentifierURL" : "test://com.apple.xcode/SwipeGo/SwipeGoTests/ReviewSessionTests",
+              "nodeType" : "Test Suite",
+              "result" : "Passed"
+            },
+            {
+              "children" : [
+                {
+                  "duration" : "0.19s",
+                  "durationInSeconds" : 0.18866491317749023,
+                  "name" : "testCancelAndResumeCannotPublishOldResult()",
+                  "nodeIdentifier" : "SimilarityTests/testCancelAndResumeCannotPublishOldResult()",
+                  "nodeIdentifierURL" : "test://com.apple.xcode/SwipeGo/SwipeGoTests/SimilarityTests/testCancelAndResumeCannotPublishOldResult",
+                  "nodeType" : "Test Case",
+                  "result" : "Passed"
+                },
+                {
+                  "duration" : "0.0059s",
+                  "durationInSeconds" : 0.00592803955078125,
+                  "name" : "testCandidateBoundAndCacheBound()",
+                  "nodeIdentifier" : "SimilarityTests/testCandidateBoundAndCacheBound()",
+                  "nodeIdentifierURL" : "test://com.apple.xcode/SwipeGo/SwipeGoTests/SimilarityTests/testCandidateBoundAndCacheBound",
+                  "nodeType" : "Test Case",
+                  "result" : "Passed"
+                },
+                {
+                  "duration" : "0.0017s",
+                  "durationInSeconds" : 0.0017141103744506836,
+                  "name" : "testCompleteLinkNoChainCacheAndVersionInvalidation()",
+                  "nodeIdentifier" : "SimilarityTests/testCompleteLinkNoChainCacheAndVersionInvalidation()",
+                  "nodeIdentifierURL" : "test://com.apple.xcode/SwipeGo/SwipeGoTests/SimilarityTests/testCompleteLinkNoChainCacheAndVersionInvalidation",
+                  "nodeType" : "Test Case",
+                  "result" : "Passed"
+                },
+                {
+                  "duration" : "0.54s",
+                  "durationInSeconds" : 0.5386379957199097,
+                  "name" : "testRealVisionPrintsOnAuthorizedGeneratedFixtures()",
+                  "nodeIdentifier" : "SimilarityTests/testRealVisionPrintsOnAuthorizedGeneratedFixtures()",
+                  "nodeIdentifierURL" : "test://com.apple.xcode/SwipeGo/SwipeGoTests/SimilarityTests/testRealVisionPrintsOnAuthorizedGeneratedFixtures",
+                  "nodeType" : "Test Case",
+                  "result" : "Passed"
+                }
+              ],
+              "name" : "SimilarityTests",
+              "nodeIdentifierURL" : "test://com.apple.xcode/SwipeGo/SwipeGoTests/SimilarityTests",
+              "nodeType" : "Test Suite",
+              "result" : "Passed"
+            },
+            {
+              "children" : [
+                {
+                  "duration" : "0.0022s",
+                  "durationInSeconds" : 0.002228975296020508,
+                  "name" : "testLateItemsAndRelease()",
+                  "nodeIdentifier" : "VideoPlaybackTests/testLateItemsAndRelease()",
+                  "nodeIdentifierURL" : "test://com.apple.xcode/SwipeGo/SwipeGoTests/VideoPlaybackTests/testLateItemsAndRelease",
+                  "nodeType" : "Test Case",
+                  "result" : "Passed"
+                },
+                {
+                  "duration" : "0.42s",
+                  "durationInSeconds" : 0.4173870086669922,
+                  "name" : "testNativePhotoKitVideoWhenAuthorized()",
+                  "nodeIdentifier" : "VideoPlaybackTests/testNativePhotoKitVideoWhenAuthorized()",
+                  "nodeIdentifierURL" : "test://com.apple.xcode/SwipeGo/SwipeGoTests/VideoPlaybackTests/testNativePhotoKitVideoWhenAuthorized",
+                  "nodeType" : "Test Case",
+                  "result" : "Passed"
+                },
+                {
+                  "duration" : "0.42s",
+                  "durationInSeconds" : 0.41893208026885986,
+                  "name" : "testRealAVPlayerFixtureAndStop()",
+                  "nodeIdentifier" : "VideoPlaybackTests/testRealAVPlayerFixtureAndStop()",
+                  "nodeIdentifierURL" : "test://com.apple.xcode/SwipeGo/SwipeGoTests/VideoPlaybackTests/testRealAVPlayerFixtureAndStop",
+                  "nodeType" : "Test Case",
+                  "result" : "Passed"
+                },
+                {
+                  "duration" : "0.00093s",
+                  "durationInSeconds" : 0.0009270906448364258,
+                  "name" : "testResourceFailuresAndRetry()",
+                  "nodeIdentifier" : "VideoPlaybackTests/testResourceFailuresAndRetry()",
+                  "nodeIdentifierURL" : "test://com.apple.xcode/SwipeGo/SwipeGoTests/VideoPlaybackTests/testResourceFailuresAndRetry",
+                  "nodeType" : "Test Case",
+                  "result" : "Passed"
+                }
+              ],
+              "name" : "VideoPlaybackTests",
+              "nodeIdentifierURL" : "test://com.apple.xcode/SwipeGo/SwipeGoTests/VideoPlaybackTests",
+              "nodeType" : "Test Suite",
+              "result" : "Passed"
+            }
+          ],
+          "name" : "SwipeGoTests",
+          "nodeIdentifierURL" : "test://com.apple.xcode/SwipeGo/SwipeGoTests",
+          "nodeType" : "Unit test bundle",
+          "result" : "Passed"
+        },
+        {
+          "children" : [
+            {
+              "children" : [
+                {
+                  "duration" : "11s",
+                  "durationInSeconds" : 11.281909942626953,
+                  "name" : "testMaximumTextOpaqueComparisonActionsRemainReachable()",
+                  "nodeIdentifier" : "ComparisonUITests/testMaximumTextOpaqueComparisonActionsRemainReachable()",
+                  "nodeIdentifierURL" : "test://com.apple.xcode/SwipeGo/SwipeGoUITests/ComparisonUITests/testMaximumTextOpaqueComparisonActionsRemainReachable",
+                  "nodeType" : "Test Case",
+                  "result" : "Passed"
+                },
+                {
+                  "duration" : "19s",
+                  "durationInSeconds" : 19.587295055389404,
+                  "name" : "testMultiKeepZoomZeroKeepSkipAndSave()",
+                  "nodeIdentifier" : "ComparisonUITests/testMultiKeepZoomZeroKeepSkipAndSave()",
+                  "nodeIdentifierURL" : "test://com.apple.xcode/SwipeGo/SwipeGoUITests/ComparisonUITests/testMultiKeepZoomZeroKeepSkipAndSave",
+                  "nodeType" : "Test Case",
+                  "result" : "Passed"
+                }
+              ],
+              "name" : "ComparisonUITests",
+              "nodeIdentifierURL" : "test://com.apple.xcode/SwipeGo/SwipeGoUITests/ComparisonUITests",
+              "nodeType" : "Test Suite",
+              "result" : "Passed"
+            },
+            {
+              "children" : [
+                {
+                  "duration" : "7s",
+                  "durationInSeconds" : 7.1337970495224,
+                  "name" : "testHistoryEmptyAndFailedReadRetry()",
+                  "nodeIdentifier" : "DeletionHistoryGlassTests/testHistoryEmptyAndFailedReadRetry()",
+                  "nodeIdentifierURL" : "test://com.apple.xcode/SwipeGo/SwipeGoUITests/DeletionHistoryGlassTests/testHistoryEmptyAndFailedReadRetry",
+                  "nodeType" : "Test Case",
+                  "result" : "Passed"
+                },
+                {
+                  "duration" : "11s",
+                  "durationInSeconds" : 11.15883195400238,
+                  "name" : "testHistoryLargeOpaqueKeepsDoneReachable()",
+                  "nodeIdentifier" : "DeletionHistoryGlassTests/testHistoryLargeOpaqueKeepsDoneReachable()",
+                  "nodeIdentifierURL" : "test://com.apple.xcode/SwipeGo/SwipeGoUITests/DeletionHistoryGlassTests/testHistoryLargeOpaqueKeepsDoneReachable",
+                  "nodeType" : "Test Case",
+                  "result" : "Passed"
+                },
+                {
+                  "duration" : "12s",
+                  "durationInSeconds" : 12.592053055763245,
+                  "name" : "testHistoryStatesGlassAndDismissal()",
+                  "nodeIdentifier" : "DeletionHistoryGlassTests/testHistoryStatesGlassAndDismissal()",
+                  "nodeIdentifierURL" : "test://com.apple.xcode/SwipeGo/SwipeGoUITests/DeletionHistoryGlassTests/testHistoryStatesGlassAndDismissal",
+                  "nodeType" : "Test Case",
+                  "result" : "Passed"
+                }
+              ],
+              "name" : "DeletionHistoryGlassTests",
+              "nodeIdentifierURL" : "test://com.apple.xcode/SwipeGo/SwipeGoUITests/DeletionHistoryGlassTests",
+              "nodeType" : "Test Suite",
+              "result" : "Passed"
+            },
+            {
+              "children" : [
+                {
+                  "duration" : "15s",
+                  "durationInSeconds" : 15.767775058746338,
+                  "name" : "testAllReceiptStatesAndMaximumTextRemainReadable()",
+                  "nodeIdentifier" : "DeletionResultGlassTests/testAllReceiptStatesAndMaximumTextRemainReadable()",
+                  "nodeIdentifierURL" : "test://com.apple.xcode/SwipeGo/SwipeGoUITests/DeletionResultGlassTests/testAllReceiptStatesAndMaximumTextRemainReadable",
+                  "nodeType" : "Test Case",
+                  "result" : "Passed"
+                }
+              ],
+              "name" : "DeletionResultGlassTests",
+              "nodeIdentifierURL" : "test://com.apple.xcode/SwipeGo/SwipeGoUITests/DeletionResultGlassTests",
+              "nodeType" : "Test Suite",
+              "result" : "Passed"
+            },
+            {
+              "children" : [
+                {
+                  "duration" : "14s",
+                  "durationInSeconds" : 14.412952065467834,
+                  "name" : "testFirstUseExplanationCanBeCollapsedAndReopened()",
+                  "nodeIdentifier" : "DeletionReviewUITests/testFirstUseExplanationCanBeCollapsedAndReopened()",
+                  "nodeIdentifierURL" : "test://com.apple.xcode/SwipeGo/SwipeGoUITests/DeletionReviewUITests/testFirstUseExplanationCanBeCollapsedAndReopened",
+                  "nodeType" : "Test Case",
+                  "result" : "Passed"
+                },
+                {
+                  "duration" : "21s",
+                  "durationInSeconds" : 21.911783933639526,
+                  "name" : "testHomeCountsGroupedReviewVideoRetractionAndFrozenCancel()",
+                  "nodeIdentifier" : "DeletionReviewUITests/testHomeCountsGroupedReviewVideoRetractionAndFrozenCancel()",
+                  "nodeIdentifierURL" : "test://com.apple.xcode/SwipeGo/SwipeGoUITests/DeletionReviewUITests/testHomeCountsGroupedReviewVideoRetractionAndFrozenCancel",
+                  "nodeType" : "Test Case",
+                  "result" : "Passed"
+                },
+                {
+                  "duration" : "11s",
+                  "durationInSeconds" : 11.501772999763489,
+                  "name" : "testMaximumTextConfirmationSeparatesActionsFromGuidance()",
+                  "nodeIdentifier" : "DeletionReviewUITests/testMaximumTextConfirmationSeparatesActionsFromGuidance()",
+                  "nodeIdentifierURL" : "test://com.apple.xcode/SwipeGo/SwipeGoUITests/DeletionReviewUITests/testMaximumTextConfirmationSeparatesActionsFromGuidance",
+                  "nodeType" : "Test Case",
+                  "result" : "Passed"
+                }
+              ],
+              "name" : "DeletionReviewUITests",
+              "nodeIdentifierURL" : "test://com.apple.xcode/SwipeGo/SwipeGoUITests/DeletionReviewUITests",
+              "nodeType" : "Test Suite",
+              "result" : "Passed"
+            },
+            {
+              "children" : [
+                {
+                  "duration" : "27s",
+                  "durationInSeconds" : 27.593016982078552,
+                  "name" : "testNativeBatchCancelThenSuccessOnNewDisposablePhotos()",
+                  "nodeIdentifier" : "DeletionUITests/testNativeBatchCancelThenSuccessOnNewDisposablePhotos()",
+                  "nodeIdentifierURL" : "test://com.apple.xcode/SwipeGo/SwipeGoUITests/DeletionUITests/testNativeBatchCancelThenSuccessOnNewDisposablePhotos",
+                  "nodeType" : "Test Case",
+                  "result" : "Passed"
+                }
+              ],
+              "name" : "DeletionUITests",
+              "nodeIdentifierURL" : "test://com.apple.xcode/SwipeGo/SwipeGoUITests/DeletionUITests",
+              "nodeType" : "Test Suite",
+              "result" : "Passed"
+            },
+            {
+              "children" : [
+                {
+                  "duration" : "16s",
+                  "durationInSeconds" : 16.034080028533936,
+                  "name" : "testFavoriteRepeatAndUndoAfterPagingTargetsOriginal()",
+                  "nodeIdentifier" : "FavoriteUITests/testFavoriteRepeatAndUndoAfterPagingTargetsOriginal()",
+                  "nodeIdentifierURL" : "test://com.apple.xcode/SwipeGo/SwipeGoUITests/FavoriteUITests/testFavoriteRepeatAndUndoAfterPagingTargetsOriginal",
+                  "nodeType" : "Test Case",
+                  "result" : "Passed"
+                }
+              ],
+              "name" : "FavoriteUITests",
+              "nodeIdentifierURL" : "test://com.apple.xcode/SwipeGo/SwipeGoUITests/FavoriteUITests",
+              "nodeType" : "Test Suite",
+              "result" : "Passed"
+            },
+            {
+              "children" : [
+                {
+                  "duration" : "1m 2s",
+                  "durationInSeconds" : 62.03708493709564,
+                  "name" : "testMaximumTypeCoverStatesRemainReadable()",
+                  "nodeIdentifier" : "HomeCoverStateTests/testMaximumTypeCoverStatesRemainReadable()",
+                  "nodeIdentifierURL" : "test://com.apple.xcode/SwipeGo/SwipeGoUITests/HomeCoverStateTests/testMaximumTypeCoverStatesRemainReadable",
+                  "nodeType" : "Test Case",
+                  "result" : "Passed"
+                }
+              ],
+              "name" : "HomeCoverStateTests",
+              "nodeIdentifierURL" : "test://com.apple.xcode/SwipeGo/SwipeGoUITests/HomeCoverStateTests",
+              "nodeType" : "Test Suite",
+              "result" : "Passed"
+            },
+            {
+              "children" : [
+                {
+                  "duration" : "31s",
+                  "durationInSeconds" : 31.547393083572388,
+                  "name" : "testContinueSwipesPhotosVideoBlackBarsAndBoundaries()",
+                  "nodeIdentifier" : "HomeNavigationTests/testContinueSwipesPhotosVideoBlackBarsAndBoundaries()",
+                  "nodeIdentifierURL" : "test://com.apple.xcode/SwipeGo/SwipeGoUITests/HomeNavigationTests/testContinueSwipesPhotosVideoBlackBarsAndBoundaries",
+                  "nodeType" : "Test Case",
+                  "result" : "Passed"
+                }
+              ],
+              "name" : "HomeNavigationTests",
+              "nodeIdentifierURL" : "test://com.apple.xcode/SwipeGo/SwipeGoUITests/HomeNavigationTests",
+              "nodeType" : "Test Suite",
+              "result" : "Passed"
+            },
+            {
+              "children" : [
+                {
+                  "duration" : "19s",
+                  "durationInSeconds" : 19.680044054985046,
+                  "name" : "testLargeTextHomeRemainsNavigable()",
+                  "nodeIdentifier" : "HomeTests/testLargeTextHomeRemainsNavigable()",
+                  "nodeIdentifierURL" : "test://com.apple.xcode/SwipeGo/SwipeGoUITests/HomeTests/testLargeTextHomeRemainsNavigable",
+                  "nodeType" : "Test Case",
+                  "result" : "Passed"
+                },
+                {
+                  "duration" : "21s",
+                  "durationInSeconds" : 21.27301597595215,
+                  "name" : "testRealHomeRandomAndPersistedContinue()",
+                  "nodeIdentifier" : "HomeTests/testRealHomeRandomAndPersistedContinue()",
+                  "nodeIdentifierURL" : "test://com.apple.xcode/SwipeGo/SwipeGoUITests/HomeTests/testRealHomeRandomAndPersistedContinue",
+                  "nodeType" : "Test Case",
+                  "result" : "Passed"
+                },
+                {
+                  "duration" : "11s",
+                  "durationInSeconds" : 11.288188934326172,
+                  "name" : "testReducedTransparencyUsesReadableControls()",
+                  "nodeIdentifier" : "HomeTests/testReducedTransparencyUsesReadableControls()",
+                  "nodeIdentifierURL" : "test://com.apple.xcode/SwipeGo/SwipeGoUITests/HomeTests/testReducedTransparencyUsesReadableControls",
+                  "nodeType" : "Test Case",
+                  "result" : "Passed"
+                }
+              ],
+              "name" : "HomeTests",
+              "nodeIdentifierURL" : "test://com.apple.xcode/SwipeGo/SwipeGoUITests/HomeTests",
+              "nodeType" : "Test Suite",
+              "result" : "Passed"
+            },
+            {
+              "children" : [
+                {
+                  "duration" : "15s",
+                  "durationInSeconds" : 15.969334959983826,
+                  "name" : "testColdLaunchAndRelaunchShowRoot()",
+                  "nodeIdentifier" : "LaunchTests/testColdLaunchAndRelaunchShowRoot()",
+                  "nodeIdentifierURL" : "test://com.apple.xcode/SwipeGo/SwipeGoUITests/LaunchTests/testColdLaunchAndRelaunchShowRoot",
+                  "nodeType" : "Test Case",
+                  "result" : "Passed"
+                }
+              ],
+              "name" : "LaunchTests",
+              "nodeIdentifierURL" : "test://com.apple.xcode/SwipeGo/SwipeGoUITests/LaunchTests",
+              "nodeType" : "Test Suite",
+              "result" : "Passed"
+            },
+            {
+              "children" : [
+                {
+                  "duration" : "17s",
+                  "durationInSeconds" : 17.77585196495056,
+                  "name" : "testCompletionNearbyThenUndoRestoresOriginalPhotoAndSession()",
+                  "nodeIdentifier" : "PendingUITests/testCompletionNearbyThenUndoRestoresOriginalPhotoAndSession()",
+                  "nodeIdentifierURL" : "test://com.apple.xcode/SwipeGo/SwipeGoUITests/PendingUITests/testCompletionNearbyThenUndoRestoresOriginalPhotoAndSession",
+                  "nodeType" : "Test Case",
+                  "result" : "Passed"
+                },
+                {
+                  "duration" : "14s",
+                  "durationInSeconds" : 14.942978024482727,
+                  "name" : "testCompletionPreviousReturnsToEarlierUnmarkedAsset()",
+                  "nodeIdentifier" : "PendingUITests/testCompletionPreviousReturnsToEarlierUnmarkedAsset()",
+                  "nodeIdentifierURL" : "test://com.apple.xcode/SwipeGo/SwipeGoUITests/PendingUITests/testCompletionPreviousReturnsToEarlierUnmarkedAsset",
+                  "nodeType" : "Test Case",
+                  "result" : "Passed"
+                },
+                {
+                  "duration" : "18s",
+                  "durationInSeconds" : 18.640493035316467,
+                  "name" : "testCompletionUndoWriteFailureIsVisibleAndRetryable()",
+                  "nodeIdentifier" : "PendingUITests/testCompletionUndoWriteFailureIsVisibleAndRetryable()",
+                  "nodeIdentifierURL" : "test://com.apple.xcode/SwipeGo/SwipeGoUITests/PendingUITests/testCompletionUndoWriteFailureIsVisibleAndRetryable",
+                  "nodeType" : "Test Case",
+                  "result" : "Passed"
+                },
+                {
+                  "duration" : "18s",
+                  "durationInSeconds" : 18.487643003463745,
+                  "name" : "testCompletionUnmarkedButPositionFailedShowsRecovery()",
+                  "nodeIdentifier" : "PendingUITests/testCompletionUnmarkedButPositionFailedShowsRecovery()",
+                  "nodeIdentifierURL" : "test://com.apple.xcode/SwipeGo/SwipeGoUITests/PendingUITests/testCompletionUnmarkedButPositionFailedShowsRecovery",
+                  "nodeType" : "Test Case",
+                  "result" : "Passed"
+                },
+                {
+                  "duration" : "37s",
+                  "durationInSeconds" : 37.10986399650574,
+                  "name" : "testMarkAdvancesUndoReturnsAndRestartPreservesCursor()",
+                  "nodeIdentifier" : "PendingUITests/testMarkAdvancesUndoReturnsAndRestartPreservesCursor()",
+                  "nodeIdentifierURL" : "test://com.apple.xcode/SwipeGo/SwipeGoUITests/PendingUITests/testMarkAdvancesUndoReturnsAndRestartPreservesCursor",
+                  "nodeType" : "Test Case",
+                  "result" : "Passed"
+                },
+                {
+                  "duration" : "19s",
+                  "durationInSeconds" : 19.213423013687134,
+                  "name" : "testRealHomeCompletionKeepsLandscapeUndo()",
+                  "nodeIdentifier" : "PendingUITests/testRealHomeCompletionKeepsLandscapeUndo()",
+                  "nodeIdentifierURL" : "test://com.apple.xcode/SwipeGo/SwipeGoUITests/PendingUITests/testRealHomeCompletionKeepsLandscapeUndo",
+                  "nodeType" : "Test Case",
+                  "result" : "Passed"
+                },
+                {
+                  "duration" : "23s",
+                  "durationInSeconds" : 23.84656298160553,
+                  "name" : "testReducedMotionLastItemCompletionAndUndo()",
+                  "nodeIdentifier" : "PendingUITests/testReducedMotionLastItemCompletionAndUndo()",
+                  "nodeIdentifierURL" : "test://com.apple.xcode/SwipeGo/SwipeGoUITests/PendingUITests/testReducedMotionLastItemCompletionAndUndo",
+                  "nodeType" : "Test Case",
+                  "result" : "Passed"
+                }
+              ],
+              "name" : "PendingUITests",
+              "nodeIdentifierURL" : "test://com.apple.xcode/SwipeGo/SwipeGoUITests/PendingUITests",
+              "nodeType" : "Test Suite",
+              "result" : "Passed"
+            },
+            {
+              "children" : [
+                {
+                  "duration" : "10s",
+                  "durationInSeconds" : 10.559956073760986,
+                  "name" : "testDeniedGuidance()",
+                  "nodeIdentifier" : "PermissionTests/testDeniedGuidance()",
+                  "nodeIdentifierURL" : "test://com.apple.xcode/SwipeGo/SwipeGoUITests/PermissionTests/testDeniedGuidance",
+                  "nodeType" : "Test Case",
+                  "result" : "Passed"
+                },
+                {
+                  "duration" : "12s",
+                  "durationInSeconds" : 12.300906896591187,
+                  "name" : "testFullAccessQueriesRealLibrary()",
+                  "nodeIdentifier" : "PermissionTests/testFullAccessQueriesRealLibrary()",
+                  "nodeIdentifierURL" : "test://com.apple.xcode/SwipeGo/SwipeGoUITests/PermissionTests/testFullAccessQueriesRealLibrary",
+                  "nodeType" : "Test Case",
+                  "result" : "Passed"
+                },
+                {
+                  "duration" : "21s",
+                  "durationInSeconds" : 21.44036102294922,
+                  "name" : "testLimitedEmptyRangeIsNotReportedAsEmptyWholeLibrary()",
+                  "nodeIdentifier" : "PermissionTests/testLimitedEmptyRangeIsNotReportedAsEmptyWholeLibrary()",
+                  "nodeIdentifierURL" : "test://com.apple.xcode/SwipeGo/SwipeGoUITests/PermissionTests/testLimitedEmptyRangeIsNotReportedAsEmptyWholeLibrary",
+                  "nodeType" : "Test Case",
+                  "result" : "Passed"
+                },
+                {
+                  "duration" : "24s",
+                  "durationInSeconds" : 24.222117066383362,
+                  "name" : "testLimitedSelectionAndScopeUpdate()",
+                  "nodeIdentifier" : "PermissionTests/testLimitedSelectionAndScopeUpdate()",
+                  "nodeIdentifierURL" : "test://com.apple.xcode/SwipeGo/SwipeGoUITests/PermissionTests/testLimitedSelectionAndScopeUpdate",
+                  "nodeType" : "Test Case",
+                  "result" : "Passed"
+                }
+              ],
+              "name" : "PermissionTests",
+              "nodeIdentifierURL" : "test://com.apple.xcode/SwipeGo/SwipeGoUITests/PermissionTests",
+              "nodeType" : "Test Suite",
+              "result" : "Passed"
+            },
+            {
+              "children" : [
+                {
+                  "duration" : "8s",
+                  "durationInSeconds" : 8.11498498916626,
+                  "name" : "testPaletteChangesOnNativeGlassWithoutPhotoWallpaper()",
+                  "nodeIdentifier" : "PhotoPaletteUITests/testPaletteChangesOnNativeGlassWithoutPhotoWallpaper()",
+                  "nodeIdentifierURL" : "test://com.apple.xcode/SwipeGo/SwipeGoUITests/PhotoPaletteUITests/testPaletteChangesOnNativeGlassWithoutPhotoWallpaper",
+                  "nodeType" : "Test Case",
+                  "result" : "Passed"
+                }
+              ],
+              "name" : "PhotoPaletteUITests",
+              "nodeIdentifierURL" : "test://com.apple.xcode/SwipeGo/SwipeGoUITests/PhotoPaletteUITests",
+              "nodeType" : "Test Suite",
+              "result" : "Passed"
+            },
+            {
+              "children" : [
+                {
+                  "duration" : "19s",
+                  "durationInSeconds" : 19.197118043899536,
+                  "name" : "testInterruptedOperationSurvivesRelaunchAndAcknowledgementPreservesPending()",
+                  "nodeIdentifier" : "ReconciliationUITests/testInterruptedOperationSurvivesRelaunchAndAcknowledgementPreservesPending()",
+                  "nodeIdentifierURL" : "test://com.apple.xcode/SwipeGo/SwipeGoUITests/ReconciliationUITests/testInterruptedOperationSurvivesRelaunchAndAcknowledgementPreservesPending",
+                  "nodeType" : "Test Case",
+                  "result" : "Passed"
+                },
+                {
+                  "duration" : "18s",
+                  "durationInSeconds" : 18.62133800983429,
+                  "name" : "testMaximumTextOpaqueAcknowledgementKeepsPending()",
+                  "nodeIdentifier" : "ReconciliationUITests/testMaximumTextOpaqueAcknowledgementKeepsPending()",
+                  "nodeIdentifierURL" : "test://com.apple.xcode/SwipeGo/SwipeGoUITests/ReconciliationUITests/testMaximumTextOpaqueAcknowledgementKeepsPending",
+                  "nodeType" : "Test Case",
+                  "result" : "Passed"
+                }
+              ],
+              "name" : "ReconciliationUITests",
+              "nodeIdentifierURL" : "test://com.apple.xcode/SwipeGo/SwipeGoUITests/ReconciliationUITests",
+              "nodeType" : "Test Suite",
+              "result" : "Passed"
+            },
+            {
+              "children" : [
+                {
+                  "duration" : "29s",
+                  "durationInSeconds" : 29.035189032554626,
+                  "name" : "testHomeContinueRandomAndOneItemAnniversaryExpansion()",
+                  "nodeIdentifier" : "ReviewContinuityUITests/testHomeContinueRandomAndOneItemAnniversaryExpansion()",
+                  "nodeIdentifierURL" : "test://com.apple.xcode/SwipeGo/SwipeGoUITests/ReviewContinuityUITests/testHomeContinueRandomAndOneItemAnniversaryExpansion",
+                  "nodeType" : "Test Case",
+                  "result" : "Passed"
+                }
+              ],
+              "name" : "ReviewContinuityUITests",
+              "nodeIdentifierURL" : "test://com.apple.xcode/SwipeGo/SwipeGoUITests/ReviewContinuityUITests",
+              "nodeType" : "Test Suite",
+              "result" : "Passed"
+            },
+            {
+              "children" : [
+                {
+                  "duration" : "21s",
+                  "durationInSeconds" : 21.089640021324158,
+                  "name" : "testGlassPillsAndOpaqueFallbackKeepNavigationReachable()",
+                  "nodeIdentifier" : "ReviewGlassTests/testGlassPillsAndOpaqueFallbackKeepNavigationReachable()",
+                  "nodeIdentifierURL" : "test://com.apple.xcode/SwipeGo/SwipeGoUITests/ReviewGlassTests/testGlassPillsAndOpaqueFallbackKeepNavigationReachable",
+                  "nodeType" : "Test Case",
+                  "result" : "Passed"
+                }
+              ],
+              "name" : "ReviewGlassTests",
+              "nodeIdentifierURL" : "test://com.apple.xcode/SwipeGo/SwipeGoUITests/ReviewGlassTests",
+              "nodeType" : "Test Suite",
+              "result" : "Passed"
+            },
+            {
+              "children" : [
+                {
+                  "duration" : "13s",
+                  "durationInSeconds" : 13.029579997062683,
+                  "name" : "testAccessibilityLandscapeControlsRemainReachable()",
+                  "nodeIdentifier" : "ReviewOrientationTests/testAccessibilityLandscapeControlsRemainReachable()",
+                  "nodeIdentifierURL" : "test://com.apple.xcode/SwipeGo/SwipeGoUITests/ReviewOrientationTests/testAccessibilityLandscapeControlsRemainReachable",
+                  "nodeType" : "Test Case",
+                  "result" : "Passed"
+                },
+                {
+                  "duration" : "32s",
+                  "durationInSeconds" : 32.18724799156189,
+                  "name" : "testPhotoAndVideoBothLandscapesPreservePositionAndReturnHomePortrait()",
+                  "nodeIdentifier" : "ReviewOrientationTests/testPhotoAndVideoBothLandscapesPreservePositionAndReturnHomePortrait()",
+                  "nodeIdentifierURL" : "test://com.apple.xcode/SwipeGo/SwipeGoUITests/ReviewOrientationTests/testPhotoAndVideoBothLandscapesPreservePositionAndReturnHomePortrait",
+                  "nodeType" : "Test Case",
+                  "result" : "Passed"
+                }
+              ],
+              "name" : "ReviewOrientationTests",
+              "nodeIdentifierURL" : "test://com.apple.xcode/SwipeGo/SwipeGoUITests/ReviewOrientationTests",
+              "nodeType" : "Test Suite",
+              "result" : "Passed"
+            },
+            {
+              "children" : [
+                {
+                  "duration" : "50s",
+                  "durationInSeconds" : 50.44479691982269,
+                  "name" : "testEmptyUnavailableAndMediaFailuresUseReadableStates()",
+                  "nodeIdentifier" : "ReviewStateGlassTests/testEmptyUnavailableAndMediaFailuresUseReadableStates()",
+                  "nodeIdentifierURL" : "test://com.apple.xcode/SwipeGo/SwipeGoUITests/ReviewStateGlassTests/testEmptyUnavailableAndMediaFailuresUseReadableStates",
+                  "nodeType" : "Test Case",
+                  "result" : "Passed"
+                },
+                {
+                  "duration" : "7s",
+                  "durationInSeconds" : 7.80370306968689,
+                  "name" : "testLargestTypeLandscapeCompletionHasReadableViewport()",
+                  "nodeIdentifier" : "ReviewStateGlassTests/testLargestTypeLandscapeCompletionHasReadableViewport()",
+                  "nodeIdentifierURL" : "test://com.apple.xcode/SwipeGo/SwipeGoUITests/ReviewStateGlassTests/testLargestTypeLandscapeCompletionHasReadableViewport",
+                  "nodeType" : "Test Case",
+                  "result" : "Passed"
+                },
+                {
+                  "duration" : "33s",
+                  "durationInSeconds" : 33.22699499130249,
+                  "name" : "testLargestTypeLandscapeFailuresKeepTextAndRetryReachable()",
+                  "nodeIdentifier" : "ReviewStateGlassTests/testLargestTypeLandscapeFailuresKeepTextAndRetryReachable()",
+                  "nodeIdentifierURL" : "test://com.apple.xcode/SwipeGo/SwipeGoUITests/ReviewStateGlassTests/testLargestTypeLandscapeFailuresKeepTextAndRetryReachable",
+                  "nodeType" : "Test Case",
+                  "result" : "Passed"
+                }
+              ],
+              "name" : "ReviewStateGlassTests",
+              "nodeIdentifierURL" : "test://com.apple.xcode/SwipeGo/SwipeGoUITests/ReviewStateGlassTests",
+              "nodeType" : "Test Suite",
+              "result" : "Passed"
+            },
+            {
+              "children" : [
+                {
+                  "duration" : "56s",
+                  "durationInSeconds" : 56.834921002388,
+                  "name" : "testEveryMediaRegionTogglesWithoutMovingOrResizing()",
+                  "nodeIdentifier" : "ReviewTapTests/testEveryMediaRegionTogglesWithoutMovingOrResizing()",
+                  "nodeIdentifierURL" : "test://com.apple.xcode/SwipeGo/SwipeGoUITests/ReviewTapTests/testEveryMediaRegionTogglesWithoutMovingOrResizing",
+                  "nodeType" : "Test Case",
+                  "result" : "Passed"
+                }
+              ],
+              "name" : "ReviewTapTests",
+              "nodeIdentifierURL" : "test://com.apple.xcode/SwipeGo/SwipeGoUITests/ReviewTapTests",
+              "nodeType" : "Test Suite",
+              "result" : "Passed"
+            },
+            {
+              "children" : [
+                {
+                  "duration" : "43s",
+                  "durationInSeconds" : 43.17036497592926,
+                  "name" : "testImmersiveGesturesZoomButtonsAndVideoSlider()",
+                  "nodeIdentifier" : "ReviewTests/testImmersiveGesturesZoomButtonsAndVideoSlider()",
+                  "nodeIdentifierURL" : "test://com.apple.xcode/SwipeGo/SwipeGoUITests/ReviewTests/testImmersiveGesturesZoomButtonsAndVideoSlider",
+                  "nodeType" : "Test Case",
+                  "result" : "Passed"
+                }
+              ],
+              "name" : "ReviewTests",
+              "nodeIdentifierURL" : "test://com.apple.xcode/SwipeGo/SwipeGoUITests/ReviewTests",
+              "nodeType" : "Test Suite",
+              "result" : "Passed"
+            },
+            {
+              "children" : [
+                {
+                  "duration" : "13s",
+                  "durationInSeconds" : 13.683358907699585,
+                  "name" : "testRealSettingsDisclosureAndDismissal()",
+                  "nodeIdentifier" : "SettingsGlassTests/testRealSettingsDisclosureAndDismissal()",
+                  "nodeIdentifierURL" : "test://com.apple.xcode/SwipeGo/SwipeGoUITests/SettingsGlassTests/testRealSettingsDisclosureAndDismissal",
+                  "nodeType" : "Test Case",
+                  "result" : "Passed"
+                }
+              ],
+              "name" : "SettingsGlassTests",
+              "nodeIdentifierURL" : "test://com.apple.xcode/SwipeGo/SwipeGoUITests/SettingsGlassTests",
+              "nodeType" : "Test Suite",
+              "result" : "Passed"
+            },
+            {
+              "children" : [
+                {
+                  "duration" : "12s",
+                  "durationInSeconds" : 12.406224012374878,
+                  "name" : "testActualVideoControlsAndLifecycle()",
+                  "nodeIdentifier" : "VideoTests/testActualVideoControlsAndLifecycle()",
+                  "nodeIdentifierURL" : "test://com.apple.xcode/SwipeGo/SwipeGoUITests/VideoTests/testActualVideoControlsAndLifecycle",
+                  "nodeType" : "Test Case",
+                  "result" : "Passed"
+                }
+              ],
+              "name" : "VideoTests",
+              "nodeIdentifierURL" : "test://com.apple.xcode/SwipeGo/SwipeGoUITests/VideoTests",
+              "nodeType" : "Test Suite",
+              "result" : "Passed"
+            },
+            {
+              "children" : [
+                {
+                  "duration" : "9s",
+                  "durationInSeconds" : 9.777281999588013,
+                  "name" : "testWelcomeGlassBeforeNativePermission()",
+                  "nodeIdentifier" : "WelcomeGlassTests/testWelcomeGlassBeforeNativePermission()",
+                  "nodeIdentifierURL" : "test://com.apple.xcode/SwipeGo/SwipeGoUITests/WelcomeGlassTests/testWelcomeGlassBeforeNativePermission",
+                  "nodeType" : "Test Case",
+                  "result" : "Passed"
+                },
+                {
+                  "duration" : "10s",
+                  "durationInSeconds" : 10.38022494316101,
+                  "name" : "testWelcomeLargeOpaqueCanRequest()",
+                  "nodeIdentifier" : "WelcomeGlassTests/testWelcomeLargeOpaqueCanRequest()",
+                  "nodeIdentifierURL" : "test://com.apple.xcode/SwipeGo/SwipeGoUITests/WelcomeGlassTests/testWelcomeLargeOpaqueCanRequest",
+                  "nodeType" : "Test Case",
+                  "result" : "Passed"
+                }
+              ],
+              "name" : "WelcomeGlassTests",
+              "nodeIdentifierURL" : "test://com.apple.xcode/SwipeGo/SwipeGoUITests/WelcomeGlassTests",
+              "nodeType" : "Test Suite",
+              "result" : "Passed"
+            }
+          ],
+          "name" : "SwipeGoUITests",
+          "nodeIdentifierURL" : "test://com.apple.xcode/SwipeGo/SwipeGoUITests",
+          "nodeType" : "UI test bundle",
+          "result" : "Passed"
+        }
+      ],
+      "name" : "SwipeGo",
+      "nodeType" : "Test Plan",
+      "result" : "Passed"
+    }
+  ],
+  "testPlanConfigurations" : [
+    {
+      "configurationId" : "1",
+      "configurationName" : "Test Scheme Action"
+    }
+  ]
+}

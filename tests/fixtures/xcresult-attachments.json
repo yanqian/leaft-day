@@ -1,0 +1,26 @@
+[
+  {
+    "attachments" : [
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "1DF82DB5-2A3B-450A-9EB5-098FC4E8F812",
+        "deviceName" : "SwipeGo Fixtures seed 27",
+        "exportedFileName" : "ACF287BB-4309-4F2C-A2D4-EEDBA091F607.txt",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "F030-LeafDay-home-screen-hierarchy_0_5A465FA4-6351-4F35-B711-8AA29B72E453.txt",
+        "timestamp" : 1790840079.735
+      },
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "1DF82DB5-2A3B-450A-9EB5-098FC4E8F812",
+        "deviceName" : "SwipeGo Fixtures seed 27",
+        "exportedFileName" : "A89E0670-86BD-4F02-8F51-153DF1DDC446.png",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "F030-LeafDay-home-screen_0_4AD58085-BB98-4375-8A95-6D4D037EDCE8.png",
+        "timestamp" : 1790840079.48
+      }
+    ],
+    "testIdentifier" : "LaunchTests/testColdLaunchAndRelaunchShowRoot()",
+    "testIdentifierURL" : "test://com.apple.xcode/SwipeGo/SwipeGoUITests/LaunchTests/testColdLaunchAndRelaunchShowRoot"
+  }
+]

@@ -1,0 +1,6 @@
+{
+  "heartbeatWrittenAfterTimeout": true,
+  "wrapperExit": 124,
+  "descendantAliveAfterWrapperExit": true,
+  "stderr": "EVALUATOR_TIMEOUT: stopped owned process group after 1s; no verdict inferred\n"
+}

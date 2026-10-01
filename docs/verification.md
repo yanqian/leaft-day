@@ -1,3 +1,71 @@
+# 自动验证
+
+从项目根目录运行（也可从其他目录用绝对路径调用）：
+
+```bash
+./verify.sh --changed                 # 按相对 HEAD 的工作区改动选用例
+./verify.sh --changed --base main      # 包括相对指定 ref 的已提交改动
+./verify.sh --full                    # 强制完整回归
+./init.sh                            # 恢复入口；允许复用严格匹配的完整测试记录
+SWIPE_VERIFY_FRESH=1 ./init.sh         # 独立 Evaluator 首次必须使用
+./verify.sh --full --reuse            # 显式允许复用；--fresh 优先于 --reuse
+```
+
+成功退出 0，任何门禁失败退出非零。命令只输出阶段和最终结果，不将每次点击、编译命令流刷到终端。失败不会自动无限重试。
+
+每次运行的 `.build/verification/<时间-唯一后缀>/` 包含：
+
+- `summary.json`：供Agent优先读取的简短结果，包含状态、模式、选择原因、真实测试计数、失败和视觉变化、复用来源与详细证据路径；不塞入所有源码哈希或正常截图。
+- `report.md`：简短可读汇总，只展开失败和视觉变化。
+- `receipt.json`：完整源码/配置与环境指纹、改动路径、执行步骤、用例耗时及全部附件索引。
+- `evidence.md`：全部日志和截图入口，诊断或视觉审阅时按需打开。
+- 独立构建/权限准备/测试等日志；新执行时保存 `PermissionSetup.xcresult`、`Tests.xcresult` 和导出附件。
+- `.build/verification/latest.json` 指向最近一次运行；`latest-full.json` 仅指向可复用的原始完整成功receipt。不能仅凭文件存在声称通过。
+
+先阅读报告，再打开失败用例日志及改动页面的截图。截图用于判断玻璃效果、布局等视觉质量；可启用像素基准比较，但它不自动认定设计美观。系统时间、照片、动态材质等会导致图片变化，不能简单把图片哈希差异等同产品缺陷。交互和无障碍要求应尽可能写成 XCTest 断言。
+
+## 用例选择与维护
+
+`--changed` 使用 Git 相对 ref 的 diff（同时覆盖暂存和未暂存）加未跟踪文件；重命名按旧、新两条路径处理。日常包括全部快速单元测试和启动 UI smoke，并按 `scripts/verification.py` 中 `PAGE_SUITES` 增加相关 UI 类。目前首页、权限、比较、核对有显式映射；删除、回顾、领域、共享设计系统、资源、脚本、配置以及未知路径均回退全量。文档和 Harness 的 SPEC/progress/feature状态不扩大产品用例；Harness 验证每次照常执行。
+
+修改页面行为时一起维护对应 case 和映射；共享 helper/依赖影响不明确时保留全量，不能为省时硬缩范围。新增 UI case 类必须能从 Swift 文件发现；映射失效回退全量。全量/增量都先构建一次，再通过 `test-without-building` 执行真实权限预备及测试。权限/图库会共享状态，保持串行；只移除 XCTest runner，不卸载 App 或清空图库。模拟器选择遵循原 `SWIPE_SIMULATOR_UDID` 和 `select-simulator.py`。
+
+## 复用边界
+
+复用需要同时满足：原始完整成功记录距今不超过24小时、无跳过/预期失败、源码/测试/脚本/配置/fixture文件内容与模式相同、Xcode/XcodeGen/Python/macOS/模拟器UDID与runtime、实际使用工具的解析路径/二进制摘要及相关环境相同（无关PATH前缀不影响复用）；已构建App、原始xcresult、报告原始数据、构建/测试日志和截图目录仍存在且哈希匹配。Git HEAD只作溯源，因此提交但内容未变不会独自失效。运行前后源码再比较；运行中编辑导致失败而非产出通过。
+
+每次仍执行 Harness/Python检查、依赖检查、fixture生成、项目生成和真实模拟器安装/启动；复用省去昂贵的 UI 重跑，**不是零成本恢复**。独立 Evaluator 首次强制 fresh，不使用 Coder 的测试当独立验收。成功记录不代表独立 EVAL_PASS，后者仍由 Harness Evaluator 编排产生。复用不延长原始有效期。新的执行失败会使旧指针失效；不覆盖失败证据。设备模式不使用模拟器复用记录。外部xcconfig或自定义编译器/SDK/toolchain覆盖也强制fresh，因为其外部依赖无法仅凭路径证明未变化。
+
+同一入口用进程锁保护模拟器与构建目录；并发启动会快速失败并输出自身报告，不影响已有运行和成功记录。旧的专项脚本或 Xcode 不受此锁自动控制，运行统一入口时不要同时调用它们。超时或中断会终止本次子进程组并保存失败报告。
+
+## 验证此工具本身
+
+```bash
+python3 -m unittest discover -s tests -v
+```
+
+`tests/fixtures/xcresult-*.json` 从本机 Xcode 26 的真实成功/失败 bundle 和附件导出采集；测试覆盖真实schema、路径选择、空结果、缺附件、过期/变更/损坏回执、超时和并发锁。fixture只证明解析契约，实际 full/changed/reuse 仍以真实命令运行报告为准。真机/iCloud/大型图库验收继续属于 F018，不包含在这里。
+
+## 可选视觉基准
+
+第一次没有基准时，报告明确 `not_configured`，行为测试仍正常执行。查看本次截图后，显式批准：
+
+```bash
+./verify.sh --accept-visual-baseline .build/verification/<run>/summary.json
+./verify.sh --changed
+```
+
+默认基准在 `tests/visual-baselines/`，可通过 `--baseline <目录>` 指定。增量报告的批准只合并本次截图，不删其他页面；全量报告的显式批准也接受已经移除的截图；不能接受行为/构建失败的报告。不要把未审阅的截图自动批准；基准和case一起纳入版本控制。当前功能交付不自动批准全应用截图。
+
+有基准时，报告列出新增、变化，以及全量运行没有再产出的基准截图，链接不可变的基准副本与实际图，退出非零等待审阅。增量只检查本次实际执行用例的缺失截图，不要求产出其他suite的截图。基准按用例+附件语义名匹配，去掉Xcode生成的序号/UUID；同一用例截图应使用唯一名称。外部修改基准图片导致哈希不符会失败。
+
+`baseline.json` 的 policy 默认：最长边缩放到512px，忽略顶部5%状态栏，每像素BGR最大通道差大于24才计为变化，变化超过有效像素1%时需审阅。参数可配置并进入验证指纹。此方法捕获较明显的视觉退化，不替代文字裁剪、触控区域等XCTest断言；动态内容或材质可能仍需审阅。出现预期设计变化时，核对报告再运行同一批准命令；绝不因测试失败自动重写基准。
+
+
+---
+
+以下保留各功能的验证协议与历史证据边界；统一命令和复用策略以上文F031为准。
+
 # 验证方案
 
 ## 当前状态
@@ -158,3 +226,9 @@ Root recovery builds the simulator test host, then executes the existing native 
 A real probe found `simctl privacy grant photos` returned success but PhotoKit `.readWrite` remained notDetermined on this iOS26.5 runtime, even with photos-add. It is not used as the recovery proof. See F025 diagnostic records for raw failed probes and native setup verification.
 
 Recovery also clean-boots only the selected simulator before tests. After interrupted XCTest sessions, four independent rotation cases stopped receiving orientation changes; the exact unchanged app/test build passed those cases after a simulator restart. No simulator erase or app uninstall is used. Run this recovery serially, not alongside another suite on the same destination.
+
+## 独立评估进程时限
+
+`.agent-harness/agent-provider.json` 保留现有provider、cwd与原命令，在`evaluator_command`前添加`["python3", "scripts/run-bounded-evaluator.py", "--timeout-seconds", "2400", "--"]`；runtime_check_command同样包装但使用120秒。provider cwd仍为项目根目录`..`。该本地配置按既有规则不提交，重新配置provider时保留此包装；不要替换用户已有model/参数。包装器透明转交stdin和输出、保留退出码；超时退出124并终止其子进程组，不输出伪造验收结论。故障属于本轮F031实际长期等待后的运行改进。
+
+进程组清理由 `scripts/process_cleanup.py` 统一处理：不能将leader退出视为后代退出；短暂TERM宽限后仍对所拥有的进程组执行KILL。真实心跳回归覆盖忽略TERM的后代，包含timeout、外部中断和验证Runner三条路径。

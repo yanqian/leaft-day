@@ -919,6 +919,35 @@
         "docs/design/"
       ],
       "verification_surface": "图标产物检查、系统桌面/授权原生截图、启动/权限回归、root及独立Evaluator"
+    },
+    {
+      "id": "F031",
+      "title": "一条命令增量验证与可追溯结果报告",
+      "description": "按R24统一自动验证、失败诊断和严格的完整结果复用，减少重复UI运行与日志token。",
+      "acceptance": [
+        "verify.sh支持changed/full及base，包含暂存/未暂存/未跟踪与删除路径；共享/未知改动回退full，相关UI加全部单元，不静默漏测。",
+        "构建一次、原生权限准备和串行测试，唯一目录保存JSON/Markdown汇总、真实xcresult计数/失败和截图索引；失败/空/畸形结果非零且留报告。可选视觉基准支持可配置容差/状态栏mask，新增/变化/全量缺图提示并非零退出；仅显式接受可更新基准，不自动覆盖。",
+        "显式reuse只接受24小时内输入/环境匹配且产物完整的full成功记录，变更/失败/缺证据重跑；复用明确来源且仍真实安装启动；运行锁与前后指纹防误用。",
+        "root init接入统一入口，每次保持Harness/Python验证；Evaluator首次fresh执行保持独立，文档说明维护case与视觉审阅边界；真实full、changed、reuse及故障契约测试通过。"
+      ],
+      "passes": true,
+      "status": "done",
+      "attempts": 1,
+      "last_error": "",
+      "priority": "P0",
+      "depends_on": [
+        "F030"
+      ],
+      "requirement_refs": "R24",
+      "implementation_paths": [
+        "verify.sh",
+        "init.sh",
+        "scripts/",
+        "tests/",
+        "docs/verification.md",
+        "AGENTS.md"
+      ],
+      "verification_surface": "真实xcresult契约、路径选择和复用故障测试、模拟器full/changed/reuse、独立Evaluator"
     }
   ]
 }

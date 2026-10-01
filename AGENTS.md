@@ -52,3 +52,12 @@ Preferred interactive mode:
 Root `./init.sh` starts as harness verification only. Before a minspec exists, it proves the harness can plan and resume. After minspec acceptance, plan a runnable-skeleton feature that turns root `./init.sh` into the project recovery contract described in `.agent-harness/docs/project-recovery-init.md`.
 
 Spec Normalization rules live in `.agent-harness/docs/spec-normalization.md`. Planning must define goal, included scope, excluded scope, core flows, constraints, ambiguities or assumptions, required capabilities, implementation paths, and verification surface before appending feature entries.
+
+## Project verification (F031)
+
+- `./verify.sh --changed` selects related UI cases and all unit tests; unknown/shared changes fall back to full. Use `--base <ref>` to include committed changes relative to that ref. Maintain the mapping and cases when behavior changes.
+- `./verify.sh --full` always performs fresh full verification. `./init.sh` still verifies Harness/Python and live simulator recovery on every invocation, but may reuse intact matching full test evidence from the last 24 hours. It prints the original report when doing so. `SWIPE_VERIFY_FRESH=1 ./init.sh` disables reuse.
+- **An independent Evaluator must run `SWIPE_VERIFY_FRESH=1 ./init.sh` once for its candidate.** Coder receipts never substitute for the Evaluator's own execution and judgment. Later identical recovery/commit invocations may reuse this evidence; any relevant input/environment/artifact change invalidates it. Historical acceptance language requiring root/full tests remains satisfied by a fresh Evaluator run, not by a targeted run.
+- Read the final `summary.json` / `report.md` first. Expand failed logs and relevant changed-page screenshots only; screenshots remain visual evidence, not automatic aesthetic acceptance. Do not repeatedly dump full logs into agent context.
+- Use the unified command for simulator validation; do not run competing legacy visual scripts/Xcode sessions while it owns the simulator lock. Do not run private-library or F018 device acceptance as part of this workflow.
+- See `docs/verification.md` for commands, receipt limits and case maintenance.

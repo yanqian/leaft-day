@@ -1,0 +1,8 @@
+{
+  "version": 1,
+  "status": "failed",
+  "mode": "full",
+  "steps": [],
+  "seconds": 0,
+  "error": "No passing tests executed"
+}

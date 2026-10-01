@@ -223,3 +223,19 @@ F002 将根 `./init.sh` 改为幂等工程恢复入口：验证依赖、启动�
 - Verification surface：PNG尺寸/不透明检查，编译产物CFBundleDisplayName/CFBundleIcons/Assets.car与原图哈希；原生桌面与授权页截图；现有启动/授权辅助功能回归、完整root与冷启动Evaluator。包标识和持久化目录保持检查。真机安装沿用原流程但不当作F018通过。
 - Decomposition：新增单一F030“LeafDay应用品牌与图标”，系统显示名、图标和品牌标题构成同一身份呈现，在同一应用打包/启动表面验证；无新算法、领域流程或独立平台能力。F018继续P1暂缓，F030为P0并依赖已完成F027/F029。
 - Platform reference：[Apple asset catalog app icon configuration](https://developer.apple.com/documentation/xcode/configuring-your-app-icon)，支持由1024图像生成尺寸；正式产物仍以本机actool实际编译为验证依据。
+
+## 2026-10-01 一条命令的增量验证与结果报告（R24）
+
+- Goal：用户只需启动一次验证并阅读最终汇总，减少全量UI重复运行和逐段日志阅读。
+- Scope included：F031项目级verify.sh入口，changed/full模式、保守路径到用例映射、唯一运行目录、结构化xcresult汇总、失败日志/截图与成功视觉附件索引，可选截图基准（sips缩放到512像素、默认顶部5%状态栏mask、通道差24/变化比例1%可配置）与显式批准命令；同代码/工具链/模拟器/配置的近期完整成功记录可显式复用，root init每次仍跑Harness/Python检查并真实启动App。更新项目Agent工作约定与维护文档。
+- Scope excluded：不改变产品UI/照片操作，不执行真机或F018，不提交推送；不把截图当审美自动通过；可选显式批准的像素基准比较只作为回归审阅门禁，不自动更新基准；不并行共享权限/图库的UI用例，不跨环境复用或将Coder结果冒充独立Evaluator结论。
+- Core flows：verify.sh --changed计算相对HEAD的已暂存/未暂存/未跟踪改动（可指定base）→映射相关UI+全部快速单元；未知或共享核心修改回退full→构建一次→原生权限准备→串行测试→报告。verify.sh --full强制完整执行。init.sh使用full --reuse，只有指纹/时效/产物和结果完整才复用，否则完整执行；复用仍执行真实模拟器安装/启动并明确标注原始记录与时间。Evaluator首次必须使用SWIPE_VERIFY_FRESH=1 ./init.sh获取独立执行证据，后续相同内容可复用。
+- Constraints：非零失败、空/无法解析测试结果不能通过；失败结果不能复用；输入运行前后变动不能通过；单进程锁防竞争；不得卸载App/清空图库。保留原生permission preflight与SwiftData告警门禁。源码/测试/脚本/配置、Xcode/XcodeGen、fixture、模拟器UDID/runtime、影响执行的环境进入指纹；HEAD仅溯源不代替内容校验。输出不持续打印完整构建/测试日志。完整记录最大24小时，复用不延长原始有效期。
+- Ambiguities or assumptions：单一F031为一个CLI验证能力，选择、执行、报告和可验证复用共同定义成功契约，在同一脚本边界验证，未包含独立产品功能。视觉截图是待人工/AI审阅的附件，不宣称像素差异自动判断设计好坏。无基准明确not_configured；有基准时新增/变化或full缺图需要审阅并非零退出，显式accept合并被审阅截图，不能批准行为失败。full仍覆盖现有模拟器suite；真机维持原独立入口。
+- Required capabilities：已安装Python3标准库、XcodeGen、Xcode/xcrun/xcresulttool、既有iOS26模拟器和fixture；使用实际xcresulttool JSON/help捕获契约，不添加第三方依赖。
+- Implementation paths：verify.sh、init.sh、scripts/verification.py、scripts/recover-ios.sh、tests/test_verification.py与真实shape fixtures、docs/verification.md、AGENTS.md；.agent-harness仅SPEC/state/runs和项目验收策略说明。
+- Verification surface：路径映射包含新增/删除/重命名与unknown fallback；结果解析成功/失败/空/畸形；缓存输入变更/过期/缺失/篡改产物拒绝、执行失败汇总、进程锁；真实全量执行和复用安装启动；changed真实目标执行；独立Evaluator冷启动fresh root及证据检查。
+
+### R24运行失败改进补充
+
+独立Evaluator已实际完成fresh和reuse探针，但provider进程无最终裁决而长期停留；保留失败记录，并为现有provider命令增加项目自有有界包装器（角色2400秒、runtime check120秒），保留stdin/cwd/参数与退出码，超时终止所拥有进程组且不伪造裁决。该失败改进服务同一F031端到端验证闭环，不新增产品功能或改变Evaluator独立性。PATH指纹改为实际使用工具的解析路径/二进制摘要，忽略无关provider临时前缀但捕获命令遮蔽。全部失败的原生结果仍需保留计数、错误与附件；不把无通过项等同无测试执行。新增路径scripts/run-bounded-evaluator.py、tests/test_bounded_evaluator.py及provider配置维护说明。

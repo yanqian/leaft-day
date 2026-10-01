@@ -1,0 +1,19 @@
+{
+  "version": 1,
+  "status": "failed",
+  "mode": "full",
+  "seconds": 0,
+  "error": "No passing tests executed",
+  "environment": {
+    "xcode": null,
+    "simulator": null
+  },
+  "details": "/Users/armstrong/Project/swipe-go/.agent-harness/runs/F031-evaluator-artifacts/receipt.json",
+  "evidence": "/Users/armstrong/Project/swipe-go/.agent-harness/runs/F031-evaluator-artifacts/evidence.md",
+  "fingerprintHash": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+  "failedSteps": [],
+  "visual": {
+    "status": "not_run",
+    "changed": []
+  }
+}

@@ -2,6 +2,18 @@
 
 ## Current System Status
 
+**2026-10-01 F031已完成并获独立验收。** work-fast已置done/passes=true；最终34项Python契约、85单元/44UI全部通过，fresh `.build/verification/20261001T223906-ly20h43v/summary.json`，独立复用`.build/verification/20261001T225646-_2yze7px/summary.json`（70.1s，对比fresh1020.2s）。EVAL证据`runs/20261001-F031-final-evaluation.md`。统一verify.sh、短报告、可选显式视觉基准、严格复用和有界评估已接入。此前两个问题及失败记录保留。主会话跨角色复用也已通过（66.1s，无构建/测试重跑），见runs/20261001-F031-delivery.md；未提交/推送/安装手机，F018仍todo/false不自动调度。以下为历史。
+
+2026-10-01 F031第二轮独立验收拒绝：超时后忽略TERM的同组后代仍执行，原生测试已被Evaluator主动中止。已用共享process_cleanup修复wrapper与Runner，并新增超时/中断/Runner真实心跳回归；34项Python通过。待最终独立fresh+reuse，F018不调度。
+
+2026-10-01 F031首轮Evaluator无最终裁决而长期停留，已终止，失败记录保留。其全量129通过和复用成功是旧候选证据；已修复独立探针发现的全失败计数/附件丢失、跨Agent临时PATH误失效，并加入有界provider包装和base校验。最终32项Python契约通过，待新候选独立fresh+reuse复验；F018不调度。
+
+2026-10-01 F031编码完成，待独立Evaluator：真实新入口changed→full 85单元/44UI零失败，1009.9s；随后报告分层与保守复用守卫最终28项Python契约通过。最终源码完整验收必须Evaluator fresh root，再执行同环境root复用探针；详见runs/20261001-F031-coding.md。未标记完成、不提交，F018不调度。
+
+2026-10-01 F031已取得work-fast交接；统一verify入口/汇总/严格复用实现中，20项Python契约测试通过。待真实full/changed/reuse与独立Evaluator；F018不调度。首次非提权provider预检因本地状态只读失败，已用正式提权运行取得交接，无需更改provider。
+
+2026-10-01 用户授权新增F031统一验证自动化；R24已规范化，startup完整基线运行中（.build/F031-startup.log）。下一项F031，F018继续暂缓，不提交/真机操作。
+
 **2026-10-01 F030用户授权提交并更新真机。** LeafDay已原位安装并正常启动，设备查询确认显示名LeafDay、原包标识dev.armstrong.swipego；未卸载/清空数据。提交前完整root85单元/44UI零失败，`.build/test-run.AUYR9H/Tests.xcresult`。103源/资源/配置哈希与独立验收及安装包一致；`runs/20261001-F030-device-delivery.md`。本地提交已授权，未请求推送；F018仍todo/false。以下为历史。
 
 **2026-10-01 F030 LeafDay品牌接入已完成并独立通过。** work-fast已置done/passes=true。完整root85单元/44UI零失败，`.build/test-run.g3T45E/Tests.xcresult`，`runs/20261001-F030-reevaluation.md`。桌面图标点击/重启和授权页品牌及最大字号通过；103源/资源/测试/配置哈希一致。图标与品牌资料`docs/design/leafday-brand.md`。本轮未安装真机、提交或推送；F018仍todo/false，不调度。下方为历史过程。
@@ -49,6 +61,8 @@ F018真机生成素材主流程与性能测试2项通过：.build/device-accepta
 F018此前会话使用work-fast编码，未启动Coding子进程。尚无F018编码完成标记或独立Evaluator结论，不把局部测试当作完整验收。详情docs/device-acceptance.md与runs/20260928-F018-partial-device-evidence.md。
 
 ## Last Completed Feature
+
+**F031 一条命令增量验证与结果报告（2026-10-01）**：独立Evaluator通过，原失败及修复回归证据保留。
 
 **F030 LeafDay应用品牌与图标（2026-10-01）**：独立Evaluator通过，原失败和修复证据保留。
 
