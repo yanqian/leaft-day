@@ -890,6 +890,35 @@
         "SwipeGoUITests/"
       ],
       "verification_surface": "有界领域测试、真实入口UI与视觉/辅助功能截图、root恢复、独立Evaluator"
+    },
+    {
+      "id": "F030",
+      "title": "LeafDay应用品牌与图标",
+      "description": "按用户选定LeafDay名字及叶片翻页玻璃照片图标接入R23。",
+      "acceptance": [
+        "批准图案作为1024不透明AppIcon被真实编译并显示于系统桌面，图标内无文字/预烘焙外部圆角，资源可从仓库恢复。",
+        "系统显示名与授权页品牌标题为LeafDay；普通中文回顾文案、bundle identifier和持久化目录保持，已授权启动与原生授权流程不变。",
+        "保存原生桌面/授权页截图，检查打包图标与显示名、辅助字号与冷启动；完整root和独立Evaluator通过。"
+      ],
+      "passes": true,
+      "status": "done",
+      "attempts": 2,
+      "last_error": "",
+      "priority": "P0",
+      "depends_on": [
+        "F027",
+        "F029"
+      ],
+      "requirement_refs": "R23",
+      "implementation_paths": [
+        "SwipeGo/Resources/",
+        "SwipeGo/Features/Permissions/PhotoAccessWelcomeView.swift",
+        "project.yml",
+        "SwipeGoTests/",
+        "SwipeGoUITests/",
+        "docs/design/"
+      ],
+      "verification_surface": "图标产物检查、系统桌面/授权原生截图、启动/权限回归、root及独立Evaluator"
     }
   ]
 }

@@ -2,6 +2,20 @@
 
 ## Current System Status
 
+**2026-10-01 F030用户授权提交并更新真机。** LeafDay已原位安装并正常启动，设备查询确认显示名LeafDay、原包标识dev.armstrong.swipego；未卸载/清空数据。提交前完整root85单元/44UI零失败，`.build/test-run.AUYR9H/Tests.xcresult`。103源/资源/配置哈希与独立验收及安装包一致；`runs/20261001-F030-device-delivery.md`。本地提交已授权，未请求推送；F018仍todo/false。以下为历史。
+
+**2026-10-01 F030 LeafDay品牌接入已完成并独立通过。** work-fast已置done/passes=true。完整root85单元/44UI零失败，`.build/test-run.g3T45E/Tests.xcresult`，`runs/20261001-F030-reevaluation.md`。桌面图标点击/重启和授权页品牌及最大字号通过；103源/资源/测试/配置哈希一致。图标与品牌资料`docs/design/leafday-brand.md`。本轮未安装真机、提交或推送；F018仍todo/false，不调度。下方为历史过程。
+
+2026-10-01 F030独立复验通过：完整root退出0，85单元/44UI零失败，`.build/test-run.g3T45E/Tests.xcresult`。修复后的真实桌面图标点击/冷启动与授权辅助字号通过，103源码/资源/配置哈希未变；详见`runs/20261001-F030-reevaluation.md`与原生截图。F030完成状态交由调用编排器更新；F018继续暂缓，不自动调度。未提交、推送或安装真机。
+
+2026-10-01 F030首轮独立验收因桌面firstMatch不可点击拒绝；已修复页面/可见元素定位并提前附截图/元素树。失败标准模拟器和小屏各1项启动UI通过，待完整独立复验；runs/20261001-F030-repair-coding.md。产品图标/名字源码未改，F018继续暂缓。
+
+2026-10-01 F030独立Evaluator拒绝：完整root退出65，85单元通过、44UI中LaunchTests.swift:24桌面图标isHittable失败。录屏最终停于App Library；需修复同一F030桌面定位与失败取证后完整复验。证据runs/20261001-F030-evaluation.md；F030未通过，F018继续暂缓。
+
+2026-10-01 F030已完成LeafDay图标/显示名/首次授权品牌接入，目标1单元+3UI通过并核对真实桌面截图，待独立Evaluator。编码证据runs/20261001-F030-coding.md。F018继续暂缓，不提交/推送。
+
+2026-10-01 用户批准LeafDay名字与叶片翻页图标，已规范化R23/新增F030。基线root正在.build/leafday-startup.log串行运行，随后work-fast交接。F018不调度；本轮不提交/推送。
+
 **2026-10-01 用户授权提交并安装：** v8签名包已原位安装到配置iPhone并正常启动（JSON success，dev.armstrong.swipego，无卸载/数据清除）。提交前root再次通过85单元/44UI，`.build/test-run.TmNGKu/Tests.xcresult`；112源文件哈希与独立验收和安装包一致。交付记录`runs/20261001-v8-device-delivery.md`。本地批量提交已授权，未请求推送；F018仍todo/false。以下状态是交付前历史。
 
 **2026-10-01 v8整体UI已完成并独立验收。** F026/F027/F015/F028/F029均done/passes=true；最后F029最大字号横屏修复独立复验通过，85单元/44UI零失败，`.build/test-run.pwIzQ0/Tests.xcresult`，`runs/20261001-F029-reevaluation.md`。最终产品/测试源码112文件哈希复验一致。全页面原生截图见`docs/design/v8-native-verification.md`。F018保持todo/false；本轮未安装手机、提交或推送。下方为历史过程记录，以本段为当前状态。
@@ -36,6 +50,8 @@ F018此前会话使用work-fast编码，未启动Coding子进程。尚无F018编
 
 ## Last Completed Feature
 
+**F030 LeafDay应用品牌与图标（2026-10-01）**：独立Evaluator通过，原失败和修复证据保留。
+
 **F029（2026-10-01）**：回顾、相似比较、媒体状态和最大字号横屏整合，独立Evaluator通过，work-fast已置done。v8五项全部完成。以下保留历史完成过程。
 
 F027已完成首页/设置/授权接入及小屏7UI验证（含10种最大字号封面状态），待独立Evaluator；runs/20260930-F027-coding.md。
@@ -55,6 +71,8 @@ F017图库变化与未完成操作核对：图库观察/前台刷新传播到会
 F015集中复核、F016系统整批删除已完成，真实模拟器生成素材取消/成功测试通过。仅删除测试入口现场创建的可丢弃图片，未删除用户私人照片。
 
 ## Next Feature
+
+**LeafDay品牌接入已完成，无本轮待开发项。** 不再调用work-fast；F018仍暂缓。后续提交/手机更新按用户指示执行。
 
 **v8已完成，无待开发项。** 等待用户查看原生页面；不再运行work-fast以免调度F018。F018真实图库/iCloud/多设备验收继续按既有边界暂缓。下方旧下一步仅为历史，不作为调度指令。
 

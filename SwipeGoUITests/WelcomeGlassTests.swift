@@ -12,6 +12,7 @@ import XCTest
     func testWelcomeGlassBeforeNativePermission() throws {
         continueAfterFailure = false
         let app = open()
+        XCTAssertTrue(app.staticTexts["LeafDay"].exists)
         XCTAssertTrue(app.staticTexts["只在你授权的范围内浏览"].exists)
         XCTAssertFalse(app.staticTexts["library.count"].exists)
         XCTAssertTrue(app.buttons["permission.request"].isHittable)

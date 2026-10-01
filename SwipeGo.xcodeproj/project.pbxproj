@@ -27,6 +27,7 @@
 		32A8CA0B30A22943B34EA98C /* DeletionResultTestHost.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADFBE3978D80C19D144A4550 /* DeletionResultTestHost.swift */; };
 		3331EF9B529A7C6E5FC289E2 /* DeletionReviewUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 346A26BD04F881A79635FA7A /* DeletionReviewUITests.swift */; };
 		38227664DBC3EACDB32C4869 /* DeletionReviewTestHost.swift in Sources */ = {isa = PBXBuildFile; fileRef = F54B377C9D4CC382A2ACDE62 /* DeletionReviewTestHost.swift */; };
+		38C86D1FFBAA00CC241E54BF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 73247508259B7CA12C65E4D5 /* Assets.xcassets */; };
 		3D4B550588849C9B8BDE55C4 /* GlassStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDC207713BAF7510B2645F59 /* GlassStyle.swift */; };
 		3FA4CA335BB3A33A646B7935 /* ComparisonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2091C374B94B62934F8E0FAB /* ComparisonView.swift */; };
 		3FC809FCE2D435FD362483CA /* ReviewStateTestHost.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC16E8B5358C6D07F95085EE /* ReviewStateTestHost.swift */; };
@@ -187,6 +188,7 @@
 		6DB04BB2C4D487E6B8FDF489 /* HomeNavigationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeNavigationTests.swift; sourceTree = "<group>"; };
 		71A82044F87F51BD0F304FFF /* CoastalAtmosphere.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = CoastalAtmosphere.png; sourceTree = "<group>"; };
 		72DA9E9AE75759F6EC49B258 /* PendingUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PendingUITests.swift; sourceTree = "<group>"; };
+		73247508259B7CA12C65E4D5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		747A95E68B5B271BB53EF8B4 /* PendingCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PendingCoordinator.swift; sourceTree = "<group>"; };
 		7F39E8F5FC31611B169B28ED /* landscape-near.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "landscape-near.jpg"; sourceTree = "<group>"; };
 		8027511CFC2E855512E8E452 /* LocalStateStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalStateStore.swift; sourceTree = "<group>"; };
@@ -512,6 +514,7 @@
 		DEE10506DA55A3425E9B709D /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				73247508259B7CA12C65E4D5 /* Assets.xcassets */,
 				71A82044F87F51BD0F304FFF /* CoastalAtmosphere.png */,
 			);
 			path = Resources;
@@ -665,6 +668,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				38C86D1FFBAA00CC241E54BF /* Assets.xcassets in Resources */,
 				868AD907B7549D1D1A91B254 /* CoastalAtmosphere.png in Resources */,
 				4DC28D226F93EE18C0906226 /* clip.mp4 in Resources */,
 				7BFB1229903367BA11B198F3 /* landscape-copy.jpg in Resources */,
@@ -829,7 +833,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_CFBundleDisplayName = "时光";
+				INFOPLIST_KEY_CFBundleDisplayName = LeafDay;
 				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "用于回顾你选择的照片与视频，收藏和删除仅在你明确操作后执行。";
 				INFOPLIST_KEY_PHPhotoLibraryPreventAutomaticLimitedAccessAlert = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -961,7 +965,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_CFBundleDisplayName = "时光";
+				INFOPLIST_KEY_CFBundleDisplayName = LeafDay;
 				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "用于回顾你选择的照片与视频，收藏和删除仅在你明确操作后执行。";
 				INFOPLIST_KEY_PHPhotoLibraryPreventAutomaticLimitedAccessAlert = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;

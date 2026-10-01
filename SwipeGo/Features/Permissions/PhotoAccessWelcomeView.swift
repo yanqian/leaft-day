@@ -15,16 +15,12 @@ struct PhotoAccessWelcomeView: View {
                 VStack(spacing: 0) {
                 ScrollView {
                     VStack(spacing: typeSize.isAccessibilitySize ? 20 : 28) {
-                        ZStack {
-                            RoundedRectangle(cornerRadius: 24).fill(.white.opacity(0.08))
-                                .overlay(RoundedRectangle(cornerRadius: 24).strokeBorder(.white.opacity(0.4), lineWidth: 0.7))
-                                .frame(width: 104, height: 112).rotationEffect(.degrees(-13)).offset(x: -12, y: -8)
-                            Image(systemName: "photo.on.rectangle.angled")
-                                .font(.system(size: 46, weight: .light)).frame(width: 104, height: 112)
-                                .photoGlass(radius: 24)
-                        }.frame(height: 142).accessibilityHidden(true)
+                        Image("LeafDayMark")
+                            .resizable().scaledToFit().frame(width: 120, height: 120)
+                            .clipShape(RoundedRectangle(cornerRadius: 27, style: .continuous))
+                            .frame(height: 142).accessibilityHidden(true)
                         VStack(spacing: 14) {
-                            Text("时光").font(.largeTitle.bold()).accessibilityAddTraits(.isHeader)
+                            Text("LeafDay").font(.largeTitle.bold()).accessibilityAddTraits(.isHeader)
                             Text("回顾照片与视频").font(.title3).multilineTextAlignment(.center)
                         }
                         VStack(spacing: 14) {

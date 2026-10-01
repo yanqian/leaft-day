@@ -209,3 +209,17 @@ F002 将根 `./init.sh` 改为幂等工程恢复入口：验证依赖、启动�
 - Implementation paths：SwipeGo/DesignSystem、Features/Home、Permissions、DeletionReview、Reconciliation、Review、Comparison，以及SwipeGo/App测试宿主、SwipeGoTests、SwipeGoUITests、项目scripts与docs/design。Harness目录仅存规划/状态/运行证据。
 - Verification surface：确定性冷暖/暗亮/透明/单色输入取色与可读性、旧结果/取消/无图/版本更新单测；真实页面入口、生成素材删除成功与取消、未知/错误分支、前后色板连续性UI与截图；小屏/辅助字号/减弱透明度/减少动态效果/横屏；每块独立Evaluator及最终root恢复。
 - Decomposition：F026独立共享能力与材质；F027首页/权限页面同一进入应用与授权导航表面；原F015待删复核/确认/结果为旧承诺缺陷，依赖新材质后通过human-eval重开，不新建repair功能；F028操作记录与核对形成同一事后事实查看表面；F029媒体回顾/比较/完成同一媒体操作体验。算法、权限页、实际删除、事后记录及媒体交互可以独立失败，故分别验收。顺序F026→F027→重开F015→F028→F029，F018不加入本次调度。
+
+## 2026-10-01 LeafDay 品牌接入（R23，用户确认设计）
+
+- Goal：把用户选定的英文名LeafDay和叶片翻页玻璃相片图标作为同一应用品牌正式接入。
+- Scope included：1024×1024不透明满幅图标资产与AppIcon编译配置；系统应用显示名LeafDay；首次授权页品牌标题LeafDay，沿用已确认的叶片相片图标；品牌资源来源、构建产物和原生截图证据。
+- Scope excluded：不改bundle identifier、target/module/scheme、持久化路径或权限/照片操作；不做商店发布、名称商标或可用性承诺、iCloud/F018验收；不重绘已批准图案、不新增付费依赖。不自行提交或推送本轮新功能。
+- Core flows：构建安装→系统桌面显示LeafDay和批准图标→点击启动→未授权时显示同品牌标题和准确授权流程；已授权用户仍进入原首页，原数据位置不变。
+- Constraints：使用用户批准生成稿exec-1454f845-3a0e-4202-a671-fb13275a6080.png，只为资源打包进行等比尺寸转换，不预烘焙外部圆角、不加字；图案留安全边距。保留dev.armstrong.swipego及SwipeGo/SwipeGoMedia存储路径。保持动态字体及授权按钮可达。标准asset catalog由Xcode编译；不宣称静态素材具备Icon Composer动态分层效果。
+- Ambiguities or assumptions：用户明确选择LeafDay，当前任务为本地品牌接入；中文功能文案中的“时光”仍是普通语义，仅品牌标题替换。用已批准单一外观，其他系统图标样式使用平台默认处理，不额外创作未经批准的深色版本。
+- Required capabilities：已批准imagegen输出、sips资源等比转换、现有XcodeGen/actool、iOS模拟器SpringBoard截图及既有独立Evaluator。
+- Implementation paths：SwipeGo/Resources/Assets.xcassets、PhotoAccessWelcomeView.swift、project.yml及生成xcodeproj、AppConfigurationTests/LaunchTests/WelcomeGlassTests、docs/design/leafday-brand.md；Harness仅记录SPEC、状态与验收。
+- Verification surface：PNG尺寸/不透明检查，编译产物CFBundleDisplayName/CFBundleIcons/Assets.car与原图哈希；原生桌面与授权页截图；现有启动/授权辅助功能回归、完整root与冷启动Evaluator。包标识和持久化目录保持检查。真机安装沿用原流程但不当作F018通过。
+- Decomposition：新增单一F030“LeafDay应用品牌与图标”，系统显示名、图标和品牌标题构成同一身份呈现，在同一应用打包/启动表面验证；无新算法、领域流程或独立平台能力。F018继续P1暂缓，F030为P0并依赖已完成F027/F029。
+- Platform reference：[Apple asset catalog app icon configuration](https://developer.apple.com/documentation/xcode/configuring-your-app-icon)，支持由1024图像生成尺寸；正式产物仍以本机actool实际编译为验证依据。

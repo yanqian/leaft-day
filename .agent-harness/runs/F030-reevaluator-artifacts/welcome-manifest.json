@@ -1,0 +1,41 @@
+[
+  {
+    "attachments" : [
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "1DF82DB5-2A3B-450A-9EB5-098FC4E8F812",
+        "deviceName" : "SwipeGo Fixtures seed 27",
+        "exportedFileName" : "A56DAAD1-999E-4E9D-8AFA-964AA53ECADD.png",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "F025-welcome-denied_0_3F82B981-F676-465C-9288-C9D6FA5EE7F1.png",
+        "timestamp" : 1790839328.516
+      },
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "1DF82DB5-2A3B-450A-9EB5-098FC4E8F812",
+        "deviceName" : "SwipeGo Fixtures seed 27",
+        "exportedFileName" : "F4AC7580-1A9A-4177-8697-9A89E6060ECD.png",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "F025-welcome-glass_0_2ED88502-3D00-41A7-968B-D9AEF297B418.png",
+        "timestamp" : 1790839325.36
+      }
+    ],
+    "testIdentifier" : "WelcomeGlassTests/testWelcomeGlassBeforeNativePermission()",
+    "testIdentifierURL" : "test://com.apple.xcode/SwipeGo/SwipeGoUITests/WelcomeGlassTests/testWelcomeGlassBeforeNativePermission"
+  },
+  {
+    "attachments" : [
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "1DF82DB5-2A3B-450A-9EB5-098FC4E8F812",
+        "deviceName" : "SwipeGo Fixtures seed 27",
+        "exportedFileName" : "127AECF2-A6B4-449E-8105-1A900790B1E7.png",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "F025-welcome-large-opaque_0_69E6B6CA-9FEA-4AC3-B240-0F435A9C9D60.png",
+        "timestamp" : 1790839334.042
+      }
+    ],
+    "testIdentifier" : "WelcomeGlassTests/testWelcomeLargeOpaqueCanRequest()",
+    "testIdentifierURL" : "test://com.apple.xcode/SwipeGo/SwipeGoUITests/WelcomeGlassTests/testWelcomeLargeOpaqueCanRequest"
+  }
+]
