@@ -1,0 +1,20 @@
+[
+  {
+    "feature_id": "F009",
+    "result": "fail",
+    "classification": "current_feature",
+    "feedback": "v3人工反馈：沉浸190pt乳白大面板不符合液态玻璃承诺。批准两条轻薄玻璃：上一项/居中日期数量/下一项，下方四动作，关闭左上。复核和完成页共享材质；布局分别由F015接入。"
+  },
+  {
+    "feature_id": "F015",
+    "result": "fail",
+    "classification": "current_feature",
+    "feedback": "App待删复核/确认页删除成功后仍显示frozen旧清单；文字过多。批准照片网格、首次说明后披露、真实回执替换清单、剩余记录准确计数，统一玻璃背景与按钮。"
+  },
+  {
+    "feature_id": "F008",
+    "result": "fail",
+    "classification": "new_requirement",
+    "feedback": "单项短片段缺少连续体验：批准继续跨片段、随机优先多项、周年当天结束后显式附近日期；见v3 SPEC范围与批次上限。"
+  }
+]

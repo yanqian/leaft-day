@@ -1,0 +1,3 @@
+# Same-feature repair routing
+
+F009 hit the cumulative default attempt ceiling (five, spanning earlier manual-review versions). Next default work-fast selected F018; its handoff20260929T170433Z is retained, but no F018 implementation/test/device work occurred. Returned F018 to todo, preserving attempts/evidence/passes=false. Returned F009 to todo preserving its rejection and cumulative attempts. Same orchestrator --work-fast --max-rounds1 --max-attempts6 permits the authorized v5 repair. An initial wrong-cwd file access failed; corrected state using absolute canonical paths before feature selection. No completion flag or acceptance was written. Do not schedule F018 after final F009.

@@ -1,0 +1,242 @@
+[
+  {
+    "attachments" : [
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "BB4BA74C-476F-4F0C-86EF-83D8F8341927",
+        "deviceName" : "SwipeGo Z compact home",
+        "exportedFileName" : "ADD13D5F-FA41-4DB0-8A85-E316EEAF56F3.png",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "F009-hero-unavailable-maximum-type_0_D8A51535-2603-4EEF-A515-D79DA0186714.png",
+        "timestamp" : 1790745268.33
+      },
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "BB4BA74C-476F-4F0C-86EF-83D8F8341927",
+        "deviceName" : "SwipeGo Z compact home",
+        "exportedFileName" : "0B195891-9C72-4F94-8CEF-DA2957F869FA.png",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "F009-hero-offline-maximum-type_0_5DF7E7CA-1AFB-4EEF-ADCB-AC0F5A16500B.png",
+        "timestamp" : 1790745262.543
+      },
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "BB4BA74C-476F-4F0C-86EF-83D8F8341927",
+        "deviceName" : "SwipeGo Z compact home",
+        "exportedFileName" : "442EEE75-6A60-4A9A-A4E2-9837BBA6AC36.png",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "F009-hero-downloading-maximum-type_0_10FCE070-F87F-4C78-8C8E-76F5188809E0.png",
+        "timestamp" : 1790745256.667
+      },
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "BB4BA74C-476F-4F0C-86EF-83D8F8341927",
+        "deviceName" : "SwipeGo Z compact home",
+        "exportedFileName" : "58F4E5C2-331A-481C-9572-006FE40FE785.png",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "F009-hero-loading-maximum-type_0_474A2E47-EBDB-4E93-A573-97C71D22C472.png",
+        "timestamp" : 1790745250.751
+      },
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "BB4BA74C-476F-4F0C-86EF-83D8F8341927",
+        "deviceName" : "SwipeGo Z compact home",
+        "exportedFileName" : "D141BB88-2846-4018-840B-EB881F9DD4B9.png",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "F009-hero-empty-maximum-type_0_8FF84E62-DA7C-4C56-9F1B-670B0B4E767D.png",
+        "timestamp" : 1790745244.859
+      },
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "BB4BA74C-476F-4F0C-86EF-83D8F8341927",
+        "deviceName" : "SwipeGo Z compact home",
+        "exportedFileName" : "D0912963-FBED-4CFA-9C52-6B931C4D15FA.png",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "F009-cover-unavailable-maximum-type_0_901926BF-0D0B-40DA-855C-335F24644BFD.png",
+        "timestamp" : 1790745238.893
+      },
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "BB4BA74C-476F-4F0C-86EF-83D8F8341927",
+        "deviceName" : "SwipeGo Z compact home",
+        "exportedFileName" : "47542A50-7C2E-4347-99B9-690B805C3120.png",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "F009-cover-offline-maximum-type_0_85789743-296A-47BF-85A1-2820ED8CCF3D.png",
+        "timestamp" : 1790745233.096
+      },
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "BB4BA74C-476F-4F0C-86EF-83D8F8341927",
+        "deviceName" : "SwipeGo Z compact home",
+        "exportedFileName" : "0974A411-045A-4260-9A17-10CA659F5ED8.png",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "F009-cover-downloading-maximum-type_0_1451F34E-001F-447B-AAC9-2A00B24CF96B.png",
+        "timestamp" : 1790745227.227
+      },
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "BB4BA74C-476F-4F0C-86EF-83D8F8341927",
+        "deviceName" : "SwipeGo Z compact home",
+        "exportedFileName" : "4099E6A7-0D44-416B-A9B6-9011674BA3DF.png",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "F009-cover-loading-maximum-type_0_11EDA29F-A82A-48F1-AFDA-AE7AE3DD9007.png",
+        "timestamp" : 1790745221.359
+      },
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "BB4BA74C-476F-4F0C-86EF-83D8F8341927",
+        "deviceName" : "SwipeGo Z compact home",
+        "exportedFileName" : "23CCB8B9-833C-4047-BFC9-B3D893597685.png",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "F009-cover-empty-maximum-type_0_6724B694-FA5B-4442-9943-2DCF344EA753.png",
+        "timestamp" : 1790745215.46
+      }
+    ],
+    "testIdentifier" : "HomeCoverStateTests/testMaximumTypeCoverStatesRemainReadable()",
+    "testIdentifierURL" : "test://com.apple.xcode/SwipeGo/SwipeGoUITests/HomeCoverStateTests/testMaximumTypeCoverStatesRemainReadable"
+  },
+  {
+    "attachments" : [
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "BB4BA74C-476F-4F0C-86EF-83D8F8341927",
+        "deviceName" : "SwipeGo Z compact home",
+        "exportedFileName" : "4557B274-BDE8-40B0-B82D-8A3090B54559.png",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "F009-home-large-text_0_A5C6D059-72F1-4A03-A7DB-A36422357224.png",
+        "timestamp" : 1790745283.935
+      },
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "BB4BA74C-476F-4F0C-86EF-83D8F8341927",
+        "deviceName" : "SwipeGo Z compact home",
+        "exportedFileName" : "327B0D02-A244-47AF-A459-B6F81386D240.png",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "F022-settings-large_0_70B8AB79-7F90-4192-B2CE-454DFBF874F1.png",
+        "timestamp" : 1790745279.591
+      },
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "BB4BA74C-476F-4F0C-86EF-83D8F8341927",
+        "deviceName" : "SwipeGo Z compact home",
+        "exportedFileName" : "98B0E6AF-0D57-4147-98FB-DF63990CE294.png",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "F009-home-large-top_0_023861BD-7E98-423F-832E-F797341B08CB.png",
+        "timestamp" : 1790745276.179
+      }
+    ],
+    "testIdentifier" : "HomeTests/testLargeTextHomeRemainsNavigable()",
+    "testIdentifierURL" : "test://com.apple.xcode/SwipeGo/SwipeGoUITests/HomeTests/testLargeTextHomeRemainsNavigable"
+  },
+  {
+    "attachments" : [
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "BB4BA74C-476F-4F0C-86EF-83D8F8341927",
+        "deviceName" : "SwipeGo Z compact home",
+        "exportedFileName" : "DB07BBF0-23D5-4DC9-871A-B8CCCD73DEC8.png",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "F010-real-bottom-controls_0_EF63DCEC-5CBA-4F6E-8910-5AC9AC39E1F1.png",
+        "timestamp" : 1790745299.871
+      },
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "BB4BA74C-476F-4F0C-86EF-83D8F8341927",
+        "deviceName" : "SwipeGo Z compact home",
+        "exportedFileName" : "BAAA7A5E-F63A-4D75-8320-542C2E7F3D51.png",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "F009-home-real-library_0_65E2ABB3-A3A1-4329-9342-B748CD8A7D80.png",
+        "timestamp" : 1790745296.555
+      }
+    ],
+    "testIdentifier" : "HomeTests/testRealHomeRandomAndPersistedContinue()",
+    "testIdentifierURL" : "test://com.apple.xcode/SwipeGo/SwipeGoUITests/HomeTests/testRealHomeRandomAndPersistedContinue"
+  },
+  {
+    "attachments" : [
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "BB4BA74C-476F-4F0C-86EF-83D8F8341927",
+        "deviceName" : "SwipeGo Z compact home",
+        "exportedFileName" : "589A474F-9420-4B96-809B-05CE5A0CFD8A.png",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "F022-settings-opaque_0_01D70034-6071-4662-BD47-D670D5FD4CCD.png",
+        "timestamp" : 1790745318.921
+      },
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "BB4BA74C-476F-4F0C-86EF-83D8F8341927",
+        "deviceName" : "SwipeGo Z compact home",
+        "exportedFileName" : "93BD9FB1-EADF-4610-8542-EB181360A479.png",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "F009-home-reduced-transparency_0_D5BFCA23-00D5-466D-ACA3-9BBE2A92139C.png",
+        "timestamp" : 1790745317.091
+      }
+    ],
+    "testIdentifier" : "HomeTests/testReducedTransparencyUsesReadableControls()",
+    "testIdentifierURL" : "test://com.apple.xcode/SwipeGo/SwipeGoUITests/HomeTests/testReducedTransparencyUsesReadableControls"
+  },
+  {
+    "attachments" : [
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "BB4BA74C-476F-4F0C-86EF-83D8F8341927",
+        "deviceName" : "SwipeGo Z compact home",
+        "exportedFileName" : "0910261D-4D78-4885-B950-7D7D7193E5D1.png",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "F022-settings-expanded_0_27701275-7959-4376-9C5F-12D05AF11293.png",
+        "timestamp" : 1790745330.374
+      },
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "BB4BA74C-476F-4F0C-86EF-83D8F8341927",
+        "deviceName" : "SwipeGo Z compact home",
+        "exportedFileName" : "EBD66E21-2380-4EB9-A3A7-BF78A6464320.png",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "F022-settings-glass_0_C5038B2E-E108-407A-AB3B-24B887764429.png",
+        "timestamp" : 1790745328.203
+      }
+    ],
+    "testIdentifier" : "SettingsGlassTests/testRealSettingsDisclosureAndDismissal()",
+    "testIdentifierURL" : "test://com.apple.xcode/SwipeGo/SwipeGoUITests/SettingsGlassTests/testRealSettingsDisclosureAndDismissal"
+  },
+  {
+    "attachments" : [
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "BB4BA74C-476F-4F0C-86EF-83D8F8341927",
+        "deviceName" : "SwipeGo Z compact home",
+        "exportedFileName" : "D32DA45E-B534-4561-B2AE-73179BFE11F4.png",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "F025-welcome-denied_0_3A674A1B-3D76-4559-9E44-DEE9148F9ADD.png",
+        "timestamp" : 1790745341.421
+      },
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "BB4BA74C-476F-4F0C-86EF-83D8F8341927",
+        "deviceName" : "SwipeGo Z compact home",
+        "exportedFileName" : "F9E01328-6D2B-49EA-989A-8ED502639D21.png",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "F025-welcome-glass_0_EC49A035-AC58-47C1-9DF5-76C830CA85BB.png",
+        "timestamp" : 1790745338.306
+      }
+    ],
+    "testIdentifier" : "WelcomeGlassTests/testWelcomeGlassBeforeNativePermission()",
+    "testIdentifierURL" : "test://com.apple.xcode/SwipeGo/SwipeGoUITests/WelcomeGlassTests/testWelcomeGlassBeforeNativePermission"
+  },
+  {
+    "attachments" : [
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "BB4BA74C-476F-4F0C-86EF-83D8F8341927",
+        "deviceName" : "SwipeGo Z compact home",
+        "exportedFileName" : "5F061AB6-D436-4773-B829-647E7901241B.png",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "F025-welcome-large-opaque_0_EB59983B-70E2-474C-B553-55A08DF23A46.png",
+        "timestamp" : 1790745348.673
+      }
+    ],
+    "testIdentifier" : "WelcomeGlassTests/testWelcomeLargeOpaqueCanRequest()",
+    "testIdentifierURL" : "test://com.apple.xcode/SwipeGo/SwipeGoUITests/WelcomeGlassTests/testWelcomeLargeOpaqueCanRequest"
+  }
+]

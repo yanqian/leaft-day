@@ -1,0 +1,98 @@
+[
+  {
+    "attachments" : [
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "1DF82DB5-2A3B-450A-9EB5-098FC4E8F812",
+        "deviceName" : "SwipeGo Fixtures seed 27",
+        "exportedFileName" : "468A8D17-0C17-4F42-A793-AFE2C67732EC.png",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "F009-hero-unavailable-maximum-type_0_2612EE85-4D5C-48A1-930E-79CA2A939316.png",
+        "timestamp" : 1790702547.457
+      },
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "1DF82DB5-2A3B-450A-9EB5-098FC4E8F812",
+        "deviceName" : "SwipeGo Fixtures seed 27",
+        "exportedFileName" : "F4A580AB-7C89-4EE7-9C6A-961791CB4B20.png",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "F009-hero-offline-maximum-type_0_0D4A6A81-C047-41A5-831E-632D5C2B1AD1.png",
+        "timestamp" : 1790702541.416
+      },
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "1DF82DB5-2A3B-450A-9EB5-098FC4E8F812",
+        "deviceName" : "SwipeGo Fixtures seed 27",
+        "exportedFileName" : "7AC52386-35FD-4D86-9809-D432C382E336.png",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "F009-hero-downloading-maximum-type_0_F666FA2E-8C33-4D99-8062-01E32EA2562F.png",
+        "timestamp" : 1790702535.26
+      },
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "1DF82DB5-2A3B-450A-9EB5-098FC4E8F812",
+        "deviceName" : "SwipeGo Fixtures seed 27",
+        "exportedFileName" : "AE6AEF8C-A621-48D3-BD2E-2FB628B70403.png",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "F009-hero-loading-maximum-type_0_5E65BB54-2A36-4D25-A506-2BD3DF6DEACD.png",
+        "timestamp" : 1790702529.097
+      },
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "1DF82DB5-2A3B-450A-9EB5-098FC4E8F812",
+        "deviceName" : "SwipeGo Fixtures seed 27",
+        "exportedFileName" : "B9AFDBDF-5273-4086-8DFC-9631BAB2A0F6.png",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "F009-hero-empty-maximum-type_0_63379E29-F025-4811-BC8C-69984B3CF1B7.png",
+        "timestamp" : 1790702522.911
+      },
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "1DF82DB5-2A3B-450A-9EB5-098FC4E8F812",
+        "deviceName" : "SwipeGo Fixtures seed 27",
+        "exportedFileName" : "97CBEF56-81D2-4DC0-90CF-8BD7ED321EC1.png",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "F009-cover-unavailable-maximum-type_0_84633C88-9749-4B7A-BF19-0F71E991E55A.png",
+        "timestamp" : 1790702516.72
+      },
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "1DF82DB5-2A3B-450A-9EB5-098FC4E8F812",
+        "deviceName" : "SwipeGo Fixtures seed 27",
+        "exportedFileName" : "2C1166EB-22E6-4FCF-A25C-3B7593F742F7.png",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "F009-cover-offline-maximum-type_0_763CD3F8-961B-4E25-BFF5-B956F3FFF742.png",
+        "timestamp" : 1790702510.639
+      },
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "1DF82DB5-2A3B-450A-9EB5-098FC4E8F812",
+        "deviceName" : "SwipeGo Fixtures seed 27",
+        "exportedFileName" : "D693E7FE-AA9D-47F3-80CE-2633A6B1C4D5.png",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "F009-cover-downloading-maximum-type_0_B903FAFC-BB53-40EE-A36B-9834448DD2A1.png",
+        "timestamp" : 1790702504.523
+      },
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "1DF82DB5-2A3B-450A-9EB5-098FC4E8F812",
+        "deviceName" : "SwipeGo Fixtures seed 27",
+        "exportedFileName" : "8E946AA9-F491-456B-A181-B7EB512B6957.png",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "F009-cover-loading-maximum-type_0_0E4C82D6-CBAF-4D8C-9E92-06CC9B4F5F29.png",
+        "timestamp" : 1790702498.398
+      },
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "1DF82DB5-2A3B-450A-9EB5-098FC4E8F812",
+        "deviceName" : "SwipeGo Fixtures seed 27",
+        "exportedFileName" : "ABDACFB8-F56C-4EC8-ACBB-650D92930D6E.png",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "F009-cover-empty-maximum-type_0_B54952B7-F9CC-4E5D-A81C-36108384319B.png",
+        "timestamp" : 1790702492.288
+      }
+    ],
+    "testIdentifier" : "HomeCoverStateTests/testMaximumTypeCoverStatesRemainReadable()",
+    "testIdentifierURL" : "test://com.apple.xcode/SwipeGo/SwipeGoUITests/HomeCoverStateTests/testMaximumTypeCoverStatesRemainReadable"
+  }
+]

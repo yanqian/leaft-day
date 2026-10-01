@@ -12,6 +12,19 @@ final class PermissionTests: XCTestCase {
         app.buttons["permission.request"].tap()
         let system = XCUIApplication(bundleIdentifier: "com.apple.springboard")
         XCTAssertTrue(system.alerts.firstMatch.waitForExistence(timeout: 10))
+        // Native photo thumbnails resize the authorization sheet on compact
+        // devices. Wait for its actual button frame to settle before tapping.
+        let deny = system.buttons["Don’t Allow"]
+        XCTAssertTrue(deny.waitForExistence(timeout: 10))
+        var previous = CGRect.null
+        var changedAt = Date()
+        let settled = NSPredicate { _, _ in
+            guard deny.exists, deny.isHittable else { return false }
+            let frame = deny.frame
+            if frame != previous { previous = frame; changedAt = Date(); return false }
+            return Date().timeIntervalSince(changedAt) >= 0.6
+        }
+        XCTAssertEqual(XCTWaiter.wait(for: [XCTNSPredicateExpectation(predicate: settled, object: nil)], timeout: 10), .completed)
         return (app, system)
     }
 
@@ -23,7 +36,9 @@ final class PermissionTests: XCTestCase {
     func testDeniedGuidance() {
         let (app, system) = request()
         system.buttons["Don’t Allow"].tap()
-        XCTAssertTrue(app.buttons["打开设置"].waitForExistence(timeout: 10))
+        let ready = app.buttons["打开设置"].waitForExistence(timeout: 10)
+        if !ready { let screen = XCTAttachment(screenshot: XCUIScreen.main.screenshot()); screen.name = "permission-denial-system-state"; screen.lifetime = .keepAlways; add(screen) }
+        XCTAssertTrue(ready)
         XCTAssertFalse(app.staticTexts["library.count"].exists)
     }
 

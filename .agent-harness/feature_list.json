@@ -120,7 +120,21 @@
         "SwipeGo/Infrastructure/PhotoLibrary/",
         "SwipeGoTests/"
       ],
-      "verification_surface": "授权矩阵与真实图库查询"
+      "verification_surface": "授权矩阵与真实图库查询",
+      "human_acceptance": {
+        "status": "new_requirement",
+        "history": [
+          {
+            "at": "2026-09-29T10:30:25.182120+00:00",
+            "result": "fail",
+            "classification": "new_requirement",
+            "feedback": "用户要求最初打开App的两个页面统一液态玻璃；已明确首次照片授权引导，第二个页面正在向用户核对。保留系统授权边界。"
+          }
+        ],
+        "last_feedback": "用户要求最初打开App的两个页面统一液态玻璃；已明确首次照片授权引导，第二个页面正在向用户核对。保留系统授权边界。",
+        "last_recorded_at": "2026-09-29T10:30:25.182120+00:00",
+        "reopen_pending": false
+      }
     },
     {
       "id": "F006",
@@ -196,7 +210,21 @@
         "SwipeGo/Domain/Review/",
         "SwipeGoTests/"
       ],
-      "verification_surface": "确定性日期/随机选择与重开恢复"
+      "verification_surface": "确定性日期/随机选择与重开恢复",
+      "human_acceptance": {
+        "status": "new_requirement",
+        "history": [
+          {
+            "at": "2026-09-29T03:19:53.039398+00:00",
+            "result": "fail",
+            "classification": "new_requirement",
+            "feedback": "单项短片段缺少连续体验：批准继续跨片段、随机优先多项、周年当天结束后显式附近日期；见v3 SPEC范围与批次上限。"
+          }
+        ],
+        "last_feedback": "单项短片段缺少连续体验：批准继续跨片段、随机优先多项、周年当天结束后显式附近日期；见v3 SPEC范围与批次上限。",
+        "last_recorded_at": "2026-09-29T03:19:53.039398+00:00",
+        "reopen_pending": false
+      }
     },
     {
       "id": "F009",
@@ -204,12 +232,14 @@
       "description": "回顾首页与玻璃视觉；对应 R01/R02，边界与默认值以 SPEC 为准。",
       "acceptance": [
         "按确认图实现继续回顾、去年的今天、随机时光；不出现顺手整理、大视频清理或清理排行榜。",
-        "统一原生玻璃控件，默认媒体清晰；动态字体、减弱透明度和 VoiceOver 下仍能操作。",
-        "待删入口低强调，其真实计数与复核导航由 F015 接入；无会话、无日期内容和无权限有空态。"
+        "统一原生玻璃控件：v3沉浸两条轻薄胶囊，上一项/居中日期数量/下一项及四动作，关闭与缩放独立；横屏、大字、减弱透明度和VoiceOver仍可操作。",
+        "待删入口位于首页内容最底，使用垃圾桶图标与真实待删/待核对计数；其后不显示全库可回顾数量；必要的部分授权与待核对操作提示保留在它上方。",
+        "按v5确认稿采用照片氛围背景、较高的去年今天/随机照片双卡与玻璃叠图文字；平衡hero高度使常规小屏首屏完整显示底部待删卡；辅助字号可滚动不截断。",
+        "封面只用所属片段照片；加载/离线/失败与无照片可区分，有限回退候选并取消过期请求，不把视频当封面或整库下载。"
       ],
       "passes": true,
       "status": "done",
-      "attempts": 1,
+      "attempts": 6,
       "last_error": "",
       "priority": "P0",
       "depends_on": [
@@ -220,9 +250,42 @@
       "implementation_paths": [
         "SwipeGo/DesignSystem/",
         "SwipeGo/Features/Home/",
-        "SwipeGoUITests/"
+        "SwipeGoUITests/",
+        "SwipeGo/Features/Review/"
       ],
-      "verification_surface": "首页截图与空态/恢复导航验证"
+      "verification_surface": "首页截图与空态/恢复导航验证",
+      "human_acceptance": {
+        "status": "rejected",
+        "history": [
+          {
+            "at": "2026-09-28T07:31:03.111073+00:00",
+            "result": "fail",
+            "classification": "current_feature",
+            "feedback": "2026-09-28用户实机截图：液态玻璃效果偏离确认稿、首页待删0项半截露出、封面变成图片占位。用户确认v2稿：照片氛围背景、低矮横向待删玻璃卡片、仅照片封面及清楚的加载/空态。"
+          },
+          {
+            "at": "2026-09-29T03:19:53.039328+00:00",
+            "result": "fail",
+            "classification": "current_feature",
+            "feedback": "v3人工反馈：沉浸190pt乳白大面板不符合液态玻璃承诺。批准两条轻薄玻璃：上一项/居中日期数量/下一项，下方四动作，关闭左上。复核和完成页共享材质；布局分别由F015接入。"
+          },
+          {
+            "at": "2026-09-29T08:09:50.191416+00:00",
+            "result": "fail",
+            "classification": "new_requirement",
+            "feedback": "用户要求将设置页纳入统一玻璃，批准v4稿；新增F022。"
+          },
+          {
+            "at": "2026-09-29T16:38:32.930283+00:00",
+            "result": "fail",
+            "classification": "current_feature",
+            "feedback": "用户v5手动截图指出首页偏离确认稿：双卡偏小，待删入口需位于最底并使用垃圾桶，移除其后的全库总数。已批准三页v5设计并回复继续，按原F009首页承诺修复。"
+          }
+        ],
+        "last_feedback": "用户v5手动截图指出首页偏离确认稿：双卡偏小，待删入口需位于最底并使用垃圾桶，移除其后的全库总数。已批准三页v5设计并回复继续，按原F009首页承诺修复。",
+        "last_recorded_at": "2026-09-29T16:38:32.930283+00:00",
+        "reopen_pending": false
+      }
     },
     {
       "id": "F010",
@@ -235,7 +298,7 @@
       ],
       "passes": true,
       "status": "done",
-      "attempts": 1,
+      "attempts": 2,
       "last_error": "",
       "priority": "P0",
       "depends_on": [
@@ -249,7 +312,21 @@
         "SwipeGo/Features/Review/",
         "SwipeGoUITests/"
       ],
-      "verification_surface": "手势、缩放与底部控件 UI 测试"
+      "verification_surface": "手势、缩放与底部控件 UI 测试",
+      "human_acceptance": {
+        "status": "rejected",
+        "history": [
+          {
+            "at": "2026-09-28T07:31:03.111153+00:00",
+            "result": "fail",
+            "classification": "current_feature",
+            "feedback": "2026-09-28用户报告预览左右滑动不生效。需检查真实首页进入路径、照片/视频/黑边/缩放/控件冲突，首尾给反馈；尚未独立复现，不能以旧测试通过否定人工失败。"
+          }
+        ],
+        "last_feedback": "2026-09-28用户报告预览左右滑动不生效。需检查真实首页进入路径、照片/视频/黑边/缩放/控件冲突，首尾给反馈；尚未独立复现，不能以旧测试通过否定人工失败。",
+        "last_recorded_at": "2026-09-28T07:31:03.111153+00:00",
+        "reopen_pending": false
+      }
     },
     {
       "id": "F011",
@@ -302,7 +379,21 @@
         "SwipeGo/Features/Review/",
         "SwipeGoTests/"
       ],
-      "verification_surface": "幂等保存、撤销、进程重开和失败测试"
+      "verification_surface": "幂等保存、撤销、进程重开和失败测试",
+      "human_acceptance": {
+        "status": "new_requirement",
+        "history": [
+          {
+            "at": "2026-09-29T08:09:50.191536+00:00",
+            "result": "fail",
+            "classification": "new_requirement",
+            "feedback": "用户批准待删成功后动画退场自动下一项，明确替代A01旧停留规则；新增F023。"
+          }
+        ],
+        "last_feedback": "用户批准待删成功后动画退场自动下一项，明确替代A01旧停留规则；新增F023。",
+        "last_recorded_at": "2026-09-29T08:09:50.191536+00:00",
+        "reopen_pending": false
+      }
     },
     {
       "id": "F013",
@@ -365,24 +456,56 @@
       "acceptance": [
         "首页弱入口显示有效待删数并进入复核；展示分组待删与同组保留项，视频可播放确认。",
         "允许撤回单项或退出稍后处理；权限/资源变化时显示需核对，不能直接抹除意图或称已删除。",
-        "最终确认展示固定目标及 iCloud 删除影响与系统恢复边界；不显示伪造的已释放空间；执行委托 F016。"
+        "最终确认展示固定目标及 iCloud 删除影响与系统恢复边界；不显示伪造的已释放空间；执行委托 F016。",
+        "v3照片网格为主，首次说明后可展开，固定清单保留个人图库确认与简短同步/恢复边界；复核/结果/说明按钮共享玻璃材质。",
+        "系统成功且本地记录落盘后替换旧清单为结果页，准确读取剩余数；取消、失败、未知及本地保存失败不得伪报清空，保留操作记录入口。",
+        "v8待删复核与确认采用照片取色自然渐变及共享浅色玻璃；进入确认前冻结纯色板，结果不读取已删除资产。",
+        "删除成功、取消、失败、未知和记录保存失败均为玻璃结果状态，保留真实回执/剩余记录/返回与查看记录动作；小屏大字操作不与滚动正文重叠。"
       ],
       "passes": true,
       "status": "done",
-      "attempts": 2,
+      "attempts": 4,
       "last_error": "",
       "priority": "P0",
       "depends_on": [
         "F009",
         "F012",
-        "F014"
+        "F014",
+        "F026",
+        "F027"
       ],
       "requirement_refs": "R09",
       "implementation_paths": [
         "SwipeGo/Features/DeletionReview/",
         "SwipeGoUITests/"
       ],
-      "verification_surface": "真实计数、分组保留对照和取消"
+      "verification_surface": "真实计数、分组保留对照和取消",
+      "human_acceptance": {
+        "status": "rejected",
+        "history": [
+          {
+            "at": "2026-09-29T03:19:53.039394+00:00",
+            "result": "fail",
+            "classification": "current_feature",
+            "feedback": "App待删复核/确认页删除成功后仍显示frozen旧清单；文字过多。批准照片网格、首次说明后披露、真实回执替换清单、剩余记录准确计数，统一玻璃背景与按钮。"
+          },
+          {
+            "at": "2026-09-29T10:30:25.182046+00:00",
+            "result": "fail",
+            "classification": "new_requirement",
+            "feedback": "用户要求将删除记录页面纳入与沉浸回顾/设置一致的通透液态玻璃。原F015复核/结果要求不变，新增独立视觉页面F024。"
+          },
+          {
+            "at": "2026-09-30T08:57:53.637227+00:00",
+            "result": "fail",
+            "classification": "current_feature",
+            "feedback": "用户指出删除结果仍为普通白页，已批准v8照片取色渐变与全局液态玻璃；原删除流程玻璃承诺未满足，重开原F015，保留安全协议及历史证据。"
+          }
+        ],
+        "last_feedback": "用户指出删除结果仍为普通白页，已批准v8照片取色渐变与全局液态玻璃；原删除流程玻璃承诺未满足，重开原F015，保留安全协议及历史证据。",
+        "last_recorded_at": "2026-09-30T08:57:53.637227+00:00",
+        "reopen_pending": false
+      }
     },
     {
       "id": "F016",
@@ -449,9 +572,9 @@
       ],
       "passes": false,
       "status": "todo",
-      "attempts": 0,
+      "attempts": 2,
       "last_error": "",
-      "priority": "P0",
+      "priority": "P1",
       "depends_on": [
         "F003",
         "F009",
@@ -470,6 +593,303 @@
         ".agent-harness/runs/"
       ],
       "verification_surface": "iOS26+ 真机测试图库与性能证据"
+    },
+    {
+      "id": "F019",
+      "title": "全画面点按显隐浏览控件",
+      "description": "全画面点按显隐浏览控件；见SPEC 2026-09-28手动验收追加约定。",
+      "acceptance": [
+        "照片/视频画面及黑边任意非控件区域单击显隐底部栏，默认仍隐藏；顶部不单设触发区。",
+        "视频单击不再播放暂停，显式播放/暂停、声音、进度控件保留；点控件不同时收起功能栏。",
+        "左右翻页、纵向动作、缩放/平移与点按不串扰；UI测试覆盖上下左右及黑边，辅助操作入口可用。"
+      ],
+      "passes": true,
+      "status": "done",
+      "attempts": 1,
+      "last_error": "",
+      "priority": "P0",
+      "depends_on": [
+        "F010"
+      ],
+      "requirement_refs": "R12",
+      "implementation_paths": [
+        "SwipeGo/Features/Review/",
+        "SwipeGo/Infrastructure/Media/VideoPlayback.swift",
+        "SwipeGoUITests/"
+      ],
+      "verification_surface": "全区域照片/视频显隐与控件冲突UI测试"
+    },
+    {
+      "id": "F020",
+      "title": "浏览横屏与方向恢复",
+      "description": "浏览横屏与方向恢复；见SPEC 2026-09-28手动验收追加约定。",
+      "acceptance": [
+        "浏览照片/视频支持左右横屏，原比例完整展示；旋转不改变资产/游标、不重复收藏或待删。",
+        "横屏功能栏与视频控件在安全区内可用，常规字号不过度占用画面，辅助字号允许滚动。",
+        "退出浏览恢复首页竖屏；左右横屏/回竖屏UI测试验证窗口方向、当前资产和控件可达，不绕过系统旋转锁。"
+      ],
+      "passes": true,
+      "status": "done",
+      "attempts": 1,
+      "last_error": "",
+      "priority": "P0",
+      "depends_on": [
+        "F019"
+      ],
+      "requirement_refs": "R13",
+      "implementation_paths": [
+        "SwipeGo/App/",
+        "SwipeGo/Features/Review/",
+        "SwipeGo/Infrastructure/Media/VideoPlayback.swift",
+        "project.yml",
+        "SwipeGoUITests/"
+      ],
+      "verification_surface": "模拟器左右横屏/原资产/退出竖屏以及截图"
+    },
+    {
+      "id": "F021",
+      "title": "跨片段连续回顾与单项接续",
+      "description": "按v3 SPEC扩展原F008短片段会话；三个入口保留明确范围。",
+      "acceptance": [
+        "继续回顾在既有会话末尾可接续下一时间批次，每批最多60项，旧会话顺序和当前位置保持；无更多项有明确末尾状态。",
+        "随机优先多项片段；无多项片段时围绕选中项最多12项稳定时间范围，显示真实数量与日期范围；全库仅一项明确提示。",
+        "去年的今天仍严格当天，结束时可显式继续看附近日期，不能暗中混入其他日期。",
+        "持久化有序ID/游标及范围语义，重启和授权缩减不越出accessible/assetScope；以确定性测试和首页真实UI验证。"
+      ],
+      "passes": true,
+      "status": "done",
+      "attempts": 1,
+      "last_error": "",
+      "priority": "P0",
+      "depends_on": [
+        "F008",
+        "F009"
+      ],
+      "requirement_refs": "R14",
+      "implementation_paths": [
+        "SwipeGo/Domain/Review/",
+        "SwipeGo/Features/Home/",
+        "SwipeGo/Features/Review/",
+        "SwipeGoTests/",
+        "SwipeGoUITests/"
+      ],
+      "verification_surface": "时间范围/批次/恢复单元测试和首页入口接续UI"
+    },
+    {
+      "id": "F022",
+      "title": "设置页统一玻璃与权限信息",
+      "description": "按v4批准稿实现R15设置页面。",
+      "acceptance": [
+        "首页真实设置入口展示照片氛围背景、玻璃权限卡、真实可回顾数量及完成按钮，复用统一材质。",
+        "图库说明可展开收起；有限授权管理、拒绝/未授权引导与回前台刷新仍有效。",
+        "小屏/辅助字号/减弱透明度可操作，实际UI截图与root验证通过。"
+      ],
+      "passes": true,
+      "status": "done",
+      "attempts": 1,
+      "last_error": "",
+      "priority": "P0",
+      "depends_on": [
+        "F005",
+        "F009"
+      ],
+      "requirement_refs": "R15",
+      "implementation_paths": [
+        "SwipeGo/Features/Permissions/",
+        "SwipeGoUITests/",
+        "docs/design/"
+      ],
+      "verification_surface": "针对性领域/UI测试、真实截图、root init、独立Evaluator"
+    },
+    {
+      "id": "F023",
+      "title": "待删退场动画与自动下一项",
+      "description": "按v4批准稿实现R16，替代待删后停留的A01规则。",
+      "acceptance": [
+        "上滑或待删按钮耐久保存成功后照片向上淡出，自动显示下一非待删项；收藏需先确认，失败不退场，转场防重复。",
+        "本轮剩余与待删计数反映真实状态；末尾展示完成而非原照片；连续接续与周年范围仍符合R14。",
+        "撤销仍针对原资产，可恢复原照片；重启进度/待删保持，写入与位置保存失败分别准确反馈。",
+        "减少动态效果使用轻淡出；照片/视频/缩放/横屏和控件不串扰，生成素材UI与故障单测通过。"
+      ],
+      "passes": true,
+      "status": "done",
+      "attempts": 3,
+      "last_error": "",
+      "priority": "P0",
+      "depends_on": [
+        "F012",
+        "F021"
+      ],
+      "requirement_refs": "R16",
+      "implementation_paths": [
+        "SwipeGo/Features/Review/",
+        "SwipeGo/Domain/Review/",
+        "SwipeGo/Domain/LocalState.swift",
+        "SwipeGo/Features/Home/",
+        "SwipeGoTests/",
+        "SwipeGoUITests/"
+      ],
+      "verification_surface": "针对性领域/UI测试、真实截图、root init、独立Evaluator"
+    },
+    {
+      "id": "F024",
+      "title": "删除记录统一通透玻璃",
+      "description": "按R17将删除记录纳入已批准的v4共享玻璃视觉。",
+      "acceptance": [
+        "真实删除结果入口进入记录，使用深色氛围背景、共享通透玻璃记录卡和固定完成按钮，完成回原结果。",
+        "仍显示最新20条删除操作的真实数量/时间/状态，成功、取消、未提交、待核对明确区分；空/加载/读取失败可理解，不改变删除数据。",
+        "小屏、大字体、减弱透明度可读可操作；生成素材真实入口和隔离状态截图验证通过，最终root和独立Evaluator通过。"
+      ],
+      "passes": true,
+      "status": "done",
+      "attempts": 1,
+      "last_error": "",
+      "priority": "P0",
+      "depends_on": [
+        "F015",
+        "F022"
+      ],
+      "requirement_refs": "R17",
+      "implementation_paths": [
+        "SwipeGo/Features/DeletionReview/",
+        "SwipeGo/DesignSystem/",
+        "SwipeGoUITests/",
+        "docs/design/"
+      ],
+      "verification_surface": "真实删除历史入口、隔离状态和辅助功能截图、root init、独立Evaluator"
+    },
+    {
+      "id": "F025",
+      "title": "首次照片授权统一玻璃引导",
+      "description": "按v5批准稿实现R18首次打开授权页，不修改系统授权弹窗。",
+      "acceptance": [
+        "未授权首次打开展示内置氛围图、玻璃照片符号、时光标题与准确说明/请求按钮，不使用未授权图库图片；首次权限读取中显示加载而非错误引导。",
+        "原生授权请求、拒绝打开设置、受限说明及前台刷新语义保持；已授权仍进入首页，不增加第二启动页。",
+        "小屏大字和减弱透明度可用，真实权限矩阵及视觉截图验证通过，root与独立Evaluator通过。"
+      ],
+      "passes": true,
+      "status": "done",
+      "attempts": 2,
+      "last_error": "",
+      "priority": "P0",
+      "depends_on": [
+        "F005",
+        "F024"
+      ],
+      "requirement_refs": "R18",
+      "implementation_paths": [
+        "SwipeGo/Features/Permissions/",
+        "SwipeGo/DesignSystem/",
+        "SwipeGoUITests/"
+      ],
+      "verification_surface": "真实授权UI矩阵、首开视觉/辅助功能、小屏、root init、独立Evaluator"
+    },
+    {
+      "id": "F026",
+      "title": "照片取色渐变与共享液态玻璃能力",
+      "description": "用户批准v8照片取色方向；见SPEC 2026-09-30。",
+      "acceptance": [
+        "以最多64×64样本提取最多3个代表色，稳定提亮降饱和；冷暖照片有区别，极暗/极亮/透明/无图有可读回退，不显示图像纹理。",
+        "提供共享渐变、浅色玻璃卡/按钮/页面色调；减弱透明度有实心高对比替代，减少动态效果不强制颜色运动。",
+        "本地单张有界请求network=false，旧回调不能覆盖新资产/版本；取消释放图像，只保留色板；冻结色板不再请求原资产。",
+        "确定性取色与异步边界单测、原生样例截图、root和独立Evaluator通过。"
+      ],
+      "passes": true,
+      "status": "done",
+      "attempts": 1,
+      "last_error": "",
+      "priority": "P0",
+      "depends_on": [
+        "F006"
+      ],
+      "requirement_refs": "R19",
+      "implementation_paths": [
+        "SwipeGo/DesignSystem/",
+        "SwipeGoTests/",
+        "SwipeGo/App/",
+        "SwipeGoUITests/"
+      ],
+      "verification_surface": "有界领域测试、真实入口UI与视觉/辅助功能截图、root恢复、独立Evaluator"
+    },
+    {
+      "id": "F027",
+      "title": "首页与权限页面统一照片取色视觉",
+      "description": "用户批准v8照片取色方向；见SPEC 2026-09-30。",
+      "acceptance": [
+        "首页保持大hero/去年今天和随机双卡/底部待删入口；从已有hero图像取色，无图/失败使用默认渐变，不新增无关背景图片。",
+        "首次授权所有分支与设置页使用统一浅色玻璃；设置以本地授权照片取色，未授权不请求图库，真实权限/数量与原生流程不变。",
+        "大字号小屏无重叠截断，主按钮可达，减弱透明度可读；真实首页和权限矩阵截图、root与独立Evaluator通过。"
+      ],
+      "passes": true,
+      "status": "done",
+      "attempts": 2,
+      "last_error": "",
+      "priority": "P0",
+      "depends_on": [
+        "F026",
+        "F025"
+      ],
+      "requirement_refs": "R20",
+      "implementation_paths": [
+        "SwipeGo/Features/Home/",
+        "SwipeGo/Features/Permissions/",
+        "SwipeGoUITests/"
+      ],
+      "verification_surface": "有界领域测试、真实入口UI与视觉/辅助功能截图、root恢复、独立Evaluator"
+    },
+    {
+      "id": "F028",
+      "title": "删除记录与操作核对统一取色玻璃",
+      "description": "用户批准v8照片取色方向；见SPEC 2026-09-30。",
+      "acceptance": [
+        "删除记录接收并沿用本次结果色板，不读已删除资产；从独立入口进入时使用默认渐变，最近20条真实状态/数量/时间保持。",
+        "操作核对使用共享玻璃状态与记录卡，未知/空/读取失败/忙碌明确；已核对不代表成功，不改变核对和重试规则。",
+        "记录/核对真实入口、空和失败重试、小屏大字/减弱透明度截图通过；root和独立Evaluator通过。"
+      ],
+      "passes": true,
+      "status": "done",
+      "attempts": 1,
+      "last_error": "",
+      "priority": "P0",
+      "depends_on": [
+        "F026",
+        "F015"
+      ],
+      "requirement_refs": "R21",
+      "implementation_paths": [
+        "SwipeGo/Features/DeletionReview/DeletionHistoryView.swift",
+        "SwipeGo/Features/Reconciliation/",
+        "SwipeGoUITests/"
+      ],
+      "verification_surface": "有界领域测试、真实入口UI与视觉/辅助功能截图、root恢复、独立Evaluator"
+    },
+    {
+      "id": "F029",
+      "title": "回顾比较与终态统一照片取色玻璃",
+      "description": "用户批准v8照片取色方向；见SPEC 2026-09-30。",
+      "acceptance": [
+        "相似比较从当前组代表照片取色，照片清晰、保留选择和危险语义不变，切组/无图/错误都有统一状态。",
+        "回顾完成/无会话/资源不可用采用取色或默认渐变与玻璃状态，完成撤销/接续/错误恢复可达；原片和视频保持fit、默认控件隐藏、原手势与播放不变。",
+        "放大和视频预览保持清晰媒体与统一玻璃操作；横屏/小屏/辅助字号/减少动态效果/减弱透明度不退化。",
+        "媒体与比较实际入口回归、终态/失败截图、root与独立Evaluator通过，最终页面清单无遗漏。"
+      ],
+      "passes": true,
+      "status": "done",
+      "attempts": 2,
+      "last_error": "",
+      "priority": "P0",
+      "depends_on": [
+        "F026",
+        "F023"
+      ],
+      "requirement_refs": "R22",
+      "implementation_paths": [
+        "SwipeGo/Features/Review/",
+        "SwipeGo/Features/Comparison/",
+        "SwipeGo/Features/DeletionReview/DeletionReviewView.swift",
+        "SwipeGoUITests/"
+      ],
+      "verification_surface": "有界领域测试、真实入口UI与视觉/辅助功能截图、root恢复、独立Evaluator"
     }
   ]
 }

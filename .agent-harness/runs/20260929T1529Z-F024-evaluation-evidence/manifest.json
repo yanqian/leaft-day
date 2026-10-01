@@ -1,0 +1,47 @@
+[
+  {
+    "attachments" : [
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "1DF82DB5-2A3B-450A-9EB5-098FC4E8F812",
+        "deviceName" : "SwipeGo Fixtures seed 27",
+        "exportedFileName" : "4F75FC66-DBE0-419F-A734-FC05CE1E5361.png",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "F024-history-empty_0_C5E01266-629F-4A5A-9B34-275143462524.png",
+        "timestamp" : 1790695066.586
+      }
+    ],
+    "testIdentifier" : "DeletionHistoryGlassTests/testHistoryEmptyAndFailedReadRetry()",
+    "testIdentifierURL" : "test://com.apple.xcode/SwipeGo/SwipeGoUITests/DeletionHistoryGlassTests/testHistoryEmptyAndFailedReadRetry"
+  },
+  {
+    "attachments" : [
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "1DF82DB5-2A3B-450A-9EB5-098FC4E8F812",
+        "deviceName" : "SwipeGo Fixtures seed 27",
+        "exportedFileName" : "13033844-EE2F-4C7E-A7D8-69C3A3B354C3.png",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "F024-history-large-opaque_0_5C4D2245-A7D0-4CAC-A55C-E6047A6ACFBE.png",
+        "timestamp" : 1790695075.782
+      }
+    ],
+    "testIdentifier" : "DeletionHistoryGlassTests/testHistoryLargeOpaqueKeepsDoneReachable()",
+    "testIdentifierURL" : "test://com.apple.xcode/SwipeGo/SwipeGoUITests/DeletionHistoryGlassTests/testHistoryLargeOpaqueKeepsDoneReachable"
+  },
+  {
+    "attachments" : [
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "1DF82DB5-2A3B-450A-9EB5-098FC4E8F812",
+        "deviceName" : "SwipeGo Fixtures seed 27",
+        "exportedFileName" : "43457896-7545-4960-B577-88880091D6FB.png",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "F024-history-glass_0_27310B7B-913B-42B4-9500-82831EBB02CD.png",
+        "timestamp" : 1790695088.242
+      }
+    ],
+    "testIdentifier" : "DeletionHistoryGlassTests/testHistoryStatesGlassAndDismissal()",
+    "testIdentifierURL" : "test://com.apple.xcode/SwipeGo/SwipeGoUITests/DeletionHistoryGlassTests/testHistoryStatesGlassAndDismissal"
+  }
+]

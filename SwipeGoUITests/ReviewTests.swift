@@ -19,10 +19,14 @@ import XCTest
         let original = state.label.components(separatedBy: "current=").last!.components(separatedBy: " ").first!
         photo.swipeUp(); expect("intents=1"); expect("kind=pending"); expect("target=\(original)"); expect("cursor=0")
         photo.swipeDown(); expect("intents=2"); expect("kind=favorite"); expect("cursor=0")
-        app.buttons["review.toggle"].tap()
+        app.tapReviewCanvas()
         XCTAssertTrue(app.buttons["review.back"].waitForExistence(timeout: 5))
-        XCTAssertGreaterThan(app.buttons["review.back"].frame.midY, app.frame.height * 0.5)
+        XCTAssertLessThan(app.buttons["review.back"].frame.midY, app.frame.height * 0.25)
+        XCTAssertGreaterThan(app.buttons["下一项"].frame.midY, app.frame.height * 0.7)
+        XCTAssertGreaterThanOrEqual(app.buttons["下一项"].frame.height, 44)
+        let glass = XCTAttachment(screenshot: XCUIScreen.main.screenshot()); glass.name = "F009-v3-two-pills"; glass.lifetime = .keepAlways; add(glass)
         app.buttons["review.zoom"].tap()
+        XCTAssertTrue((photo.value as? String)?.contains("200%") == true)
         photo.swipeLeft(); photo.swipeUp(); expect("cursor=0"); expect("intents=2")
         app.buttons["review.zoom"].tap()
         photo.pinch(withScale: 2, velocity: 1)
@@ -36,7 +40,7 @@ import XCTest
         XCTAssertTrue(app.sliders["video.progress"].waitForExistence(timeout: 10))
         app.sliders["video.progress"].adjust(toNormalizedSliderPosition: 0.6)
         expect("cursor=2"); expect("intents=3")
-        app.buttons["review.toggle"].tap(); XCTAssertFalse(app.buttons["review.back"].exists)
+        app.tapReviewCanvas(); XCTAssertFalse(app.buttons["review.back"].exists)
         let attachment = XCTAttachment(screenshot: app.screenshot()); attachment.name = "F010-immersive-video"; attachment.lifetime = .keepAlways; add(attachment)
     }
 }

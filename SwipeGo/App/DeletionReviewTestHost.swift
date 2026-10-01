@@ -14,6 +14,7 @@ struct DeletionReviewTestHost: View {
         }.task {
             #if targetEnvironment(simulator)
             do {
+                if ProcessInfo.processInfo.arguments.contains("--deletion-explanation-unseen") { UserDefaults.standard.removeObject(forKey: "deletionExplanationSeen.v1") }
                 let gateway = PhotoLibraryGateway()
                 if await !gateway.snapshot().permission.canRead { _ = await gateway.requestAccess() }
                 let library = await gateway.snapshot()

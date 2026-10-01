@@ -63,4 +63,33 @@ import XCTest
         await model.refresh(); XCTAssertEqual(model.readyCount, 1); XCTAssertEqual(model.needsReviewCount, 1)
         await model.freeze(); XCTAssertNil(model.frozen)
     }
+    func testSuccessfulReceiptRefreshRemovesOnlyCompletedRowsWhileConfirmationRemains() async throws {
+        let store = try store()
+        let assets = ["a", "later"].map { FavoriteTests.snapshot($0) }
+        let writer = DeletionTests.Writer(assets)
+        let coordinator = DeletionCoordinator(store: store, writer: writer)
+        let model = DeletionReviewModel(store: store, reader: writer, deletion: coordinator)
+        try await store.markPending(intent("a"))
+        await model.refresh(); await model.freeze()
+        let frozen = try XCTUnwrap(model.frozen)
+        try await store.markPending(intent("later"))
+        let receipt = try await coordinator.execute(frozen)
+        await model.refreshAfterAttempt()
+        XCTAssertEqual(model.rows.map(\.id), ["later"])
+        XCTAssertEqual(model.frozen?.id, frozen.id, "Keep result presentation alive until user closes it")
+        let remaining = try await store.pending().count
+        let presentation = DeletionResult(receipt, count: 1, remaining: remaining)
+        XCTAssertEqual(presentation.remainingText, "还有 1 项待删记录")
+        XCTAssertEqual(presentation.title, "已删除 1 项")
+    }
+    func testResultNeverClaimsClearForUnknownCancelOrJournalFailure() {
+        for receipt in [DeletionCoordinator.Result.cancelled, .failed, .needsReview, .succeededJournalPending] {
+            let result = DeletionResult(receipt, count: 6, remaining: 0)
+            XCTAssertFalse(result.remainingText.contains("已清空"))
+        }
+        XCTAssertEqual(DeletionResult(.succeeded, count: 6, remaining: 0).remainingText, "待删清单已清空")
+        XCTAssertFalse(DeletionResult(.succeeded, count: 6).remainingText.contains("已清空"))
+        XCTAssertTrue(DeletionResult(.succeededJournalPending, count: 6).detail.contains("本地记录保存失败"))
+    }
+
 }

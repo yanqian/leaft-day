@@ -1,0 +1,9 @@
+{
+  "SwipeGo/Features/DeletionReview/DeletionResult.swift": "0cb797bedbdbd6e8d322adb2882deba707a6ab9375764591e75db42afdab45a8",
+  "SwipeGo/Features/DeletionReview/DeletionResultCard.swift": "6b9c872312d8b2b220ad9cf45449523e78bf487414c372fb85dbd8e0a42e28b9",
+  "SwipeGo/Features/DeletionReview/DeletionReviewModel.swift": "7ad7585ad7dedf38944caa13fc3cebbb1937c24e90a10ef082bac5714e56dcab",
+  "SwipeGo/Features/DeletionReview/DeletionReviewView.swift": "88acc78f21021f6f70e27885edabd03ae6b5b02e061da1028b3f09afac96b809",
+  "SwipeGo/Features/DeletionReview/DeletionHistoryView.swift": "85c205e5ebef165ce4ee056cef3917adfd9f925ede1699f6e5eef0f9756da4c7",
+  "SwipeGo/DesignSystem/PhotoGlass.swift": "749b188ed4b8256fc4c6841d7e694e657a667f6faa0bf6f68f6d75e9613ac368",
+  "SwipeGo/DesignSystem/PhotoPalette.swift": "c1c1fc96a80d0a838846ac897ebef6e3f2590b9593e3e580306b078bd6581249"
+}

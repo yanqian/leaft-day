@@ -1,0 +1,533 @@
+sandbox-exec: sandbox_apply: Operation not permitted
+SwipeGo/Domain/Review/ReviewSession.swift:6:36: error: external macro implementation type 'ObservationMacros.ObservableMacro' could not be found for macro 'Observable()'; '/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/usr/bin/swift-plugin-server' produced malformed response
+  4 | enum ReviewSessionError: Error { case busy, empty, unavailable, invalidSession }
+  5 | 
+  6 | @MainActor @Observable final class ReviewSession {
+    |                                    `- error: external macro implementation type 'ObservationMacros.ObservableMacro' could not be found for macro 'Observable()'; '/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/usr/bin/swift-plugin-server' produced malformed response
+  7 |     enum Current: Equatable {
+  8 |         case noSession
+
+Observation.Observable:2:210: note: 'Observable()' declared here
+1 | @available(macOS 14.0, iOS 17.0, watchOS 10.0, tvOS 17.0, *)
+2 | @attached(member, names: named(_$observationRegistrar), named(access), named(withMutation), named(shouldNotifyObservers)) @attached(memberAttribute) @attached(extension, conformances: Observable) public macro Observable() = #externalMacro(module: "ObservationMacros", type: "ObservableMacro")
+  |                                                                                                                                                                                                                  `- note: 'Observable()' declared here
+
+SwipeGo/Domain/Review/ReviewSession.swift:7:10: error: external macro implementation type 'ObservationMacros.ObservableMacro' could not be found for macro 'Observable()'; '/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/usr/bin/swift-plugin-server' produced malformed response
+  5 | 
+  6 | @MainActor @Observable final class ReviewSession {
+  7 |     enum Current: Equatable {
+    |          `- error: external macro implementation type 'ObservationMacros.ObservableMacro' could not be found for macro 'Observable()'; '/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/usr/bin/swift-plugin-server' produced malformed response
+  8 |         case noSession
+  9 |         case completed
+
+Observation.Observable:2:210: note: 'Observable()' declared here
+1 | @available(macOS 14.0, iOS 17.0, watchOS 10.0, tvOS 17.0, *)
+2 | @attached(member, names: named(_$observationRegistrar), named(access), named(withMutation), named(shouldNotifyObservers)) @attached(memberAttribute) @attached(extension, conformances: Observable) public macro Observable() = #externalMacro(module: "ObservationMacros", type: "ObservableMacro")
+  |                                                                                                                                                                                                                  `- note: 'Observable()' declared here
+
+SwipeGo/Domain/Review/ReviewSession.swift:13:22: error: external macro implementation type 'ObservationMacros.ObservableMacro' could not be found for macro 'Observable()'; '/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/usr/bin/swift-plugin-server' produced malformed response
+ 11 |         case unavailable(String)
+ 12 |     }
+ 13 |     private(set) var state: SessionState?
+    |                      `- error: external macro implementation type 'ObservationMacros.ObservableMacro' could not be found for macro 'Observable()'; '/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/usr/bin/swift-plugin-server' produced malformed response
+ 14 |     private(set) var isSaving = false
+ 15 |     private(set) var pendingIDs: Set<String> = []
+
+Observation.Observable:2:210: note: 'Observable()' declared here
+1 | @available(macOS 14.0, iOS 17.0, watchOS 10.0, tvOS 17.0, *)
+2 | @attached(member, names: named(_$observationRegistrar), named(access), named(withMutation), named(shouldNotifyObservers)) @attached(memberAttribute) @attached(extension, conformances: Observable) public macro Observable() = #externalMacro(module: "ObservationMacros", type: "ObservableMacro")
+  |                                                                                                                                                                                                                  `- note: 'Observable()' declared here
+
+SwipeGo/Domain/Review/ReviewSession.swift:14:22: error: external macro implementation type 'ObservationMacros.ObservableMacro' could not be found for macro 'Observable()'; '/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/usr/bin/swift-plugin-server' produced malformed response
+ 12 |     }
+ 13 |     private(set) var state: SessionState?
+ 14 |     private(set) var isSaving = false
+    |                      `- error: external macro implementation type 'ObservationMacros.ObservableMacro' could not be found for macro 'Observable()'; '/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/usr/bin/swift-plugin-server' produced malformed response
+ 15 |     private(set) var pendingIDs: Set<String> = []
+ 16 |     var isComplete: Bool { state?.completed == true }
+
+Observation.Observable:2:210: note: 'Observable()' declared here
+1 | @available(macOS 14.0, iOS 17.0, watchOS 10.0, tvOS 17.0, *)
+2 | @attached(member, names: named(_$observationRegistrar), named(access), named(withMutation), named(shouldNotifyObservers)) @attached(memberAttribute) @attached(extension, conformances: Observable) public macro Observable() = #externalMacro(module: "ObservationMacros", type: "ObservableMacro")
+  |                                                                                                                                                                                                                  `- note: 'Observable()' declared here
+
+SwipeGo/Domain/Review/ReviewSession.swift:15:22: error: external macro implementation type 'ObservationMacros.ObservableMacro' could not be found for macro 'Observable()'; '/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/usr/bin/swift-plugin-server' produced malformed response
+ 13 |     private(set) var state: SessionState?
+ 14 |     private(set) var isSaving = false
+ 15 |     private(set) var pendingIDs: Set<String> = []
+    |                      `- error: external macro implementation type 'ObservationMacros.ObservableMacro' could not be found for macro 'Observable()'; '/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/usr/bin/swift-plugin-server' produced malformed response
+ 16 |     var isComplete: Bool { state?.completed == true }
+ 17 |     var remainingCount: Int {
+
+Observation.Observable:2:210: note: 'Observable()' declared here
+1 | @available(macOS 14.0, iOS 17.0, watchOS 10.0, tvOS 17.0, *)
+2 | @attached(member, names: named(_$observationRegistrar), named(access), named(withMutation), named(shouldNotifyObservers)) @attached(memberAttribute) @attached(extension, conformances: Observable) public macro Observable() = #externalMacro(module: "ObservationMacros", type: "ObservableMacro")
+  |                                                                                                                                                                                                                  `- note: 'Observable()' declared here
+
+SwipeGo/Domain/Review/ReviewSession.swift:16:9: error: external macro implementation type 'ObservationMacros.ObservableMacro' could not be found for macro 'Observable()'; '/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/usr/bin/swift-plugin-server' produced malformed response
+ 14 |     private(set) var isSaving = false
+ 15 |     private(set) var pendingIDs: Set<String> = []
+ 16 |     var isComplete: Bool { state?.completed == true }
+    |         `- error: external macro implementation type 'ObservationMacros.ObservableMacro' could not be found for macro 'Observable()'; '/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/usr/bin/swift-plugin-server' produced malformed response
+ 17 |     var remainingCount: Int {
+ 18 |         guard let state, !isComplete else { return 0 }
+
+Observation.Observable:2:210: note: 'Observable()' declared here
+1 | @available(macOS 14.0, iOS 17.0, watchOS 10.0, tvOS 17.0, *)
+2 | @attached(member, names: named(_$observationRegistrar), named(access), named(withMutation), named(shouldNotifyObservers)) @attached(memberAttribute) @attached(extension, conformances: Observable) public macro Observable() = #externalMacro(module: "ObservationMacros", type: "ObservableMacro")
+  |                                                                                                                                                                                                                  `- note: 'Observable()' declared here
+
+SwipeGo/Domain/Review/ReviewSession.swift:17:9: error: external macro implementation type 'ObservationMacros.ObservableMacro' could not be found for macro 'Observable()'; '/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/usr/bin/swift-plugin-server' produced malformed response
+ 15 |     private(set) var pendingIDs: Set<String> = []
+ 16 |     var isComplete: Bool { state?.completed == true }
+ 17 |     var remainingCount: Int {
+    |         `- error: external macro implementation type 'ObservationMacros.ObservableMacro' could not be found for macro 'Observable()'; '/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/usr/bin/swift-plugin-server' produced malformed response
+ 18 |         guard let state, !isComplete else { return 0 }
+ 19 |         return state.assetIDs.dropFirst(state.cursor).filter { !pendingIDs.contains($0) }.count
+
+Observation.Observable:2:210: note: 'Observable()' declared here
+1 | @available(macOS 14.0, iOS 17.0, watchOS 10.0, tvOS 17.0, *)
+2 | @attached(member, names: named(_$observationRegistrar), named(access), named(withMutation), named(shouldNotifyObservers)) @attached(memberAttribute) @attached(extension, conformances: Observable) public macro Observable() = #externalMacro(module: "ObservationMacros", type: "ObservableMacro")
+  |                                                                                                                                                                                                                  `- note: 'Observable()' declared here
+
+SwipeGo/Domain/Review/ReviewSession.swift:21:10: error: external macro implementation type 'ObservationMacros.ObservableMacro' could not be found for macro 'Observable()'; '/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/usr/bin/swift-plugin-server' produced malformed response
+ 19 |         return state.assetIDs.dropFirst(state.cursor).filter { !pendingIDs.contains($0) }.count
+ 20 |     }
+ 21 |     func updatePending(_ items: [PendingIntent]) { pendingIDs = Set(items.map(\.assetID)) }
+    |          `- error: external macro implementation type 'ObservationMacros.ObservableMacro' could not be found for macro 'Observable()'; '/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/usr/bin/swift-plugin-server' produced malformed response
+ 22 |     private(set) var snapshot = LibrarySnapshot(permission: .notDetermined, assets: [], sharedLibraryMembershipVerified: false)
+ 23 |     @ObservationIgnored private let store: any LocalStateRepository
+
+Observation.Observable:2:210: note: 'Observable()' declared here
+1 | @available(macOS 14.0, iOS 17.0, watchOS 10.0, tvOS 17.0, *)
+2 | @attached(member, names: named(_$observationRegistrar), named(access), named(withMutation), named(shouldNotifyObservers)) @attached(memberAttribute) @attached(extension, conformances: Observable) public macro Observable() = #externalMacro(module: "ObservationMacros", type: "ObservableMacro")
+  |                                                                                                                                                                                                                  `- note: 'Observable()' declared here
+
+SwipeGo/Domain/Review/ReviewSession.swift:22:22: error: external macro implementation type 'ObservationMacros.ObservableMacro' could not be found for macro 'Observable()'; '/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/usr/bin/swift-plugin-server' produced malformed response
+ 20 |     }
+ 21 |     func updatePending(_ items: [PendingIntent]) { pendingIDs = Set(items.map(\.assetID)) }
+ 22 |     private(set) var snapshot = LibrarySnapshot(permission: .notDetermined, assets: [], sharedLibraryMembershipVerified: false)
+    |                      `- error: external macro implementation type 'ObservationMacros.ObservableMacro' could not be found for macro 'Observable()'; '/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/usr/bin/swift-plugin-server' produced malformed response
+ 23 |     @ObservationIgnored private let store: any LocalStateRepository
+ 24 |     @ObservationIgnored private var orderedAssets: [PhotoAssetSnapshot] = []
+
+Observation.Observable:2:210: note: 'Observable()' declared here
+1 | @available(macOS 14.0, iOS 17.0, watchOS 10.0, tvOS 17.0, *)
+2 | @attached(member, names: named(_$observationRegistrar), named(access), named(withMutation), named(shouldNotifyObservers)) @attached(memberAttribute) @attached(extension, conformances: Observable) public macro Observable() = #externalMacro(module: "ObservationMacros", type: "ObservableMacro")
+  |                                                                                                                                                                                                                  `- note: 'Observable()' declared here
+
+SwipeGo/Domain/Review/ReviewSession.swift:23:37: error: external macro implementation type 'ObservationMacros.ObservableMacro' could not be found for macro 'Observable()'; '/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/usr/bin/swift-plugin-server' produced malformed response
+ 21 |     func updatePending(_ items: [PendingIntent]) { pendingIDs = Set(items.map(\.assetID)) }
+ 22 |     private(set) var snapshot = LibrarySnapshot(permission: .notDetermined, assets: [], sharedLibraryMembershipVerified: false)
+ 23 |     @ObservationIgnored private let store: any LocalStateRepository
+    |                                     `- error: external macro implementation type 'ObservationMacros.ObservableMacro' could not be found for macro 'Observable()'; '/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/usr/bin/swift-plugin-server' produced malformed response
+ 24 |     @ObservationIgnored private var orderedAssets: [PhotoAssetSnapshot] = []
+ 25 |     @ObservationIgnored private let timeline = ReviewTimeline()
+
+Observation.Observable:2:210: note: 'Observable()' declared here
+1 | @available(macOS 14.0, iOS 17.0, watchOS 10.0, tvOS 17.0, *)
+2 | @attached(member, names: named(_$observationRegistrar), named(access), named(withMutation), named(shouldNotifyObservers)) @attached(memberAttribute) @attached(extension, conformances: Observable) public macro Observable() = #externalMacro(module: "ObservationMacros", type: "ObservableMacro")
+  |                                                                                                                                                                                                                  `- note: 'Observable()' declared here
+
+SwipeGo/Domain/Review/ReviewSession.swift:24:37: error: external macro implementation type 'ObservationMacros.ObservableMacro' could not be found for macro 'Observable()'; '/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/usr/bin/swift-plugin-server' produced malformed response
+ 22 |     private(set) var snapshot = LibrarySnapshot(permission: .notDetermined, assets: [], sharedLibraryMembershipVerified: false)
+ 23 |     @ObservationIgnored private let store: any LocalStateRepository
+ 24 |     @ObservationIgnored private var orderedAssets: [PhotoAssetSnapshot] = []
+    |                                     `- error: external macro implementation type 'ObservationMacros.ObservableMacro' could not be found for macro 'Observable()'; '/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/usr/bin/swift-plugin-server' produced malformed response
+ 25 |     @ObservationIgnored private let timeline = ReviewTimeline()
+ 26 |     @ObservationIgnored private let assetScope: Set<String>?
+
+Observation.Observable:2:210: note: 'Observable()' declared here
+1 | @available(macOS 14.0, iOS 17.0, watchOS 10.0, tvOS 17.0, *)
+2 | @attached(member, names: named(_$observationRegistrar), named(access), named(withMutation), named(shouldNotifyObservers)) @attached(memberAttribute) @attached(extension, conformances: Observable) public macro Observable() = #externalMacro(module: "ObservationMacros", type: "ObservableMacro")
+  |                                                                                                                                                                                                                  `- note: 'Observable()' declared here
+
+SwipeGo/Domain/Review/ReviewSession.swift:25:37: error: external macro implementation type 'ObservationMacros.ObservableMacro' could not be found for macro 'Observable()'; '/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/usr/bin/swift-plugin-server' produced malformed response
+ 23 |     @ObservationIgnored private let store: any LocalStateRepository
+ 24 |     @ObservationIgnored private var orderedAssets: [PhotoAssetSnapshot] = []
+ 25 |     @ObservationIgnored private let timeline = ReviewTimeline()
+    |                                     `- error: external macro implementation type 'ObservationMacros.ObservableMacro' could not be found for macro 'Observable()'; '/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/usr/bin/swift-plugin-server' produced malformed response
+ 26 |     @ObservationIgnored private let assetScope: Set<String>?
+ 27 |     init(store: any LocalStateRepository, assetScope: Set<String>? = nil) { self.store = store; self.assetScope = assetScope }
+
+Observation.Observable:2:210: note: 'Observable()' declared here
+1 | @available(macOS 14.0, iOS 17.0, watchOS 10.0, tvOS 17.0, *)
+2 | @attached(member, names: named(_$observationRegistrar), named(access), named(withMutation), named(shouldNotifyObservers)) @attached(memberAttribute) @attached(extension, conformances: Observable) public macro Observable() = #externalMacro(module: "ObservationMacros", type: "ObservableMacro")
+  |                                                                                                                                                                                                                  `- note: 'Observable()' declared here
+
+SwipeGo/Domain/Review/ReviewSession.swift:26:37: error: external macro implementation type 'ObservationMacros.ObservableMacro' could not be found for macro 'Observable()'; '/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/usr/bin/swift-plugin-server' produced malformed response
+ 24 |     @ObservationIgnored private var orderedAssets: [PhotoAssetSnapshot] = []
+ 25 |     @ObservationIgnored private let timeline = ReviewTimeline()
+ 26 |     @ObservationIgnored private let assetScope: Set<String>?
+    |                                     `- error: external macro implementation type 'ObservationMacros.ObservableMacro' could not be found for macro 'Observable()'; '/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/usr/bin/swift-plugin-server' produced malformed response
+ 27 |     init(store: any LocalStateRepository, assetScope: Set<String>? = nil) { self.store = store; self.assetScope = assetScope }
+ 28 |     var current: Current {
+
+Observation.Observable:2:210: note: 'Observable()' declared here
+1 | @available(macOS 14.0, iOS 17.0, watchOS 10.0, tvOS 17.0, *)
+2 | @attached(member, names: named(_$observationRegistrar), named(access), named(withMutation), named(shouldNotifyObservers)) @attached(memberAttribute) @attached(extension, conformances: Observable) public macro Observable() = #externalMacro(module: "ObservationMacros", type: "ObservableMacro")
+  |                                                                                                                                                                                                                  `- note: 'Observable()' declared here
+
+SwipeGo/Domain/Review/ReviewSession.swift:27:5: error: external macro implementation type 'ObservationMacros.ObservableMacro' could not be found for macro 'Observable()'; '/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/usr/bin/swift-plugin-server' produced malformed response
+ 25 |     @ObservationIgnored private let timeline = ReviewTimeline()
+ 26 |     @ObservationIgnored private let assetScope: Set<String>?
+ 27 |     init(store: any LocalStateRepository, assetScope: Set<String>? = nil) { self.store = store; self.assetScope = assetScope }
+    |     `- error: external macro implementation type 'ObservationMacros.ObservableMacro' could not be found for macro 'Observable()'; '/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/usr/bin/swift-plugin-server' produced malformed response
+ 28 |     var current: Current {
+ 29 |         guard let state else { return .noSession }
+
+Observation.Observable:2:210: note: 'Observable()' declared here
+1 | @available(macOS 14.0, iOS 17.0, watchOS 10.0, tvOS 17.0, *)
+2 | @attached(member, names: named(_$observationRegistrar), named(access), named(withMutation), named(shouldNotifyObservers)) @attached(memberAttribute) @attached(extension, conformances: Observable) public macro Observable() = #externalMacro(module: "ObservationMacros", type: "ObservableMacro")
+  |                                                                                                                                                                                                                  `- note: 'Observable()' declared here
+
+SwipeGo/Domain/Review/ReviewSession.swift:28:9: error: external macro implementation type 'ObservationMacros.ObservableMacro' could not be found for macro 'Observable()'; '/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/usr/bin/swift-plugin-server' produced malformed response
+ 26 |     @ObservationIgnored private let assetScope: Set<String>?
+ 27 |     init(store: any LocalStateRepository, assetScope: Set<String>? = nil) { self.store = store; self.assetScope = assetScope }
+ 28 |     var current: Current {
+    |         `- error: external macro implementation type 'ObservationMacros.ObservableMacro' could not be found for macro 'Observable()'; '/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/usr/bin/swift-plugin-server' produced malformed response
+ 29 |         guard let state else { return .noSession }
+ 30 |         guard snapshot.permission.canRead else { return .unavailable(snapshot.permission.guidance) }
+
+Observation.Observable:2:210: note: 'Observable()' declared here
+1 | @available(macOS 14.0, iOS 17.0, watchOS 10.0, tvOS 17.0, *)
+2 | @attached(member, names: named(_$observationRegistrar), named(access), named(withMutation), named(shouldNotifyObservers)) @attached(memberAttribute) @attached(extension, conformances: Observable) public macro Observable() = #externalMacro(module: "ObservationMacros", type: "ObservableMacro")
+  |                                                                                                                                                                                                                  `- note: 'Observable()' declared here
+
+SwipeGo/Domain/Review/ReviewSession.swift:38:9: error: external macro implementation type 'ObservationMacros.ObservableMacro' could not be found for macro 'Observable()'; '/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/usr/bin/swift-plugin-server' produced malformed response
+ 36 |         return .available(asset)
+ 37 |     }
+ 38 |     var currentID: String? {
+    |         `- error: external macro implementation type 'ObservationMacros.ObservableMacro' could not be found for macro 'Observable()'; '/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/usr/bin/swift-plugin-server' produced malformed response
+ 39 |         guard let state, !isComplete, state.assetIDs.indices.contains(state.cursor) else { return nil }
+ 40 |         return state.assetIDs[state.cursor]
+
+Observation.Observable:2:210: note: 'Observable()' declared here
+1 | @available(macOS 14.0, iOS 17.0, watchOS 10.0, tvOS 17.0, *)
+2 | @attached(member, names: named(_$observationRegistrar), named(access), named(withMutation), named(shouldNotifyObservers)) @attached(memberAttribute) @attached(extension, conformances: Observable) public macro Observable() = #externalMacro(module: "ObservationMacros", type: "ObservableMacro")
+  |                                                                                                                                                                                                                  `- note: 'Observable()' declared here
+
+SwipeGo/Domain/Review/ReviewSession.swift:42:9: error: external macro implementation type 'ObservationMacros.ObservableMacro' could not be found for macro 'Observable()'; '/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/usr/bin/swift-plugin-server' produced malformed response
+ 40 |         return state.assetIDs[state.cursor]
+ 41 |     }
+ 42 |     var canGoBack: Bool { previousIndex != nil }
+    |         `- error: external macro implementation type 'ObservationMacros.ObservableMacro' could not be found for macro 'Observable()'; '/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/usr/bin/swift-plugin-server' produced malformed response
+ 43 |     private var previousIndex: Int? {
+ 44 |         guard let state else { return nil }
+
+Observation.Observable:2:210: note: 'Observable()' declared here
+1 | @available(macOS 14.0, iOS 17.0, watchOS 10.0, tvOS 17.0, *)
+2 | @attached(member, names: named(_$observationRegistrar), named(access), named(withMutation), named(shouldNotifyObservers)) @attached(memberAttribute) @attached(extension, conformances: Observable) public macro Observable() = #externalMacro(module: "ObservationMacros", type: "ObservableMacro")
+  |                                                                                                                                                                                                                  `- note: 'Observable()' declared here
+
+SwipeGo/Domain/Review/ReviewSession.swift:43:17: error: external macro implementation type 'ObservationMacros.ObservableMacro' could not be found for macro 'Observable()'; '/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/usr/bin/swift-plugin-server' produced malformed response
+ 41 |     }
+ 42 |     var canGoBack: Bool { previousIndex != nil }
+ 43 |     private var previousIndex: Int? {
+    |                 `- error: external macro implementation type 'ObservationMacros.ObservableMacro' could not be found for macro 'Observable()'; '/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/usr/bin/swift-plugin-server' produced malformed response
+ 44 |         guard let state else { return nil }
+ 45 |         let end = isComplete ? state.cursor + 1 : state.cursor
+
+Observation.Observable:2:210: note: 'Observable()' declared here
+1 | @available(macOS 14.0, iOS 17.0, watchOS 10.0, tvOS 17.0, *)
+2 | @attached(member, names: named(_$observationRegistrar), named(access), named(withMutation), named(shouldNotifyObservers)) @attached(memberAttribute) @attached(extension, conformances: Observable) public macro Observable() = #externalMacro(module: "ObservationMacros", type: "ObservableMacro")
+  |                                                                                                                                                                                                                  `- note: 'Observable()' declared here
+
+SwipeGo/Domain/Review/ReviewSession.swift:48:17: error: external macro implementation type 'ObservationMacros.ObservableMacro' could not be found for macro 'Observable()'; '/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/usr/bin/swift-plugin-server' produced malformed response
+ 46 |         return state.assetIDs.indices.prefix(end).last { !pendingIDs.contains(state.assetIDs[$0]) }
+ 47 |     }
+ 48 |     private var nextIndex: Int? {
+    |                 `- error: external macro implementation type 'ObservationMacros.ObservableMacro' could not be found for macro 'Observable()'; '/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/usr/bin/swift-plugin-server' produced malformed response
+ 49 |         guard let state else { return nil }
+ 50 |         return state.assetIDs.indices.dropFirst(state.cursor + 1).first { !pendingIDs.contains(state.assetIDs[$0]) }
+
+Observation.Observable:2:210: note: 'Observable()' declared here
+1 | @available(macOS 14.0, iOS 17.0, watchOS 10.0, tvOS 17.0, *)
+2 | @attached(member, names: named(_$observationRegistrar), named(access), named(withMutation), named(shouldNotifyObservers)) @attached(memberAttribute) @attached(extension, conformances: Observable) public macro Observable() = #externalMacro(module: "ObservationMacros", type: "ObservableMacro")
+  |                                                                                                                                                                                                                  `- note: 'Observable()' declared here
+
+SwipeGo/Domain/Review/ReviewSession.swift:52:9: error: external macro implementation type 'ObservationMacros.ObservableMacro' could not be found for macro 'Observable()'; '/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/usr/bin/swift-plugin-server' produced malformed response
+ 50 |         return state.assetIDs.indices.dropFirst(state.cursor + 1).first { !pendingIDs.contains(state.assetIDs[$0]) }
+ 51 |     }
+ 52 |     var canGoForward: Bool { nextIndex != nil || !followingIDs.isEmpty }
+    |         `- error: external macro implementation type 'ObservationMacros.ObservableMacro' could not be found for macro 'Observable()'; '/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/usr/bin/swift-plugin-server' produced malformed response
+ 53 |     private var followingIDs: [String] {
+ 54 |         guard let state, state.mode == .continuous, snapshot.permission.canRead, let anchor = state.assetIDs.last else { return [] }
+
+Observation.Observable:2:210: note: 'Observable()' declared here
+1 | @available(macOS 14.0, iOS 17.0, watchOS 10.0, tvOS 17.0, *)
+2 | @attached(member, names: named(_$observationRegistrar), named(access), named(withMutation), named(shouldNotifyObservers)) @attached(memberAttribute) @attached(extension, conformances: Observable) public macro Observable() = #externalMacro(module: "ObservationMacros", type: "ObservableMacro")
+  |                                                                                                                                                                                                                  `- note: 'Observable()' declared here
+
+SwipeGo/Domain/Review/ReviewSession.swift:53:17: error: external macro implementation type 'ObservationMacros.ObservableMacro' could not be found for macro 'Observable()'; '/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/usr/bin/swift-plugin-server' produced malformed response
+ 51 |     }
+ 52 |     var canGoForward: Bool { nextIndex != nil || !followingIDs.isEmpty }
+ 53 |     private var followingIDs: [String] {
+    |                 `- error: external macro implementation type 'ObservationMacros.ObservableMacro' could not be found for macro 'Observable()'; '/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/usr/bin/swift-plugin-server' produced malformed response
+ 54 |         guard let state, state.mode == .continuous, snapshot.permission.canRead, let anchor = state.assetIDs.last else { return [] }
+ 55 |         return timeline.following(in: orderedAssets, anchor: anchor, excluding: Set(state.assetIDs).union(pendingIDs))
+
+Observation.Observable:2:210: note: 'Observable()' declared here
+1 | @available(macOS 14.0, iOS 17.0, watchOS 10.0, tvOS 17.0, *)
+2 | @attached(member, names: named(_$observationRegistrar), named(access), named(withMutation), named(shouldNotifyObservers)) @attached(memberAttribute) @attached(extension, conformances: Observable) public macro Observable() = #externalMacro(module: "ObservationMacros", type: "ObservableMacro")
+  |                                                                                                                                                                                                                  `- note: 'Observable()' declared here
+
+SwipeGo/Domain/Review/ReviewSession.swift:57:9: error: external macro implementation type 'ObservationMacros.ObservableMacro' could not be found for macro 'Observable()'; '/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/usr/bin/swift-plugin-server' produced malformed response
+ 55 |         return timeline.following(in: orderedAssets, anchor: anchor, excluding: Set(state.assetIDs).union(pendingIDs))
+ 56 |     }
+ 57 |     var nearbySegment: ReviewSegment? {
+    |         `- error: external macro implementation type 'ObservationMacros.ObservableMacro' could not be found for macro 'Observable()'; '/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/usr/bin/swift-plugin-server' produced malformed response
+ 58 |         guard let state, state.mode != .segment, snapshot.permission.canRead,
+ 59 |               !canGoForward, let anchor = state.assetIDs.last else { return nil }
+
+Observation.Observable:2:210: note: 'Observable()' declared here
+1 | @available(macOS 14.0, iOS 17.0, watchOS 10.0, tvOS 17.0, *)
+2 | @attached(member, names: named(_$observationRegistrar), named(access), named(withMutation), named(shouldNotifyObservers)) @attached(memberAttribute) @attached(extension, conformances: Observable) public macro Observable() = #externalMacro(module: "ObservationMacros", type: "ObservableMacro")
+  |                                                                                                                                                                                                                  `- note: 'Observable()' declared here
+
+SwipeGo/Domain/Review/ReviewSession.swift:62:9: error: external macro implementation type 'ObservationMacros.ObservableMacro' could not be found for macro 'Observable()'; '/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/usr/bin/swift-plugin-server' produced malformed response
+ 60 |         return timeline.nearby(in: orderedAssets, anchor: anchor, excluding: Set(state.assetIDs).union(pendingIDs))
+ 61 |     }
+ 62 |     var nearbyTitle: String {
+    |         `- error: external macro implementation type 'ObservationMacros.ObservableMacro' could not be found for macro 'Observable()'; '/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/usr/bin/swift-plugin-server' produced malformed response
+ 63 |         if case .available(let asset) = current, asset.creationDate != nil { return "继续看附近日期" }
+ 64 |         return "继续看其他照片"
+
+Observation.Observable:2:210: note: 'Observable()' declared here
+1 | @available(macOS 14.0, iOS 17.0, watchOS 10.0, tvOS 17.0, *)
+2 | @attached(member, names: named(_$observationRegistrar), named(access), named(withMutation), named(shouldNotifyObservers)) @attached(memberAttribute) @attached(extension, conformances: Observable) public macro Observable() = #externalMacro(module: "ObservationMacros", type: "ObservableMacro")
+  |                                                                                                                                                                                                                  `- note: 'Observable()' declared here
+
+SwipeGo/Domain/Review/ReviewSession.swift:66:9: error: external macro implementation type 'ObservationMacros.ObservableMacro' could not be found for macro 'Observable()'; '/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/usr/bin/swift-plugin-server' produced malformed response
+ 64 |         return "继续看其他照片"
+ 65 |     }
+ 66 |     var endMessage: String? {
+    |         `- error: external macro implementation type 'ObservationMacros.ObservableMacro' could not be found for macro 'Observable()'; '/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/usr/bin/swift-plugin-server' produced malformed response
+ 67 |         guard let state, state.mode != .segment, !canGoForward, snapshot.permission.canRead else { return nil }
+ 68 |         if isComplete { return nearbySegment == nil ? nil : "本轮已看完" }
+
+Observation.Observable:2:210: note: 'Observable()' declared here
+1 | @available(macOS 14.0, iOS 17.0, watchOS 10.0, tvOS 17.0, *)
+2 | @attached(member, names: named(_$observationRegistrar), named(access), named(withMutation), named(shouldNotifyObservers)) @attached(memberAttribute) @attached(extension, conformances: Observable) public macro Observable() = #externalMacro(module: "ObservationMacros", type: "ObservableMacro")
+  |                                                                                                                                                                                                                  `- note: 'Observable()' declared here
+
+SwipeGo/Domain/Review/ReviewSession.swift:74:9: error: external macro implementation type 'ObservationMacros.ObservableMacro' could not be found for macro 'Observable()'; '/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/usr/bin/swift-plugin-server' produced malformed response
+ 72 |         return "这一段已看完"
+ 73 |     }
+ 74 |     var rangeTitle: String? {
+    |         `- error: external macro implementation type 'ObservationMacros.ObservableMacro' could not be found for macro 'Observable()'; '/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/usr/bin/swift-plugin-server' produced malformed response
+ 75 |         guard let state, state.mode == .continuous else { return nil }
+ 76 |         let ids = Set(state.assetIDs)
+
+Observation.Observable:2:210: note: 'Observable()' declared here
+1 | @available(macOS 14.0, iOS 17.0, watchOS 10.0, tvOS 17.0, *)
+2 | @attached(member, names: named(_$observationRegistrar), named(access), named(withMutation), named(shouldNotifyObservers)) @attached(memberAttribute) @attached(extension, conformances: Observable) public macro Observable() = #externalMacro(module: "ObservationMacros", type: "ObservableMacro")
+  |                                                                                                                                                                                                                  `- note: 'Observable()' declared here
+
+SwipeGo/Domain/Review/ReviewSession.swift:82:10: error: external macro implementation type 'ObservationMacros.ObservableMacro' could not be found for macro 'Observable()'; '/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/usr/bin/swift-plugin-server' produced malformed response
+ 80 |         return timeline.batch(assets)?.title(calendar: timeline.calendar)
+ 81 |     }
+ 82 |     func exploreNearby() async throws {
+    |          `- error: external macro implementation type 'ObservationMacros.ObservableMacro' could not be found for macro 'Observable()'; '/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/usr/bin/swift-plugin-server' produced malformed response
+ 83 |         guard let segment = nearbySegment else { throw ReviewSessionError.empty }
+ 84 |         try await start(segment, mode: .continuous)
+
+Observation.Observable:2:210: note: 'Observable()' declared here
+1 | @available(macOS 14.0, iOS 17.0, watchOS 10.0, tvOS 17.0, *)
+2 | @attached(member, names: named(_$observationRegistrar), named(access), named(withMutation), named(shouldNotifyObservers)) @attached(memberAttribute) @attached(extension, conformances: Observable) public macro Observable() = #externalMacro(module: "ObservationMacros", type: "ObservableMacro")
+  |                                                                                                                                                                                                                  `- note: 'Observable()' declared here
+
+SwipeGo/Domain/Review/ReviewSession.swift:86:10: error: external macro implementation type 'ObservationMacros.ObservableMacro' could not be found for macro 'Observable()'; '/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/usr/bin/swift-plugin-server' produced malformed response
+ 84 |         try await start(segment, mode: .continuous)
+ 85 |     }
+ 86 |     func enableLegacyContinuation() async throws {
+    |          `- error: external macro implementation type 'ObservationMacros.ObservableMacro' could not be found for macro 'Observable()'; '/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/usr/bin/swift-plugin-server' produced malformed response
+ 87 |         guard !isSaving else { throw ReviewSessionError.busy }
+ 88 |         guard var next = state, next.mode == nil else { return }
+
+Observation.Observable:2:210: note: 'Observable()' declared here
+1 | @available(macOS 14.0, iOS 17.0, watchOS 10.0, tvOS 17.0, *)
+2 | @attached(member, names: named(_$observationRegistrar), named(access), named(withMutation), named(shouldNotifyObservers)) @attached(memberAttribute) @attached(extension, conformances: Observable) public macro Observable() = #externalMacro(module: "ObservationMacros", type: "ObservableMacro")
+  |                                                                                                                                                                                                                  `- note: 'Observable()' declared here
+
+SwipeGo/Domain/Review/ReviewSession.swift:93:10: error: external macro implementation type 'ObservationMacros.ObservableMacro' could not be found for macro 'Observable()'; '/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/usr/bin/swift-plugin-server' produced malformed response
+ 91 |         try await store.saveSession(next); state = next
+ 92 |     }
+ 93 |     func updateLibrary(_ snapshot: LibrarySnapshot) {
+    |          `- error: external macro implementation type 'ObservationMacros.ObservableMacro' could not be found for macro 'Observable()'; '/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/usr/bin/swift-plugin-server' produced malformed response
+ 94 |         self.snapshot = LibrarySnapshot(permission: snapshot.permission,
+ 95 |             assets: assetScope.map { scope in snapshot.assets.filter { scope.contains($0.id) } } ?? snapshot.assets,
+
+Observation.Observable:2:210: note: 'Observable()' declared here
+1 | @available(macOS 14.0, iOS 17.0, watchOS 10.0, tvOS 17.0, *)
+2 | @attached(member, names: named(_$observationRegistrar), named(access), named(withMutation), named(shouldNotifyObservers)) @attached(memberAttribute) @attached(extension, conformances: Observable) public macro Observable() = #externalMacro(module: "ObservationMacros", type: "ObservableMacro")
+  |                                                                                                                                                                                                                  `- note: 'Observable()' declared here
+
+SwipeGo/Domain/Review/ReviewSession.swift:99:10: error: external macro implementation type 'ObservationMacros.ObservableMacro' could not be found for macro 'Observable()'; '/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/usr/bin/swift-plugin-server' produced malformed response
+ 97 |         orderedAssets = timeline.orderedAssets(self.snapshot.assets)
+ 98 |     }
+ 99 |     func restore() async throws {
+    |          `- error: external macro implementation type 'ObservationMacros.ObservableMacro' could not be found for macro 'Observable()'; '/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/usr/bin/swift-plugin-server' produced malformed response
+100 |         guard !isSaving else { throw ReviewSessionError.busy }; isSaving = true; defer { isSaving = false }
+101 |         var saved = try await store.latestSession()
+
+Observation.Observable:2:210: note: 'Observable()' declared here
+1 | @available(macOS 14.0, iOS 17.0, watchOS 10.0, tvOS 17.0, *)
+2 | @attached(member, names: named(_$observationRegistrar), named(access), named(withMutation), named(shouldNotifyObservers)) @attached(memberAttribute) @attached(extension, conformances: Observable) public macro Observable() = #externalMacro(module: "ObservationMacros", type: "ObservableMacro")
+  |                                                                                                                                                                                                                  `- note: 'Observable()' declared here
+
+SwipeGo/Domain/Review/ReviewSession.swift:114:10: error: external macro implementation type 'ObservationMacros.ObservableMacro' could not be found for macro 'Observable()'; '/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/usr/bin/swift-plugin-server' produced malformed response
+112 |         state = saved
+113 |     }
+114 |     func start(_ segment: ReviewSegment, now: Date = .now, mode: ReviewMode = .segment) async throws {
+    |          `- error: external macro implementation type 'ObservationMacros.ObservableMacro' could not be found for macro 'Observable()'; '/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/usr/bin/swift-plugin-server' produced malformed response
+115 |         guard !isSaving else { throw ReviewSessionError.busy }
+116 |         guard !segment.assetIDs.isEmpty else { throw ReviewSessionError.empty }
+
+Observation.Observable:2:210: note: 'Observable()' declared here
+1 | @available(macOS 14.0, iOS 17.0, watchOS 10.0, tvOS 17.0, *)
+2 | @attached(member, names: named(_$observationRegistrar), named(access), named(withMutation), named(shouldNotifyObservers)) @attached(memberAttribute) @attached(extension, conformances: Observable) public macro Observable() = #externalMacro(module: "ObservationMacros", type: "ObservableMacro")
+  |                                                                                                                                                                                                                  `- note: 'Observable()' declared here
+
+SwipeGo/Domain/Review/ReviewSession.swift:125:10: error: external macro implementation type 'ObservationMacros.ObservableMacro' could not be found for macro 'Observable()'; '/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/usr/bin/swift-plugin-server' produced malformed response
+123 |         state = next
+124 |     }
+125 |     func move(by delta: Int, now: Date = .now) async throws {
+    |          `- error: external macro implementation type 'ObservationMacros.ObservableMacro' could not be found for macro 'Observable()'; '/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/usr/bin/swift-plugin-server' produced malformed response
+126 |         guard !isSaving else { throw ReviewSessionError.busy }
+127 |         guard var next = state else { throw ReviewSessionError.empty }
+
+Observation.Observable:2:210: note: 'Observable()' declared here
+1 | @available(macOS 14.0, iOS 17.0, watchOS 10.0, tvOS 17.0, *)
+2 | @attached(member, names: named(_$observationRegistrar), named(access), named(withMutation), named(shouldNotifyObservers)) @attached(memberAttribute) @attached(extension, conformances: Observable) public macro Observable() = #externalMacro(module: "ObservationMacros", type: "ObservableMacro")
+  |                                                                                                                                                                                                                  `- note: 'Observable()' declared here
+
+SwipeGo/Domain/Review/ReviewSession.swift:145:10: error: external macro implementation type 'ObservationMacros.ObservableMacro' could not be found for macro 'Observable()'; '/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/usr/bin/swift-plugin-server' produced malformed response
+143 |     /// Pending IDs are published only after PendingCoordinator has saved them.
+144 |     /// Keep the original ordered IDs so undo can return to the exact asset.
+145 |     func advanceAfterPending(assetID: String, sessionID: UUID) async throws {
+    |          `- error: external macro implementation type 'ObservationMacros.ObservableMacro' could not be found for macro 'Observable()'; '/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/usr/bin/swift-plugin-server' produced malformed response
+146 |         guard !isSaving else { throw ReviewSessionError.busy }
+147 |         guard var next = state, next.id == sessionID, currentID == assetID,
+
+Observation.Observable:2:210: note: 'Observable()' declared here
+1 | @available(macOS 14.0, iOS 17.0, watchOS 10.0, tvOS 17.0, *)
+2 | @attached(member, names: named(_$observationRegistrar), named(access), named(withMutation), named(shouldNotifyObservers)) @attached(memberAttribute) @attached(extension, conformances: Observable) public macro Observable() = #externalMacro(module: "ObservationMacros", type: "ObservableMacro")
+  |                                                                                                                                                                                                                  `- note: 'Observable()' declared here
+
+SwipeGo/Domain/Review/ReviewSession.swift:155:10: error: external macro implementation type 'ObservationMacros.ObservableMacro' could not be found for macro 'Observable()'; '/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/usr/bin/swift-plugin-server' produced malformed response
+153 |         try await save(next, now: .now)
+154 |     }
+155 |     func resumeAvoidingPending() async throws {
+    |          `- error: external macro implementation type 'ObservationMacros.ObservableMacro' could not be found for macro 'Observable()'; '/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/usr/bin/swift-plugin-server' produced malformed response
+156 |         guard let id = currentID, let sessionID = state?.id, pendingIDs.contains(id) else { return }
+157 |         try await advanceAfterPending(assetID: id, sessionID: sessionID)
+
+Observation.Observable:2:210: note: 'Observable()' declared here
+1 | @available(macOS 14.0, iOS 17.0, watchOS 10.0, tvOS 17.0, *)
+2 | @attached(member, names: named(_$observationRegistrar), named(access), named(withMutation), named(shouldNotifyObservers)) @attached(memberAttribute) @attached(extension, conformances: Observable) public macro Observable() = #externalMacro(module: "ObservationMacros", type: "ObservableMacro")
+  |                                                                                                                                                                                                                  `- note: 'Observable()' declared here
+
+SwipeGo/Domain/Review/ReviewSession.swift:159:10: error: external macro implementation type 'ObservationMacros.ObservableMacro' could not be found for macro 'Observable()'; '/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/usr/bin/swift-plugin-server' produced malformed response
+157 |         try await advanceAfterPending(assetID: id, sessionID: sessionID)
+158 |     }
+159 |     func returnToUnmarked(_ id: String) async throws {
+    |          `- error: external macro implementation type 'ObservationMacros.ObservableMacro' could not be found for macro 'Observable()'; '/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/usr/bin/swift-plugin-server' produced malformed response
+160 |         guard !isSaving else { throw ReviewSessionError.busy }
+161 |         guard var next = state, let index = next.assetIDs.firstIndex(of: id), !pendingIDs.contains(id) else { return }
+
+Observation.Observable:2:210: note: 'Observable()' declared here
+1 | @available(macOS 14.0, iOS 17.0, watchOS 10.0, tvOS 17.0, *)
+2 | @attached(member, names: named(_$observationRegistrar), named(access), named(withMutation), named(shouldNotifyObservers)) @attached(memberAttribute) @attached(extension, conformances: Observable) public macro Observable() = #externalMacro(module: "ObservationMacros", type: "ObservableMacro")
+  |                                                                                                                                                                                                                  `- note: 'Observable()' declared here
+
+SwipeGo/Domain/Review/ReviewSession.swift:166:18: error: external macro implementation type 'ObservationMacros.ObservableMacro' could not be found for macro 'Observable()'; '/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/usr/bin/swift-plugin-server' produced malformed response
+164 |         try await save(next, now: .now)
+165 |     }
+166 |     private func save(_ value: SessionState, now: Date) async throws {
+    |                  `- error: external macro implementation type 'ObservationMacros.ObservableMacro' could not be found for macro 'Observable()'; '/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/usr/bin/swift-plugin-server' produced malformed response
+167 |         var next = value; next.updatedAt = now
+168 |         isSaving = true; defer { isSaving = false }
+
+Observation.Observable:2:210: note: 'Observable()' declared here
+1 | @available(macOS 14.0, iOS 17.0, watchOS 10.0, tvOS 17.0, *)
+2 | @attached(member, names: named(_$observationRegistrar), named(access), named(withMutation), named(shouldNotifyObservers)) @attached(memberAttribute) @attached(extension, conformances: Observable) public macro Observable() = #externalMacro(module: "ObservationMacros", type: "ObservableMacro")
+  |                                                                                                                                                                                                                  `- note: 'Observable()' declared here
+
+SwipeGo/Domain/Review/ReviewSession.swift:171:18: error: external macro implementation type 'ObservationMacros.ObservableMacro' could not be found for macro 'Observable()'; '/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/usr/bin/swift-plugin-server' produced malformed response
+169 |         try await store.saveSession(next); state = next
+170 |     }
+171 |     private func validate(_ value: SessionState) throws {
+    |                  `- error: external macro implementation type 'ObservationMacros.ObservableMacro' could not be found for macro 'Observable()'; '/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/usr/bin/swift-plugin-server' produced malformed response
+172 |         guard !value.assetIDs.isEmpty, value.assetIDs.indices.contains(value.cursor),
+173 |               Set(value.assetIDs).count == value.assetIDs.count,
+
+Observation.Observable:2:210: note: 'Observable()' declared here
+1 | @available(macOS 14.0, iOS 17.0, watchOS 10.0, tvOS 17.0, *)
+2 | @attached(member, names: named(_$observationRegistrar), named(access), named(withMutation), named(shouldNotifyObservers)) @attached(memberAttribute) @attached(extension, conformances: Observable) public macro Observable() = #externalMacro(module: "ObservationMacros", type: "ObservableMacro")
+  |                                                                                                                                                                                                                  `- note: 'Observable()' declared here
+
+SwipeGo/Domain/Review/ReviewSession.swift:6:36: error: external macro implementation type 'ObservationMacros.ObservableMacro' could not be found for macro 'Observable()'; '/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/usr/bin/swift-plugin-server' produced malformed response
+  4 | enum ReviewSessionError: Error { case busy, empty, unavailable, invalidSession }
+  5 | 
+  6 | @MainActor @Observable final class ReviewSession {
+    |                                    `- error: external macro implementation type 'ObservationMacros.ObservableMacro' could not be found for macro 'Observable()'; '/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/usr/bin/swift-plugin-server' produced malformed response
+  7 |     enum Current: Equatable {
+  8 |         case noSession
+
+Observation.Observable:2:210: note: 'Observable()' declared here
+1 | @available(macOS 14.0, iOS 17.0, watchOS 10.0, tvOS 17.0, *)
+2 | @attached(member, names: named(_$observationRegistrar), named(access), named(withMutation), named(shouldNotifyObservers)) @attached(memberAttribute) @attached(extension, conformances: Observable) public macro Observable() = #externalMacro(module: "ObservationMacros", type: "ObservableMacro")
+  |                                                                                                                                                                                                                  `- note: 'Observable()' declared here
+
+SwipeGo/Domain/Review/ReviewSession.swift:23:37: error: external macro implementation type 'ObservationMacros.ObservationIgnoredMacro' could not be found for macro 'ObservationIgnored()'; '/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/usr/bin/swift-plugin-server' produced malformed response
+ 21 |     func updatePending(_ items: [PendingIntent]) { pendingIDs = Set(items.map(\.assetID)) }
+ 22 |     private(set) var snapshot = LibrarySnapshot(permission: .notDetermined, assets: [], sharedLibraryMembershipVerified: false)
+ 23 |     @ObservationIgnored private let store: any LocalStateRepository
+    |                                     `- error: external macro implementation type 'ObservationMacros.ObservationIgnoredMacro' could not be found for macro 'ObservationIgnored()'; '/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/usr/bin/swift-plugin-server' produced malformed response
+ 24 |     @ObservationIgnored private var orderedAssets: [PhotoAssetSnapshot] = []
+ 25 |     @ObservationIgnored private let timeline = ReviewTimeline()
+
+Observation.ObservationIgnored:2:34: note: 'ObservationIgnored()' declared here
+1 | @available(macOS 14.0, iOS 17.0, watchOS 10.0, tvOS 17.0, *)
+2 | @attached(accessor) public macro ObservationIgnored() = #externalMacro(module: "ObservationMacros", type: "ObservationIgnoredMacro")
+  |                                  `- note: 'ObservationIgnored()' declared here
+
+SwipeGo/Domain/Review/ReviewSession.swift:24:37: error: external macro implementation type 'ObservationMacros.ObservationIgnoredMacro' could not be found for macro 'ObservationIgnored()'; '/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/usr/bin/swift-plugin-server' produced malformed response
+ 22 |     private(set) var snapshot = LibrarySnapshot(permission: .notDetermined, assets: [], sharedLibraryMembershipVerified: false)
+ 23 |     @ObservationIgnored private let store: any LocalStateRepository
+ 24 |     @ObservationIgnored private var orderedAssets: [PhotoAssetSnapshot] = []
+    |                                     `- error: external macro implementation type 'ObservationMacros.ObservationIgnoredMacro' could not be found for macro 'ObservationIgnored()'; '/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/usr/bin/swift-plugin-server' produced malformed response
+ 25 |     @ObservationIgnored private let timeline = ReviewTimeline()
+ 26 |     @ObservationIgnored private let assetScope: Set<String>?
+
+Observation.ObservationIgnored:2:34: note: 'ObservationIgnored()' declared here
+1 | @available(macOS 14.0, iOS 17.0, watchOS 10.0, tvOS 17.0, *)
+2 | @attached(accessor) public macro ObservationIgnored() = #externalMacro(module: "ObservationMacros", type: "ObservationIgnoredMacro")
+  |                                  `- note: 'ObservationIgnored()' declared here
+
+SwipeGo/Domain/Review/ReviewSession.swift:25:37: error: external macro implementation type 'ObservationMacros.ObservationIgnoredMacro' could not be found for macro 'ObservationIgnored()'; '/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/usr/bin/swift-plugin-server' produced malformed response
+ 23 |     @ObservationIgnored private let store: any LocalStateRepository
+ 24 |     @ObservationIgnored private var orderedAssets: [PhotoAssetSnapshot] = []
+ 25 |     @ObservationIgnored private let timeline = ReviewTimeline()
+    |                                     `- error: external macro implementation type 'ObservationMacros.ObservationIgnoredMacro' could not be found for macro 'ObservationIgnored()'; '/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/usr/bin/swift-plugin-server' produced malformed response
+ 26 |     @ObservationIgnored private let assetScope: Set<String>?
+ 27 |     init(store: any LocalStateRepository, assetScope: Set<String>? = nil) { self.store = store; self.assetScope = assetScope }
+
+Observation.ObservationIgnored:2:34: note: 'ObservationIgnored()' declared here
+1 | @available(macOS 14.0, iOS 17.0, watchOS 10.0, tvOS 17.0, *)
+2 | @attached(accessor) public macro ObservationIgnored() = #externalMacro(module: "ObservationMacros", type: "ObservationIgnoredMacro")
+  |                                  `- note: 'ObservationIgnored()' declared here
+
+SwipeGo/Domain/Review/ReviewSession.swift:26:37: error: external macro implementation type 'ObservationMacros.ObservationIgnoredMacro' could not be found for macro 'ObservationIgnored()'; '/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/usr/bin/swift-plugin-server' produced malformed response
+ 24 |     @ObservationIgnored private var orderedAssets: [PhotoAssetSnapshot] = []
+ 25 |     @ObservationIgnored private let timeline = ReviewTimeline()
+ 26 |     @ObservationIgnored private let assetScope: Set<String>?
+    |                                     `- error: external macro implementation type 'ObservationMacros.ObservationIgnoredMacro' could not be found for macro 'ObservationIgnored()'; '/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/usr/bin/swift-plugin-server' produced malformed response
+ 27 |     init(store: any LocalStateRepository, assetScope: Set<String>? = nil) { self.store = store; self.assetScope = assetScope }
+ 28 |     var current: Current {
+
+Observation.ObservationIgnored:2:34: note: 'ObservationIgnored()' declared here
+1 | @available(macOS 14.0, iOS 17.0, watchOS 10.0, tvOS 17.0, *)
+2 | @attached(accessor) public macro ObservationIgnored() = #externalMacro(module: "ObservationMacros", type: "ObservationIgnoredMacro")
+  |                                  `- note: 'ObservationIgnored()' declared here

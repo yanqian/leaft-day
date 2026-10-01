@@ -1,0 +1,176 @@
+import Foundation
+import Observation
+
+enum ReviewSessionError: Error { case busy, empty, unavailable, invalidSession }
+
+@MainActor @Observable final class ReviewSession {
+    enum Current: Equatable {
+        case noSession
+        case completed
+        case available(PhotoAssetSnapshot)
+        case unavailable(String)
+    }
+    private(set) var state: SessionState?
+    private(set) var isSaving = false
+    private(set) var pendingIDs: Set<String> = []
+    var isComplete: Bool { state?.completed == true }
+    var remainingCount: Int {
+        guard let state, !isComplete else { return 0 }
+        return state.assetIDs.dropFirst(state.cursor).filter { !pendingIDs.contains($0) }.count
+    }
+    func updatePending(_ items: [PendingIntent]) { pendingIDs = Set(items.map(\.assetID)) }
+    private(set) var snapshot = LibrarySnapshot(permission: .notDetermined, assets: [], sharedLibraryMembershipVerified: false)
+    @ObservationIgnored private let store: any LocalStateRepository
+    @ObservationIgnored private var orderedAssets: [PhotoAssetSnapshot] = []
+    @ObservationIgnored private let timeline = ReviewTimeline()
+    @ObservationIgnored private let assetScope: Set<String>?
+    init(store: any LocalStateRepository, assetScope: Set<String>? = nil) { self.store = store; self.assetScope = assetScope }
+    var current: Current {
+        guard let state else { return .noSession }
+        guard snapshot.permission.canRead else { return .unavailable(snapshot.permission.guidance) }
+        if isComplete { return .completed }
+        guard state.assetIDs.indices.contains(state.cursor) else { return .unavailable("回顾位置需要重新核对。") }
+        guard let asset = snapshot.assets.first(where: { $0.id == state.assetIDs[state.cursor] }) else {
+            return .unavailable("此项目当前不可访问，可能是授权范围或图库发生变化。可切换前后项或管理照片权限。")
+        }
+        return .available(asset)
+    }
+    var currentID: String? {
+        guard let state, !isComplete, state.assetIDs.indices.contains(state.cursor) else { return nil }
+        return state.assetIDs[state.cursor]
+    }
+    var canGoBack: Bool { previousIndex != nil }
+    private var previousIndex: Int? {
+        guard let state else { return nil }
+        let end = isComplete ? state.cursor + 1 : state.cursor
+        return state.assetIDs.indices.prefix(end).last { !pendingIDs.contains(state.assetIDs[$0]) }
+    }
+    private var nextIndex: Int? {
+        guard let state else { return nil }
+        return state.assetIDs.indices.dropFirst(state.cursor + 1).first { !pendingIDs.contains(state.assetIDs[$0]) }
+    }
+    var canGoForward: Bool { nextIndex != nil || !followingIDs.isEmpty }
+    private var followingIDs: [String] {
+        guard let state, state.mode == .continuous, snapshot.permission.canRead, let anchor = state.assetIDs.last else { return [] }
+        return timeline.following(in: orderedAssets, anchor: anchor, excluding: Set(state.assetIDs).union(pendingIDs))
+    }
+    var nearbySegment: ReviewSegment? {
+        guard let state, state.mode != .segment, snapshot.permission.canRead,
+              !canGoForward, let anchor = state.assetIDs.last else { return nil }
+        return timeline.nearby(in: orderedAssets, anchor: anchor, excluding: Set(state.assetIDs).union(pendingIDs))
+    }
+    var nearbyTitle: String {
+        if case .available(let asset) = current, asset.creationDate != nil { return "继续看附近日期" }
+        return "继续看其他照片"
+    }
+    var endMessage: String? {
+        guard let state, state.mode != .segment, !canGoForward, snapshot.permission.canRead else { return nil }
+        if isComplete { return nearbySegment == nil ? nil : "本轮已看完" }
+        guard case .available = current else { return nil }
+        if orderedAssets.count == 1 { return "当前可访问的图库只有这一项" }
+        if state.mode == .anniversary && state.assetIDs.count == 1 { return "这一天只有一项" }
+        return "这一段已看完"
+    }
+    var rangeTitle: String? {
+        guard let state, state.mode == .continuous else { return nil }
+        let ids = Set(state.assetIDs)
+        let assets = orderedAssets.filter { ids.contains($0.id) }
+        guard assets.count == state.assetIDs.count else { return nil }
+        if let first = assets.first?.creationDate, let last = assets.last?.creationDate, timeline.calendar.isDate(first, inSameDayAs: last) { return nil }
+        return timeline.batch(assets)?.title(calendar: timeline.calendar)
+    }
+    func exploreNearby() async throws {
+        guard let segment = nearbySegment else { throw ReviewSessionError.empty }
+        try await start(segment, mode: .continuous)
+    }
+    func enableLegacyContinuation() async throws {
+        guard !isSaving else { throw ReviewSessionError.busy }
+        guard var next = state, next.mode == nil else { return }
+        next.mode = .continuous; next.updatedAt = .now
+        isSaving = true; defer { isSaving = false }
+        try await store.saveSession(next); state = next
+    }
+    func updateLibrary(_ snapshot: LibrarySnapshot) {
+        self.snapshot = LibrarySnapshot(permission: snapshot.permission,
+            assets: assetScope.map { scope in snapshot.assets.filter { scope.contains($0.id) } } ?? snapshot.assets,
+            sharedLibraryMembershipVerified: snapshot.sharedLibraryMembershipVerified)
+        orderedAssets = timeline.orderedAssets(self.snapshot.assets)
+    }
+    func restore() async throws {
+        guard !isSaving else { throw ReviewSessionError.busy }; isSaving = true; defer { isSaving = false }
+        var saved = try await store.latestSession()
+        if let saved { try validate(saved) }
+        updatePending(try await store.pending())
+        // Undo can persist its unmark before a failed position save. On reopening,
+        // recover that visible, unmarked terminal asset instead of a stale zero.
+        if var value = saved, value.completed == true,
+           !pendingIDs.contains(value.assetIDs[value.cursor]), snapshot.permission.canRead,
+           snapshot.assets.contains(where: { $0.id == value.assetIDs[value.cursor] }) {
+            value.completed = false; value.updatedAt = .now
+            try await store.saveSession(value); saved = value
+        }
+        state = saved
+    }
+    func start(_ segment: ReviewSegment, now: Date = .now, mode: ReviewMode = .segment) async throws {
+        guard !isSaving else { throw ReviewSessionError.busy }
+        guard !segment.assetIDs.isEmpty else { throw ReviewSessionError.empty }
+        guard snapshot.permission.canRead, Set(segment.assetIDs).isSubset(of: Set(snapshot.assets.map(\.id))) else { throw ReviewSessionError.unavailable }
+        let first = segment.assetIDs.firstIndex { !pendingIDs.contains($0) }
+        let next = SessionState(id: UUID(), assetIDs: segment.assetIDs, cursor: first ?? 0, updatedAt: now, mode: mode, completed: first == nil)
+        try validate(next)
+        isSaving = true; defer { isSaving = false }
+        try await store.saveSession(next)
+        state = next
+    }
+    func move(by delta: Int, now: Date = .now) async throws {
+        guard !isSaving else { throw ReviewSessionError.busy }
+        guard var next = state else { throw ReviewSessionError.empty }
+        // Only previous/next are navigation; these never mark an asset retained/deleted.
+        guard delta == -1 || delta == 1 else { return }
+        if delta == -1 {
+            guard let index = previousIndex else { return }
+            next.cursor = index
+        } else if let index = nextIndex { next.cursor = index }
+        else {
+            let following = followingIDs
+            guard !following.isEmpty else { return }
+            next.cursor = next.assetIDs.count
+            next.assetIDs.append(contentsOf: following)
+        }
+        next.completed = false
+        try await save(next, now: now)
+    }
+    /// Pending IDs are published only after PendingCoordinator has saved them.
+    /// Keep the original ordered IDs so undo can return to the exact asset.
+    func advanceAfterPending(assetID: String, sessionID: UUID) async throws {
+        guard !isSaving else { throw ReviewSessionError.busy }
+        guard var next = state, next.id == sessionID, currentID == assetID,
+              pendingIDs.contains(assetID) else { return }
+        if let index = nextIndex { next.cursor = index; next.completed = false }
+        else if !followingIDs.isEmpty {
+            next.cursor = next.assetIDs.count; next.assetIDs.append(contentsOf: followingIDs); next.completed = false
+        } else { next.completed = true }
+        try await save(next, now: .now)
+    }
+    func resumeAvoidingPending() async throws {
+        guard let id = currentID, let sessionID = state?.id, pendingIDs.contains(id) else { return }
+        try await advanceAfterPending(assetID: id, sessionID: sessionID)
+    }
+    func returnToUnmarked(_ id: String) async throws {
+        guard !isSaving else { throw ReviewSessionError.busy }
+        guard var next = state, let index = next.assetIDs.firstIndex(of: id), !pendingIDs.contains(id) else { return }
+        guard snapshot.permission.canRead, snapshot.assets.contains(where: { $0.id == id }) else { throw ReviewSessionError.unavailable }
+        next.cursor = index; next.completed = false
+        try await save(next, now: .now)
+    }
+    private func save(_ value: SessionState, now: Date) async throws {
+        var next = value; next.updatedAt = now
+        isSaving = true; defer { isSaving = false }
+        try await store.saveSession(next); state = next
+    }
+    private func validate(_ value: SessionState) throws {
+        guard !value.assetIDs.isEmpty, value.assetIDs.indices.contains(value.cursor),
+              Set(value.assetIDs).count == value.assetIDs.count,
+              value.assetIDs.allSatisfy({ !$0.isEmpty }) else { throw ReviewSessionError.invalidSession }
+    }
+}

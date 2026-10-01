@@ -1,0 +1,3 @@
+# F029 final self-audit follow-up
+
+The independent F029 evaluation passed with 85 unit/42 UI on its tested source. Its record remains valid and preserved. Before delivery, Coding noticed the existing toolbarHeight formula at maximum Dynamic Type in compact landscape can leave about24pt for completion content after top/bottom padding. This combination is not covered by the existing separate maximum-type-media and normal-type-completion tests. Reopen only the same F029 for this unresolved R22 visual boundary, preserve attempts/history and require a new fast handoff, diagnostic test and independent re-evaluation. This is Coding self-audit, not invented human feedback or a new feature. No claim of a reproduced failure until diagnostic executes. F018 remains deferred.

@@ -1,0 +1,26 @@
+[
+  {
+    "attachments" : [
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "1DF82DB5-2A3B-450A-9EB5-098FC4E8F812",
+        "deviceName" : "SwipeGo Fixtures seed 27",
+        "exportedFileName" : "3861179D-A31E-4026-8243-12A8565C753F.png",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "F022-settings-expanded_0_145CA2BB-AFE7-4AD9-8321-1166E1D4F52D.png",
+        "timestamp" : 1790671070.163
+      },
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "1DF82DB5-2A3B-450A-9EB5-098FC4E8F812",
+        "deviceName" : "SwipeGo Fixtures seed 27",
+        "exportedFileName" : "C3BEE3C9-9AAB-4285-B502-0CA20A140706.png",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "F022-settings-glass_0_E8A18093-C962-48B4-88D1-71E48718C470.png",
+        "timestamp" : 1790671067.746
+      }
+    ],
+    "testIdentifier" : "SettingsGlassTests/testRealSettingsDisclosureAndDismissal()",
+    "testIdentifierURL" : "test://com.apple.xcode/SwipeGo/SwipeGoUITests/SettingsGlassTests/testRealSettingsDisclosureAndDismissal"
+  }
+]

@@ -2,7 +2,7 @@
 
 ## 当前状态
 
-尚无产品代码、产品测试或性能结果。Harness examples 通过仅说明工作流健康。以下是计划，不是已通过证据。
+F001–F017已逐项独立验收并提交；F018真机验收进行中。当前实测范围与未执行项目见device-acceptance.md及deferred-device-verification.md；下面各项协议不可直接当成通过证据。
 
 ## 分层验证
 
@@ -112,3 +112,49 @@ DeletionTests覆盖整批成功与原子清理、后来意图保留、重复/并
 ## F017：恢复与变更验证
 
 ReconciliationTests使用真实磁盘存储模拟submitted阶段中断并重新打开，检查缺失资产保留待删、未知操作阻止重新提交、用户核对不冒充成功、真实只读保存失败保留提示、运行中操作排除与迟到核对CAS保护。真实PhotoKit fixture收藏切换触发LibraryAccessModel通知，并恢复原值；会话权限缩减仍保留原ID。既有SimilarityTests覆盖修改版本缓存失效/取消迟到结果。ReconciliationUITests使用唯一临时测试存储，跨两次App重启验证未知提示、当前可见事实、结束提示的持久化与待删计数不变；不调用系统删除。完整回归仍包含F016的真实生成素材取消/删除。F018补齐真正杀进程与系统回执窗口、跨设备iCloud、真机权限和性能体验。
+
+## 手动验收后的紧凑首页矩阵（F009）
+
+默认恢复模拟器之外，必须运行 `scripts/verify-compact-home.sh`。它选择专用 SwipeGo iPhone SE3 / iOS26+ 模拟器，或接受 `SWIPE_COMPACT_SIMULATOR_UDID`；会校验设备类型，不用大屏替代。保留 HomeTests 的正常/减弱透明度完整无过滤审计、首屏待删卡框断言和辅助字号导航。每轮结果保留 `.build/compact-home.*/Tests.xcresult`。
+
+首次配置：使用 `xcrun simctl list -j` 的真实可用 runtime，创建名为 `SwipeGo compact home` 的 `com.apple.CoreSimulator.SimDeviceType.iPhone-SE-3rd-generation`；`bootstatus <id> -b` 后只导入 `Fixtures/generated/*.jpg` 和 `Fixtures/generated/clip.mp4`。当前独立Evaluator已创建并保留对应设备（ID见F009 evaluation run）。不擦除现有图库，不在个人手机运行该脚本。
+
+2026-09-28 F019 manual acceptance repair: `ReviewTapTests` exercises top, bottom,
+left, right and center on both photo and video media (including black bars),
+checks the cursor remains unchanged, video frame remains the same with controls,
+and explicit playback/mute/slider interaction does not dismiss the toolbar.
+Paused playback remains paused across two media taps. `ReviewTests` retains
+pinch/pan versus action-routing coverage; all callers now tap the actual media.
+Screenshot: `docs/design/F019-video-overlay.png`. Earlier F019 attempts caught
+identifier propagation and undersized video button hit regions; the assertions
+were retained, and production buttons now have explicit 44-point hit areas.
+
+2026-09-28 F020 rotation verification: `ReviewOrientationTests` enters the real
+HomeView full-screen route, rotates both ways for photo/video, verifies cursor,
+fit reset, reachable controls, paused playback, slider isolation, home portrait
+restoration and resuming the same item. Largest accessibility type uses the
+scrolling toolbar with bounded height. The test restores simulator orientation
+in `defer`. Capture landscape using `XCUIScreen.main.screenshot()`; XCUITest's
+App-only crop was incorrect under the rotated coordinate system (original
+attempt remains in `.build/F020-orientation.xcresult`). Correct whole-screen
+captures are `docs/design/F020-photo-3.png`, `F020-video-4.png` and
+`F020-accessibility-landscape.png`.
+
+A dedicated iPhone SE3 simulator also runs these two tests. Use the compact
+simulator from the F009 matrix and import only generated `landscape.jpg`,
+`clip.mp4` and `portrait-smile.jpg` via `simctl addmedia` if absent; never import
+fixtures into a personal device. Run `xcodebuild test` with that simulator ID and
+`-only-testing:SwipeGoUITests/ReviewOrientationTests` and a fresh result bundle.
+Final evidence: `.build/F020-compact-final.xcresult` (including zoom/tap interaction). Rotation-lock behavior on physical
+hardware remains an F018 check; production does not force landscape or mutate
+UIDevice orientation. It only permits both landscape orientations during review
+and requests portrait when returning home. Rotating resets zoom/pan to fit while
+preserving the session and original media.
+
+### Simulator permission recovery
+
+Root recovery builds the simulator test host, then executes the existing native full-access UI case as an explicit setup phase (`PermissionSetup.xcresult`) before the full unit/UI suite. That case resets authorization, clicks the real system full-access button and verifies the App has queried the library. It restores the integration-test precondition after a denied-access run. The full native denial/full/limited matrix still runs later. Only the simulator selected from validated simctl inventory is targeted; no app/library erase or personal-device permission change occurs.
+
+A real probe found `simctl privacy grant photos` returned success but PhotoKit `.readWrite` remained notDetermined on this iOS26.5 runtime, even with photos-add. It is not used as the recovery proof. See F025 diagnostic records for raw failed probes and native setup verification.
+
+Recovery also clean-boots only the selected simulator before tests. After interrupted XCTest sessions, four independent rotation cases stopped receiving orientation changes; the exact unchanged app/test build passed those cases after a simulator restart. No simulator erase or app uninstall is used. Run this recovery serially, not alongside another suite on the same destination.

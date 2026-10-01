@@ -158,44 +158,75 @@ private struct VideoSurface: UIViewRepresentable {
 struct VideoReviewView: View {
     let assetID: String
     var showControls: Bool
+    var palette: PhotoPalette
     var onMediaDrag: (CGSize) -> Void
     var onMediaDragChanged: (CGSize) -> Void
+    var onMediaTap: (() -> Void)?
+    var controlsBottomInset: CGFloat
     @State private var playback: VideoPlayback
-    init(assetID: String, showControls: Bool, playback: VideoPlayback = VideoPlayback(), onMediaDrag: @escaping (CGSize) -> Void = { _ in }, onMediaDragChanged: @escaping (CGSize) -> Void = { _ in }) {
+    init(assetID: String, showControls: Bool, palette: PhotoPalette = .neutral, playback: VideoPlayback = VideoPlayback(), onMediaDrag: @escaping (CGSize) -> Void = { _ in }, onMediaDragChanged: @escaping (CGSize) -> Void = { _ in }, onMediaTap: (() -> Void)? = nil, controlsBottomInset: CGFloat = 0) {
+        self.palette = palette
+        self.onMediaTap = onMediaTap; self.controlsBottomInset = controlsBottomInset
         self.assetID = assetID; self.showControls = showControls; self.onMediaDrag = onMediaDrag; self.onMediaDragChanged = onMediaDragChanged; _playback = State(initialValue: playback)
     }
     @Environment(\.scenePhase) private var scenePhase
+    private var ready: Bool { if case .ready = playback.state { return true }; return false }
     var body: some View {
-        VStack(spacing: 0) {
+        ZStack(alignment: .bottom) {
             VideoSurface(player: playback.player)
-                .background(.black)
+                .background { if ready { Color.black } else { PhotoPaletteBackground(palette: palette) } }
                 .contentShape(Rectangle())
-                .onTapGesture { playback.togglePlayback() }
+                .onTapGesture { tapMedia() }
                 .simultaneousGesture(DragGesture(minimumDistance: 18).onChanged { onMediaDragChanged($0.translation) }.onEnded { onMediaDrag($0.translation) })
                 .accessibilityIdentifier("video.surface")
                 .accessibilityLabel("视频画面")
                 .accessibilityAddTraits(.isButton)
-                .accessibilityAction { playback.togglePlayback() }
-            if showControls {
-                HStack {
-                    Button(playback.isPlaying ? "暂停" : "播放", systemImage: playback.isPlaying ? "pause.fill" : "play.fill") { playback.togglePlayback() }
-                    Slider(value: Binding(get: { playback.position }, set: { playback.seek(to: $0) }), in: 0...max(playback.duration, 0.01))
-                        .accessibilityLabel("视频进度").accessibilityIdentifier("video.progress")
-                    Button(playback.isMuted ? "开启声音" : "静音", systemImage: playback.isMuted ? "speaker.slash" : "speaker.wave.2") { playback.toggleMute() }
+                .accessibilityAction { tapMedia() }
+                .accessibilityHint(onMediaTap == nil ? "播放或暂停" : "显示或收起回顾操作")
+            if !ready {
+                ScrollView {
+                    VStack(spacing: 18) {
+                        switch playback.state {
+                        case .idle, .loading:
+                            PhotoStatusCard(title: "正在加载视频", message: "视频准备好后会显示画面。", icon: "play.rectangle")
+                            if case .loading(let progress) = playback.state { ProgressView(value: progress) }
+                        default:
+                            PhotoStatusCard(title: "视频暂不可用", message: "请检查连接或照片访问范围后重试。", icon: "video.slash", color: PhotoTheme.warning)
+                            Button("视频暂不可用，重试") { playback.retry() }.buttonStyle(PhotoGlassButtonStyle()).accessibilityIdentifier("video.retry")
+                        }
+                    }.padding(24)
+                }.clipped().accessibilityIdentifier("video.state-scroll").padding(.top, 64).padding(.bottom, showControls ? controlsBottomInset : 24)
+                    .frame(maxHeight: .infinity).photoPage()
+                    .onTapGesture { tapMedia() }
+            }
+            VStack(spacing: 8) {
+                if showControls && ready {
+                    HStack {
+                        Button { playback.togglePlayback() } label: {
+                            Image(systemName: playback.isPlaying ? "pause.fill" : "play.fill")
+                                .frame(width: 44, height: 44).contentShape(Rectangle())
+                        }.accessibilityLabel(playback.isPlaying ? "暂停" : "播放")
+                            .accessibilityIdentifier("video.playback")
+                        Slider(value: Binding(get: { playback.position }, set: { playback.seek(to: $0) }), in: 0...max(playback.duration, 0.01))
+                            .accessibilityLabel("视频进度").accessibilityIdentifier("video.progress")
+                        Button { playback.toggleMute() } label: {
+                            Image(systemName: playback.isMuted ? "speaker.slash" : "speaker.wave.2")
+                                .frame(width: 44, height: 44).contentShape(Rectangle())
+                        }.accessibilityLabel(playback.isMuted ? "开启声音" : "静音")
+                            .accessibilityIdentifier("video.mute")
+                    }
+                    .buttonStyle(.plain).padding(8).recollectionGlass()
+                    // Controls are outside the tappable media surface; F010 routes swipes
+                    // only through the media region, never this slider/control row.
                 }
-                .labelStyle(.iconOnly).padding().glassEffect()
-                // Controls are outside the tappable media surface; F010 routes swipes
-                // only through the media region, never this slider/control row.
-            }
-            switch playback.state {
-            case .loading(let progress): ProgressView(value: progress).accessibilityLabel("正在加载视频")
-            case .offline, .unavailable, .failed: Button("视频暂不可用，重试") { playback.retry() }
-            default: EmptyView()
-            }
+            }.padding(.horizontal, 12).padding(.bottom, showControls ? controlsBottomInset : 12)
         }
         .onAppear { playback.open(assetID) }
         .onChange(of: assetID) { _, id in playback.open(id) }
         .onChange(of: scenePhase) { _, phase in if phase == .active { if playback.assetID != assetID { playback.open(assetID) } } else { playback.stop() } }
         .onDisappear { playback.stop() }
+    }
+    private func tapMedia() {
+        if let onMediaTap { onMediaTap() } else { playback.togglePlayback() }
     }
 }

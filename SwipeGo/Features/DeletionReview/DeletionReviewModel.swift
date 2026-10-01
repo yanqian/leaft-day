@@ -27,7 +27,7 @@ struct FrozenDeletion: Identifiable, Codable, Equatable, Sendable {
     var frozen: FrozenDeletion?
     @ObservationIgnored let store: any LocalStateRepository
     @ObservationIgnored private let reader: any PhotoAssetReading
-    init(store: any LocalStateRepository, reader: any PhotoAssetReading = NativeFavoriteWriter()) { self.store = store; self.reader = reader; self.deletion = DeletionCoordinator(store: store) }
+    init(store: any LocalStateRepository, reader: any PhotoAssetReading = NativeFavoriteWriter(), deletion: DeletionCoordinator? = nil) { self.store = store; self.reader = reader; self.deletion = deletion ?? DeletionCoordinator(store: store) }
     var readyCount: Int { rows.filter { !$0.needsReview }.count }
     var needsReviewCount: Int { rows.count - readyCount }
     static func readyCount(_ intents: [PendingIntent], assets: [PhotoAssetSnapshot]) -> Int {
@@ -47,10 +47,14 @@ struct FrozenDeletion: Identifiable, Codable, Equatable, Sendable {
                 needsReview: assets[intent.assetID] == nil || keptIDs.contains { assets[$0] == nil } || protected.contains(intent.assetID))
         }
     }
-    func refresh() async {
+    func refresh() async { await reload(preservingConfirmation: false) }
+    func refreshAfterAttempt() async { await reload(preservingConfirmation: true) }
+    private func reload(preservingConfirmation: Bool) async {
         guard !isBusy && !deletion.isBusy else { return }
-        if let frozen, deletion.lastAttemptID == frozen.id { return }
-        frozen = nil
+        if !preservingConfirmation {
+            if let frozen, deletion.lastAttemptID == frozen.id { return }
+            frozen = nil
+        }
         isBusy = true; defer { isBusy = false }
         do { rows = try await readRows(); unresolvedCount = try await store.operations().filter { $0.kind == .deletion && $0.requiresReview }.count; error = nil }
         catch { self.error = "待删记录暂时无法读取，请重试。" }

@@ -19,7 +19,7 @@ struct ComparisonView: View {
             ScrollView {
                 VStack(alignment: .leading, spacing: 18) {
                     Text("留下值得再看的").font(.largeTitle.bold())
-                    Text("选中的照片会保留。相似不代表多余，请逐张确认。").foregroundStyle(.secondary)
+                    Text("选中的照片会保留。相似不代表多余，请逐张确认。").foregroundStyle(PhotoTheme.secondary)
                     if group.count >= 2 {
                         Text("第 \(index + 1) / \(groups.count) 组 · 保留 \(keeping.count) 张").font(.subheadline)
                         LazyVGrid(columns: [GridItem(.adaptive(minimum: 140), spacing: 12)], spacing: 12) {
@@ -34,16 +34,16 @@ struct ComparisonView: View {
                                     } label: {
                                         Label(asset.isFavorite ? "已收藏 · 保留" : keeping.contains(asset.id) ? "保留" : "加入待删", systemImage: keeping.contains(asset.id) ? "checkmark.circle.fill" : "circle")
                                             .frame(maxWidth: .infinity, minHeight: 44)
-                                    }.buttonStyle(.glass).disabled(asset.isFavorite || pending.isBusy)
+                                    }.buttonStyle(PhotoGlassButtonStyle()).disabled(asset.isFavorite || pending.isBusy)
                                         .accessibilityIdentifier("comparison.keep.\(position(asset))")
                                 }
                             }
                         }
-                        if keeping.isEmpty { Text("请至少保留一张照片。").foregroundStyle(.orange).accessibilityIdentifier("comparison.empty") }
-                        if let error { Text(error).foregroundStyle(.red).accessibilityIdentifier("comparison.error") }
+                        if keeping.isEmpty { Text("请至少保留一张照片。").foregroundStyle(PhotoTheme.warning).accessibilityIdentifier("comparison.empty") }
+                        if let error { Text(error).foregroundStyle(PhotoTheme.destructive).accessibilityIdentifier("comparison.error") }
                         if saved { Text("已保存待删选择，原片未删除。").accessibilityIdentifier("comparison.saved") }
                         Button("确认：保留 \(keeping.count) 张，待删 \(group.count - keeping.count) 张") { save(keeping) }
-                            .buttonStyle(.glassProminent).disabled(keeping.isEmpty || pending.isBusy || saved)
+                            .buttonStyle(PhotoGlassButtonStyle(destructive: true)).disabled(keeping.isEmpty || pending.isBusy || saved)
                             .accessibilityIdentifier("comparison.confirm")
                         HStack {
                             Button("全部保留") { save(Set(group.map(\.id))) }.disabled(pending.isBusy)
@@ -51,11 +51,12 @@ struct ComparisonView: View {
                             Spacer()
                             Button(saved ? "下一组" : "以后再看") { advance() }.disabled(pending.isBusy)
                                 .accessibilityIdentifier("comparison.skip")
-                        }.buttonStyle(.glass)
-                    } else { ContentUnavailableView("这一组暂时不可用", systemImage: "photo", description: Text("返回回顾后重新分析。")) }
+                        }.buttonStyle(PhotoGlassButtonStyle())
+                    } else { PhotoStatusCard(title: "这一组暂时不可用", message: "返回回顾后重新分析。", icon: "photo") }
                 }.padding(20)
             }
-            .background(Color(.systemGroupedBackground))
+            .clipped().background(PhotoColorBackdrop(asset: group.first)).photoPage()
+            .toolbarBackground(.hidden, for: .navigationBar)
             .navigationTitle("相似时光").navigationBarTitleDisplayMode(.inline)
             .toolbar { ToolbarItem(placement: .topBarTrailing) { Button("完成") { dismiss() }.disabled(pending.isBusy).accessibilityIdentifier("comparison.close") } }
             .task(id: index) { keeping = Set(group.map(\.id)); saved = false; error = nil }
@@ -82,11 +83,15 @@ struct ComparisonPhoto: View {
     @State private var loader = PhotoLoader(cache: PhotoMemoryCache(byteLimit: 16 * 1024 * 1024, countLimit: 1))
     var body: some View {
         ZStack {
-            Color.black
             switch loader.state {
-            case .ready(let image): PhotoContentView(image: image)
-            case .idle, .loading: ProgressView().tint(.white)
-            default: Text("照片暂不可用").foregroundStyle(.white)
+            case .ready(let image): Color.black; PhotoContentView(image: image)
+            case .idle, .loading:
+                PhotoPaletteBackground()
+                ProgressView().tint(PhotoTheme.ink).padding(16).photoGlass(radius: 18)
+            default:
+                PhotoPaletteBackground()
+                Image(systemName: "photo.badge.exclamationmark").font(.title2).foregroundStyle(PhotoTheme.ink)
+                    .padding(16).photoGlass(radius: 18).accessibilityLabel("照片暂不可用")
             }
         }.task(id: asset.id) { loader.load(PhotoRequestKey(assetID: asset.id, version: asset.modificationDate, width: pixels, height: pixels)) }
             .onDisappear { loader.releaseMemory() }
@@ -111,7 +116,14 @@ struct ComparisonZoomView: View {
                 Button(scale == 1 ? "放大" : "还原") { scale = scale == 1 ? 2 : 1; base = scale; offset = .zero; origin = .zero }
                     .accessibilityIdentifier("comparison.zoom-toggle")
                 Button(closeTitle) { dismiss() }.accessibilityIdentifier("comparison.zoom-close")
-            }.buttonStyle(.glass).padding(16).glassPanel().padding(20)
+            }.buttonStyle(ComparisonMediaButtonStyle()).padding(8).recollectionGlass().padding(20)
         }.clipped().statusBarHidden(true)
+    }
+}
+
+private struct ComparisonMediaButtonStyle: ButtonStyle {
+    func makeBody(configuration: Configuration) -> some View {
+        configuration.label.frame(maxWidth: .infinity, minHeight: 44).contentShape(Rectangle())
+            .opacity(configuration.isPressed ? 0.6 : 1)
     }
 }

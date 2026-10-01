@@ -1,0 +1,62 @@
+[
+  {
+    "attachments" : [
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "1DF82DB5-2A3B-450A-9EB5-098FC4E8F812",
+        "deviceName" : "SwipeGo Fixtures seed 27",
+        "exportedFileName" : "827E294D-E3B9-47E2-B564-E6A5DBB6C2AA.png",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "F009-v3-opaque-2_0_C49227B9-AD04-419C-B1EE-2DE327C36386.png",
+        "timestamp" : 1790653975.181
+      },
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "1DF82DB5-2A3B-450A-9EB5-098FC4E8F812",
+        "deviceName" : "SwipeGo Fixtures seed 27",
+        "exportedFileName" : "FE620F0B-C738-49AF-A738-D54F231F1207.png",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "F009-v3-opaque-1_0_C76A8647-1B67-43F7-A245-C89C01223209.png",
+        "timestamp" : 1790653974.753
+      },
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "1DF82DB5-2A3B-450A-9EB5-098FC4E8F812",
+        "deviceName" : "SwipeGo Fixtures seed 27",
+        "exportedFileName" : "7DD05F7F-1DF1-4E4D-961C-EB8D3F1573DC.png",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "F009-v3-opaque-0_0_CAE5862B-60C0-46D2-A9AA-A1FD68DF3BB7.png",
+        "timestamp" : 1790653974.338
+      },
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "1DF82DB5-2A3B-450A-9EB5-098FC4E8F812",
+        "deviceName" : "SwipeGo Fixtures seed 27",
+        "exportedFileName" : "725C26ED-919F-4965-BFB6-6B8CEB9D7FAD.png",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "F009-v3-glass-2_0_5E5D25D1-99F2-4DE4-8612-1D7861820A66.png",
+        "timestamp" : 1790653965.239
+      },
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "1DF82DB5-2A3B-450A-9EB5-098FC4E8F812",
+        "deviceName" : "SwipeGo Fixtures seed 27",
+        "exportedFileName" : "B2E84DC0-0C8B-45DA-980B-52402F8B5739.png",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "F009-v3-glass-1_0_AD74500F-58A3-4F57-AF99-660D873DBFF1.png",
+        "timestamp" : 1790653964.797
+      },
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "1DF82DB5-2A3B-450A-9EB5-098FC4E8F812",
+        "deviceName" : "SwipeGo Fixtures seed 27",
+        "exportedFileName" : "0890F760-3333-453D-8C38-C18E0F6F707D.png",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "F009-v3-glass-0_0_BAED8DB9-A15A-474F-9351-81A5B372E270.png",
+        "timestamp" : 1790653964.37
+      }
+    ],
+    "testIdentifier" : "ReviewGlassTests/testGlassPillsAndOpaqueFallbackKeepNavigationReachable()",
+    "testIdentifierURL" : "test://com.apple.xcode/SwipeGo/SwipeGoUITests/ReviewGlassTests/testGlassPillsAndOpaqueFallbackKeepNavigationReachable"
+  }
+]

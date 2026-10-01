@@ -1,10 +1,14 @@
 import Foundation
 
+enum ReviewMode: String, Codable, Sendable { case segment, continuous, anniversary }
+
 struct SessionState: Codable, Sendable, Equatable {
     var id: UUID
     var assetIDs: [String]
     var cursor: Int
     var updatedAt: Date
+    var mode: ReviewMode? = nil
+    var completed: Bool? = nil
 }
 
 struct PendingIntent: Codable, Sendable, Equatable {

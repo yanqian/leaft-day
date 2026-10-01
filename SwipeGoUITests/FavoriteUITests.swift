@@ -15,7 +15,7 @@ import XCTest
         expect("firstFavorite=false")
         app.descendants(matching: .any)["review.photo"].swipeDown()
         expect("firstFavorite=true"); expect("cursor=0")
-        app.buttons["review.toggle"].tap()
+        app.tapReviewCanvas()
         XCTAssertTrue(app.buttons["review.favorite"].waitForExistence(timeout: 5))
         app.buttons["review.favorite"].tap()
         expect("firstFavorite=true")

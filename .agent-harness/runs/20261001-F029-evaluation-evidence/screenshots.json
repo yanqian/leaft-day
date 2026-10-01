@@ -1,0 +1,392 @@
+[
+  {
+    "test": "ComparisonUITests/testMaximumTextOpaqueComparisonActionsRemainReachable()",
+    "name": "F029-comparison-real-large.png",
+    "original": {
+      "configurationName": "Test Scheme Action",
+      "deviceId": "1DF82DB5-2A3B-450A-9EB5-098FC4E8F812",
+      "deviceName": "SwipeGo Fixtures seed 27",
+      "exportedFileName": "CE9BF472-0943-458D-AC53-3F208BD0489E.png",
+      "isAssociatedWithFailure": false,
+      "suggestedHumanReadableName": "F029-comparison-real-large_0_8CA83427-B067-44C5-9CB4-DE9A14F02B80.png",
+      "timestamp": 1790784978.053
+    }
+  },
+  {
+    "test": "ComparisonUITests/testMultiKeepZoomZeroKeepSkipAndSave()",
+    "name": "F029-comparison-zoom.png",
+    "original": {
+      "configurationName": "Test Scheme Action",
+      "deviceId": "1DF82DB5-2A3B-450A-9EB5-098FC4E8F812",
+      "deviceName": "SwipeGo Fixtures seed 27",
+      "exportedFileName": "1C562CEC-9FDB-49F9-A0C0-92E8402E7229.png",
+      "isAssociatedWithFailure": false,
+      "suggestedHumanReadableName": "F029-comparison-zoom_0_A73246B4-5AB2-412B-8C9F-79C90BA1CB1F.png",
+      "timestamp": 1790784989.362
+    }
+  },
+  {
+    "test": "ComparisonUITests/testMultiKeepZoomZeroKeepSkipAndSave()",
+    "name": "F029-comparison-real.png",
+    "original": {
+      "configurationName": "Test Scheme Action",
+      "deviceId": "1DF82DB5-2A3B-450A-9EB5-098FC4E8F812",
+      "deviceName": "SwipeGo Fixtures seed 27",
+      "exportedFileName": "93245587-8654-46CC-8334-DA7FD906AEF9.png",
+      "isAssociatedWithFailure": false,
+      "suggestedHumanReadableName": "F029-comparison-real_0_157B7113-B18E-438A-A4C3-723B3B2B882A.png",
+      "timestamp": 1790784986.923
+    }
+  },
+  {
+    "test": "PendingUITests/testCompletionNearbyThenUndoRestoresOriginalPhotoAndSession()",
+    "name": "F023-cross-session-undo.png",
+    "original": {
+      "configurationName": "Test Scheme Action",
+      "deviceId": "1DF82DB5-2A3B-450A-9EB5-098FC4E8F812",
+      "deviceName": "SwipeGo Fixtures seed 27",
+      "exportedFileName": "0C26A6F3-4FB4-4367-99A9-6B911EBA2E44.png",
+      "isAssociatedWithFailure": false,
+      "suggestedHumanReadableName": "F023-cross-session-undo_0_707A3705-DB56-4312-8D78-595F9CE194D1.png",
+      "timestamp": 1790785306.118
+    }
+  },
+  {
+    "test": "PendingUITests/testCompletionUndoWriteFailureIsVisibleAndRetryable()",
+    "name": "F023-completion-undo-write-failure.png",
+    "original": {
+      "configurationName": "Test Scheme Action",
+      "deviceId": "1DF82DB5-2A3B-450A-9EB5-098FC4E8F812",
+      "deviceName": "SwipeGo Fixtures seed 27",
+      "exportedFileName": "E791C623-64D3-4A4C-99FC-6483D395AB5F.png",
+      "isAssociatedWithFailure": false,
+      "suggestedHumanReadableName": "F023-completion-undo-write-failure_0_840BF79D-EA89-4A59-AFDE-54B9AC795E37.png",
+      "timestamp": 1790785342.184
+    }
+  },
+  {
+    "test": "PendingUITests/testCompletionUnmarkedButPositionFailedShowsRecovery()",
+    "name": "F023-completion-position-recovery.png",
+    "original": {
+      "configurationName": "Test Scheme Action",
+      "deviceId": "1DF82DB5-2A3B-450A-9EB5-098FC4E8F812",
+      "deviceName": "SwipeGo Fixtures seed 27",
+      "exportedFileName": "F0079F68-6FD6-4763-8A74-8554AC78B4AE.png",
+      "isAssociatedWithFailure": false,
+      "suggestedHumanReadableName": "F023-completion-position-recovery_0_F0156A7E-FF11-4F8B-99D5-111C651E2650.png",
+      "timestamp": 1790785361.496
+    }
+  },
+  {
+    "test": "PendingUITests/testMarkAdvancesUndoReturnsAndRestartPreservesCursor()",
+    "name": "F023-next-after-swipe.png",
+    "original": {
+      "configurationName": "Test Scheme Action",
+      "deviceId": "1DF82DB5-2A3B-450A-9EB5-098FC4E8F812",
+      "deviceName": "SwipeGo Fixtures seed 27",
+      "exportedFileName": "EA2326E4-846F-4FBB-B9DD-22403CA28AB1.png",
+      "isAssociatedWithFailure": false,
+      "suggestedHumanReadableName": "F023-next-after-swipe_0_0CB93C92-6E43-443D-804A-19041BB83C0C.png",
+      "timestamp": 1790785380.205
+    }
+  },
+  {
+    "test": "PendingUITests/testRealHomeCompletionKeepsLandscapeUndo()",
+    "name": "F023-completed-landscape.png",
+    "original": {
+      "configurationName": "Test Scheme Action",
+      "deviceId": "1DF82DB5-2A3B-450A-9EB5-098FC4E8F812",
+      "deviceName": "SwipeGo Fixtures seed 27",
+      "exportedFileName": "B285F236-8822-4944-B59A-B53D1461C46F.png",
+      "isAssociatedWithFailure": false,
+      "suggestedHumanReadableName": "F023-completed-landscape_0_941C18EC-04DE-4358-B9AA-605B3A5035DD.png",
+      "timestamp": 1790785417.393
+    }
+  },
+  {
+    "test": "PendingUITests/testReducedMotionLastItemCompletionAndUndo()",
+    "name": "F023-completed-reduced-motion.png",
+    "original": {
+      "configurationName": "Test Scheme Action",
+      "deviceId": "1DF82DB5-2A3B-450A-9EB5-098FC4E8F812",
+      "deviceName": "SwipeGo Fixtures seed 27",
+      "exportedFileName": "A43C7F21-EC8A-4385-AE1F-810ECCEB736F.png",
+      "isAssociatedWithFailure": false,
+      "suggestedHumanReadableName": "F023-completed-reduced-motion_0_64BE018E-0CDF-4270-B0EE-91D12BDB095D.png",
+      "timestamp": 1790785435.665
+    }
+  },
+  {
+    "test": "ReviewOrientationTests/testAccessibilityLandscapeControlsRemainReachable()",
+    "name": "F020-accessibility-landscape.png",
+    "original": {
+      "configurationName": "Test Scheme Action",
+      "deviceId": "1DF82DB5-2A3B-450A-9EB5-098FC4E8F812",
+      "deviceName": "SwipeGo Fixtures seed 27",
+      "exportedFileName": "2FD8DDC8-49E5-43A1-9380-E61AE522A238.png",
+      "isAssociatedWithFailure": false,
+      "suggestedHumanReadableName": "F020-accessibility-landscape_0_D4CF152F-3E7D-43D4-9D01-BBBF72DC589A.png",
+      "timestamp": 1790785619.527
+    }
+  },
+  {
+    "test": "ReviewOrientationTests/testPhotoAndVideoBothLandscapesPreservePositionAndReturnHomePortrait()",
+    "name": "F020-home-restored.png",
+    "original": {
+      "configurationName": "Test Scheme Action",
+      "deviceId": "1DF82DB5-2A3B-450A-9EB5-098FC4E8F812",
+      "deviceName": "SwipeGo Fixtures seed 27",
+      "exportedFileName": "DAB0642B-F479-4A74-8252-3ACC16335B98.png",
+      "isAssociatedWithFailure": false,
+      "suggestedHumanReadableName": "F020-home-restored_0_75E330F0-ECFD-4BBA-9993-400A39E7F806.png",
+      "timestamp": 1790785653.593
+    }
+  },
+  {
+    "test": "ReviewOrientationTests/testPhotoAndVideoBothLandscapesPreservePositionAndReturnHomePortrait()",
+    "name": "F020-video-4.png",
+    "original": {
+      "configurationName": "Test Scheme Action",
+      "deviceId": "1DF82DB5-2A3B-450A-9EB5-098FC4E8F812",
+      "deviceName": "SwipeGo Fixtures seed 27",
+      "exportedFileName": "E5FA8A0C-AB5E-4EE1-B06B-8759ACBA06C2.png",
+      "isAssociatedWithFailure": false,
+      "suggestedHumanReadableName": "F020-video-4_0_18441082-6E72-4F90-850D-F4120EA57BF5.png",
+      "timestamp": 1790785650.609
+    }
+  },
+  {
+    "test": "ReviewOrientationTests/testPhotoAndVideoBothLandscapesPreservePositionAndReturnHomePortrait()",
+    "name": "F020-video-3.png",
+    "original": {
+      "configurationName": "Test Scheme Action",
+      "deviceId": "1DF82DB5-2A3B-450A-9EB5-098FC4E8F812",
+      "deviceName": "SwipeGo Fixtures seed 27",
+      "exportedFileName": "D9095A21-A360-4F4A-B3BB-C3A4134EC43B.png",
+      "isAssociatedWithFailure": false,
+      "suggestedHumanReadableName": "F020-video-3_0_C5945B14-1FA8-400D-BD84-F45FC80A02E2.png",
+      "timestamp": 1790785647.717
+    }
+  },
+  {
+    "test": "ReviewOrientationTests/testPhotoAndVideoBothLandscapesPreservePositionAndReturnHomePortrait()",
+    "name": "F020-photo-4.png",
+    "original": {
+      "configurationName": "Test Scheme Action",
+      "deviceId": "1DF82DB5-2A3B-450A-9EB5-098FC4E8F812",
+      "deviceName": "SwipeGo Fixtures seed 27",
+      "exportedFileName": "F89C2AF4-09EE-4426-9458-92764D9F011C.png",
+      "isAssociatedWithFailure": false,
+      "suggestedHumanReadableName": "F020-photo-4_0_9C3B9E36-C151-4661-AE0F-0F5D834689BD.png",
+      "timestamp": 1790785641.811
+    }
+  },
+  {
+    "test": "ReviewOrientationTests/testPhotoAndVideoBothLandscapesPreservePositionAndReturnHomePortrait()",
+    "name": "F020-photo-3.png",
+    "original": {
+      "configurationName": "Test Scheme Action",
+      "deviceId": "1DF82DB5-2A3B-450A-9EB5-098FC4E8F812",
+      "deviceName": "SwipeGo Fixtures seed 27",
+      "exportedFileName": "68C1B5A3-0A3B-4D36-8A91-9D26070B3A9B.png",
+      "isAssociatedWithFailure": false,
+      "suggestedHumanReadableName": "F020-photo-3_0_AD67C50B-1A4C-4745-848A-3A202BD01E9E.png",
+      "timestamp": 1790785636.844
+    }
+  },
+  {
+    "test": "ReviewStateGlassTests/testEmptyUnavailableAndMediaFailuresUseReadableStates()",
+    "name": "F029-comparison-large.png",
+    "original": {
+      "configurationName": "Test Scheme Action",
+      "deviceId": "1DF82DB5-2A3B-450A-9EB5-098FC4E8F812",
+      "deviceName": "SwipeGo Fixtures seed 27",
+      "exportedFileName": "DCBEA769-316B-4C81-8DA1-A8233C178526.png",
+      "isAssociatedWithFailure": false,
+      "suggestedHumanReadableName": "F029-comparison-large_0_307757CA-1A74-4430-8D16-4C09BF0F3A36.png",
+      "timestamp": 1790785705.295
+    }
+  },
+  {
+    "test": "ReviewStateGlassTests/testEmptyUnavailableAndMediaFailuresUseReadableStates()",
+    "name": "F029-video-large-retry.png",
+    "original": {
+      "configurationName": "Test Scheme Action",
+      "deviceId": "1DF82DB5-2A3B-450A-9EB5-098FC4E8F812",
+      "deviceName": "SwipeGo Fixtures seed 27",
+      "exportedFileName": "8FEDF04A-3C77-4114-A5FA-22E9F9E497D1.png",
+      "isAssociatedWithFailure": false,
+      "suggestedHumanReadableName": "F029-video-large-retry_0_59C42FBE-83C3-496F-8581-55F2624C69D4.png",
+      "timestamp": 1790785699.601
+    }
+  },
+  {
+    "test": "ReviewStateGlassTests/testEmptyUnavailableAndMediaFailuresUseReadableStates()",
+    "name": "F029-video-large.png",
+    "original": {
+      "configurationName": "Test Scheme Action",
+      "deviceId": "1DF82DB5-2A3B-450A-9EB5-098FC4E8F812",
+      "deviceName": "SwipeGo Fixtures seed 27",
+      "exportedFileName": "F5DC5C1E-B016-44ED-8C8F-FAC49C082426.png",
+      "isAssociatedWithFailure": false,
+      "suggestedHumanReadableName": "F029-video-large_0_B468A4E4-989B-4A52-BA9C-A04973F31430.png",
+      "timestamp": 1790785699.453
+    }
+  },
+  {
+    "test": "ReviewStateGlassTests/testEmptyUnavailableAndMediaFailuresUseReadableStates()",
+    "name": "F029-photo-large-retry.png",
+    "original": {
+      "configurationName": "Test Scheme Action",
+      "deviceId": "1DF82DB5-2A3B-450A-9EB5-098FC4E8F812",
+      "deviceName": "SwipeGo Fixtures seed 27",
+      "exportedFileName": "C46DFA34-83B9-4D8C-8852-597B18479C53.png",
+      "isAssociatedWithFailure": false,
+      "suggestedHumanReadableName": "F029-photo-large-retry_0_D0D70BE8-485C-48EA-A819-4AE1A1EBB59A.png",
+      "timestamp": 1790785693.814
+    }
+  },
+  {
+    "test": "ReviewStateGlassTests/testEmptyUnavailableAndMediaFailuresUseReadableStates()",
+    "name": "F029-photo-large.png",
+    "original": {
+      "configurationName": "Test Scheme Action",
+      "deviceId": "1DF82DB5-2A3B-450A-9EB5-098FC4E8F812",
+      "deviceName": "SwipeGo Fixtures seed 27",
+      "exportedFileName": "0A461BA9-9A28-4EB3-BF06-1535E808C5E2.png",
+      "isAssociatedWithFailure": false,
+      "suggestedHumanReadableName": "F029-photo-large_0_C4FC5475-9BDB-4085-AB0B-DF7C8098A9E3.png",
+      "timestamp": 1790785693.659
+    }
+  },
+  {
+    "test": "ReviewStateGlassTests/testEmptyUnavailableAndMediaFailuresUseReadableStates()",
+    "name": "F029-unavailable-large.png",
+    "original": {
+      "configurationName": "Test Scheme Action",
+      "deviceId": "1DF82DB5-2A3B-450A-9EB5-098FC4E8F812",
+      "deviceName": "SwipeGo Fixtures seed 27",
+      "exportedFileName": "E627B637-705F-4864-8B97-0B0608CD61D4.png",
+      "isAssociatedWithFailure": false,
+      "suggestedHumanReadableName": "F029-unavailable-large_0_B1455878-A8E7-401D-A17B-DA28C3F2C24F.png",
+      "timestamp": 1790785689.351
+    }
+  },
+  {
+    "test": "ReviewStateGlassTests/testEmptyUnavailableAndMediaFailuresUseReadableStates()",
+    "name": "F029-empty-large.png",
+    "original": {
+      "configurationName": "Test Scheme Action",
+      "deviceId": "1DF82DB5-2A3B-450A-9EB5-098FC4E8F812",
+      "deviceName": "SwipeGo Fixtures seed 27",
+      "exportedFileName": "94DDF20B-D4F5-49DC-AAEE-CC8688F5E61B.png",
+      "isAssociatedWithFailure": false,
+      "suggestedHumanReadableName": "F029-empty-large_0_9F23663A-7A16-4A78-B7E5-45A23C0F4D4B.png",
+      "timestamp": 1790785685.108
+    }
+  },
+  {
+    "test": "ReviewStateGlassTests/testEmptyUnavailableAndMediaFailuresUseReadableStates()",
+    "name": "F029-comparison-normal.png",
+    "original": {
+      "configurationName": "Test Scheme Action",
+      "deviceId": "1DF82DB5-2A3B-450A-9EB5-098FC4E8F812",
+      "deviceName": "SwipeGo Fixtures seed 27",
+      "exportedFileName": "A6380875-01BD-4FD8-9EF5-9536DCBFF1F4.png",
+      "isAssociatedWithFailure": false,
+      "suggestedHumanReadableName": "F029-comparison-normal_0_681C7E3E-0BCA-4682-8222-F8E96160AF01.png",
+      "timestamp": 1790785680.869
+    }
+  },
+  {
+    "test": "ReviewStateGlassTests/testEmptyUnavailableAndMediaFailuresUseReadableStates()",
+    "name": "F029-video-normal-retry.png",
+    "original": {
+      "configurationName": "Test Scheme Action",
+      "deviceId": "1DF82DB5-2A3B-450A-9EB5-098FC4E8F812",
+      "deviceName": "SwipeGo Fixtures seed 27",
+      "exportedFileName": "F6C45AC5-A5E3-4B8C-BBFE-DF6D4A66A336.png",
+      "isAssociatedWithFailure": false,
+      "suggestedHumanReadableName": "F029-video-normal-retry_0_AF109F0D-2FE2-462F-93F6-96A3710D0462.png",
+      "timestamp": 1790785675.099
+    }
+  },
+  {
+    "test": "ReviewStateGlassTests/testEmptyUnavailableAndMediaFailuresUseReadableStates()",
+    "name": "F029-video-normal.png",
+    "original": {
+      "configurationName": "Test Scheme Action",
+      "deviceId": "1DF82DB5-2A3B-450A-9EB5-098FC4E8F812",
+      "deviceName": "SwipeGo Fixtures seed 27",
+      "exportedFileName": "84DA19ED-A3F4-4625-B145-9C50DE946E9E.png",
+      "isAssociatedWithFailure": false,
+      "suggestedHumanReadableName": "F029-video-normal_0_941BC667-7C96-474E-9081-5B55004AB285.png",
+      "timestamp": 1790785674.915
+    }
+  },
+  {
+    "test": "ReviewStateGlassTests/testEmptyUnavailableAndMediaFailuresUseReadableStates()",
+    "name": "F029-photo-normal-retry.png",
+    "original": {
+      "configurationName": "Test Scheme Action",
+      "deviceId": "1DF82DB5-2A3B-450A-9EB5-098FC4E8F812",
+      "deviceName": "SwipeGo Fixtures seed 27",
+      "exportedFileName": "AD90A803-880D-46EB-8DFD-DDE004991303.png",
+      "isAssociatedWithFailure": false,
+      "suggestedHumanReadableName": "F029-photo-normal-retry_0_68874475-B46B-46D2-AABF-55B297A25C7B.png",
+      "timestamp": 1790785669.185
+    }
+  },
+  {
+    "test": "ReviewStateGlassTests/testEmptyUnavailableAndMediaFailuresUseReadableStates()",
+    "name": "F029-photo-normal.png",
+    "original": {
+      "configurationName": "Test Scheme Action",
+      "deviceId": "1DF82DB5-2A3B-450A-9EB5-098FC4E8F812",
+      "deviceName": "SwipeGo Fixtures seed 27",
+      "exportedFileName": "B8134DEA-9088-4B18-95BB-AF198793BE82.png",
+      "isAssociatedWithFailure": false,
+      "suggestedHumanReadableName": "F029-photo-normal_0_22E358F6-DD75-4901-BF61-5998D1E6F444.png",
+      "timestamp": 1790785668.989
+    }
+  },
+  {
+    "test": "ReviewStateGlassTests/testEmptyUnavailableAndMediaFailuresUseReadableStates()",
+    "name": "F029-unavailable-normal.png",
+    "original": {
+      "configurationName": "Test Scheme Action",
+      "deviceId": "1DF82DB5-2A3B-450A-9EB5-098FC4E8F812",
+      "deviceName": "SwipeGo Fixtures seed 27",
+      "exportedFileName": "572A0568-8B3F-462B-9106-25657FA356CE.png",
+      "isAssociatedWithFailure": false,
+      "suggestedHumanReadableName": "F029-unavailable-normal_0_4977AE96-2915-46D0-A375-3ED5D018B570.png",
+      "timestamp": 1790785664.649
+    }
+  },
+  {
+    "test": "ReviewStateGlassTests/testEmptyUnavailableAndMediaFailuresUseReadableStates()",
+    "name": "F029-empty-normal.png",
+    "original": {
+      "configurationName": "Test Scheme Action",
+      "deviceId": "1DF82DB5-2A3B-450A-9EB5-098FC4E8F812",
+      "deviceName": "SwipeGo Fixtures seed 27",
+      "exportedFileName": "090D8252-A620-4C87-9291-24FD60BCFED4.png",
+      "isAssociatedWithFailure": false,
+      "suggestedHumanReadableName": "F029-empty-normal_0_67356292-97E3-4DE6-8FFA-C550331A9862.png",
+      "timestamp": 1790785660.38
+    }
+  },
+  {
+    "test": "ReviewTapTests/testEveryMediaRegionTogglesWithoutMovingOrResizing()",
+    "name": "F019-video-overlay.png",
+    "original": {
+      "configurationName": "Test Scheme Action",
+      "deviceId": "1DF82DB5-2A3B-450A-9EB5-098FC4E8F812",
+      "deviceName": "SwipeGo Fixtures seed 27",
+      "exportedFileName": "E2F79C09-4256-4C51-8A8F-3035AA99A864.png",
+      "isAssociatedWithFailure": false,
+      "suggestedHumanReadableName": "F019-video-overlay_0_370BFD22-7A7A-4EAD-AC15-18CF6E65E9DD.png",
+      "timestamp": 1790785762.976
+    }
+  }
+]

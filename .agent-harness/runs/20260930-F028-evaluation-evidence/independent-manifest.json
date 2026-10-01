@@ -1,0 +1,845 @@
+[
+  {
+    "attachments" : [
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "1DF82DB5-2A3B-450A-9EB5-098FC4E8F812",
+        "deviceName" : "SwipeGo Fixtures seed 27",
+        "exportedFileName" : "DC44935B-7B2D-4ACB-94BB-12FB4CFC1CB3.png",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "F024-history-empty_0_EF994BD4-AB88-4A66-B704-806279A65397.png",
+        "timestamp" : 1790782505.718
+      }
+    ],
+    "testIdentifier" : "DeletionHistoryGlassTests/testHistoryEmptyAndFailedReadRetry()",
+    "testIdentifierURL" : "test://com.apple.xcode/SwipeGo/SwipeGoUITests/DeletionHistoryGlassTests/testHistoryEmptyAndFailedReadRetry"
+  },
+  {
+    "attachments" : [
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "1DF82DB5-2A3B-450A-9EB5-098FC4E8F812",
+        "deviceName" : "SwipeGo Fixtures seed 27",
+        "exportedFileName" : "D774D556-EAEE-4897-A185-CC967C300030.png",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "F024-history-large-opaque_0_E669240F-8A2D-48DF-8C42-4C634750AF02.png",
+        "timestamp" : 1790782513.317
+      }
+    ],
+    "testIdentifier" : "DeletionHistoryGlassTests/testHistoryLargeOpaqueKeepsDoneReachable()",
+    "testIdentifierURL" : "test://com.apple.xcode/SwipeGo/SwipeGoUITests/DeletionHistoryGlassTests/testHistoryLargeOpaqueKeepsDoneReachable"
+  },
+  {
+    "attachments" : [
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "1DF82DB5-2A3B-450A-9EB5-098FC4E8F812",
+        "deviceName" : "SwipeGo Fixtures seed 27",
+        "exportedFileName" : "9DF57B1B-B336-4B3A-8E93-BE9FC8FC29C2.png",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "F024-history-glass_0_EC38B9D8-B22E-4B3C-B95B-D84D8E4FAAE7.png",
+        "timestamp" : 1790782527.83
+      }
+    ],
+    "testIdentifier" : "DeletionHistoryGlassTests/testHistoryStatesGlassAndDismissal()",
+    "testIdentifierURL" : "test://com.apple.xcode/SwipeGo/SwipeGoUITests/DeletionHistoryGlassTests/testHistoryStatesGlassAndDismissal"
+  },
+  {
+    "attachments" : [
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "1DF82DB5-2A3B-450A-9EB5-098FC4E8F812",
+        "deviceName" : "SwipeGo Fixtures seed 27",
+        "exportedFileName" : "4167400F-DECE-48D1-B392-FF2F89363041.png",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "F015-result-4-large_0_057F4BCD-1482-4887-AE30-16A8B9696725.png",
+        "timestamp" : 1790782544.53
+      },
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "1DF82DB5-2A3B-450A-9EB5-098FC4E8F812",
+        "deviceName" : "SwipeGo Fixtures seed 27",
+        "exportedFileName" : "1B5361DB-7399-45ED-A63D-89A08B251EF3.png",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "F015-result-3-large_0_8DB3D910-0A22-4FFA-8361-C48EAF82046A.png",
+        "timestamp" : 1790782542.586
+      },
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "1DF82DB5-2A3B-450A-9EB5-098FC4E8F812",
+        "deviceName" : "SwipeGo Fixtures seed 27",
+        "exportedFileName" : "5E358763-7897-4D6A-9E8D-16A0660EA533.png",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "F015-result-2-large_0_9A03A4D3-1D14-4247-AB5E-1D9081F073BA.png",
+        "timestamp" : 1790782542.092
+      },
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "1DF82DB5-2A3B-450A-9EB5-098FC4E8F812",
+        "deviceName" : "SwipeGo Fixtures seed 27",
+        "exportedFileName" : "AE47DCE0-6F4A-4CC9-80DD-F228000B7D57.png",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "F015-result-1-large_0_84E7BFED-4962-4017-A2F7-B2B13F409D79.png",
+        "timestamp" : 1790782541.576
+      },
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "1DF82DB5-2A3B-450A-9EB5-098FC4E8F812",
+        "deviceName" : "SwipeGo Fixtures seed 27",
+        "exportedFileName" : "159CDFFF-4356-426E-8082-EE0D593EF657.png",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "F015-result-0-large_0_873EC8A5-9D90-44A6-84B2-3626F207F461.png",
+        "timestamp" : 1790782541.068
+      },
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "1DF82DB5-2A3B-450A-9EB5-098FC4E8F812",
+        "deviceName" : "SwipeGo Fixtures seed 27",
+        "exportedFileName" : "F1765624-44D7-49DA-9A22-C39279EB6AE1.png",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "F015-result-4-normal_0_0B989A11-5A0C-40D6-8B36-58A97D72E86D.png",
+        "timestamp" : 1790782536.435
+      },
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "1DF82DB5-2A3B-450A-9EB5-098FC4E8F812",
+        "deviceName" : "SwipeGo Fixtures seed 27",
+        "exportedFileName" : "1D051534-AC9A-4024-8C5E-3BC183646C41.png",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "F015-result-3-normal_0_58B8C1BB-20C0-4F29-BC70-E4CADC0F2706.png",
+        "timestamp" : 1790782535.862
+      },
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "1DF82DB5-2A3B-450A-9EB5-098FC4E8F812",
+        "deviceName" : "SwipeGo Fixtures seed 27",
+        "exportedFileName" : "BDB0C73C-6C8E-4574-BB54-72548DB61991.png",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "F015-result-2-normal_0_97596B5E-C63A-49ED-A92B-E79FFA633D3E.png",
+        "timestamp" : 1790782535.292
+      },
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "1DF82DB5-2A3B-450A-9EB5-098FC4E8F812",
+        "deviceName" : "SwipeGo Fixtures seed 27",
+        "exportedFileName" : "85130BE2-D3C4-4579-A3CA-D14D562572E8.png",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "F015-result-1-normal_0_1314D42A-4A7C-4C95-A0BB-8A0CEBB97829.png",
+        "timestamp" : 1790782534.743
+      },
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "1DF82DB5-2A3B-450A-9EB5-098FC4E8F812",
+        "deviceName" : "SwipeGo Fixtures seed 27",
+        "exportedFileName" : "7D5976E9-7459-45A2-9530-DF132063DA19.png",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "F015-result-0-normal_0_83D84DF5-F4A4-42A3-97F9-AF933E3965BC.png",
+        "timestamp" : 1790782534.194
+      }
+    ],
+    "testIdentifier" : "DeletionResultGlassTests/testAllReceiptStatesAndMaximumTextRemainReadable()",
+    "testIdentifierURL" : "test://com.apple.xcode/SwipeGo/SwipeGoUITests/DeletionResultGlassTests/testAllReceiptStatesAndMaximumTextRemainReadable"
+  },
+  {
+    "attachments" : [
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "1DF82DB5-2A3B-450A-9EB5-098FC4E8F812",
+        "deviceName" : "SwipeGo Fixtures seed 27",
+        "exportedFileName" : "55257AD1-F6DE-4849-BBA4-A91BF3C68A01.png",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "F015-v3-glass-explanation_0_22BBC194-A786-4D7B-A9F6-71EA88CC98A3.png",
+        "timestamp" : 1790782560.328
+      }
+    ],
+    "testIdentifier" : "DeletionReviewUITests/testFirstUseExplanationCanBeCollapsedAndReopened()",
+    "testIdentifierURL" : "test://com.apple.xcode/SwipeGo/SwipeGoUITests/DeletionReviewUITests/testFirstUseExplanationCanBeCollapsedAndReopened"
+  },
+  {
+    "attachments" : [
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "1DF82DB5-2A3B-450A-9EB5-098FC4E8F812",
+        "deviceName" : "SwipeGo Fixtures seed 27",
+        "exportedFileName" : "D8D80BE9-22B7-4B7B-B828-F3C7886393C2.png",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "F015-fixed-confirmation_0_800EEFC3-41BA-4C86-AF59-EFC93D31B3B7.png",
+        "timestamp" : 1790782574.284
+      },
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "1DF82DB5-2A3B-450A-9EB5-098FC4E8F812",
+        "deviceName" : "SwipeGo Fixtures seed 27",
+        "exportedFileName" : "9405CDD4-058D-4C11-B63A-C3617C4B7784.png",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "F015-deletion-review_0_6323A02B-F4D8-432B-BADD-10B0565E890C.png",
+        "timestamp" : 1790782568.374
+      }
+    ],
+    "testIdentifier" : "DeletionReviewUITests/testHomeCountsGroupedReviewVideoRetractionAndFrozenCancel()",
+    "testIdentifierURL" : "test://com.apple.xcode/SwipeGo/SwipeGoUITests/DeletionReviewUITests/testHomeCountsGroupedReviewVideoRetractionAndFrozenCancel"
+  },
+  {
+    "attachments" : [
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "1DF82DB5-2A3B-450A-9EB5-098FC4E8F812",
+        "deviceName" : "SwipeGo Fixtures seed 27",
+        "exportedFileName" : "4DCEF346-6CC6-4F35-87AB-9900F65693B7.png",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "F015-confirm-large-opaque_0_9A75BEE3-08F5-4270-8945-E11F3DD10BEF.png",
+        "timestamp" : 1790782593.934
+      }
+    ],
+    "testIdentifier" : "DeletionReviewUITests/testMaximumTextConfirmationSeparatesActionsFromGuidance()",
+    "testIdentifierURL" : "test://com.apple.xcode/SwipeGo/SwipeGoUITests/DeletionReviewUITests/testMaximumTextConfirmationSeparatesActionsFromGuidance"
+  },
+  {
+    "attachments" : [
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "1DF82DB5-2A3B-450A-9EB5-098FC4E8F812",
+        "deviceName" : "SwipeGo Fixtures seed 27",
+        "exportedFileName" : "A3668AD5-1E03-4007-93C8-0F3CE7A3D624.png",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "F024-real-history_0_92E441DF-DAB8-4439-B99D-3CA3C688F449.png",
+        "timestamp" : 1790782619.334
+      },
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "1DF82DB5-2A3B-450A-9EB5-098FC4E8F812",
+        "deviceName" : "SwipeGo Fixtures seed 27",
+        "exportedFileName" : "51B82FDA-EA2B-4CB5-8C54-55C81D61C2C4.png",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "F015-v3-deletion-complete_0_155E2FC9-013C-49B9-9CFB-2929FD35741B.png",
+        "timestamp" : 1790782617.449
+      },
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "1DF82DB5-2A3B-450A-9EB5-098FC4E8F812",
+        "deviceName" : "SwipeGo Fixtures seed 27",
+        "exportedFileName" : "65FCDD19-7CF1-4C3C-8738-86BBE2050DF8.png",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "F016-native-delete-confirmation_0_5736086C-4F02-48BF-8FD4-C2F9614BFAF3.png",
+        "timestamp" : 1790782615.569
+      }
+    ],
+    "testIdentifier" : "DeletionUITests/testNativeBatchCancelThenSuccessOnNewDisposablePhotos()",
+    "testIdentifierURL" : "test://com.apple.xcode/SwipeGo/SwipeGoUITests/DeletionUITests/testNativeBatchCancelThenSuccessOnNewDisposablePhotos"
+  },
+  {
+    "attachments" : [
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "1DF82DB5-2A3B-450A-9EB5-098FC4E8F812",
+        "deviceName" : "SwipeGo Fixtures seed 27",
+        "exportedFileName" : "BDA547B4-219E-45C1-90C5-1BD0DDE17D60.png",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "F009-hero-unavailable-maximum-type_0_46D6E626-0FCC-42B2-BDFD-230615BB372B.png",
+        "timestamp" : 1790782699.489
+      },
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "1DF82DB5-2A3B-450A-9EB5-098FC4E8F812",
+        "deviceName" : "SwipeGo Fixtures seed 27",
+        "exportedFileName" : "7C79B913-6227-4345-85EF-6BE14299227D.png",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "F009-hero-offline-maximum-type_0_32E8BD11-97BA-4160-B206-68412712B144.png",
+        "timestamp" : 1790782693.502
+      },
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "1DF82DB5-2A3B-450A-9EB5-098FC4E8F812",
+        "deviceName" : "SwipeGo Fixtures seed 27",
+        "exportedFileName" : "45E7C5C0-4BE1-4AFA-B1FE-62D9E1DF1AF6.png",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "F009-hero-downloading-maximum-type_0_3A3EA3FF-D69A-4435-80DA-D79941738824.png",
+        "timestamp" : 1790782687.334
+      },
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "1DF82DB5-2A3B-450A-9EB5-098FC4E8F812",
+        "deviceName" : "SwipeGo Fixtures seed 27",
+        "exportedFileName" : "8B6ACABE-2DA5-4854-B0FF-A75B6EAB030D.png",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "F009-hero-loading-maximum-type_0_95505879-FAF2-47A6-BF12-E0B2939434BE.png",
+        "timestamp" : 1790782681.109
+      },
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "1DF82DB5-2A3B-450A-9EB5-098FC4E8F812",
+        "deviceName" : "SwipeGo Fixtures seed 27",
+        "exportedFileName" : "F806D236-5313-4882-B63A-BD57E05816B5.png",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "F009-hero-empty-maximum-type_0_F52EB374-1E88-4C57-9548-27E13E9E106A.png",
+        "timestamp" : 1790782674.98
+      },
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "1DF82DB5-2A3B-450A-9EB5-098FC4E8F812",
+        "deviceName" : "SwipeGo Fixtures seed 27",
+        "exportedFileName" : "5F2D6440-A9B0-422A-B2E8-BF0507278719.png",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "F009-cover-unavailable-maximum-type_0_A56AED91-EC1D-494E-8FA4-204F66249F38.png",
+        "timestamp" : 1790782668.794
+      },
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "1DF82DB5-2A3B-450A-9EB5-098FC4E8F812",
+        "deviceName" : "SwipeGo Fixtures seed 27",
+        "exportedFileName" : "A07C90BB-D204-4DE9-A0DC-25B3B0B7FA3B.png",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "F009-cover-offline-maximum-type_0_18D05473-3B69-49EB-9153-5E218BB81589.png",
+        "timestamp" : 1790782662.705
+      },
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "1DF82DB5-2A3B-450A-9EB5-098FC4E8F812",
+        "deviceName" : "SwipeGo Fixtures seed 27",
+        "exportedFileName" : "D083AE12-C934-4A6C-9750-D3A123037B9C.png",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "F009-cover-downloading-maximum-type_0_88115264-802B-44E3-9C63-E0AB91A3571E.png",
+        "timestamp" : 1790782656.514
+      },
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "1DF82DB5-2A3B-450A-9EB5-098FC4E8F812",
+        "deviceName" : "SwipeGo Fixtures seed 27",
+        "exportedFileName" : "052B1184-8406-4DB7-A403-75FAA9B152A8.png",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "F009-cover-loading-maximum-type_0_4C6A76C8-2C8A-4686-893A-0A072024AC19.png",
+        "timestamp" : 1790782650.358
+      },
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "1DF82DB5-2A3B-450A-9EB5-098FC4E8F812",
+        "deviceName" : "SwipeGo Fixtures seed 27",
+        "exportedFileName" : "34C8BCDA-6546-4648-AC7B-5CF38269B8C1.png",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "F009-cover-empty-maximum-type_0_D4591D8C-0A0B-4E4A-B497-30C931CA429F.png",
+        "timestamp" : 1790782644.225
+      }
+    ],
+    "testIdentifier" : "HomeCoverStateTests/testMaximumTypeCoverStatesRemainReadable()",
+    "testIdentifierURL" : "test://com.apple.xcode/SwipeGo/SwipeGoUITests/HomeCoverStateTests/testMaximumTypeCoverStatesRemainReadable"
+  },
+  {
+    "attachments" : [
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "1DF82DB5-2A3B-450A-9EB5-098FC4E8F812",
+        "deviceName" : "SwipeGo Fixtures seed 27",
+        "exportedFileName" : "88ACE054-D8A1-42CA-B7AB-8A933C271C0D.png",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "F009-home-large-text_0_3E5419D8-AC49-4293-B4A6-355B03FD3D0A.png",
+        "timestamp" : 1790782747.607
+      },
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "1DF82DB5-2A3B-450A-9EB5-098FC4E8F812",
+        "deviceName" : "SwipeGo Fixtures seed 27",
+        "exportedFileName" : "030E91F6-02E1-46F1-BC19-812AC515BA7A.png",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "F022-settings-large_0_917ACB21-44A1-4AA7-95BA-35B7BECE3CAF.png",
+        "timestamp" : 1790782743.313
+      },
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "1DF82DB5-2A3B-450A-9EB5-098FC4E8F812",
+        "deviceName" : "SwipeGo Fixtures seed 27",
+        "exportedFileName" : "BE326532-669A-4A4B-AD88-1D18D2625099.png",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "F009-home-large-top_0_8C21B883-D966-4F19-8DBE-565B5DD32605.png",
+        "timestamp" : 1790782738.634
+      }
+    ],
+    "testIdentifier" : "HomeTests/testLargeTextHomeRemainsNavigable()",
+    "testIdentifierURL" : "test://com.apple.xcode/SwipeGo/SwipeGoUITests/HomeTests/testLargeTextHomeRemainsNavigable"
+  },
+  {
+    "attachments" : [
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "1DF82DB5-2A3B-450A-9EB5-098FC4E8F812",
+        "deviceName" : "SwipeGo Fixtures seed 27",
+        "exportedFileName" : "45C95FF3-62B6-45A0-98DC-EB03F588BCB3.png",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "F010-real-bottom-controls_0_45E01F01-4898-4944-968F-AD0FF25079B8.png",
+        "timestamp" : 1790782763.945
+      },
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "1DF82DB5-2A3B-450A-9EB5-098FC4E8F812",
+        "deviceName" : "SwipeGo Fixtures seed 27",
+        "exportedFileName" : "A133AC0C-1F31-4E3C-8FAA-0FE6DD4CFEDA.png",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "F009-home-real-library_0_D584532C-165B-4CD6-86FD-D2348BCE3EF1.png",
+        "timestamp" : 1790782760.611
+      }
+    ],
+    "testIdentifier" : "HomeTests/testRealHomeRandomAndPersistedContinue()",
+    "testIdentifierURL" : "test://com.apple.xcode/SwipeGo/SwipeGoUITests/HomeTests/testRealHomeRandomAndPersistedContinue"
+  },
+  {
+    "attachments" : [
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "1DF82DB5-2A3B-450A-9EB5-098FC4E8F812",
+        "deviceName" : "SwipeGo Fixtures seed 27",
+        "exportedFileName" : "6F6D70E2-87E0-49D5-8115-D3CF644ECED8.png",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "F022-settings-opaque_0_8B5B409C-2F03-418A-85CA-28FB351970BB.png",
+        "timestamp" : 1790782783.235
+      },
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "1DF82DB5-2A3B-450A-9EB5-098FC4E8F812",
+        "deviceName" : "SwipeGo Fixtures seed 27",
+        "exportedFileName" : "EA96DC68-6BC1-4AE7-8E0D-49E3586DDCE2.png",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "F009-home-reduced-transparency_0_284FF44D-A1E5-426D-BD0A-8682FFC1225A.png",
+        "timestamp" : 1790782781.35
+      }
+    ],
+    "testIdentifier" : "HomeTests/testReducedTransparencyUsesReadableControls()",
+    "testIdentifierURL" : "test://com.apple.xcode/SwipeGo/SwipeGoUITests/HomeTests/testReducedTransparencyUsesReadableControls"
+  },
+  {
+    "attachments" : [
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "1DF82DB5-2A3B-450A-9EB5-098FC4E8F812",
+        "deviceName" : "SwipeGo Fixtures seed 27",
+        "exportedFileName" : "CF175597-DBFC-4942-AAC1-7BBED9C34993.png",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "F023-cross-session-undo_0_554FA171-BF89-4597-9142-0899133EB244.png",
+        "timestamp" : 1790782804.486
+      }
+    ],
+    "testIdentifier" : "PendingUITests/testCompletionNearbyThenUndoRestoresOriginalPhotoAndSession()",
+    "testIdentifierURL" : "test://com.apple.xcode/SwipeGo/SwipeGoUITests/PendingUITests/testCompletionNearbyThenUndoRestoresOriginalPhotoAndSession"
+  },
+  {
+    "attachments" : [
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "1DF82DB5-2A3B-450A-9EB5-098FC4E8F812",
+        "deviceName" : "SwipeGo Fixtures seed 27",
+        "exportedFileName" : "63445B47-E61B-4019-B321-B4AFCDEA3BEA.png",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "F023-completion-undo-write-failure_0_A4E307A1-6FC3-49A7-B93A-9BD0C2E4A473.png",
+        "timestamp" : 1790782839.989
+      }
+    ],
+    "testIdentifier" : "PendingUITests/testCompletionUndoWriteFailureIsVisibleAndRetryable()",
+    "testIdentifierURL" : "test://com.apple.xcode/SwipeGo/SwipeGoUITests/PendingUITests/testCompletionUndoWriteFailureIsVisibleAndRetryable"
+  },
+  {
+    "attachments" : [
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "1DF82DB5-2A3B-450A-9EB5-098FC4E8F812",
+        "deviceName" : "SwipeGo Fixtures seed 27",
+        "exportedFileName" : "163885E7-1081-441A-BC03-CC4F4E962FFD.png",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "F023-completion-position-recovery_0_94188DD6-1EAB-4050-A3E0-A9429946D5A3.png",
+        "timestamp" : 1790782859.004
+      }
+    ],
+    "testIdentifier" : "PendingUITests/testCompletionUnmarkedButPositionFailedShowsRecovery()",
+    "testIdentifierURL" : "test://com.apple.xcode/SwipeGo/SwipeGoUITests/PendingUITests/testCompletionUnmarkedButPositionFailedShowsRecovery"
+  },
+  {
+    "attachments" : [
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "1DF82DB5-2A3B-450A-9EB5-098FC4E8F812",
+        "deviceName" : "SwipeGo Fixtures seed 27",
+        "exportedFileName" : "22E1E72E-487A-4243-997A-91C533F464BA.png",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "F023-next-after-swipe_0_D8C3E9B9-D8E4-4D7F-A366-7775DE473912.png",
+        "timestamp" : 1790782877.454
+      }
+    ],
+    "testIdentifier" : "PendingUITests/testMarkAdvancesUndoReturnsAndRestartPreservesCursor()",
+    "testIdentifierURL" : "test://com.apple.xcode/SwipeGo/SwipeGoUITests/PendingUITests/testMarkAdvancesUndoReturnsAndRestartPreservesCursor"
+  },
+  {
+    "attachments" : [
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "1DF82DB5-2A3B-450A-9EB5-098FC4E8F812",
+        "deviceName" : "SwipeGo Fixtures seed 27",
+        "exportedFileName" : "15AD1BC3-4C02-4CC2-9C73-021E1839E76A.png",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "F023-completed-landscape_0_DA3ED0BD-BF15-40A5-A411-829D770FD368.png",
+        "timestamp" : 1790782914.181
+      }
+    ],
+    "testIdentifier" : "PendingUITests/testRealHomeCompletionKeepsLandscapeUndo()",
+    "testIdentifierURL" : "test://com.apple.xcode/SwipeGo/SwipeGoUITests/PendingUITests/testRealHomeCompletionKeepsLandscapeUndo"
+  },
+  {
+    "attachments" : [
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "1DF82DB5-2A3B-450A-9EB5-098FC4E8F812",
+        "deviceName" : "SwipeGo Fixtures seed 27",
+        "exportedFileName" : "C5957DB9-1154-4277-8F26-2DF20E1F1B68.png",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "F023-completed-reduced-motion_0_54CC010B-A8A9-43D4-8E42-BDB4415676E8.png",
+        "timestamp" : 1790782932.137
+      }
+    ],
+    "testIdentifier" : "PendingUITests/testReducedMotionLastItemCompletionAndUndo()",
+    "testIdentifierURL" : "test://com.apple.xcode/SwipeGo/SwipeGoUITests/PendingUITests/testReducedMotionLastItemCompletionAndUndo"
+  },
+  {
+    "attachments" : [
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "1DF82DB5-2A3B-450A-9EB5-098FC4E8F812",
+        "deviceName" : "SwipeGo Fixtures seed 27",
+        "exportedFileName" : "94402C65-89F8-4E21-8480-34097AABB775.png",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "F026-暖桃_0_56B38641-596A-40B2-802A-B85152CD8B43.png",
+        "timestamp" : 1790783015.723
+      },
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "1DF82DB5-2A3B-450A-9EB5-098FC4E8F812",
+        "deviceName" : "SwipeGo Fixtures seed 27",
+        "exportedFileName" : "150BC32B-E9E5-409C-81F3-F4BE1493B55C.png",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "F026-草木_0_97A5CAF1-606C-4FE2-BFA9-DB8139B9DD29.png",
+        "timestamp" : 1790783015.241
+      },
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "1DF82DB5-2A3B-450A-9EB5-098FC4E8F812",
+        "deviceName" : "SwipeGo Fixtures seed 27",
+        "exportedFileName" : "D89C08C4-3114-4B9E-A376-87A36BAE79D6.png",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "F026-海蓝_0_EAF9ABC2-37BA-4714-A4B2-D260E29319BB.png",
+        "timestamp" : 1790783014.755
+      }
+    ],
+    "testIdentifier" : "PhotoPaletteUITests/testPaletteChangesOnNativeGlassWithoutPhotoWallpaper()",
+    "testIdentifierURL" : "test://com.apple.xcode/SwipeGo/SwipeGoUITests/PhotoPaletteUITests/testPaletteChangesOnNativeGlassWithoutPhotoWallpaper"
+  },
+  {
+    "attachments" : [
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "1DF82DB5-2A3B-450A-9EB5-098FC4E8F812",
+        "deviceName" : "SwipeGo Fixtures seed 27",
+        "exportedFileName" : "EAD6D74A-87BA-499C-A2AC-A0DA95F858CC.png",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "F017-reconciliation_0_135A8A0E-4786-4C44-B9AB-0BCA00B8BA96.png",
+        "timestamp" : 1790783030.169
+      }
+    ],
+    "testIdentifier" : "ReconciliationUITests/testInterruptedOperationSurvivesRelaunchAndAcknowledgementPreservesPending()",
+    "testIdentifierURL" : "test://com.apple.xcode/SwipeGo/SwipeGoUITests/ReconciliationUITests/testInterruptedOperationSurvivesRelaunchAndAcknowledgementPreservesPending"
+  },
+  {
+    "attachments" : [
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "1DF82DB5-2A3B-450A-9EB5-098FC4E8F812",
+        "deviceName" : "SwipeGo Fixtures seed 27",
+        "exportedFileName" : "FC7AA59B-95E7-4E8D-81FD-2245AD938677.png",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "F028-reconciliation-large-opaque_0_7E8140FC-D862-4639-9758-85F487B136EB.png",
+        "timestamp" : 1790783052.794
+      }
+    ],
+    "testIdentifier" : "ReconciliationUITests/testMaximumTextOpaqueAcknowledgementKeepsPending()",
+    "testIdentifierURL" : "test://com.apple.xcode/SwipeGo/SwipeGoUITests/ReconciliationUITests/testMaximumTextOpaqueAcknowledgementKeepsPending"
+  },
+  {
+    "attachments" : [
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "1DF82DB5-2A3B-450A-9EB5-098FC4E8F812",
+        "deviceName" : "SwipeGo Fixtures seed 27",
+        "exportedFileName" : "249061E7-8F1A-43BB-89D2-966628C15074.png",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "F021-terminal-landscape_0_511F2154-BBA8-4FE9-9254-F23D3D9DF9ED.png",
+        "timestamp" : 1790783085.072
+      },
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "1DF82DB5-2A3B-450A-9EB5-098FC4E8F812",
+        "deviceName" : "SwipeGo Fixtures seed 27",
+        "exportedFileName" : "C9594773-80C0-4A99-B8E0-875434FF7403.png",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "F021-nearby-expanded_0_6C708085-1298-4BA0-BF62-E78C4BF2E372.png",
+        "timestamp" : 1790783082.73
+      },
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "1DF82DB5-2A3B-450A-9EB5-098FC4E8F812",
+        "deviceName" : "SwipeGo Fixtures seed 27",
+        "exportedFileName" : "EDA32649-FE8D-4357-B9B3-730309A7CC3A.png",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "F021-anniversary-single_0_251B6669-AC50-472F-9271-26CE3CF12287.png",
+        "timestamp" : 1790783079.856
+      },
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "1DF82DB5-2A3B-450A-9EB5-098FC4E8F812",
+        "deviceName" : "SwipeGo Fixtures seed 27",
+        "exportedFileName" : "96C15FE6-3CF4-4892-A402-1090E1541EF4.png",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "F009-v5-home-photo-cards_0_E6909F38-2797-4750-A63D-126DDD38D6C8.png",
+        "timestamp" : 1790783062.227
+      }
+    ],
+    "testIdentifier" : "ReviewContinuityUITests/testHomeContinueRandomAndOneItemAnniversaryExpansion()",
+    "testIdentifierURL" : "test://com.apple.xcode/SwipeGo/SwipeGoUITests/ReviewContinuityUITests/testHomeContinueRandomAndOneItemAnniversaryExpansion"
+  },
+  {
+    "attachments" : [
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "1DF82DB5-2A3B-450A-9EB5-098FC4E8F812",
+        "deviceName" : "SwipeGo Fixtures seed 27",
+        "exportedFileName" : "5229CAD8-E7B9-4DE1-9778-CC1B627F9963.png",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "F009-v3-opaque-2_0_615F7807-51EA-4C02-B60A-136C45FC6113.png",
+        "timestamp" : 1790783105.168
+      },
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "1DF82DB5-2A3B-450A-9EB5-098FC4E8F812",
+        "deviceName" : "SwipeGo Fixtures seed 27",
+        "exportedFileName" : "DE0D8E15-0336-4E38-84AC-AE1C97D13BF2.png",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "F009-v3-opaque-1_0_DA8CA8D5-663D-419E-A3A8-02F4949E75A8.png",
+        "timestamp" : 1790783104.742
+      },
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "1DF82DB5-2A3B-450A-9EB5-098FC4E8F812",
+        "deviceName" : "SwipeGo Fixtures seed 27",
+        "exportedFileName" : "546E6E89-262E-47D4-BFE4-4A29C1C5CD8B.png",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "F009-v3-opaque-0_0_540D45EF-A2DB-430A-8F89-B450693B3EEA.png",
+        "timestamp" : 1790783104.337
+      },
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "1DF82DB5-2A3B-450A-9EB5-098FC4E8F812",
+        "deviceName" : "SwipeGo Fixtures seed 27",
+        "exportedFileName" : "50B8E059-AA6E-4F29-8402-F74BE5F45372.png",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "F009-v3-glass-2_0_D889509A-87A8-4B2B-93C0-591852EEA02F.png",
+        "timestamp" : 1790783095.281
+      },
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "1DF82DB5-2A3B-450A-9EB5-098FC4E8F812",
+        "deviceName" : "SwipeGo Fixtures seed 27",
+        "exportedFileName" : "C4D8DD5F-A391-4441-A59B-47526D97F89B.png",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "F009-v3-glass-1_0_A79D4780-7FFB-44DE-8B48-98A999B712D6.png",
+        "timestamp" : 1790783094.841
+      },
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "1DF82DB5-2A3B-450A-9EB5-098FC4E8F812",
+        "deviceName" : "SwipeGo Fixtures seed 27",
+        "exportedFileName" : "D9CB6F72-7260-43D5-8501-EE6B7448BC53.png",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "F009-v3-glass-0_0_9CDF4104-645E-49FD-82DF-226DF2AF20F0.png",
+        "timestamp" : 1790783094.423
+      }
+    ],
+    "testIdentifier" : "ReviewGlassTests/testGlassPillsAndOpaqueFallbackKeepNavigationReachable()",
+    "testIdentifierURL" : "test://com.apple.xcode/SwipeGo/SwipeGoUITests/ReviewGlassTests/testGlassPillsAndOpaqueFallbackKeepNavigationReachable"
+  },
+  {
+    "attachments" : [
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "1DF82DB5-2A3B-450A-9EB5-098FC4E8F812",
+        "deviceName" : "SwipeGo Fixtures seed 27",
+        "exportedFileName" : "19688DDC-B357-4373-9643-1E26D206F2CA.png",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "F020-accessibility-landscape_0_567B9D01-E92A-40A4-BDC9-36AA6BB84467.png",
+        "timestamp" : 1790783115.221
+      }
+    ],
+    "testIdentifier" : "ReviewOrientationTests/testAccessibilityLandscapeControlsRemainReachable()",
+    "testIdentifierURL" : "test://com.apple.xcode/SwipeGo/SwipeGoUITests/ReviewOrientationTests/testAccessibilityLandscapeControlsRemainReachable"
+  },
+  {
+    "attachments" : [
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "1DF82DB5-2A3B-450A-9EB5-098FC4E8F812",
+        "deviceName" : "SwipeGo Fixtures seed 27",
+        "exportedFileName" : "1EAF4787-C934-4155-88D2-D68C088B19E6.png",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "F020-home-restored_0_6C8879B6-3A4E-4FDF-B7AA-FFFE2A18D0E6.png",
+        "timestamp" : 1790783149.172
+      },
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "1DF82DB5-2A3B-450A-9EB5-098FC4E8F812",
+        "deviceName" : "SwipeGo Fixtures seed 27",
+        "exportedFileName" : "F0EEED80-CEE7-4386-B665-C0375052A051.png",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "F020-video-4_0_4928817E-4D46-4698-98D7-6A2950E6B017.png",
+        "timestamp" : 1790783146.24
+      },
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "1DF82DB5-2A3B-450A-9EB5-098FC4E8F812",
+        "deviceName" : "SwipeGo Fixtures seed 27",
+        "exportedFileName" : "12F7B168-2A39-40FD-9397-CABCF8FCDDD4.png",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "F020-video-3_0_D6F56A9E-F34D-49E3-AF20-7E0FE7D352E1.png",
+        "timestamp" : 1790783143.321
+      },
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "1DF82DB5-2A3B-450A-9EB5-098FC4E8F812",
+        "deviceName" : "SwipeGo Fixtures seed 27",
+        "exportedFileName" : "C7D9DC16-1EF2-4ECE-A74D-DF30B0B5335F.png",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "F020-photo-4_0_CB232A63-EF3F-4250-90EB-9D14B98B98A7.png",
+        "timestamp" : 1790783137.36
+      },
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "1DF82DB5-2A3B-450A-9EB5-098FC4E8F812",
+        "deviceName" : "SwipeGo Fixtures seed 27",
+        "exportedFileName" : "E2534A97-8C61-4B34-AB30-F57D9005FAEF.png",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "F020-photo-3_0_4B07DC52-B5C3-4F69-BA26-E770D371E701.png",
+        "timestamp" : 1790783132.378
+      }
+    ],
+    "testIdentifier" : "ReviewOrientationTests/testPhotoAndVideoBothLandscapesPreservePositionAndReturnHomePortrait()",
+    "testIdentifierURL" : "test://com.apple.xcode/SwipeGo/SwipeGoUITests/ReviewOrientationTests/testPhotoAndVideoBothLandscapesPreservePositionAndReturnHomePortrait"
+  },
+  {
+    "attachments" : [
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "1DF82DB5-2A3B-450A-9EB5-098FC4E8F812",
+        "deviceName" : "SwipeGo Fixtures seed 27",
+        "exportedFileName" : "34F987B9-FB9C-49A8-9091-77C828054698.png",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "F019-video-overlay_0_4973FB97-5DE6-4D07-92B0-69AA7D9339AD.png",
+        "timestamp" : 1790783210.02
+      }
+    ],
+    "testIdentifier" : "ReviewTapTests/testEveryMediaRegionTogglesWithoutMovingOrResizing()",
+    "testIdentifierURL" : "test://com.apple.xcode/SwipeGo/SwipeGoUITests/ReviewTapTests/testEveryMediaRegionTogglesWithoutMovingOrResizing"
+  },
+  {
+    "attachments" : [
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "1DF82DB5-2A3B-450A-9EB5-098FC4E8F812",
+        "deviceName" : "SwipeGo Fixtures seed 27",
+        "exportedFileName" : "997A3C12-A0B0-42C2-A8AE-9AA7062C86F0.png",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "F010-immersive-video_0_F036D6FC-5FAF-4131-9651-7D1F6E479E11.png",
+        "timestamp" : 1790783253.57
+      },
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "1DF82DB5-2A3B-450A-9EB5-098FC4E8F812",
+        "deviceName" : "SwipeGo Fixtures seed 27",
+        "exportedFileName" : "847ABBFB-A898-4C35-9B02-90AE1E0AD729.png",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "F009-v3-two-pills_0_ADECCED3-0684-41C6-92D0-AB5A105E872E.png",
+        "timestamp" : 1790783230.202
+      }
+    ],
+    "testIdentifier" : "ReviewTests/testImmersiveGesturesZoomButtonsAndVideoSlider()",
+    "testIdentifierURL" : "test://com.apple.xcode/SwipeGo/SwipeGoUITests/ReviewTests/testImmersiveGesturesZoomButtonsAndVideoSlider"
+  },
+  {
+    "attachments" : [
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "1DF82DB5-2A3B-450A-9EB5-098FC4E8F812",
+        "deviceName" : "SwipeGo Fixtures seed 27",
+        "exportedFileName" : "337F8CB7-A6A9-4B22-93FB-674D5146E9DF.png",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "F022-settings-expanded_0_64AE7779-F849-4A07-A5BF-134FB69AE2CA.png",
+        "timestamp" : 1790783265.601
+      },
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "1DF82DB5-2A3B-450A-9EB5-098FC4E8F812",
+        "deviceName" : "SwipeGo Fixtures seed 27",
+        "exportedFileName" : "651BB605-4492-41C3-8360-6230D8682B9B.png",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "F022-settings-glass_0_444A98D6-6349-4920-9493-035F922FC6E7.png",
+        "timestamp" : 1790783263.045
+      }
+    ],
+    "testIdentifier" : "SettingsGlassTests/testRealSettingsDisclosureAndDismissal()",
+    "testIdentifierURL" : "test://com.apple.xcode/SwipeGo/SwipeGoUITests/SettingsGlassTests/testRealSettingsDisclosureAndDismissal"
+  },
+  {
+    "attachments" : [
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "1DF82DB5-2A3B-450A-9EB5-098FC4E8F812",
+        "deviceName" : "SwipeGo Fixtures seed 27",
+        "exportedFileName" : "CFDDD9B4-9C33-4A92-B3CE-01B7DD4790D6.png",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "Screenshot of Target Application 'dev.armstrong.swipego'_0_F82E71CD-5ED6-4B6F-ACE1-F498088D7071.png",
+        "timestamp" : 1790783279.81
+      }
+    ],
+    "testIdentifier" : "VideoTests/testActualVideoControlsAndLifecycle()",
+    "testIdentifierURL" : "test://com.apple.xcode/SwipeGo/SwipeGoUITests/VideoTests/testActualVideoControlsAndLifecycle"
+  },
+  {
+    "attachments" : [
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "1DF82DB5-2A3B-450A-9EB5-098FC4E8F812",
+        "deviceName" : "SwipeGo Fixtures seed 27",
+        "exportedFileName" : "0AF52B2A-F7B4-4B43-B997-F223209537D0.png",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "F025-welcome-denied_0_C7FD6CFA-4BE2-4B79-A21C-EFE6B9583A08.png",
+        "timestamp" : 1790783289.629
+      },
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "1DF82DB5-2A3B-450A-9EB5-098FC4E8F812",
+        "deviceName" : "SwipeGo Fixtures seed 27",
+        "exportedFileName" : "8BED1B98-4DEF-471D-A9E6-967E9EA6A263.png",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "F025-welcome-glass_0_74FF33CB-8E23-48E0-84FC-1AF7C80911D4.png",
+        "timestamp" : 1790783286.405
+      }
+    ],
+    "testIdentifier" : "WelcomeGlassTests/testWelcomeGlassBeforeNativePermission()",
+    "testIdentifierURL" : "test://com.apple.xcode/SwipeGo/SwipeGoUITests/WelcomeGlassTests/testWelcomeGlassBeforeNativePermission"
+  },
+  {
+    "attachments" : [
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "1DF82DB5-2A3B-450A-9EB5-098FC4E8F812",
+        "deviceName" : "SwipeGo Fixtures seed 27",
+        "exportedFileName" : "DE055E26-1412-40D4-8FA6-807DE7AC4ACC.png",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "F025-welcome-large-opaque_0_B4267E31-AB4B-4FF0-9052-0078E9D5E817.png",
+        "timestamp" : 1790783295.164
+      }
+    ],
+    "testIdentifier" : "WelcomeGlassTests/testWelcomeLargeOpaqueCanRequest()",
+    "testIdentifierURL" : "test://com.apple.xcode/SwipeGo/SwipeGoUITests/WelcomeGlassTests/testWelcomeLargeOpaqueCanRequest"
+  }
+]

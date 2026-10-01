@@ -1,0 +1,110 @@
+[
+  {
+    "attachments" : [
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "BB4BA74C-476F-4F0C-86EF-83D8F8341927",
+        "deviceName" : "SwipeGo Z compact home",
+        "exportedFileName" : "070595D6-613B-4BCD-9A3B-7FB36EC270E4.png",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "F024-history-empty_0_761BDC32-DE45-4BFC-A2F4-72ADCF0C2808.png",
+        "timestamp" : 1790782085.268
+      }
+    ],
+    "testIdentifier" : "DeletionHistoryGlassTests/testHistoryEmptyAndFailedReadRetry()",
+    "testIdentifierURL" : "test://com.apple.xcode/SwipeGo/SwipeGoUITests/DeletionHistoryGlassTests/testHistoryEmptyAndFailedReadRetry"
+  },
+  {
+    "attachments" : [
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "BB4BA74C-476F-4F0C-86EF-83D8F8341927",
+        "deviceName" : "SwipeGo Z compact home",
+        "exportedFileName" : "3BC33C52-171E-427E-B917-75346051FEA7.png",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "F024-history-large-opaque_0_AD2A9ACE-EE49-46B6-BF5D-41927CF91E22.png",
+        "timestamp" : 1790782093.626
+      }
+    ],
+    "testIdentifier" : "DeletionHistoryGlassTests/testHistoryLargeOpaqueKeepsDoneReachable()",
+    "testIdentifierURL" : "test://com.apple.xcode/SwipeGo/SwipeGoUITests/DeletionHistoryGlassTests/testHistoryLargeOpaqueKeepsDoneReachable"
+  },
+  {
+    "attachments" : [
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "BB4BA74C-476F-4F0C-86EF-83D8F8341927",
+        "deviceName" : "SwipeGo Z compact home",
+        "exportedFileName" : "64DA1509-3FDF-4FAC-81F0-D7533E911E97.png",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "F024-history-glass_0_F58ACA2E-AFDE-4878-B67A-9FF94B2E2D1D.png",
+        "timestamp" : 1790782107.951
+      }
+    ],
+    "testIdentifier" : "DeletionHistoryGlassTests/testHistoryStatesGlassAndDismissal()",
+    "testIdentifierURL" : "test://com.apple.xcode/SwipeGo/SwipeGoUITests/DeletionHistoryGlassTests/testHistoryStatesGlassAndDismissal"
+  },
+  {
+    "attachments" : [
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "BB4BA74C-476F-4F0C-86EF-83D8F8341927",
+        "deviceName" : "SwipeGo Z compact home",
+        "exportedFileName" : "BDB02ED7-0A21-45B4-8315-BF512AC1E734.png",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "F024-real-history_0_45F37F0F-41AF-484C-B204-2B89135CB151.png",
+        "timestamp" : 1790782134.169
+      },
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "BB4BA74C-476F-4F0C-86EF-83D8F8341927",
+        "deviceName" : "SwipeGo Z compact home",
+        "exportedFileName" : "071B9335-316F-476D-BC97-22968E510A75.png",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "F015-v3-deletion-complete_0_47A958F7-F23B-40C6-ACC8-A174574FBAE9.png",
+        "timestamp" : 1790782132.314
+      },
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "BB4BA74C-476F-4F0C-86EF-83D8F8341927",
+        "deviceName" : "SwipeGo Z compact home",
+        "exportedFileName" : "F32FD81A-231A-44BB-9EB9-913E0E421102.png",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "F016-native-delete-confirmation_0_C97E8D2E-FBC6-47D2-B0B1-6F236CC198B7.png",
+        "timestamp" : 1790782130.49
+      }
+    ],
+    "testIdentifier" : "DeletionUITests/testNativeBatchCancelThenSuccessOnNewDisposablePhotos()",
+    "testIdentifierURL" : "test://com.apple.xcode/SwipeGo/SwipeGoUITests/DeletionUITests/testNativeBatchCancelThenSuccessOnNewDisposablePhotos"
+  },
+  {
+    "attachments" : [
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "BB4BA74C-476F-4F0C-86EF-83D8F8341927",
+        "deviceName" : "SwipeGo Z compact home",
+        "exportedFileName" : "34E47710-BA66-4FE1-B9F7-09888F731BE0.png",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "F017-reconciliation_0_DD13ACF5-39EC-4F5E-BE03-BB0CFF254612.png",
+        "timestamp" : 1790782148.558
+      }
+    ],
+    "testIdentifier" : "ReconciliationUITests/testInterruptedOperationSurvivesRelaunchAndAcknowledgementPreservesPending()",
+    "testIdentifierURL" : "test://com.apple.xcode/SwipeGo/SwipeGoUITests/ReconciliationUITests/testInterruptedOperationSurvivesRelaunchAndAcknowledgementPreservesPending"
+  },
+  {
+    "attachments" : [
+      {
+        "configurationName" : "Test Scheme Action",
+        "deviceId" : "BB4BA74C-476F-4F0C-86EF-83D8F8341927",
+        "deviceName" : "SwipeGo Z compact home",
+        "exportedFileName" : "925CCC13-8D0C-48A2-8A48-E386A867D53D.png",
+        "isAssociatedWithFailure" : false,
+        "suggestedHumanReadableName" : "F028-reconciliation-large-opaque_0_FBEA37BB-B20A-4EDC-A7F8-F85800E08425.png",
+        "timestamp" : 1790782175.087
+      }
+    ],
+    "testIdentifier" : "ReconciliationUITests/testMaximumTextOpaqueAcknowledgementKeepsPending()",
+    "testIdentifierURL" : "test://com.apple.xcode/SwipeGo/SwipeGoUITests/ReconciliationUITests/testMaximumTextOpaqueAcknowledgementKeepsPending"
+  }
+]

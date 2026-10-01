@@ -1,0 +1,14 @@
+[
+  {
+    "feature_id": "F009",
+    "result": "fail",
+    "classification": "new_requirement",
+    "feedback": "用户要求将设置页纳入统一玻璃，批准v4稿；新增F022。"
+  },
+  {
+    "feature_id": "F012",
+    "result": "fail",
+    "classification": "new_requirement",
+    "feedback": "用户批准待删成功后动画退场自动下一项，明确替代A01旧停留规则；新增F023。"
+  }
+]

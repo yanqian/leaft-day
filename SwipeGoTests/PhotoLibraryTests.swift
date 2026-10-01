@@ -21,6 +21,6 @@ final class PhotoLibraryTests: XCTestCase {
         if !expected.canRead { XCTAssertTrue(snapshot.assets.isEmpty) }
         XCTAssertEqual(Set(snapshot.assets.map(\.id)).count, snapshot.assets.count)
         XCTAssertTrue(snapshot.assets.allSatisfy { $0.width > 0 && $0.height > 0 })
-        print("REAL_PHOTOS_STATE=\(snapshot.permission.rawValue) COUNT=\(snapshot.assets.count)")
+        print("REAL_PHOTOS_STATE=\(snapshot.permission.rawValue) COUNT=\(snapshot.assets.count) HOST=\(Bundle.main.bundleIdentifier ?? "unknown")")
     }
 }

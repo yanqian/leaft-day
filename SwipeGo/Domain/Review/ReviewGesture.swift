@@ -16,16 +16,19 @@ struct ReviewGestureRouter {
         guard let assetID else { rejected = true; return }
         if target == nil { target = assetID }
         guard target == assetID else { rejected = true; return }
-        guard axis == nil, max(abs(x), abs(y)) >= 18 else { return }
-        if abs(x) >= abs(y) * 1.25 { axis = .horizontal }
-        else if abs(y) >= abs(x) * 1.25 { axis = .vertical }
+        // Capture the asset immediately, but do not lock on initial finger jitter.
+        guard axis == nil else { return }
+        if abs(x) >= 65 && abs(x) >= abs(y) * 1.25 { axis = .horizontal }
+        else if abs(y) >= 85 && abs(y) >= abs(x) * 1.25 { axis = .vertical }
     }
     mutating func end(x: Double, y: Double, currentID: String?, blocked: Bool) -> ReviewIntent? {
         defer { reset() }
-        guard !blocked, !rejected, let target, target == currentID, let axis else { return nil }
+        guard let target, target == currentID else { return nil }
+        update(x: x, y: y, assetID: currentID, blocked: blocked)
+        guard !blocked, !rejected, let axis else { return nil }
         switch axis {
-        case .horizontal where abs(x) >= 65: return ReviewIntent(assetID: target, kind: x < 0 ? .next : .previous)
-        case .vertical where abs(y) >= 85: return ReviewIntent(assetID: target, kind: y < 0 ? .pending : .favorite)
+        case .horizontal where abs(x) >= 65 && abs(x) >= abs(y) * 1.25: return ReviewIntent(assetID: target, kind: x < 0 ? .next : .previous)
+        case .vertical where abs(y) >= 85 && abs(y) >= abs(x) * 1.25: return ReviewIntent(assetID: target, kind: y < 0 ? .pending : .favorite)
         default: return nil
         }
     }

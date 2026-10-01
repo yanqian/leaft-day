@@ -4,12 +4,27 @@ import XCTest
 final class ReviewGestureTests: XCTestCase {
     func testAxisLocksAndEmitsOnceForCapturedAsset() {
         var router = ReviewGestureRouter()
-        router.update(x: 30, y: 2, assetID: "a", blocked: false)
-        router.update(x: 90, y: 200, assetID: "a", blocked: false)
-        XCTAssertEqual(router.end(x: 90, y: 200, currentID: "a", blocked: false), ReviewIntent(assetID: "a", kind: .previous))
-        XCTAssertNil(router.end(x: 90, y: 200, currentID: "a", blocked: false))
+        router.update(x: 90, y: 2, assetID: "a", blocked: false)
+        router.update(x: 100, y: 60, assetID: "a", blocked: false)
+        XCTAssertEqual(router.end(x: 100, y: 60, currentID: "a", blocked: false), ReviewIntent(assetID: "a", kind: .previous))
+        XCTAssertNil(router.end(x: 100, y: 60, currentID: "a", blocked: false))
         router.update(x: 0, y: -30, assetID: "a", blocked: false)
         XCTAssertNil(router.end(x: 0, y: -100, currentID: "b", blocked: false))
+    }
+    func testInitialOffAxisJitterDoesNotSwallowHorizontalSwipe() {
+        for endX in [-160.0, 160.0] {
+            var router = ReviewGestureRouter()
+            router.update(x: 2, y: 19, assetID: "a", blocked: false)
+            router.update(x: endX, y: 25, assetID: "a", blocked: false)
+            XCTAssertEqual(router.end(x: endX, y: 25, currentID: "a", blocked: false)?.kind, endX < 0 ? .next : .previous)
+        }
+    }
+    func testCrossAxisFinishCancelsInsteadOfMarkingFavoriteOrPending() {
+        var router = ReviewGestureRouter()
+        router.update(x: 90, y: 2, assetID: "a", blocked: false)
+        XCTAssertNil(router.end(x: 90, y: -200, currentID: "a", blocked: false))
+        router.update(x: 2, y: -90, assetID: "a", blocked: false)
+        XCTAssertNil(router.end(x: 200, y: -90, currentID: "a", blocked: false))
     }
     func testCancellingIdleDoesNotPoisonNextDrag() {
         var router = ReviewGestureRouter()

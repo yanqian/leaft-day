@@ -1,0 +1,3 @@
+completed=true, nearby=["b"]
+undo original=a, current=b, ids=["b"], pending=0
+BUG: original photo was not restored; no error was thrown

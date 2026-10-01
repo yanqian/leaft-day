@@ -1,0 +1,108 @@
+== Harness verification ==
+== Required files ==
+== Harness state ==
+validated 29 features
+== Failure domains ==
+failure_records=76
+domain[agent_workflow_gap]=17
+domain[capability_gap]=5
+domain[environment_gap (initial sandbox-only verification attempt, resolved).]=1
+domain[environment_gap (primary); recovery precondition weakness.]=1
+domain[environment_gap (resolved).]=1
+domain[environment_gap for initial sandbox invocation, resolved by approved verification escalation.]=1
+domain[environment_gap, resolved for this evaluation.]=1
+domain[environment_gap, resolved.]=3
+domain[environment_orchestration]=1
+domain[implementation_and_test_lifecycle]=1
+domain[implementation_gap]=11
+domain[implementation_gap (primary), test_gap (secondary).]=1
+domain[implementation_gap (primary); test_gap (secondary).]=1
+domain[implementation_gap (secondary test_gap).]=2
+domain[implementation_ux_timing]=1
+domain[none for this evaluation.]=1
+domain[none outstanding for F009. Evaluation-only environment_gap occurred when xcresulttool first could not write its TestReport cache; approved escalated export succeeded, and subsequent summary read succeeded.]=1
+domain[none outstanding for F009. Evaluation-only environment_gap resolved: initial xcresulttool export/summary could not write TestReport cache under sandbox; approved escalated retry succeeded.]=1
+domain[none outstanding for F009. Initial execution-only sandbox restriction was environment_gap; approved retry completed.]=1
+domain[none outstanding for F020. Evaluation-only tooling encountered an environment_gap: default xcrun lacked the full developer directory, then xcresulttool attachment export required access to its TestReport cache. Explicit DEVELOPER_DIR and approved export retry resolved these. A nonessential process inventory was sandbox-denied and was not used as completion evidence.]=1
+domain[none outstanding for F025. Evaluation tooling encountered environment_gap from sandbox cache restrictions; approved retries resolved it without source changes.]=1
+domain[none outstanding for current F006 scope.]=1
+domain[none outstanding for this evaluation.]=10
+domain[none outstanding; prior capability_gap resolved in this evaluation.]=1
+domain[none outstanding; prior implementation_gap resolved.]=2
+domain[none remaining for this evaluation.]=1
+domain[requirement_gap]=2
+domain[test_gap.]=1
+domain[transient environment_gap during verification setup only.]=1
+domain[transient environment_gap for initial sandboxed recovery only.]=1
+domain[transient environment_gap for initial sandboxed verification/export only.]=1
+domain[verification_gap]=1
+missing_failure_domain=0
+missing_harness_improvement=0
+== Evaluator evidence ==
+evaluator_evidence_baseline=F001
+evaluator_evidence_checked=27
+missing_evaluator_evidence=0
+== Orchestrator syntax ==
+== Tiny example ==
+..
+----------------------------------------------------------------------
+Ran 2 tests in 0.000s
+
+OK
+== Go server example ==
+ok  	example.com/ai-agent-harness-template/examples/go-server	(cached)
+== Unit tests ==
+..............................Accepted F039; it remains complete.
+Run record: /var/folders/ww/wrxzkc9n7rs60hbt_g7mgcl40000gn/T/tmpl9de0zro/runs/20260930T161343Z-human-eval-batch.md
+Reopened F039; continue the same Feature.
+Recorded a new-requirement candidate for F040; no Feature was appended.
+Run record: /var/folders/ww/wrxzkc9n7rs60hbt_g7mgcl40000gn/T/tmphgai1i9f/runs/20260930T161343Z-human-eval-batch.md
+Next: normalize the requirement in SPEC.md, then let Planning Agent append a separate Feature.
+Recorded a new-requirement candidate for F039; no Feature was appended.
+Run record: /var/folders/ww/wrxzkc9n7rs60hbt_g7mgcl40000gn/T/tmpkymx18hc/runs/20260930T161343Z-F039-human-eval.md
+Next: normalize the requirement in SPEC.md, then let Planning Agent append a separate Feature.
+Reopened F039; continue the same Feature.
+Run record: /var/folders/ww/wrxzkc9n7rs60hbt_g7mgcl40000gn/T/tmp4dui82xj/runs/20260930T161343Z-F039-human-eval.md
+Reading progress.md and feature_list.json.
+.Reading progress.md and feature_list.json.
+Git repository has no commits yet; continuing initialization checks.
+.
+----------------------------------------------------------------------
+Ran 32 tests in 2.355s
+
+OK
+== Contract tests ==
+................................
+----------------------------------------------------------------------
+Ran 32 tests in 0.007s
+
+OK
+== Harness tests ==
+...........
+----------------------------------------------------------------------
+Ran 11 tests in 38.652s
+
+OK
+== Smoke tests ==
+..
+----------------------------------------------------------------------
+Ran 2 tests in 0.130s
+
+OK
+init verification passed
+<unknown>:0: error: error opening '/Users/armstrong/.cache/clang/ModuleCache/Swift-1IEYM950OGIQC.swiftmodule' for output: /Users/armstrong/.cache/clang/ModuleCache: Operation not permitted
+<unknown>:0: error: unable to load standard library for target 'arm64-apple-macosx26.0'
+Traceback (most recent call last):
+  File "/Users/armstrong/Project/swipe-go/scripts/seed-fixtures.py", line 69, in <module>
+    main()
+    ~~~~^^
+  File "/Users/armstrong/Project/swipe-go/scripts/seed-fixtures.py", line 33, in main
+    run('xcrun', 'swift', str(ROOT / 'scripts/draw-fixtures.swift'), str(OUT), str(args.seed))
+    ~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/armstrong/Project/swipe-go/scripts/seed-fixtures.py", line 16, in run
+    return subprocess.run(args, check=True, text=True, stdout=subprocess.PIPE if capture else None).stdout
+           ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/homebrew/Cellar/python@3.14/3.14.6/Frameworks/Python.framework/Versions/3.14/lib/python3.14/subprocess.py", line 578, in run
+    raise CalledProcessError(retcode, process.args,
+                             output=stdout, stderr=stderr)
+subprocess.CalledProcessError: Command '('xcrun', 'swift', '/Users/armstrong/Project/swipe-go/scripts/draw-fixtures.swift', '/Users/armstrong/Project/swipe-go/Fixtures/generated', '27')' returned non-zero exit status 1.
