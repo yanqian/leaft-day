@@ -79,4 +79,28 @@ import XCTest
         let reread = try await LocalStateStore(url: url).latestSession()
         XCTAssertEqual(reread?.cursor, 0)
     }
+    func testRemainingExcludesCurrentAcrossNavigationAndRestore() async throws {
+        let path = try storeURL()
+        let assets = [asset("a", .distantPast), asset("b", .distantPast), asset("c", .distantPast)]
+        let review = ReviewSession(store: try LocalStateStore(url: path))
+        review.updateLibrary(library(assets))
+        XCTAssertEqual(review.remainingCount, 0)
+        try await review.start(timeline.segments(in: assets)[0])
+        XCTAssertEqual(review.remainingCount, 2)
+        try await review.move(by: 1)
+        XCTAssertEqual(review.remainingCount, 1)
+        try await review.move(by: 1)
+        XCTAssertEqual(review.remainingCount, 0)
+        XCTAssertFalse(review.canGoForward)
+        XCTAssertFalse(review.isComplete, "Zero following items does not complete the current photo")
+        let restored = ReviewSession(store: try LocalStateStore(url: path))
+        restored.updateLibrary(library(assets)); try await restored.restore()
+        XCTAssertEqual(restored.currentID, "c"); XCTAssertEqual(restored.remainingCount, 0)
+        try await restored.move(by: -1)
+        XCTAssertEqual(restored.remainingCount, 1)
+        try await restored.start(ReviewSegment(assetIDs: ["a"], start: nil, end: nil))
+        XCTAssertEqual(restored.remainingCount, 0)
+        XCTAssertEqual(restored.currentID, "a"); XCTAssertFalse(restored.isComplete)
+    }
+
 }

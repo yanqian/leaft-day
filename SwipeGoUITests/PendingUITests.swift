@@ -30,7 +30,7 @@ import XCTest
         app.buttons["review.feedback-undo"].tap(); expect(app, "pending=0"); expect(app, "cursor=0")
         app.descendants(matching: .any)["review.photo"].swipeUp(); expect(app, "cursor=1")
         app.tapReviewCanvas()
-        XCTAssertEqual(app.staticTexts["review.position"].label, "本轮剩余 2 项")
+        XCTAssertEqual(app.staticTexts["review.position"].label, "剩余 1 项")
         XCTAssertEqual(app.buttons["review.pending"].label, "待删 1")
         attach(app, "F023-next-after-swipe")
         app.terminate(); app.launchArguments.append("--preserve-review-store"); app.launch()
@@ -47,7 +47,7 @@ import XCTest
         XCTAssertTrue(app.descendants(matching: .any)["video.surface"].waitForExistence(timeout: 10))
         app.buttons["review.undo"].tap(); expect(app, "pending=1"); expect(app, "cursor=1")
         XCTAssertEqual(app.buttons["review.favorite"].label, "已收藏")
-        XCTAssertEqual(app.staticTexts["review.position"].label, "本轮剩余 2 项")
+        XCTAssertEqual(app.staticTexts["review.position"].label, "剩余 1 项")
     }
     func testReducedMotionLastItemCompletionAndUndo() {
         continueAfterFailure = false
@@ -59,19 +59,19 @@ import XCTest
             if index < 3 { expect(app, "cursor=\(index)") }
         }
         XCTAssertTrue(app.staticTexts["review.completed"].waitForExistence(timeout: 10))
-        XCTAssertEqual(app.staticTexts["review.position"].label, "本轮剩余 0 项")
+        XCTAssertEqual(app.staticTexts["review.position"].label, "剩余 0 项")
         XCTAssertFalse(app.descendants(matching: .any)["video.surface"].exists)
         XCTAssertFalse(app.buttons["review.pending"].isEnabled)
         attach(app, "F023-completed-reduced-motion")
         app.buttons["review.undo"].tap(); expect(app, "pending=2")
         XCTAssertTrue(app.descendants(matching: .any)["video.surface"].waitForExistence(timeout: 10))
-        XCTAssertEqual(app.staticTexts["review.position"].label, "本轮剩余 1 项")
+        XCTAssertEqual(app.staticTexts["review.position"].label, "剩余 0 项")
         app.buttons["review.pending"].tap()
         XCTAssertTrue(app.staticTexts["review.completed"].waitForExistence(timeout: 10))
         app.terminate(); app.launchArguments.append("--preserve-review-store"); app.launch()
         XCTAssertTrue(app.staticTexts["review.completed"].waitForExistence(timeout: 10))
         expect(app, "pending=3")
-        XCTAssertEqual(app.staticTexts["review.position"].label, "本轮剩余 0 项")
+        XCTAssertEqual(app.staticTexts["review.position"].label, "剩余 0 项")
     }
     func testRealHomeCompletionKeepsLandscapeUndo() {
         continueAfterFailure = false
@@ -87,7 +87,7 @@ import XCTest
         for count in stride(from: 2, through: 0, by: -1) {
             app.buttons["review.pending"].tap()
             if app.buttons["仍加入待删"].exists { app.buttons["仍加入待删"].tap() }
-            let predicate = NSPredicate(format: "label == %@", "本轮剩余 \(count) 项")
+            let predicate = NSPredicate(format: "label == %@", "剩余 \(max(0, count - 1)) 项")
             XCTAssertEqual(XCTWaiter.wait(for: [XCTNSPredicateExpectation(predicate: predicate, object: app.staticTexts["review.position"])], timeout: 10), .completed)
         }
         XCTAssertTrue(app.staticTexts["review.completed"].waitForExistence(timeout: 10))
@@ -103,7 +103,7 @@ import XCTest
         attach(app, "F023-completed-landscape")
         app.buttons["review.undo"].tap()
         XCTAssertTrue(app.descendants(matching: .any)["review.photo"].waitForExistence(timeout: 10))
-        XCTAssertEqual(app.staticTexts["review.position"].label, "本轮剩余 1 项")
+        XCTAssertEqual(app.staticTexts["review.position"].label, "剩余 0 项")
         app.buttons["review.back"].tap()
         XCTAssertTrue(app.buttons["home.pending"].waitForExistence(timeout: 10))
         XCTAssertTrue(app.buttons["home.pending"].label.contains("待删 2 项"))
@@ -128,7 +128,7 @@ import XCTest
         XCTAssertTrue(app.buttons["review.undo"].isEnabled)
         app.buttons["review.undo"].tap(); expect(app, "pending=2")
         XCTAssertTrue(app.descendants(matching: .any)["video.surface"].waitForExistence(timeout: 10))
-        XCTAssertEqual(app.staticTexts["review.position"].label, "本轮剩余 1 项")
+        XCTAssertEqual(app.staticTexts["review.position"].label, "剩余 0 项")
     }
     func testCompletionUnmarkedButPositionFailedShowsRecovery() {
         continueAfterFailure = false
@@ -146,7 +146,7 @@ import XCTest
         XCTAssertTrue(app.buttons["review.restore-position"].isHittable)
         app.buttons["review.restore-position"].tap()
         XCTAssertTrue(app.descendants(matching: .any)["video.surface"].waitForExistence(timeout: 10))
-        XCTAssertEqual(app.staticTexts["review.position"].label, "本轮剩余 1 项")
+        XCTAssertEqual(app.staticTexts["review.position"].label, "剩余 0 项")
         expect(app, "pending=2")
     }
     func testCompletionPreviousReturnsToEarlierUnmarkedAsset() {
@@ -161,7 +161,7 @@ import XCTest
         app.buttons["上一项"].tap(); expect(app, "cursor=1")
         XCTAssertTrue(app.descendants(matching: .any)["review.photo"].waitForExistence(timeout: 10))
         XCTAssertFalse(app.staticTexts["review.completed"].exists)
-        XCTAssertEqual(app.staticTexts["review.position"].label, "本轮剩余 1 项")
+        XCTAssertEqual(app.staticTexts["review.position"].label, "剩余 0 项")
         expect(app, "pending=1")
     }
 
@@ -179,7 +179,7 @@ import XCTest
         XCTAssertFalse(app.staticTexts["review.test-state"].label.contains("current=\(original) "))
         app.buttons["review.undo"].tap()
         expect(app, "pending=0"); expect(app, "current=\(original) ")
-        XCTAssertEqual(app.staticTexts["review.position"].label, "本轮剩余 1 项")
+        XCTAssertEqual(app.staticTexts["review.position"].label, "剩余 0 项")
         XCTAssertFalse(app.buttons["下一项"].isEnabled)
         XCTAssertTrue(app.descendants(matching: .any)["review.photo"].exists)
         attach(app, "F023-cross-session-undo")

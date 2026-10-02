@@ -17,7 +17,7 @@ struct HomeCoverStateTestHost: View {
             ScrollView {
                 Group {
                     if ProcessInfo.processInfo.arguments.contains("--cover-hero") {
-                        HomeHeroCardContent(state: state, title: "2025年9月29日 – 10月1日", summary: "本轮剩余 12 项照片与视频", action: "继续回顾", minimumHeight: 380)
+                        HomeHeroCardContent(state: state, title: "2025年9月29日 – 10月1日", summary: "剩余 12 项照片与视频", action: "继续回顾", minimumHeight: 380)
                     } else {
                         HomePhotoCardContent(state: state, title: "去年的今天", subtitle: "再看这一日", emptyText: "这一天暂无照片", minimumHeight: 320)
                     }

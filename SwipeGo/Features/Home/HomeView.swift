@@ -14,11 +14,36 @@ import SwiftUI
     var presentingDeletionReview = false
     var pendingReadError = false
     var message: String?
+    private(set) var randomSegment: ReviewSegment?
+    private var visitedRandomSegment: ReviewSegment?
     init(store: any LocalStateRepository, assetScope: Set<String>? = nil) { self.store = store; review = ReviewSession(store: store, assetScope: assetScope); favorites = FavoriteCoordinator(store: store); pending = PendingCoordinator(store: store); reconciliation = ReconciliationCoordinator(store: store) }
     func reloadPending() async {
         do { try await pending.reload(); review.updatePending(pending.items); pendingReadError = false } catch { pendingReadError = true }
     }
-    var segments: [ReviewSegment] { timeline.segments(in: review.snapshot.assets) }
+    func updateLibrary(_ snapshot: LibrarySnapshot) {
+        review.updateLibrary(snapshot)
+        refreshRandomPreview()
+    }
+    private func refreshRandomPreview(avoiding previous: ReviewSegment? = nil) {
+        guard review.snapshot.permission.canRead else { randomSegment = nil; return }
+        let assets = review.snapshot.assets
+        let byID = Dictionary(assets.map { ($0.id, $0) }, uniquingKeysWith: { first, _ in first })
+        if previous == nil, let selected = randomSegment,
+           selected.assetIDs.allSatisfy({ byID[$0] != nil }) {
+            // Preserve membership on ordinary refresh while updating dates and
+            // cover asset versions from the current authorized snapshot.
+            randomSegment = timeline.batch(selected.assetIDs.compactMap { byID[$0] })
+            return
+        }
+        var rng = SystemRandomNumberGenerator()
+        randomSegment = timeline.random(in: assets, using: &rng, avoiding: previous)
+    }
+    func reviewDidDismiss() {
+        presentingReview = false
+        guard let visited = visitedRandomSegment else { return }
+        visitedRandomSegment = nil
+        refreshRandomPreview(avoiding: visited)
+    }
     var anniversary: ReviewSegment? { timeline.lastYearToday(in: review.snapshot.assets) }
     var initialSegment: ReviewSegment? { timeline.recent(in: review.snapshot.assets) }
     var heroSegment: ReviewSegment? {
@@ -32,9 +57,10 @@ import SwiftUI
         let photos = Dictionary(uniqueKeysWithValues: review.snapshot.assets.filter { $0.kind == .photo }.map { ($0.id, $0) })
         return Array(segment.assetIDs.lazy.compactMap { photos[$0] }.prefix(3))
     }
-    func open(_ segment: ReviewSegment?, mode: ReviewMode = .continuous) async {
-        guard let segment else { message = "这段时光暂无可回顾内容。"; return }
-        do { try await review.start(segment, mode: mode); presentingReview = true } catch { message = "无法保存回顾位置，请重试。" }
+    @discardableResult func open(_ segment: ReviewSegment?, mode: ReviewMode = .continuous) async -> Bool {
+        guard let segment else { message = "这段时光暂无可回顾内容。"; return false }
+        do { try await review.start(segment, mode: mode); presentingReview = true; return true }
+        catch { message = "无法保存回顾位置，请重试。"; return false }
     }
     func resume() async {
         if review.state != nil {
@@ -43,8 +69,9 @@ import SwiftUI
         } else { await open(initialSegment) }
     }
     func random() async {
-        var rng = SystemRandomNumberGenerator()
-        await open(timeline.random(in: review.snapshot.assets, using: &rng))
+        guard !presentingReview else { return }
+        let selected = randomSegment
+        if await open(selected) { visitedRandomSegment = selected }
     }
 }
 
@@ -65,7 +92,7 @@ struct HomeView: View {
                 VStack(alignment: .leading, spacing: 14) {
                     HStack {
                         VStack(alignment: .leading, spacing: 5) {
-                            Text("回顾").font(.largeTitle.bold()).accessibilityAddTraits(.isHeader)
+                            Text("日叶").font(.largeTitle.bold()).accessibilityAddTraits(.isHeader)
                             WrappingCaption(text: "留一点时间，看看过去")
                         }.accessibilityElement(children: .combine)
                         Spacer()
@@ -105,13 +132,13 @@ struct HomeView: View {
         .task { await prepare() }
         .task(id: heroCandidates) { model?.heroCover.load(heroCandidates) }
         .onDisappear { model?.heroCover.cancel() }
-        .onChange(of: snapshot.assets) { _, _ in model?.review.updateLibrary(snapshot); Task { await model?.reconciliation.refresh(); await model?.reloadPending() } }
-        .onChange(of: snapshot.permission) { _, _ in model?.review.updateLibrary(snapshot); Task { await model?.reconciliation.refresh(); await model?.reloadPending() } }
+        .onChange(of: snapshot.assets) { _, _ in model?.updateLibrary(snapshot); Task { await model?.reconciliation.refresh(); await model?.reloadPending() } }
+        .onChange(of: snapshot.permission) { _, _ in model?.updateLibrary(snapshot); Task { await model?.reconciliation.refresh(); await model?.reloadPending() } }
         .onChange(of: scenePhase) { _, phase in if phase == .active { Task { await model?.reconciliation.refresh(); await model?.reloadPending() } } }
         .sheet(isPresented: Binding(get: { model?.presentingReconciliation ?? false }, set: { model?.presentingReconciliation = $0 })) {
             if let model { ReconciliationView(model: model.reconciliation) }
         }
-        .fullScreenCover(isPresented: Binding(get: { model?.presentingReview ?? false }, set: { model?.presentingReview = $0 }), onDismiss: { ReviewOrientation.setReviewActive(false); Task { await model?.reloadPending(); await model?.reconciliation.refresh() } }) {
+        .fullScreenCover(isPresented: Binding(get: { model?.presentingReview ?? false }, set: { model?.presentingReview = $0 }), onDismiss: { ReviewOrientation.setReviewActive(false); model?.reviewDidDismiss(); Task { await model?.reloadPending(); await model?.reconciliation.refresh() } }) {
             if let model { ReviewEntryView(review: model.review, favorites: model.favorites, pending: model.pending) }
         }
         .sheet(isPresented: Binding(get: { model?.presentingDeletionReview ?? false }, set: { model?.presentingDeletionReview = $0 }), onDismiss: { Task { await model?.reloadPending(); await model?.reconciliation.refresh() } }) {
@@ -144,11 +171,11 @@ struct HomeView: View {
     }
     private var heroCandidates: [PhotoAssetSnapshot] { model.map { $0.coverCandidates($0.heroSegment) } ?? [] }
     private func prepare() async {
-        guard model == nil else { model?.review.updateLibrary(snapshot); return }
+        guard model == nil else { model?.updateLibrary(snapshot); return }
         do {
             let paths = try LocalStoragePaths.application()
             let created = HomeModel(store: try storeOverride ?? LocalStateStore(url: paths.intentStore), assetScope: assetScope)
-            created.review.updateLibrary(snapshot)
+            created.updateLibrary(snapshot)
             try await created.review.restore()
             await created.reloadPending()
             await created.reconciliation.refresh()
@@ -170,7 +197,7 @@ struct HomeView: View {
     }
     private func heroSummary(_ model: HomeModel) -> String {
         model.review.state == nil ? "\(model.heroSegment?.assetIDs.count ?? 0)项照片与视频"
-            : model.review.isComplete ? "本轮已看完" : "本轮剩余 \(model.review.remainingCount) 项照片与视频"
+            : model.review.isComplete ? "本轮已看完" : "剩余 \(model.review.remainingCount) 项"
     }
     private func anniversary(_ model: HomeModel, height: CGFloat) -> some View {
         Button { Task { await model.open(model.anniversary, mode: .anniversary) } } label: {
@@ -179,8 +206,12 @@ struct HomeView: View {
     }
     private func random(_ model: HomeModel, height: CGFloat) -> some View {
         Button { Task { await model.random() } } label: {
-            smallCard("随机时光", subtitle: "走进一段连续回忆", candidates: model.coverCandidates(model.segments.first), model: model, emptyText: "走进一段时光", height: height)
-        }.buttonStyle(.plain).disabled(snapshot.assets.isEmpty).accessibilityIdentifier("home.random")
+            smallCard("随机时光", subtitle: "走进一段连续回忆", candidates: model.coverCandidates(model.randomSegment), model: model, emptyText: "走进一段时光", height: height)
+        }.buttonStyle(.plain).disabled(model.randomSegment == nil).accessibilityIdentifier("home.random")
+#if DEBUG
+            .accessibilityValue(ProcessInfo.processInfo.arguments.contains("--random-preview-test")
+                ? (model.randomSegment?.assetIDs.joined(separator: ",") ?? "") + ";covers=" + model.coverCandidates(model.randomSegment).map(\.id).joined(separator: ",") : "")
+#endif
     }
     private func smallCard(_ title: String, subtitle: String, candidates: [PhotoAssetSnapshot], model: HomeModel, emptyText: String, height: CGFloat) -> some View {
         HomeArtwork(candidates: candidates, cache: model.cache, title: title, subtitle: subtitle, emptyText: emptyText, height: height)

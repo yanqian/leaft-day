@@ -19,13 +19,13 @@ import XCTest
         try await pending.mark("b"); try await pending.mark("a"); review.updatePending(pending.items)
         let session = review.state!.id
         try await review.advanceAfterPending(assetID: "a", sessionID: session)
-        XCTAssertEqual(review.currentID, "c"); XCTAssertEqual(review.remainingCount, 1)
+        XCTAssertEqual(review.currentID, "c"); XCTAssertEqual(review.remainingCount, 0)
         XCTAssertEqual(review.state?.assetIDs, ["a", "b", "c"])
         // A late duplicate callback cannot advance the next asset.
         try await review.advanceAfterPending(assetID: "a", sessionID: session)
         XCTAssertEqual(review.currentID, "c")
         try await pending.undo(); review.updatePending(pending.items); try await review.returnToUnmarked("a")
-        XCTAssertEqual(review.currentID, "a"); XCTAssertEqual(review.remainingCount, 2)
+        XCTAssertEqual(review.currentID, "a"); XCTAssertEqual(review.remainingCount, 1)
         try await review.move(by: 1); XCTAssertEqual(review.currentID, "c")
         try await review.move(by: -1); XCTAssertEqual(review.currentID, "a")
         let writes = await reader.calls; XCTAssertTrue(writes.isEmpty)
@@ -40,7 +40,7 @@ import XCTest
         let reopened = ReviewSession(store: try LocalStateStore(url: path)); reopened.updateLibrary(snapshot(all)); try await reopened.restore()
         XCTAssertTrue(reopened.isComplete); XCTAssertEqual(reopened.current, .completed)
         try await pending.undo(); reopened.updatePending(pending.items); try await reopened.returnToUnmarked("a")
-        XCTAssertEqual(reopened.currentID, "a"); XCTAssertEqual(reopened.remainingCount, 1)
+        XCTAssertEqual(reopened.currentID, "a"); XCTAssertEqual(reopened.remainingCount, 0)
     }
     func testFailedMarkLeavesPhotoAndFailedPositionKeepsSavedMarkForRetry() async throws {
         let path = try url(), store = try LocalStateStore(url: path), all = assets()
@@ -48,7 +48,7 @@ import XCTest
         let failingMark = PendingCoordinator(store: try LocalStateStore(url: path, allowsSave: false), reader: FavoriteTests.Writer(all))
         do { try await failingMark.mark("a"); XCTFail() } catch { }
         review.updatePending(failingMark.items)
-        XCTAssertEqual(review.currentID, "a"); XCTAssertEqual(review.remainingCount, 2)
+        XCTAssertEqual(review.currentID, "a"); XCTAssertEqual(review.remainingCount, 1)
         let pending = PendingCoordinator(store: store, reader: FavoriteTests.Writer(all)); try await pending.mark("a")
         let readOnly = ReviewSession(store: try LocalStateStore(url: path, allowsSave: false)); readOnly.updateLibrary(snapshot(all)); try await readOnly.restore()
         let before = readOnly.state
@@ -56,7 +56,7 @@ import XCTest
         XCTAssertEqual(readOnly.state, before)
         let durable = try await store.pending(); XCTAssertEqual(durable.map(\.assetID), ["a"])
         let restored = ReviewSession(store: store); restored.updateLibrary(snapshot(all)); try await restored.restore(); try await restored.resumeAvoidingPending()
-        XCTAssertEqual(restored.currentID, "b"); XCTAssertEqual(restored.remainingCount, 1)
+        XCTAssertEqual(restored.currentID, "b"); XCTAssertEqual(restored.remainingCount, 0)
     }
     func testContinuousExtensionSkipsPendingAndScopeWhileAnniversaryCompletes() async throws {
         let all = assets(), store = try LocalStateStore(url: url())
@@ -97,7 +97,7 @@ import XCTest
         XCTAssertTrue(failingPosition.isComplete)
         let persistedPending = try await store.pending(); XCTAssertTrue(persistedPending.isEmpty)
         let reopened = ReviewSession(store: try LocalStateStore(url: path)); reopened.updateLibrary(snapshot(all)); try await reopened.restore()
-        XCTAssertFalse(reopened.isComplete); XCTAssertEqual(reopened.currentID, "a"); XCTAssertEqual(reopened.remainingCount, 1)
+        XCTAssertFalse(reopened.isComplete); XCTAssertEqual(reopened.currentID, "a"); XCTAssertEqual(reopened.remainingCount, 0)
         let disk = try await store.latestSession(); XCTAssertEqual(disk?.completed, false)
     }
     func testCompletedSessionCanNavigateBackAndNewForwardContent() async throws {
@@ -139,7 +139,7 @@ import XCTest
         try await review.returnToUnmarked("a", sessionID: origin)
         XCTAssertEqual(review.currentID, "a"); XCTAssertEqual(review.state?.id, origin)
         XCTAssertEqual(review.state?.assetIDs, ["a"]); XCTAssertEqual(review.state?.mode, .anniversary)
-        XCTAssertEqual(review.remainingCount, 1)
+        XCTAssertEqual(review.remainingCount, 0)
         let reopened = ReviewSession(store: try LocalStateStore(url: path)); reopened.updateLibrary(snapshot(all)); try await reopened.restore()
         XCTAssertEqual(reopened.currentID, "a"); XCTAssertEqual(reopened.state?.id, origin)
         do { try await review.returnToUnmarked("missing", sessionID: UUID()); XCTFail("Missing original session must fail explicitly") } catch { }

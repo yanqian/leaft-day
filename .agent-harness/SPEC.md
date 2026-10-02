@@ -239,3 +239,17 @@ F002 将根 `./init.sh` 改为幂等工程恢复入口：验证依赖、启动�
 ### R24运行失败改进补充
 
 独立Evaluator已实际完成fresh和reuse探针，但provider进程无最终裁决而长期停留；保留失败记录，并为现有provider命令增加项目自有有界包装器（角色2400秒、runtime check120秒），保留stdin/cwd/参数与退出码，超时终止所拥有进程组且不伪造裁决。该失败改进服务同一F031端到端验证闭环，不新增产品功能或改变Evaluator独立性。PATH指纹改为实际使用工具的解析路径/二进制摘要，忽略无关provider临时前缀但捕获命令遮蔽。全部失败的原生结果仍需保留计数、错误与附件；不把无通过项等同无测试执行。新增路径scripts/run-bounded-evaluator.py、tests/test_bounded_evaluator.py及provider配置维护说明。
+
+
+## 2026-10-01 回顾计数与首页入口明确化（R25–R27，用户批准实施）
+
+- Goal：剩余数量符合“当前项之后”的直觉；首页显示中文品牌日叶；随机封面准确预览即将进入的回忆。
+- Scope included：R25首页和浏览页统一为“剩余 N 项”，排除当前项及待删项，末页为0；R26仅首页顶部回顾改日叶；R27随机入口预选片段、封面与打开同源、浏览返回后换段、普通重绘/刷新稳定。
+- Scope excluded：不改变去年的今天选择和封面、系统显示名LeafDay、动作文案、收藏/待删/删除/撤销协议和连续浏览规则；不提交/推送/安装真机，不调度F018。
+- Core flows：进入/前后导航/待删退场/撤销/恢复→准确显示当前之后数量；首页看到日叶；随机预览→进入相同片段→返回后更换候选→普通刷新保持；权限缩减或目标消失时仅在可访问范围重新选择。
+- Constraints：保留当前会话持久化数据结构和isComplete语义，剩余0不等于当前项已看完；连续浏览仍沿用已有批次接续，计数指已载入本轮之后的非待删项；封面最多3张照片，纯视频/不可用保持原空态与加载失败语义；无新增图库权限或下载策略。
+- Ambiguities or assumptions：R25明确替代R16包含当前项的旧口径。随机换段在有其他合格候选时避开刚打开的一段，仅一段时允许保留；未浏览随机入口而从其他页面返回不重抽；普通图库刷新保留仍有效的预选ID，权限撤回/移除使预选失效才更新。
+- Required capabilities：既有Xcode/iOS26隔离模拟器、生成fixture、统一verify.sh、冷启动Evaluator，无新增服务。
+- Implementation paths：SwipeGo/Domain/Review/ReviewSession.swift、Features/Review/ReviewEntryView.swift、Features/Home/HomeView.swift及必要随机领域选择；SwipeGoTests、SwipeGoUITests、docs/verification.md及现有用例映射。
+- Verification surface：计数初始/末项/单项/待删/撤销/恢复领域和原生UI；首页标题既有UI断言；随机确定性选择、封面集合/实际打开一致、返回换段、普通刷新稳定、权限/空库/单候选领域与首页UI。统一脚本结束后读取summary/report；每项独立Evaluator执行SWIPE_VERIFY_FRESH=1 ./init.sh一次，禁止反复查询中间日志。
+- Decomposition：F032计数为领域与浏览展示独立行为；F033首页中文标题为独立文案；F034随机预览为状态/导航独立行为，分别编码和验收。现有能力够用，不新增能力Feature。顺序F032→F033→F034。

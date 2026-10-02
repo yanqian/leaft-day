@@ -20,7 +20,7 @@ import XCTest
             XCTAssertTrue(app.frame.contains(app.buttons["review.pending"].frame))
             for index in 0..<3 {
                 if index > 0 { next.tap() }
-                XCTAssertEqual(app.staticTexts["review.position"].label, "本轮剩余 \(3 - index) 项")
+                XCTAssertEqual(app.staticTexts["review.position"].label, "剩余 \(2 - index) 项")
                 let shot = XCTAttachment(screenshot: XCUIScreen.main.screenshot())
                 shot.name = "F009-v3-\(opaque ? "opaque" : "glass")-\(index)"; shot.lifetime = .keepAlways; add(shot)
             }

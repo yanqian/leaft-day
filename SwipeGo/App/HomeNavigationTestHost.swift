@@ -19,7 +19,8 @@ struct HomeNavigationTestHost: View {
             let gateway = PhotoLibraryGateway()
             if await !gateway.snapshot().permission.canRead { _ = await gateway.requestAccess() }
             let library = await gateway.snapshot()
-            let filenames = ["landscape.jpg", "clip.mp4", "portrait-smile.jpg"]
+            let randomPreview = ProcessInfo.processInfo.arguments.contains("--random-preview-test")
+            let filenames = ["landscape.jpg", "clip.mp4", "portrait-smile.jpg"] + (randomPreview ? ["landscape-near.jpg"] : [])
             var matching: [String: String] = [:]
             PHAsset.fetchAssets(withLocalIdentifiers: library.assets.map(\.id), options: nil).enumerateObjects { asset, _, _ in
                 for resource in PHAssetResource.assetResources(for: asset) where filenames.contains(resource.originalFilename) {
@@ -27,14 +28,24 @@ struct HomeNavigationTestHost: View {
                 }
             }
             let ids = filenames.compactMap { matching[$0] }
-            guard ids.count == 3 else { error = "请安装合成测试素材"; return }
+            guard ids.count == filenames.count else { error = "请安装合成测试素材"; return }
             do {
                 let directory = FileManager.default.temporaryDirectory.appendingPathComponent("HomeNavigation-\(UUID())")
                 try FileManager.default.createDirectory(at: directory, withIntermediateDirectories: true)
                 let store = try LocalStateStore(url: directory.appendingPathComponent("Intent.store"))
                 if !continuity { try await store.saveSession(.init(id: UUID(), assetIDs: ids, cursor: 0, updatedAt: .now)) }
                 var scoped = library.assets.filter { ids.contains($0.id) }
-                if continuity, let day = ReviewTimeline().lastYearDate(relativeTo: .now) {
+                if randomPreview {
+                    // Two distinct memories over generated media for the real
+                    // home -> review -> dismiss preview lifecycle test.
+                    let day = Calendar.current.date(from: DateComponents(year: 2025, month: 9, day: 1, hour: 12))!
+                    scoped = scoped.map { asset in
+                        let index = ids.firstIndex(of: asset.id)!
+                        let date = day.addingTimeInterval(Double(index / 2) * 86400 + Double(index % 2) * 60)
+                        return PhotoAssetSnapshot(id: asset.id, kind: asset.kind, creationDate: date, modificationDate: asset.modificationDate,
+                            width: asset.width, height: asset.height, duration: asset.duration, isFavorite: asset.isFavorite, isLivePhoto: asset.isLivePhoto)
+                    }
+                } else if continuity, let day = ReviewTimeline().lastYearDate(relativeTo: .now) {
                     // Deterministic metadata over actual generated media IDs, not a private library.
                     let offsets = [0, 1, -1]
                     scoped = scoped.map { asset in

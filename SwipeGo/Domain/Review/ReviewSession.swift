@@ -16,7 +16,7 @@ enum ReviewSessionError: Error { case busy, empty, unavailable, invalidSession }
     var isComplete: Bool { state?.completed == true }
     var remainingCount: Int {
         guard let state, !isComplete else { return 0 }
-        return state.assetIDs.dropFirst(state.cursor).filter { !pendingIDs.contains($0) }.count
+        return state.assetIDs.dropFirst(state.cursor + 1).filter { !pendingIDs.contains($0) }.count
     }
     func updatePending(_ items: [PendingIntent]) { pendingIDs = Set(items.map(\.assetID)) }
     private(set) var snapshot = LibrarySnapshot(permission: .notDetermined, assets: [], sharedLibraryMembershipVerified: false)

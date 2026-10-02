@@ -42,16 +42,32 @@ struct ReviewTimeline: Sendable {
         }
         return groups.map { ReviewSegment(assetIDs: $0.map(\.id), start: $0.first?.creationDate, end: $0.last?.creationDate) }
     }
-    func random<R: RandomNumberGenerator>(in assets: [PhotoAssetSnapshot], using generator: inout R) -> ReviewSegment? {
+    func random<R: RandomNumberGenerator>(in assets: [PhotoAssetSnapshot], using generator: inout R, avoiding previous: ReviewSegment? = nil) -> ReviewSegment? {
         let groups = segments(in: assets)
         let multiple = groups.filter { $0.assetIDs.count > 1 }
-        guard let selected = (multiple.isEmpty ? groups : multiple).randomElement(using: &generator) else { return nil }
+        let preferred = multiple.isEmpty ? groups : multiple
+        guard let selected = preferred.randomElement(using: &generator) else { return nil }
         let ordered = orderedAssets(assets)
-        if selected.assetIDs.count > 1 {
-            let ids = Set(selected.assetIDs.prefix(60))
-            return batch(ordered.filter { ids.contains($0.id) })
+        func candidate(_ segment: ReviewSegment) -> ReviewSegment? {
+            if segment.assetIDs.count > 1 {
+                let ids = Set(segment.assetIDs.prefix(60))
+                return batch(ordered.filter { ids.contains($0.id) })
+            }
+            return nearby(in: ordered, anchor: segment.id, excluding: [], limit: 12)
         }
-        return nearby(in: ordered, anchor: selected.id, excluding: [], limit: 12)
+        let first = candidate(selected)
+        guard let previous, first?.assetIDs == previous.assetIDs else { return first }
+        for group in preferred.shuffled(using: &generator) {
+            if let alternative = candidate(group), alternative.assetIDs != previous.assetIDs { return alternative }
+        }
+        // Keep the existing multi-item preference, but allow sparse nearby
+        // memories when they are the only alternative to the visited segment.
+        if !multiple.isEmpty {
+            for group in groups.filter({ $0.assetIDs.count == 1 }).shuffled(using: &generator) {
+                if let alternative = candidate(group), alternative.assetIDs != previous.assetIDs { return alternative }
+            }
+        }
+        return first
     }
     func orderedAssets(_ assets: [PhotoAssetSnapshot]) -> [PhotoAssetSnapshot] {
         var seen = Set<String>()

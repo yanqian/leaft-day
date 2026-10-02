@@ -948,6 +948,54 @@
         "AGENTS.md"
       ],
       "verification_surface": "真实xcresult契约、路径选择和复用故障测试、模拟器full/changed/reuse、独立Evaluator"
+    },
+    {
+      "id": "F032",
+      "title": "剩余计数排除当前项目",
+      "description": "按R25实现用户确认的回顾体验调整。",
+      "acceptance": [
+        "首页和回顾显示剩余 N 项；数量仅包含当前之后本轮未待删项，最后/单项显示0，不改变完成或导航语义。",
+        "前后翻页、待删自动接续、末尾完成、撤销和重开恢复的计数正确，既有UI断言同步更新。",
+        "统一脚本验证及独立Evaluator fresh root通过，保留结果报告。"
+      ],
+      "passes": true,
+      "status": "done",
+      "attempts": 1,
+      "last_error": "",
+      "priority": "P0",
+      "requirement_refs": "R25"
+    },
+    {
+      "id": "F033",
+      "title": "首页中文品牌日叶",
+      "description": "按R26实现用户确认的回顾体验调整。",
+      "acceptance": [
+        "首页顶部标题显示日叶，原副标题、LeafDay系统显示名和开始/继续回顾动作保持。",
+        "既有首页UI验证标题可见，独立Evaluator fresh root通过。"
+      ],
+      "passes": true,
+      "status": "done",
+      "attempts": 1,
+      "last_error": "",
+      "priority": "P0",
+      "requirement_refs": "R26"
+    },
+    {
+      "id": "F034",
+      "title": "随机时光封面与预选片段一致",
+      "description": "按R27实现用户确认的回顾体验调整。",
+      "acceptance": [
+        "随机入口预先选择片段，封面候选来自该片段，点击打开同一片段。",
+        "普通重绘/刷新和其他页面返回不重抽；随机浏览返回后有替代候选时换段，仅一个候选仍可用。",
+        "图库或权限变化导致候选不可访问时安全更新；空库/纯视频/照片加载失败沿用准确空态，无权限范围扩大。",
+        "确定性领域测试和真实首页进入/返回UI验证，维护用例映射；独立Evaluator fresh root通过。"
+      ],
+      "passes": true,
+      "status": "done",
+      "attempts": 1,
+      "last_error": "",
+      "priority": "P0",
+      "requirement_refs": "R27"
     }
   ]
 }

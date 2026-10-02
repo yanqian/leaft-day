@@ -232,3 +232,13 @@ Recovery also clean-boots only the selected simulator before tests. After interr
 `.agent-harness/agent-provider.json` 保留现有provider、cwd与原命令，在`evaluator_command`前添加`["python3", "scripts/run-bounded-evaluator.py", "--timeout-seconds", "2400", "--"]`；runtime_check_command同样包装但使用120秒。provider cwd仍为项目根目录`..`。该本地配置按既有规则不提交，重新配置provider时保留此包装；不要替换用户已有model/参数。包装器透明转交stdin和输出、保留退出码；超时退出124并终止其子进程组，不输出伪造验收结论。故障属于本轮F031实际长期等待后的运行改进。
 
 进程组清理由 `scripts/process_cleanup.py` 统一处理：不能将leader退出视为后代退出；短暂TERM宽限后仍对所拥有的进程组执行KILL。真实心跳回归覆盖忽略TERM的后代，包含timeout、外部中断和验证Runner三条路径。
+
+
+## R25 剩余计数回归
+
+F032将剩余定义为当前之后的本轮非待删项，当前项不计入；末页/单项显示“剩余 0 项”，不因此设置completed。ReviewSessionTests覆盖前后导航和磁盘恢复，PendingAdvanceTests及原生Pending/HomeNavigation/ReviewContinuity用例覆盖待删、撤销和边界。共享领域变更在现有verify.sh映射中回退full，无需缩减映射；首页继续卡沿用相同计数。
+
+
+## R27 随机预览回归
+
+F034在HomeModel保存预选片段，封面候选和打开共用assetIDs。HomeRandomPreviewTests覆盖打开/返回换段、普通刷新及其他入口保持、元数据更新、权限缩减、白名单、空库/单项视频、真实只读保存失败与固定种子稀疏替代。HomeNavigationTests新增真实首页→继续返回保持→随机打开对应片段→返回换段用例；仅DEBUG --random-preview-test下暴露模型ID作为可访问性value，使用4个生成媒体构成两个片段。现有首页映射已包含HomeNavigationTests；ReviewTimeline共享领域修改仍自动选择full，未缩小验证范围。

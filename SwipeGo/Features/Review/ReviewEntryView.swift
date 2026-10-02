@@ -236,8 +236,11 @@ struct ReviewEntryView: View {
             if case .available(let asset) = review.current {
                 Text(asset.creationDate.map { $0.formatted(.dateTime.year().month().day()) } ?? "日期未知")
             } else { Text(review.isComplete ? (pendingRestoreID == nil ? "本轮完成" : "待删已撤回") : "当前项目不可用") }
-            Text(pendingRestoreID == nil ? "本轮剩余 \(review.remainingCount) 项" : "位置待恢复")
+            Text(pendingRestoreID == nil ? "剩余 \(review.remainingCount) 项" : "位置待恢复")
                 .monospacedDigit().accessibilityIdentifier("review.position")
+#if DEBUG
+                .accessibilityValue(ProcessInfo.processInfo.arguments.contains("--random-preview-test") ? review.state?.assetIDs.joined(separator: ",") ?? "" : "")
+#endif
         }.font(.caption).multilineTextAlignment(.center).frame(maxWidth: .infinity)
     }
     private var navigationPill: some View {

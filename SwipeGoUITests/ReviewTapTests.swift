@@ -21,19 +21,19 @@ import XCTest
                 XCTAssertFalse(back.exists)
             }
         }
-        exerciseRegions(position: "本轮剩余 3 项")
+        exerciseRegions(position: "剩余 2 项")
         app.descendants(matching: .any)["review.photo"].swipeLeft()
         let video = app.descendants(matching: .any)["video.surface"]
         XCTAssertTrue(video.waitForExistence(timeout: 10))
         let hiddenFrame = video.frame
-        exerciseRegions(position: "本轮剩余 2 项")
+        exerciseRegions(position: "剩余 1 项")
         app.tapReviewCanvas()
         XCTAssertEqual(video.frame, hiddenFrame, "Controls must overlay, not shrink the media")
         XCTAssertTrue(app.buttons["video.playback"].waitForExistence(timeout: 10))
         app.buttons["video.playback"].tap(); XCTAssertTrue(back.exists)
         app.buttons["video.mute"].tap(); XCTAssertTrue(back.exists)
         app.sliders["video.progress"].adjust(toNormalizedSliderPosition: 0.4)
-        XCTAssertTrue(back.exists); XCTAssertEqual(app.staticTexts["review.position"].label, "本轮剩余 2 项")
+        XCTAssertTrue(back.exists); XCTAssertEqual(app.staticTexts["review.position"].label, "剩余 1 项")
         let play = app.buttons["video.playback"]
         if play.label == "暂停" { play.tap() }
         app.sliders["video.progress"].adjust(toNormalizedSliderPosition: 0)

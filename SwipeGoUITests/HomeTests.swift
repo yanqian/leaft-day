@@ -17,6 +17,7 @@ import XCTest
         let system = XCUIApplication(bundleIdentifier: "com.apple.springboard")
         XCTAssertTrue(system.buttons["Allow Full Access"].waitForExistence(timeout: 10)); system.buttons["Allow Full Access"].tap()
         XCTAssertTrue(app.buttons["home.continue"].waitForExistence(timeout: 15))
+        XCTAssertTrue(app.staticTexts.matching(NSPredicate(format: "label BEGINSWITH %@", "日叶")).firstMatch.exists)
         XCTAssertFalse(app.staticTexts["顺手整理"].exists)
         let pending = app.buttons["home.pending"]
         XCTAssertTrue(pending.isHittable)
