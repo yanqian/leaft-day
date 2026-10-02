@@ -1,0 +1,326 @@
+{
+  "schema_version": 1,
+  "diagram_type": "architecture",
+  "meta": {
+    "title": "LeafDay · 本地优先的 iOS 架构",
+    "locale": "zh-CN",
+    "output": ".archify/architecture-leafday-20261003-001000/leafday.html",
+    "quality_profile": "showcase",
+    "repository": {
+      "url": "https://github.com/yanqian/leaft-day.git",
+      "revision": "a0ab1b33ee996b5f987ac78bc2d8eb7b13fba276"
+    },
+    "legend": {
+      "entries": {
+        "frontend": {
+          "label": "界面层"
+        },
+        "backend": {
+          "label": "业务与适配"
+        },
+        "database": {
+          "label": "本地持久化"
+        },
+        "external": {
+          "label": "系统服务"
+        }
+      }
+    }
+  },
+  "components": [
+    {
+      "id": "ui",
+      "label": "界面与设计系统",
+      "sublabel": "SwiftUI · PhotoGlass",
+      "pos": [
+        400,
+        30
+      ],
+      "size": [
+        250,
+        80
+      ],
+      "type": "frontend",
+      "sources": [
+        {
+          "path": "SwipeGo/Features/Home/HomeView.swift",
+          "line": 100,
+          "end_line": 145
+        },
+        {
+          "path": "SwipeGo/DesignSystem/PhotoGlass.swift",
+          "line": 1,
+          "end_line": 50
+        }
+      ]
+    },
+    {
+      "id": "review",
+      "label": "回顾与用户操作",
+      "sublabel": "ReviewSession · ReviewActions",
+      "pos": [
+        40,
+        230
+      ],
+      "size": [
+        250,
+        80
+      ],
+      "type": "backend",
+      "sources": [
+        {
+          "path": "SwipeGo/Features/Review/ReviewActions.swift",
+          "line": 5,
+          "end_line": 80
+        },
+        {
+          "path": "SwipeGo/Domain/Review/ReviewSession.swift",
+          "line": 1,
+          "end_line": 80
+        }
+      ]
+    },
+    {
+      "id": "delete",
+      "label": "删除复核与操作核对",
+      "sublabel": "Deletion · Reconciliation",
+      "pos": [
+        400,
+        230
+      ],
+      "size": [
+        250,
+        80
+      ],
+      "type": "backend",
+      "sources": [
+        {
+          "path": "SwipeGo/Domain/Deletion/DeletionCoordinator.swift",
+          "line": 16,
+          "end_line": 50
+        },
+        {
+          "path": "SwipeGo/Domain/Reconciliation/ReconciliationCoordinator.swift",
+          "line": 16,
+          "end_line": 58
+        }
+      ]
+    },
+    {
+      "id": "compare",
+      "label": "人工相似比较",
+      "sublabel": "SimilarityEngine",
+      "pos": [
+        760,
+        230
+      ],
+      "size": [
+        250,
+        80
+      ],
+      "type": "backend",
+      "sources": [
+        {
+          "path": "SwipeGo/Domain/Similarity/SimilarityEngine.swift",
+          "line": 1,
+          "end_line": 80
+        },
+        {
+          "path": "SwipeGo/Features/Comparison/ComparisonView.swift",
+          "line": 1,
+          "end_line": 80
+        }
+      ]
+    },
+    {
+      "id": "store",
+      "label": "本地用户状态",
+      "sublabel": "LocalStateStore · SwiftData",
+      "pos": [
+        400,
+        440
+      ],
+      "size": [
+        250,
+        80
+      ],
+      "type": "database",
+      "sources": [
+        {
+          "path": "SwipeGo/Infrastructure/Persistence/LocalStateStore.swift",
+          "line": 1,
+          "end_line": 80
+        }
+      ]
+    },
+    {
+      "id": "media",
+      "label": "按需媒体加载",
+      "sublabel": "PhotoLoader · VideoPlayback",
+      "pos": [
+        40,
+        440
+      ],
+      "size": [
+        250,
+        80
+      ],
+      "type": "backend",
+      "sources": [
+        {
+          "path": "SwipeGo/Infrastructure/Media/PhotoLoader.swift",
+          "line": 1,
+          "end_line": 80
+        },
+        {
+          "path": "SwipeGo/Infrastructure/Media/VideoPlayback.swift",
+          "line": 1,
+          "end_line": 80
+        }
+      ]
+    },
+    {
+      "id": "vision",
+      "label": "设备端特征分析",
+      "sublabel": "VisionFeaturePrinter",
+      "pos": [
+        760,
+        440
+      ],
+      "size": [
+        250,
+        80
+      ],
+      "type": "backend",
+      "sources": [
+        {
+          "path": "SwipeGo/Infrastructure/Analysis/VisionFeaturePrinter.swift",
+          "line": 16,
+          "end_line": 40
+        }
+      ]
+    },
+    {
+      "id": "photos",
+      "label": "系统照片库",
+      "sublabel": "PhotoKit · 原片 / 视频 / 收藏",
+      "pos": [
+        400,
+        680
+      ],
+      "size": [
+        250,
+        80
+      ],
+      "type": "external",
+      "sources": [
+        {
+          "path": "SwipeGo/Infrastructure/PhotoLibrary/PhotoLibraryGateway.swift",
+          "line": 1,
+          "end_line": 50
+        },
+        {
+          "path": "SwipeGo/Infrastructure/PhotoLibrary/DeletionWriter.swift",
+          "line": 1,
+          "end_line": 54
+        },
+        {
+          "path": "SwipeGo/Infrastructure/PhotoLibrary/FavoriteWriter.swift",
+          "line": 1,
+          "end_line": 49
+        }
+      ]
+    }
+  ],
+  "connections": [
+    {
+      "id": "ui-review",
+      "from": "ui",
+      "to": "review"
+    },
+    {
+      "id": "ui-delete",
+      "from": "ui",
+      "to": "delete"
+    },
+    {
+      "id": "ui-compare",
+      "from": "ui",
+      "to": "compare"
+    },
+    {
+      "id": "review-store",
+      "from": "review",
+      "to": "store",
+      "label": "保存会话与待删"
+    },
+    {
+      "id": "review-media",
+      "from": "review",
+      "to": "media",
+      "label": "浏览"
+    },
+    {
+      "id": "review-photos",
+      "from": "review",
+      "to": "photos",
+      "label": "收藏写入"
+    },
+    {
+      "id": "delete-store",
+      "from": "delete",
+      "to": "store",
+      "label": "记录操作结果"
+    },
+    {
+      "id": "delete-photos",
+      "from": "delete",
+      "to": "photos",
+      "label": "确认后删除 / 核对"
+    },
+    {
+      "id": "compare-vision",
+      "from": "compare",
+      "to": "vision",
+      "label": "生成候选"
+    },
+    {
+      "id": "vision-photos",
+      "from": "vision",
+      "to": "photos",
+      "label": "本地缩略图"
+    },
+    {
+      "id": "media-photos",
+      "from": "media",
+      "to": "photos",
+      "label": "按需读取"
+    }
+  ],
+  "cards": [
+    {
+      "dot": "cyan",
+      "title": "回顾操作",
+      "items": [
+        "ReviewActions 编排收藏、待删和撤销",
+        "Favorite / PendingCoordinator 负责实际动作"
+      ]
+    },
+    {
+      "dot": "emerald",
+      "title": "数据归属",
+      "items": [
+        "SwiftData 保存会话、待删意图和操作记录",
+        "PhotoKit 持有原片、视频和系统收藏"
+      ]
+    },
+    {
+      "dot": "rose",
+      "title": "删除边界",
+      "items": [
+        "人工复核后请求系统确认，按回执记录结果",
+        "未知操作进入核对，不自动重试删除"
+      ]
+    }
+  ]
+}

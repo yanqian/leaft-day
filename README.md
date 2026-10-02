@@ -50,25 +50,9 @@ LeafDay 是一款 iPhone 照片与视频回顾应用：从一段连续时光开�
 
 这是一个原生 iOS 单体应用，没有自建后端。SwiftUI 负责界面，领域对象编排回顾和用户操作，基础设施适配系统图库、媒体、持久化与 Vision。
 
-```mermaid
-flowchart TD
-    UI[SwiftUI 页面 / PhotoGlass 设计系统] --> Review[ReviewSession / ReviewActions]
-    UI --> Compare[相似比较 / SimilarityEngine]
-    UI --> Delete[删除复核 / DeletionCoordinator]
-    UI --> Reconcile[ReconciliationCoordinator]
-    Review --> Actions[FavoriteCoordinator / PendingCoordinator]
-    Review --> Media[PhotoLoader / VideoPlayback]
-    Compare --> Vision[VisionFeaturePrinter]
-    Review --> Store[LocalStateStore / SwiftData]
-    Actions --> Store
-    Delete --> Store
-    Reconcile --> Store
-    Actions --> Photos[PhotoKit 系统图库]
-    Delete --> Photos
-    Reconcile --> Photos
-    Media --> Photos
-    Vision --> Photos
-```
+![LeafDay 架构：界面、回顾操作、删除核对、相似分析、本地状态与系统图库](docs/design/leafday-architecture.png)
+
+[查看矢量图 SVG](docs/design/leafday-architecture.svg) · [可编辑的 Archify 源文件](docs/design/leafday-architecture.archify.json)
 
 - **界面与操作分离**：`ReviewEntryView` 负责布局和动画；`ReviewActions` 统一协调待删、收藏、最近撤销与位置恢复；`ReviewSession` 管理稳定的片段顺序和游标。
 - **系统图库是媒体事实来源**：原片、视频与收藏归 PhotoKit；SwiftData 保存会话、本地待删意图和操作记录，显式保存失败会向上反馈。
