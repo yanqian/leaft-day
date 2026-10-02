@@ -4,7 +4,7 @@
   "meta": {
     "title": "LeafDay · 本地优先的 iOS 架构",
     "locale": "zh-CN",
-    "output": ".archify/architecture-leafday-20261003-001000/leafday.html",
+    "output": ".archify/architecture-leafday-top-entry-20261003-004000/leafday.html",
     "quality_profile": "showcase",
     "repository": {
       "url": "https://github.com/yanqian/leaft-day.git",
@@ -60,7 +60,7 @@
       "sublabel": "ReviewSession · ReviewActions",
       "pos": [
         40,
-        230
+        210
       ],
       "size": [
         250,
@@ -86,7 +86,7 @@
       "sublabel": "Deletion · Reconciliation",
       "pos": [
         400,
-        230
+        210
       ],
       "size": [
         250,
@@ -112,7 +112,7 @@
       "sublabel": "SimilarityEngine",
       "pos": [
         760,
-        230
+        210
       ],
       "size": [
         250,
@@ -138,7 +138,7 @@
       "sublabel": "LocalStateStore · SwiftData",
       "pos": [
         400,
-        440
+        410
       ],
       "size": [
         250,
@@ -159,7 +159,7 @@
       "sublabel": "PhotoLoader · VideoPlayback",
       "pos": [
         40,
-        440
+        410
       ],
       "size": [
         250,
@@ -185,7 +185,7 @@
       "sublabel": "VisionFeaturePrinter",
       "pos": [
         760,
-        440
+        410
       ],
       "size": [
         250,
@@ -206,7 +206,7 @@
       "sublabel": "PhotoKit · 原片 / 视频 / 收藏",
       "pos": [
         400,
-        680
+        610
       ],
       "size": [
         250,
@@ -236,7 +236,15 @@
     {
       "id": "ui-review",
       "from": "ui",
-      "to": "review"
+      "to": "review",
+      "fromSide": "left",
+      "toSide": "top",
+      "via": [
+        [
+          165,
+          70
+        ]
+      ]
     },
     {
       "id": "ui-delete",
@@ -246,13 +254,41 @@
     {
       "id": "ui-compare",
       "from": "ui",
-      "to": "compare"
+      "to": "compare",
+      "fromSide": "right",
+      "toSide": "top",
+      "via": [
+        [
+          885,
+          70
+        ]
+      ]
     },
     {
       "id": "review-store",
       "from": "review",
       "to": "store",
-      "label": "保存会话与待删"
+      "label": "保存会话与待删",
+      "fromSide": "right",
+      "toSide": "top",
+      "via": [
+        [
+          335,
+          250
+        ],
+        [
+          335,
+          340
+        ],
+        [
+          525,
+          340
+        ]
+      ],
+      "labelAt": [
+        430,
+        326
+      ]
     },
     {
       "id": "review-media",
@@ -264,7 +300,31 @@
       "id": "review-photos",
       "from": "review",
       "to": "photos",
-      "label": "收藏写入"
+      "label": "收藏写入",
+      "fromSide": "bottom",
+      "toSide": "top",
+      "via": [
+        [
+          165,
+          375
+        ],
+        [
+          350,
+          375
+        ],
+        [
+          350,
+          560
+        ],
+        [
+          525,
+          560
+        ]
+      ],
+      "labelAt": [
+        260,
+        361
+      ]
     },
     {
       "id": "delete-store",
@@ -276,7 +336,27 @@
       "id": "delete-photos",
       "from": "delete",
       "to": "photos",
-      "label": "确认后删除 / 核对"
+      "label": "确认后删除 / 核对",
+      "fromSide": "right",
+      "toSide": "top",
+      "via": [
+        [
+          700,
+          250
+        ],
+        [
+          700,
+          560
+        ],
+        [
+          525,
+          560
+        ]
+      ],
+      "labelAt": [
+        720,
+        350
+      ]
     },
     {
       "id": "compare-vision",
@@ -288,13 +368,37 @@
       "id": "vision-photos",
       "from": "vision",
       "to": "photos",
-      "label": "本地缩略图"
+      "label": "本地缩略图",
+      "fromSide": "bottom",
+      "toSide": "right",
+      "via": [
+        [
+          885,
+          650
+        ]
+      ],
+      "labelAt": [
+        770,
+        636
+      ]
     },
     {
       "id": "media-photos",
       "from": "media",
       "to": "photos",
-      "label": "按需读取"
+      "label": "按需读取",
+      "fromSide": "bottom",
+      "toSide": "left",
+      "via": [
+        [
+          165,
+          650
+        ]
+      ],
+      "labelAt": [
+        290,
+        636
+      ]
     }
   ],
   "cards": [

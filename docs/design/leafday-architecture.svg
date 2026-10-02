@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg viewBox="0 0 1050 828" role="img" lang="zh-CN" aria-labelledby="archify-diagram-title archify-diagram-description" data-preset="classic" data-quality-profile="showcase" data-reader-fit="intrinsic-height" data-reader-min-text="7.5" data-reader-primary-text="14" style="width: 1050px; height: 828px; min-width: 0px;" width="1050" height="828" xmlns="http://www.w3.org/2000/svg" data-theme="light"><style>
+<svg viewBox="0 0 1050 758" role="img" lang="zh-CN" aria-labelledby="archify-diagram-title archify-diagram-description" data-preset="classic" data-quality-profile="showcase" data-reader-fit="intrinsic-height" data-reader-min-text="7.5" data-reader-primary-text="14" style="width: 1050px; height: 758px; min-width: 0px;" width="1050" height="758" xmlns="http://www.w3.org/2000/svg" data-theme="light"><style>
 /*
 JetBrains Mono variable WOFF2 subsets from Google Fonts service revision v24.
 These fixed bytes are shared by the viewer and its SVG/raster exports.
@@ -403,7 +403,7 @@ svg[data-preset="editorial"][data-animation="trace"] [data-animate="node"] { ani
   50% { opacity: 0.48; transform: scale(0.78); }
 }
 :root, svg { --bg: #f4f5f7; --grid: #e9edf2; --canvas-dot: #d9dee5; --text: #111827; --text-muted: #5b6474; --text-dim: #9aa3b2; --text-faint: #6b7280; --panel: #ffffff; --panel-border: #e5e7eb; --lane-fill: rgba(248, 250, 252, 0.65); --lane-stroke: #cbd5e1; --arrow: #94a3b8; --arrow-emphasis: #059669; --mask: #ffffff; --frontend-fill: rgba(34, 211, 238, 0.15); --frontend-stroke: #0891b2; --backend-fill: rgba(52, 211, 153, 0.18); --backend-stroke: #059669; --database-fill: rgba(167, 139, 250, 0.2); --database-stroke: #7c3aed; --cloud-fill: rgba(251, 191, 36, 0.18); --cloud-stroke: #d97706; --security-fill: rgba(251, 113, 133, 0.15); --security-stroke: #e11d48; --messagebus-fill: rgba(251, 146, 60, 0.15); --messagebus-stroke: #ea580c; --external-fill: rgba(148, 163, 184, 0.18); --external-stroke: #64748b; --toolbar-bg: rgba(255, 255, 255, 0.92); --toolbar-border: #cbd5e1; --toolbar-text: #334155; --toolbar-hover: #ffffff; --toolbar-menu-bg: #ffffff; }
-</style><rect x="0" y="0" width="1050" height="828" fill="#f4f5f7"/>
+</style><rect x="0" y="0" width="1050" height="758" fill="#f4f5f7"/>
         <title id="archify-diagram-title">LeafDay · 本地优先的 iOS 架构</title>
         <desc id="archify-diagram-description">由 Archify 生成的架构图。</desc>
         <!-- Definitions -->
@@ -432,50 +432,29 @@ svg[data-preset="editorial"][data-animation="trace"] [data-animate="node"] { ani
 
 
         <!-- Connection paths (before components for correct z-order) -->
-        <g data-graph-role="automatic-crossover" style="--step:0">
-          <path data-graph-role="automatic-crossover-underlay" d="M 400 70 L 353 70 Q 345 70 345 78 L 345 255 Q 345 263 337 263 L 290 263" fill="none" stroke="var(--mask)" stroke-width="5.5" stroke-linecap="round" stroke-linejoin="round" pointer-events="none"/>
-          <path data-edge-from="ui" data-edge-to="review" data-edge-key="0" data-edge-id="ui-review" data-composition-points="400,70;345,70;345,263;290,263" data-composition-crossover="halo" data-composition-independent="true" d="M 400 70 L 353 70 Q 345 70 345 78 L 345 255 Q 345 263 337 263 L 290 263" class="a-default" stroke-width="1.5" marker-end="url(#arrowhead)"/>
-        </g>
+        <path data-edge-from="ui" data-edge-to="review" data-edge-key="0" data-edge-id="ui-review" data-composition-points="400,70;165,70;165,210" d="M 400 70 L 173 70 Q 165 70 165 78 L 165 210" class="a-default" stroke-width="1.5" marker-end="url(#arrowhead)"/>
         <g data-graph-role="automatic-crossover" style="--step:1">
-          <path data-graph-role="automatic-crossover-underlay" d="M 525 110 L 525 230" fill="none" stroke="var(--mask)" stroke-width="5.5" stroke-linecap="round" stroke-linejoin="round" pointer-events="none"/>
-          <path data-edge-from="ui" data-edge-to="delete" data-edge-key="1" data-edge-id="ui-delete" data-composition-points="525,110;525,230" data-composition-crossover="halo" data-composition-independent="true" d="M 525 110 L 525 230" class="a-default" stroke-width="1.5" marker-end="url(#arrowhead)"/>
+          <path data-graph-role="automatic-crossover-underlay" d="M 525 110 L 525 210" fill="none" stroke="var(--mask)" stroke-width="5.5" stroke-linecap="round" stroke-linejoin="round" pointer-events="none"/>
+          <path data-edge-from="ui" data-edge-to="delete" data-edge-key="1" data-edge-id="ui-delete" data-composition-points="525,110;525,210" data-composition-crossover="halo" data-composition-independent="true" d="M 525 110 L 525 210" class="a-default" stroke-width="1.5" marker-end="url(#arrowhead)"/>
         </g>
-        <g data-graph-role="automatic-crossover" style="--step:2">
-          <path data-graph-role="automatic-crossover-underlay" d="M 650 70 L 697 70 Q 705 70 705 78 L 705 262 Q 705 270 713 270 L 760 270" fill="none" stroke="var(--mask)" stroke-width="5.5" stroke-linecap="round" stroke-linejoin="round" pointer-events="none"/>
-          <path data-edge-from="ui" data-edge-to="compare" data-edge-key="2" data-edge-id="ui-compare" data-composition-points="650,70;705,70;705,270;760,270" data-composition-crossover="halo" data-composition-independent="true" d="M 650 70 L 697 70 Q 705 70 705 78 L 705 262 Q 705 270 713 270 L 760 270" class="a-default" stroke-width="1.5" marker-end="url(#arrowhead)"/>
-        </g>
-        <g data-graph-role="automatic-crossover" style="--step:3">
-          <path data-graph-role="automatic-crossover-underlay" d="M 290 277 L 306 277 Q 314 277 314 285 L 314 408 Q 314 416 322 416 L 510 416 Q 518 416 518 424 L 518 440" fill="none" stroke="var(--mask)" stroke-width="5.5" stroke-linecap="round" stroke-linejoin="round" pointer-events="none"/>
-          <path data-edge-from="review" data-edge-to="store" data-edge-label="保存会话与待删" data-edge-key="3" data-edge-id="review-store" data-composition-points="290,277;314,277;314,416;518,416;518,440" data-composition-crossover="halo" data-composition-independent="true" d="M 290 277 L 306 277 Q 314 277 314 285 L 314 408 Q 314 416 322 416 L 510 416 Q 518 416 518 424 L 518 440" class="a-default" stroke-width="1.5" marker-end="url(#arrowhead)"/>
-        </g>
+        <path data-edge-from="ui" data-edge-to="compare" data-edge-key="2" data-edge-id="ui-compare" data-composition-points="650,70;885,70;885,210" d="M 650 70 L 877 70 Q 885 70 885 78 L 885 210" class="a-default" stroke-width="1.5" marker-end="url(#arrowhead)"/>
+        <path data-edge-from="review" data-edge-to="store" data-edge-label="保存会话与待删" data-edge-key="3" data-edge-id="review-store" data-composition-points="290,250;335,250;335,340;525,340;525,410" d="M 290 250 L 327 250 Q 335 250 335 258 L 335 332 Q 335 340 343 340 L 517 340 Q 525 340 525 348 L 525 410" class="a-default" stroke-width="1.5" marker-end="url(#arrowhead)"/>
         <g data-graph-role="automatic-crossover" style="--step:4">
-          <path data-graph-role="automatic-crossover-underlay" d="M 158 310 L 158 440" fill="none" stroke="var(--mask)" stroke-width="5.5" stroke-linecap="round" stroke-linejoin="round" pointer-events="none"/>
-          <path data-edge-from="review" data-edge-to="media" data-edge-label="浏览" data-edge-key="4" data-edge-id="review-media" data-composition-points="158,310;158,440" data-composition-crossover="halo" data-composition-independent="true" d="M 158 310 L 158 440" class="a-default" stroke-width="1.5" marker-end="url(#arrowhead)"/>
+          <path data-graph-role="automatic-crossover-underlay" d="M 165 290 L 165 410" fill="none" stroke="var(--mask)" stroke-width="5.5" stroke-linecap="round" stroke-linejoin="round" pointer-events="none"/>
+          <path data-edge-from="review" data-edge-to="media" data-edge-label="浏览" data-edge-key="4" data-edge-id="review-media" data-composition-points="165,290;165,410" data-composition-crossover="halo" data-composition-independent="true" d="M 165 290 L 165 410" class="a-default" stroke-width="1.5" marker-end="url(#arrowhead)"/>
         </g>
-        <g data-graph-role="automatic-crossover" style="--step:5">
-          <path data-graph-role="automatic-crossover-underlay" d="M 172 310 L 172 429 Q 172 437 180 437 L 389 437 Q 397 437 397 445 L 397 648 Q 397 656 405 656 L 510 656 Q 518 656 518 664 L 518 680" fill="none" stroke="var(--mask)" stroke-width="5.5" stroke-linecap="round" stroke-linejoin="round" pointer-events="none"/>
-          <path data-edge-from="review" data-edge-to="photos" data-edge-label="收藏写入" data-edge-key="5" data-edge-id="review-photos" data-composition-points="172,310;172,437;397,437;397,656;518,656;518,680" data-composition-crossover="halo" data-composition-independent="true" d="M 172 310 L 172 429 Q 172 437 180 437 L 389 437 Q 397 437 397 445 L 397 648 Q 397 656 405 656 L 510 656 Q 518 656 518 664 L 518 680" class="a-default" stroke-width="1.5" marker-end="url(#arrowhead)"/>
-        </g>
+        <path data-edge-from="review" data-edge-to="photos" data-edge-label="收藏写入" data-edge-key="5" data-edge-id="review-photos" data-composition-points="165,290;165,375;350,375;350,560;525,560;525,610" d="M 165 290 L 165 367 Q 165 375 173 375 L 342 375 Q 350 375 350 383 L 350 552 Q 350 560 358 560 L 517 560 Q 525 560 525 568 L 525 610" class="a-default" stroke-width="1.5" marker-end="url(#arrowhead)"/>
         <g data-graph-role="automatic-crossover" style="--step:6">
-          <path data-graph-role="automatic-crossover-underlay" d="M 532 310 L 532 440" fill="none" stroke="var(--mask)" stroke-width="5.5" stroke-linecap="round" stroke-linejoin="round" pointer-events="none"/>
-          <path data-edge-from="delete" data-edge-to="store" data-edge-label="记录操作结果" data-edge-key="6" data-edge-id="delete-store" data-composition-points="532,310;532,440" data-composition-crossover="halo" data-composition-independent="true" d="M 532 310 L 532 440" class="a-default" stroke-width="1.5" marker-end="url(#arrowhead)"/>
+          <path data-graph-role="automatic-crossover-underlay" d="M 525 290 L 525 410" fill="none" stroke="var(--mask)" stroke-width="5.5" stroke-linecap="round" stroke-linejoin="round" pointer-events="none"/>
+          <path data-edge-from="delete" data-edge-to="store" data-edge-label="记录操作结果" data-edge-key="6" data-edge-id="delete-store" data-composition-points="525,290;525,410" data-composition-crossover="halo" data-composition-independent="true" d="M 525 290 L 525 410" class="a-default" stroke-width="1.5" marker-end="url(#arrowhead)"/>
         </g>
-        <g data-graph-role="automatic-crossover" style="--step:7">
-          <path data-graph-role="automatic-crossover-underlay" d="M 650 270 L 666 270 Q 674 270 674 278 L 674 698 Q 674 706 666 706 L 650 706" fill="none" stroke="var(--mask)" stroke-width="5.5" stroke-linecap="round" stroke-linejoin="round" pointer-events="none"/>
-          <path data-edge-from="delete" data-edge-to="photos" data-edge-label="确认后删除 / 核对" data-edge-key="7" data-edge-id="delete-photos" data-composition-points="650,270;674,270;674,706;650,706" data-composition-crossover="halo" data-composition-independent="true" d="M 650 270 L 666 270 Q 674 270 674 278 L 674 698 Q 674 706 666 706 L 650 706" class="a-default" stroke-width="1.5" marker-end="url(#arrowhead)"/>
-        </g>
+        <path data-edge-from="delete" data-edge-to="photos" data-edge-label="确认后删除 / 核对" data-edge-key="7" data-edge-id="delete-photos" data-composition-points="650,250;700,250;700,560;525,560;525,610" d="M 650 250 L 692 250 Q 700 250 700 258 L 700 552 Q 700 560 692 560 L 533 560 Q 525 560 525 568 L 525 610" class="a-default" stroke-width="1.5" marker-end="url(#arrowhead)"/>
         <g data-graph-role="automatic-crossover" style="--step:8">
-          <path data-graph-role="automatic-crossover-underlay" d="M 885 310 L 885 440" fill="none" stroke="var(--mask)" stroke-width="5.5" stroke-linecap="round" stroke-linejoin="round" pointer-events="none"/>
-          <path data-edge-from="compare" data-edge-to="vision" data-edge-label="生成候选" data-edge-key="8" data-edge-id="compare-vision" data-composition-points="885,310;885,440" data-composition-crossover="halo" data-composition-independent="true" d="M 885 310 L 885 440" class="a-default" stroke-width="1.5" marker-end="url(#arrowhead)"/>
+          <path data-graph-role="automatic-crossover-underlay" d="M 885 290 L 885 410" fill="none" stroke="var(--mask)" stroke-width="5.5" stroke-linecap="round" stroke-linejoin="round" pointer-events="none"/>
+          <path data-edge-from="compare" data-edge-to="vision" data-edge-label="生成候选" data-edge-key="8" data-edge-id="compare-vision" data-composition-points="885,290;885,410" data-composition-crossover="halo" data-composition-independent="true" d="M 885 290 L 885 410" class="a-default" stroke-width="1.5" marker-end="url(#arrowhead)"/>
         </g>
-        <g data-graph-role="automatic-crossover" style="--step:9">
-          <path data-graph-role="automatic-crossover-underlay" d="M 760 480 L 713 480 Q 705 480 705 488 L 705 712 Q 705 720 697 720 L 650 720" fill="none" stroke="var(--mask)" stroke-width="5.5" stroke-linecap="round" stroke-linejoin="round" pointer-events="none"/>
-          <path data-edge-from="vision" data-edge-to="photos" data-edge-label="本地缩略图" data-edge-key="9" data-edge-id="vision-photos" data-composition-points="760,480;705,480;705,720;650,720" data-composition-crossover="halo" data-composition-independent="true" d="M 760 480 L 713 480 Q 705 480 705 488 L 705 712 Q 705 720 697 720 L 650 720" class="a-default" stroke-width="1.5" marker-end="url(#arrowhead)"/>
-        </g>
-        <g data-graph-role="automatic-crossover" style="--step:10">
-          <path data-graph-role="automatic-crossover-underlay" d="M 290 480 L 337 480 Q 345 480 345 488 L 345 712 Q 345 720 353 720 L 400 720" fill="none" stroke="var(--mask)" stroke-width="5.5" stroke-linecap="round" stroke-linejoin="round" pointer-events="none"/>
-          <path data-edge-from="media" data-edge-to="photos" data-edge-label="按需读取" data-edge-key="10" data-edge-id="media-photos" data-composition-points="290,480;345,480;345,720;400,720" data-composition-crossover="halo" data-composition-independent="true" d="M 290 480 L 337 480 Q 345 480 345 488 L 345 712 Q 345 720 353 720 L 400 720" class="a-default" stroke-width="1.5" marker-end="url(#arrowhead)"/>
-        </g>
+        <path data-edge-from="vision" data-edge-to="photos" data-edge-label="本地缩略图" data-edge-key="9" data-edge-id="vision-photos" data-composition-points="885,490;885,650;650,650" d="M 885 490 L 885 642 Q 885 650 877 650 L 650 650" class="a-default" stroke-width="1.5" marker-end="url(#arrowhead)"/>
+        <path data-edge-from="media" data-edge-to="photos" data-edge-label="按需读取" data-edge-key="10" data-edge-id="media-photos" data-composition-points="165,490;165,650;400,650" d="M 165 490 L 165 642 Q 165 650 173 650 L 400 650" class="a-default" stroke-width="1.5" marker-end="url(#arrowhead)"/>
 
         <!-- Components -->
         <g id="node-ui" data-node-id="ui" data-node-label="界面与设计系统" tabindex="0" role="button" aria-label="聚焦界面与设计系统，SwiftUI · PhotoGlass, 架构组件" aria-pressed="false" data-node-kind="frontend" data-node-sublabel="SwiftUI · PhotoGlass" data-node-context="架构组件">
@@ -494,81 +473,81 @@ svg[data-preset="editorial"][data-animation="trace"] [data-animate="node"] { ani
 
         <g id="node-review" data-node-id="review" data-node-label="回顾与用户操作" tabindex="0" role="button" aria-label="聚焦回顾与用户操作，ReviewSession · ReviewActions, 架构组件" aria-pressed="false" data-node-kind="backend" data-node-sublabel="ReviewSession · ReviewActions" data-node-context="架构组件">
           <title>回顾与用户操作 · ReviewSession · ReviewActions · 架构组件</title>
-          <rect x="40" y="230" width="250" height="80" rx="6" class="c-mask"/>
-          <rect x="40" y="230" width="250" height="80" rx="6" class="c-backend" stroke-width="1.5"/>
-          <g aria-hidden="true" data-semantic-sigil="backend" class="semantic-sigil s-backend" transform="translate(46 236) scale(0.6875)">
+          <rect x="40" y="210" width="250" height="80" rx="6" class="c-mask"/>
+          <rect x="40" y="210" width="250" height="80" rx="6" class="c-backend" stroke-width="1.5"/>
+          <g aria-hidden="true" data-semantic-sigil="backend" class="semantic-sigil s-backend" transform="translate(46 216) scale(0.6875)">
             <path d="M6 3 3 8l3 5M10 3l3 5-3 5"/>
           </g>
-          <text data-node-label="" x="165" y="268" class="t-primary" font-size="11" font-weight="600" text-anchor="middle">回顾与用户操作</text>
-        <text x="165" y="284" class="t-muted" font-size="9" text-anchor="middle">ReviewSession · ReviewActions</text>
+          <text data-node-label="" x="165" y="248" class="t-primary" font-size="11" font-weight="600" text-anchor="middle">回顾与用户操作</text>
+        <text x="165" y="264" class="t-muted" font-size="9" text-anchor="middle">ReviewSession · ReviewActions</text>
         </g>
 
         <g id="node-delete" data-node-id="delete" data-node-label="删除复核与操作核对" tabindex="0" role="button" aria-label="聚焦删除复核与操作核对，Deletion · Reconciliation, 架构组件" aria-pressed="false" data-node-kind="backend" data-node-sublabel="Deletion · Reconciliation" data-node-context="架构组件">
           <title>删除复核与操作核对 · Deletion · Reconciliation · 架构组件</title>
-          <rect x="400" y="230" width="250" height="80" rx="6" class="c-mask"/>
-          <rect x="400" y="230" width="250" height="80" rx="6" class="c-backend" stroke-width="1.5"/>
-          <g aria-hidden="true" data-semantic-sigil="backend" class="semantic-sigil s-backend" transform="translate(406 236) scale(0.6875)">
+          <rect x="400" y="210" width="250" height="80" rx="6" class="c-mask"/>
+          <rect x="400" y="210" width="250" height="80" rx="6" class="c-backend" stroke-width="1.5"/>
+          <g aria-hidden="true" data-semantic-sigil="backend" class="semantic-sigil s-backend" transform="translate(406 216) scale(0.6875)">
             <path d="M6 3 3 8l3 5M10 3l3 5-3 5"/>
           </g>
-          <text data-node-label="" x="525" y="268" class="t-primary" font-size="11" font-weight="600" text-anchor="middle">删除复核与操作核对</text>
-        <text x="525" y="284" class="t-muted" font-size="9" text-anchor="middle">Deletion · Reconciliation</text>
+          <text data-node-label="" x="525" y="248" class="t-primary" font-size="11" font-weight="600" text-anchor="middle">删除复核与操作核对</text>
+        <text x="525" y="264" class="t-muted" font-size="9" text-anchor="middle">Deletion · Reconciliation</text>
         </g>
 
         <g id="node-compare" data-node-id="compare" data-node-label="人工相似比较" tabindex="0" role="button" aria-label="聚焦人工相似比较，SimilarityEngine, 架构组件" aria-pressed="false" data-node-kind="backend" data-node-sublabel="SimilarityEngine" data-node-context="架构组件">
           <title>人工相似比较 · SimilarityEngine · 架构组件</title>
-          <rect x="760" y="230" width="250" height="80" rx="6" class="c-mask"/>
-          <rect x="760" y="230" width="250" height="80" rx="6" class="c-backend" stroke-width="1.5"/>
-          <g aria-hidden="true" data-semantic-sigil="backend" class="semantic-sigil s-backend" transform="translate(766 236) scale(0.6875)">
+          <rect x="760" y="210" width="250" height="80" rx="6" class="c-mask"/>
+          <rect x="760" y="210" width="250" height="80" rx="6" class="c-backend" stroke-width="1.5"/>
+          <g aria-hidden="true" data-semantic-sigil="backend" class="semantic-sigil s-backend" transform="translate(766 216) scale(0.6875)">
             <path d="M6 3 3 8l3 5M10 3l3 5-3 5"/>
           </g>
-          <text data-node-label="" x="885" y="268" class="t-primary" font-size="11" font-weight="600" text-anchor="middle">人工相似比较</text>
-        <text x="885" y="284" class="t-muted" font-size="9" text-anchor="middle">SimilarityEngine</text>
+          <text data-node-label="" x="885" y="248" class="t-primary" font-size="11" font-weight="600" text-anchor="middle">人工相似比较</text>
+        <text x="885" y="264" class="t-muted" font-size="9" text-anchor="middle">SimilarityEngine</text>
         </g>
 
         <g id="node-store" data-node-id="store" data-node-label="本地用户状态" tabindex="0" role="button" aria-label="聚焦本地用户状态，LocalStateStore · SwiftData, 架构组件" aria-pressed="false" data-node-kind="database" data-node-sublabel="LocalStateStore · SwiftData" data-node-context="架构组件">
           <title>本地用户状态 · LocalStateStore · SwiftData · 架构组件</title>
-          <rect x="400" y="440" width="250" height="80" rx="6" class="c-mask"/>
-          <rect x="400" y="440" width="250" height="80" rx="6" class="c-database" stroke-width="1.5"/>
-          <g aria-hidden="true" data-semantic-sigil="database" class="semantic-sigil s-database" transform="translate(406 446) scale(0.6875)">
+          <rect x="400" y="410" width="250" height="80" rx="6" class="c-mask"/>
+          <rect x="400" y="410" width="250" height="80" rx="6" class="c-database" stroke-width="1.5"/>
+          <g aria-hidden="true" data-semantic-sigil="database" class="semantic-sigil s-database" transform="translate(406 416) scale(0.6875)">
             <ellipse cx="8" cy="4" rx="5" ry="2"/>
             <path d="M3 4v8c0 1.1 2.2 2 5 2s5-.9 5-2V4M3 8c0 1.1 2.2 2 5 2s5-.9 5-2"/>
           </g>
-          <text data-node-label="" x="525" y="478" class="t-primary" font-size="11" font-weight="600" text-anchor="middle">本地用户状态</text>
-        <text x="525" y="494" class="t-muted" font-size="9" text-anchor="middle">LocalStateStore · SwiftData</text>
+          <text data-node-label="" x="525" y="448" class="t-primary" font-size="11" font-weight="600" text-anchor="middle">本地用户状态</text>
+        <text x="525" y="464" class="t-muted" font-size="9" text-anchor="middle">LocalStateStore · SwiftData</text>
         </g>
 
         <g id="node-media" data-node-id="media" data-node-label="按需媒体加载" tabindex="0" role="button" aria-label="聚焦按需媒体加载，PhotoLoader · VideoPlayback, 架构组件" aria-pressed="false" data-node-kind="backend" data-node-sublabel="PhotoLoader · VideoPlayback" data-node-context="架构组件">
           <title>按需媒体加载 · PhotoLoader · VideoPlayback · 架构组件</title>
-          <rect x="40" y="440" width="250" height="80" rx="6" class="c-mask"/>
-          <rect x="40" y="440" width="250" height="80" rx="6" class="c-backend" stroke-width="1.5"/>
-          <g aria-hidden="true" data-semantic-sigil="backend" class="semantic-sigil s-backend" transform="translate(46 446) scale(0.6875)">
+          <rect x="40" y="410" width="250" height="80" rx="6" class="c-mask"/>
+          <rect x="40" y="410" width="250" height="80" rx="6" class="c-backend" stroke-width="1.5"/>
+          <g aria-hidden="true" data-semantic-sigil="backend" class="semantic-sigil s-backend" transform="translate(46 416) scale(0.6875)">
             <path d="M6 3 3 8l3 5M10 3l3 5-3 5"/>
           </g>
-          <text data-node-label="" x="165" y="478" class="t-primary" font-size="11" font-weight="600" text-anchor="middle">按需媒体加载</text>
-        <text x="165" y="494" class="t-muted" font-size="9" text-anchor="middle">PhotoLoader · VideoPlayback</text>
+          <text data-node-label="" x="165" y="448" class="t-primary" font-size="11" font-weight="600" text-anchor="middle">按需媒体加载</text>
+        <text x="165" y="464" class="t-muted" font-size="9" text-anchor="middle">PhotoLoader · VideoPlayback</text>
         </g>
 
         <g id="node-vision" data-node-id="vision" data-node-label="设备端特征分析" tabindex="0" role="button" aria-label="聚焦设备端特征分析，VisionFeaturePrinter, 架构组件" aria-pressed="false" data-node-kind="backend" data-node-sublabel="VisionFeaturePrinter" data-node-context="架构组件">
           <title>设备端特征分析 · VisionFeaturePrinter · 架构组件</title>
-          <rect x="760" y="440" width="250" height="80" rx="6" class="c-mask"/>
-          <rect x="760" y="440" width="250" height="80" rx="6" class="c-backend" stroke-width="1.5"/>
-          <g aria-hidden="true" data-semantic-sigil="backend" class="semantic-sigil s-backend" transform="translate(766 446) scale(0.6875)">
+          <rect x="760" y="410" width="250" height="80" rx="6" class="c-mask"/>
+          <rect x="760" y="410" width="250" height="80" rx="6" class="c-backend" stroke-width="1.5"/>
+          <g aria-hidden="true" data-semantic-sigil="backend" class="semantic-sigil s-backend" transform="translate(766 416) scale(0.6875)">
             <path d="M6 3 3 8l3 5M10 3l3 5-3 5"/>
           </g>
-          <text data-node-label="" x="885" y="478" class="t-primary" font-size="11" font-weight="600" text-anchor="middle">设备端特征分析</text>
-        <text x="885" y="494" class="t-muted" font-size="9" text-anchor="middle">VisionFeaturePrinter</text>
+          <text data-node-label="" x="885" y="448" class="t-primary" font-size="11" font-weight="600" text-anchor="middle">设备端特征分析</text>
+        <text x="885" y="464" class="t-muted" font-size="9" text-anchor="middle">VisionFeaturePrinter</text>
         </g>
 
         <g id="node-photos" data-node-id="photos" data-node-label="系统照片库" tabindex="0" role="button" aria-label="聚焦系统照片库，PhotoKit · 原片 / 视频 / 收藏, 架构组件" aria-pressed="false" data-node-kind="external" data-node-sublabel="PhotoKit · 原片 / 视频 / 收藏" data-node-context="架构组件">
           <title>系统照片库 · PhotoKit · 原片 / 视频 / 收藏 · 架构组件</title>
-          <rect x="400" y="680" width="250" height="80" rx="6" class="c-mask"/>
-          <rect x="400" y="680" width="250" height="80" rx="6" class="c-external" stroke-width="1.5"/>
-          <g aria-hidden="true" data-semantic-sigil="external" class="semantic-sigil s-external" transform="translate(406 686) scale(0.6875)">
+          <rect x="400" y="610" width="250" height="80" rx="6" class="c-mask"/>
+          <rect x="400" y="610" width="250" height="80" rx="6" class="c-external" stroke-width="1.5"/>
+          <g aria-hidden="true" data-semantic-sigil="external" class="semantic-sigil s-external" transform="translate(406 616) scale(0.6875)">
             <rect x="2.5" y="5" width="8.5" height="8" rx="1.5"/>
             <path d="M8 2.5h5.5V8M13.5 2.5 7.5 8.5"/>
           </g>
-          <text data-node-label="" x="525" y="718" class="t-primary" font-size="11" font-weight="600" text-anchor="middle">系统照片库</text>
-        <text x="525" y="734" class="t-muted" font-size="9" text-anchor="middle">PhotoKit · 原片 / 视频 / 收藏</text>
+          <text data-node-label="" x="525" y="648" class="t-primary" font-size="11" font-weight="600" text-anchor="middle">系统照片库</text>
+        <text x="525" y="664" class="t-muted" font-size="9" text-anchor="middle">PhotoKit · 原片 / 视频 / 收藏</text>
         </g>
 
         <!-- Connection labels -->
@@ -576,36 +555,36 @@ svg[data-preset="editorial"][data-animation="trace"] [data-animate="node"] { ani
 
 
         <g data-edge-from="review" data-edge-to="store" data-edge-label="保存会话与待删" data-edge-key="3" data-edge-id="review-store">
-          <rect x="275.4" y="326.5" width="77.2" height="14" rx="3" class="c-mask"/>
-          <text x="314" y="336.5" class="t-edge-default" font-size="8" text-anchor="middle">保存会话与待删</text>
+          <rect x="391.4" y="316" width="77.2" height="14" rx="3" class="c-mask"/>
+          <text x="430" y="326" class="t-edge-default" font-size="8" text-anchor="middle">保存会话与待删</text>
         </g>
         <g data-edge-from="review" data-edge-to="media" data-edge-label="浏览" data-edge-key="4" data-edge-id="review-media">
-          <rect x="122" y="368" width="30" height="14" rx="3" class="c-mask"/>
-          <text x="137" y="378" class="t-edge-default" font-size="8" text-anchor="middle">浏览</text>
+          <rect x="129" y="343" width="30" height="14" rx="3" class="c-mask"/>
+          <text x="144" y="353" class="t-edge-default" font-size="8" text-anchor="middle">浏览</text>
         </g>
         <g data-edge-from="review" data-edge-to="photos" data-edge-label="收藏写入" data-edge-key="5" data-edge-id="review-photos">
-          <rect x="260.3" y="417" width="48.4" height="14" rx="3" class="c-mask"/>
-          <text x="284.5" y="427" class="t-edge-default" font-size="8" text-anchor="middle">收藏写入</text>
+          <rect x="235.8" y="351" width="48.4" height="14" rx="3" class="c-mask"/>
+          <text x="260" y="361" class="t-edge-default" font-size="8" text-anchor="middle">收藏写入</text>
         </g>
         <g data-edge-from="delete" data-edge-to="store" data-edge-label="记录操作结果" data-edge-key="6" data-edge-id="delete-store">
-          <rect x="458.4" y="368" width="67.6" height="14" rx="3" class="c-mask"/>
-          <text x="492.2" y="378" class="t-edge-default" font-size="8" text-anchor="middle">记录操作结果</text>
+          <rect x="531" y="343" width="67.6" height="14" rx="3" class="c-mask"/>
+          <text x="564.8" y="353" class="t-edge-default" font-size="8" text-anchor="middle">记录操作结果</text>
         </g>
         <g data-edge-from="delete" data-edge-to="photos" data-edge-label="确认后删除 / 核对" data-edge-key="7" data-edge-id="delete-photos">
-          <rect x="576.4000000000001" y="372" width="91.6" height="14" rx="3" class="c-mask"/>
-          <text x="622.2" y="382" class="t-edge-default" font-size="8" text-anchor="middle">确认后删除 / 核对</text>
+          <rect x="674.2" y="340" width="91.6" height="14" rx="3" class="c-mask"/>
+          <text x="720" y="350" class="t-edge-default" font-size="8" text-anchor="middle">确认后删除 / 核对</text>
         </g>
         <g data-edge-from="compare" data-edge-to="vision" data-edge-label="生成候选" data-edge-key="8" data-edge-id="compare-vision">
-          <rect x="830.5999999999999" y="368" width="48.4" height="14" rx="3" class="c-mask"/>
-          <text x="854.8" y="378" class="t-edge-default" font-size="8" text-anchor="middle">生成候选</text>
+          <rect x="830.5999999999999" y="343" width="48.4" height="14" rx="3" class="c-mask"/>
+          <text x="854.8" y="353" class="t-edge-default" font-size="8" text-anchor="middle">生成候选</text>
         </g>
         <g data-edge-from="vision" data-edge-to="photos" data-edge-label="本地缩略图" data-edge-key="9" data-edge-id="vision-photos">
-          <rect x="711" y="593" width="58" height="14" rx="3" class="c-mask"/>
-          <text x="740" y="603" class="t-edge-default" font-size="8" text-anchor="middle">本地缩略图</text>
+          <rect x="741" y="626" width="58" height="14" rx="3" class="c-mask"/>
+          <text x="770" y="636" class="t-edge-default" font-size="8" text-anchor="middle">本地缩略图</text>
         </g>
         <g data-edge-from="media" data-edge-to="photos" data-edge-label="按需读取" data-edge-key="10" data-edge-id="media-photos">
-          <rect x="320.8" y="580" width="48.4" height="14" rx="3" class="c-mask"/>
-          <text x="345" y="590" class="t-edge-default" font-size="8" text-anchor="middle">按需读取</text>
+          <rect x="265.8" y="626" width="48.4" height="14" rx="3" class="c-mask"/>
+          <text x="290" y="636" class="t-edge-default" font-size="8" text-anchor="middle">按需读取</text>
         </g>
 
         <!-- Boundary labels (foreground masks keep routes out of titles) -->
@@ -613,22 +592,22 @@ svg[data-preset="editorial"][data-animation="trace"] [data-animate="node"] { ani
 
         <!-- Legend -->
         <g data-legend="">
-          <text x="40" y="792" class="t-primary" font-size="12" font-weight="650">图例</text>
-          <g data-legend-semantic-kind="frontend" data-legend-x="40" data-legend-baseline="812" data-legend-width="73">
-            <rect x="40" y="803" width="16" height="10" rx="2.5" class="c-frontend" stroke-width="1"/>
-            <text x="62" y="812" class="t-muted" font-size="10" font-weight="500">界面层</text>
+          <text x="40" y="722" class="t-primary" font-size="12" font-weight="650">图例</text>
+          <g data-legend-semantic-kind="frontend" data-legend-x="40" data-legend-baseline="742" data-legend-width="73">
+            <rect x="40" y="733" width="16" height="10" rx="2.5" class="c-frontend" stroke-width="1"/>
+            <text x="62" y="742" class="t-muted" font-size="10" font-weight="500">界面层</text>
           </g>
-          <g data-legend-semantic-kind="backend" data-legend-x="135" data-legend-baseline="812" data-legend-width="93">
-            <rect x="135" y="803" width="16" height="10" rx="2.5" class="c-backend" stroke-width="1"/>
-            <text x="157" y="812" class="t-muted" font-size="10" font-weight="500">业务与适配</text>
+          <g data-legend-semantic-kind="backend" data-legend-x="135" data-legend-baseline="742" data-legend-width="93">
+            <rect x="135" y="733" width="16" height="10" rx="2.5" class="c-backend" stroke-width="1"/>
+            <text x="157" y="742" class="t-muted" font-size="10" font-weight="500">业务与适配</text>
           </g>
-          <g data-legend-semantic-kind="database" data-legend-x="250" data-legend-baseline="812" data-legend-width="93">
-            <rect x="250" y="803" width="16" height="10" rx="2.5" class="c-database" stroke-width="1"/>
-            <text x="272" y="812" class="t-muted" font-size="10" font-weight="500">本地持久化</text>
+          <g data-legend-semantic-kind="database" data-legend-x="250" data-legend-baseline="742" data-legend-width="93">
+            <rect x="250" y="733" width="16" height="10" rx="2.5" class="c-database" stroke-width="1"/>
+            <text x="272" y="742" class="t-muted" font-size="10" font-weight="500">本地持久化</text>
           </g>
-          <g data-legend-semantic-kind="external" data-legend-x="365" data-legend-baseline="812" data-legend-width="83">
-            <rect x="365" y="803" width="16" height="10" rx="2.5" class="c-external" stroke-width="1"/>
-            <text x="387" y="812" class="t-muted" font-size="10" font-weight="500">系统服务</text>
+          <g data-legend-semantic-kind="external" data-legend-x="365" data-legend-baseline="742" data-legend-width="83">
+            <rect x="365" y="733" width="16" height="10" rx="2.5" class="c-external" stroke-width="1"/>
+            <text x="387" y="742" class="t-muted" font-size="10" font-weight="500">系统服务</text>
           </g>
         </g>
       </svg>
