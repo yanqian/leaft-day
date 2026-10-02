@@ -7,3 +7,6 @@ DerivedData/
 xcuserdata/
 *.xcuserstate
 Fixtures/generated/
+
+# Private local screenshots; never commit.
+/app-screenshot/
