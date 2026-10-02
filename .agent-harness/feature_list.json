@@ -996,6 +996,36 @@
       "last_error": "",
       "priority": "P0",
       "requirement_refs": "R27"
+    },
+    {
+      "id": "F035",
+      "title": "回顾操作流程职责收拢",
+      "description": "R28：将待删、收藏、撤销与位置恢复编排收拢为可测试的回顾操作 module，保持现有行为。",
+      "acceptance": [
+        "生产回顾页通过独立操作 module 执行待删、收藏、撤销和恢复，View 不再拥有持久化调用顺序及撤销目标；保留底层领域/存储与实际删除权限。",
+        "待删前进、收藏与最近动作撤销、跨会话定位及部分失败反馈/重试与原行为一致，保留动画、文案、作用域、无障碍标识及计数。",
+        "用直接调用生产流程的测试覆盖真实磁盘失败/恢复、动画等待期间重复动作与退场、迟到完成、跨会话撤销和外部收藏变化；不以手工复制调用顺序代替。",
+        "更新架构与验证说明；统一 changed 验证通过，独立 Evaluator fresh root 成功并检查相关 UI 证据；F018保持暂缓。"
+      ],
+      "passes": true,
+      "status": "done",
+      "attempts": 1,
+      "last_error": "",
+      "priority": "P0",
+      "depends_on": [
+        "F023",
+        "F032",
+        "F034"
+      ],
+      "requirement_refs": "R28",
+      "implementation_paths": [
+        "SwipeGo/Features/Review/ReviewActions.swift",
+        "SwipeGo/Features/Review/ReviewEntryView.swift",
+        "SwipeGoTests/ReviewActionsTests.swift",
+        "docs/architecture.md",
+        "docs/verification.md"
+      ],
+      "verification_surface": "真实存储和受控异步动作流程测试、既有回顾/收藏/待删 UI、独立 fresh root"
     }
   ]
 }

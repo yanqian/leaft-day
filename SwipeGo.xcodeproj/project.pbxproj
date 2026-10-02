@@ -27,6 +27,7 @@
 		32A8CA0B30A22943B34EA98C /* DeletionResultTestHost.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADFBE3978D80C19D144A4550 /* DeletionResultTestHost.swift */; };
 		3331EF9B529A7C6E5FC289E2 /* DeletionReviewUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 346A26BD04F881A79635FA7A /* DeletionReviewUITests.swift */; };
 		38227664DBC3EACDB32C4869 /* DeletionReviewTestHost.swift in Sources */ = {isa = PBXBuildFile; fileRef = F54B377C9D4CC382A2ACDE62 /* DeletionReviewTestHost.swift */; };
+		384594FB9607236A7D531195 /* ReviewActionsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B3D8194197F3AD926723CC9 /* ReviewActionsTests.swift */; };
 		38C86D1FFBAA00CC241E54BF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 73247508259B7CA12C65E4D5 /* Assets.xcassets */; };
 		3D4B550588849C9B8BDE55C4 /* GlassStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDC207713BAF7510B2645F59 /* GlassStyle.swift */; };
 		3FA4CA335BB3A33A646B7935 /* ComparisonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2091C374B94B62934F8E0FAB /* ComparisonView.swift */; };
@@ -104,6 +105,7 @@
 		E10E2656D1B96A3B166C8AA4 /* DeletionHistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0788F43557E09502CB41A8E8 /* DeletionHistoryView.swift */; };
 		E47DE92E5D821AF846847C46 /* DeviceAcceptanceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD315907F37A85CB0A366C86 /* DeviceAcceptanceTests.swift */; };
 		E488AD82AC368B88F83D734C /* ReviewGesture.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBCF227CF97B9D8360D15DFD /* ReviewGesture.swift */; };
+		E590129196C7F23426F41305 /* ReviewActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61B1360D9441F7CB02FAE1DC /* ReviewActions.swift */; };
 		E7ECB131DAB6874C7021678F /* DeletionUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C159A3881F289443C3E66E6E /* DeletionUITests.swift */; };
 		E82C6181FD86EA6AADA83405 /* ReviewContinuityTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31C61865514E232B2C252254 /* ReviewContinuityTests.swift */; };
 		EC70F0425BCC915F59B7DD09 /* landscape-near.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 7F39E8F5FC31611B169B28ED /* landscape-near.jpg */; };
@@ -149,6 +151,7 @@
 		144D5F27125982D403C91264 /* ReviewOrientationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewOrientationTests.swift; sourceTree = "<group>"; };
 		18725A4E1D99FAC8A7E4AE3E /* CoastalBackdrop.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoastalBackdrop.swift; sourceTree = "<group>"; };
 		193940791BEFCA8C825091FB /* LibrarySettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibrarySettingsView.swift; sourceTree = "<group>"; };
+		1B3D8194197F3AD926723CC9 /* ReviewActionsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewActionsTests.swift; sourceTree = "<group>"; };
 		1BDA11EDDBCC48B32EF0F608 /* DeletionCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeletionCoordinator.swift; sourceTree = "<group>"; };
 		2091C374B94B62934F8E0FAB /* ComparisonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComparisonView.swift; sourceTree = "<group>"; };
 		24DDBF60F81767D42010D6E7 /* HomeCoverLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCoverLoader.swift; sourceTree = "<group>"; };
@@ -179,6 +182,7 @@
 		5854CC792A37E9FABE7877E1 /* PhotoLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoLoader.swift; sourceTree = "<group>"; };
 		5C14E033B34FB3DCA98BA9B0 /* HomeCoverStateTestHost.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCoverStateTestHost.swift; sourceTree = "<group>"; };
 		615D46A94B382D9846E30EFE /* DeletionReviewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeletionReviewTests.swift; sourceTree = "<group>"; };
+		61B1360D9441F7CB02FAE1DC /* ReviewActions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewActions.swift; sourceTree = "<group>"; };
 		646816E1873183AA734784B7 /* ReviewTapTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewTapTests.swift; sourceTree = "<group>"; };
 		64821EB7AB9874A2FB537B19 /* ReviewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewTests.swift; sourceTree = "<group>"; };
 		67FC6D021BC9297E2A3E4C4F /* SwipeGo.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = SwipeGo.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -472,6 +476,7 @@
 				CE239FAE91E2A547425F22DA /* PhotoLoaderTests.swift */,
 				546024A1081ED59D4D759E2E /* PhotoPaletteTests.swift */,
 				37B58F935843A8BACC9FA529 /* ReconciliationTests.swift */,
+				1B3D8194197F3AD926723CC9 /* ReviewActionsTests.swift */,
 				31C61865514E232B2C252254 /* ReviewContinuityTests.swift */,
 				2BFD5481FD1C0A283851A442 /* ReviewGestureTests.swift */,
 				E71170683E4F2CEB6E2569E6 /* ReviewSessionTests.swift */,
@@ -560,6 +565,7 @@
 		FAE8FB0961ED962AA738EA92 /* Review */ = {
 			isa = PBXGroup;
 			children = (
+				61B1360D9441F7CB02FAE1DC /* ReviewActions.swift */,
 				947A393658AC0716441C3BDD /* ReviewEntryView.swift */,
 			);
 			path = Review;
@@ -717,6 +723,7 @@
 				2159996816158BE7F9430422 /* PhotoLoaderTests.swift in Sources */,
 				43C157D54D2A04C4B5F2850C /* PhotoPaletteTests.swift in Sources */,
 				A7D0C3173D32EA944B161456 /* ReconciliationTests.swift in Sources */,
+				384594FB9607236A7D531195 /* ReviewActionsTests.swift in Sources */,
 				E82C6181FD86EA6AADA83405 /* ReviewContinuityTests.swift in Sources */,
 				DA6B4A6C21292151C4BA6569 /* ReviewGestureTests.swift in Sources */,
 				9FFC88B91D63E316D4F7D337 /* ReviewSessionTests.swift in Sources */,
@@ -799,6 +806,7 @@
 				CF4C8E22918BB3583EA2736B /* PhotoPaletteTestHost.swift in Sources */,
 				11F804B84466DE60C83A9F19 /* ReconciliationCoordinator.swift in Sources */,
 				ECB8A66EDA0980415F741037 /* ReconciliationView.swift in Sources */,
+				E590129196C7F23426F41305 /* ReviewActions.swift in Sources */,
 				221265C4D4CCA10A02AABECC /* ReviewEntryView.swift in Sources */,
 				E488AD82AC368B88F83D734C /* ReviewGesture.swift in Sources */,
 				65DCF3CE14A463FBF5010BFD /* ReviewOrientation.swift in Sources */,

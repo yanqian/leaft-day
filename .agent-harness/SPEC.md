@@ -253,3 +253,17 @@ F002 将根 `./init.sh` 改为幂等工程恢复入口：验证依赖、启动�
 - Implementation paths：SwipeGo/Domain/Review/ReviewSession.swift、Features/Review/ReviewEntryView.swift、Features/Home/HomeView.swift及必要随机领域选择；SwipeGoTests、SwipeGoUITests、docs/verification.md及现有用例映射。
 - Verification surface：计数初始/末项/单项/待删/撤销/恢复领域和原生UI；首页标题既有UI断言；随机确定性选择、封面集合/实际打开一致、返回换段、普通刷新稳定、权限/空库/单候选领域与首页UI。统一脚本结束后读取summary/report；每项独立Evaluator执行SWIPE_VERIFY_FRESH=1 ./init.sh一次，禁止反复查询中间日志。
 - Decomposition：F032计数为领域与浏览展示独立行为；F033首页中文标题为独立文案；F034随机预览为状态/导航独立行为，分别编码和验收。现有能力够用，不新增能力Feature。顺序F032→F033→F034。
+
+
+## 2026-10-02 回顾操作流程职责收拢（R28，用户按推荐批准）
+
+- Goal：把回顾页的待删、收藏、撤销与位置恢复编排收拢为一个可直接测试的回顾操作 module，减少 View 对跨领域调用顺序的知识，保持产品行为。
+- Scope included：回顾动作入口、最近一次动作撤销归属、待删保存后退场/前进、撤销后原会话定位与失败重试、收藏后刷新事实和反馈、忙碌与退场后的迟到完成保护；View 只保留显示、手势和动画执行。
+- Scope excluded：首页同步、共享删除契约搬迁、全仓目录重排、底层 PendingCoordinator/FavoriteCoordinator/ReviewSession 存储协议、实际删除、schema/JSON、bundle ID、品牌与路径再改名；不提交推送、不安装真机、不调度 F018。
+- Core flows：手势/按钮发出回顾意图→持久化/系统动作→显示相同反馈；待删成功→View 执行动画→验证当前资产/原会话/展示生命周期→推进；保存失败停原位；撤销标记成功但位置失败→保留可重试定位状态；跨附近片段撤销恢复原会话；收藏撤销仍指向原资产且拒绝覆盖外部修改。
+- Constraints：现有用户文案、动画时长、减少动态效果、控件布局、accessibilityIdentifier、剩余口径和资产作用域不变；保留保存成功后反馈与部分失败区分；流程实现不依赖 SwiftUI，动画由 View 的异步展示回调执行，不把休眠时长写进业务 module；只复用已有 PhotoKit 与本地存储能力；不能扩大实际删除权限。
+- Ambiguities or assumptions：用户明确选择候选1且批准收藏一起收拢、体验全部保留。实现采用 Features/Review 中的 observable 操作模型；现有底层领域 module 保留。展示生命周期代次用于阻止离开/重新进入后的旧动画推进；已保存的待删意图保留并由已有恢复规则处理。选择此最小实现，无额外 package、全局 AppContext 或通用事件总线。
+- Required capabilities：现有 Xcode/iOS26 模拟器、Swift6 Observation/XCTest、真实临时 SwiftData 存储、受控图库 adapter、统一 verify.sh 与已配置独立 Evaluator。
+- Implementation paths：SwipeGo/Features/Review/ReviewActions.swift、ReviewEntryView.swift、SwipeGoTests/ReviewActionsTests.swift、必要既有回顾 UI cases、docs/architecture.md、docs/verification.md；Harness 仅规范化、状态及 runs 证据。
+- Verification surface：直接调用生产回顾操作 module 验证待删前进/撤销/末项完成、保存和定位失败重试、跨会话撤销、收藏和待删最近撤销归属、外部事实变化、动画期间退场/重复操作/迟到完成；既有回顾与收藏/待删/横屏/减少动态效果 UI 回归保持；./verify.sh --changed 对 Review 变更保守全量，独立 Evaluator 首次 SWIPE_VERIFY_FRESH=1 ./init.sh。
+- Decomposition：新增单一 F035。待删、收藏和撤销共用一次动作归属与忙碌约束，构成同一回顾交互流程的行为保持重构；拆开会把操作所有权继续留在 View。测试和文档直接服务该独立验收表面，不混入首页/删除执行或 Harness 引擎变更。

@@ -242,3 +242,10 @@ F032将剩余定义为当前之后的本轮非待删项，当前项不计入；�
 ## R27 随机预览回归
 
 F034在HomeModel保存预选片段，封面候选和打开共用assetIDs。HomeRandomPreviewTests覆盖打开/返回换段、普通刷新及其他入口保持、元数据更新、权限缩减、白名单、空库/单项视频、真实只读保存失败与固定种子稀疏替代。HomeNavigationTests新增真实首页→继续返回保持→随机打开对应片段→返回换段用例；仅DEBUG --random-preview-test下暴露模型ID作为可访问性value，使用4个生成媒体构成两个片段。现有首页映射已包含HomeNavigationTests；ReviewTimeline共享领域修改仍自动选择full，未缩小验证范围。
+
+
+## F035 回顾操作重构回归
+
+`SwipeGoTests/ReviewActionsTests.swift` 直接调用生产流程，覆盖标记失败不退场、游标保存失败保留标记并重试、撤销/定位分别失败、跨附近会话恢复、最近收藏/待删撤销归属、收藏变化和回执日志失败、确认框异步目标、动画内重复动作与展示代次失效。保留既有 PendingAdvanceTests 的底层契约覆盖及 PendingUITests/FavoriteUITests/Review* 原生回归。
+
+回顾路径与新增未知测试路径仍按现有保守规则选择全量；`./verify.sh --changed` 不缩减这些回归，Evaluator 为当前候选独立执行 `SWIPE_VERIFY_FRESH=1 ./init.sh`。未增加真机/iCloud验收，也不把模拟器结果记作 F018 完成。

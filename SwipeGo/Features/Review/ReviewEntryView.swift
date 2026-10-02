@@ -4,11 +4,8 @@ struct ReviewEntryView: View {
     let review: ReviewSession
     var favorites: FavoriteCoordinator? = nil
     var pending: PendingCoordinator? = nil
-    private enum UndoKind { case favorite, pending }
-    @State private var lastUndo: UndoKind?
-    @State private var pendingTransition = false
+    @State private var actions: ReviewActions
     @State private var exiting = false
-    @State private var visible = false
     @Environment(\.accessibilityReduceMotion) private var reduceMotion
     private var usesReducedMotion: Bool {
         #if DEBUG
@@ -17,10 +14,6 @@ struct ReviewEntryView: View {
         reduceMotion
         #endif
     }
-    @State private var favoritePendingID: String?
-    @State private var pendingFailure: String?
-    @State private var pendingRestoreID: String?
-    @State private var pendingUndoSessionID: UUID?
     var onIntent: (ReviewIntent) -> Void = { _ in }
     @State private var loader = PhotoLoader()
     @State private var palette: PhotoPalette = .neutral
@@ -49,9 +42,6 @@ struct ReviewEntryView: View {
     @State private var offset = CGSize.zero
     @State private var baseOffset = CGSize.zero
     @State private var pinching = false
-    @State private var error: String?
-    @State private var feedback: String?
-    @State private var feedbackToken = UUID()
     @Environment(\.dismiss) private var dismiss
     @Environment(\.dynamicTypeSize) private var typeSize
     @Environment(\.displayScale) private var displayScale
@@ -62,7 +52,12 @@ struct ReviewEntryView: View {
             let available = viewport.width > viewport.height ? viewport.height * 0.45 : viewport.height - 120
             return min(360, max(140, available))
         }
-        return (compactToolbar ? 70 : 132) + (review.endMessage != nil || pendingRestoreID != nil ? 48 : 0)
+        return (compactToolbar ? 70 : 132) + (review.endMessage != nil || actions.needsPositionRecovery ? 48 : 0)
+    }
+    init(review: ReviewSession, favorites: FavoriteCoordinator? = nil,
+         pending: PendingCoordinator? = nil, onIntent: @escaping (ReviewIntent) -> Void = { _ in }) {
+        self.review = review; self.favorites = favorites; self.pending = pending; self.onIntent = onIntent
+        _actions = State(initialValue: ReviewActions(review: review, favorites: favorites, pending: pending))
     }
     var body: some View {
         GeometryReader { geometry in
@@ -75,12 +70,12 @@ struct ReviewEntryView: View {
                     .offset(y: exiting && !usesReducedMotion ? -geometry.size.height : 0)
                     .scaleEffect(exiting && !usesReducedMotion ? 0.96 : 1)
                     .opacity(exiting ? 0 : 1)
-                    .allowsHitTesting(!pendingTransition)
-                if let feedback, !review.isComplete {
+                    .allowsHitTesting(!actions.pendingTransition)
+                if let feedback = actions.feedback, !review.isComplete {
                     HStack(spacing: 12) {
                         Text(feedback).accessibilityIdentifier("review.feedback")
-                        if lastUndo == .pending && canUndo {
-                            Button { Task { await undoLastAction() } } label: {
+                        if actions.showsPendingUndo {
+                            Button { Task { await actions.undo() } } label: {
                                 Text("撤销").frame(minWidth: 44, minHeight: 44).contentShape(Rectangle())
                             }.buttonStyle(.plain).disabled(actionBusy)
                                 .accessibilityIdentifier("review.feedback-undo")
@@ -89,7 +84,7 @@ struct ReviewEntryView: View {
                         .padding(.bottom, controls ? toolbarHeight + 30 : 24)
                 }
                 if controls {
-                    toolbar.disabled(pendingTransition).frame(height: toolbarHeight).padding(.horizontal, 16).padding(.bottom, 12)
+                    toolbar.disabled(actions.pendingTransition).frame(height: toolbarHeight).padding(.horizontal, 16).padding(.bottom, 12)
                     VStack {
                         HStack {
                             Button("返回回顾", systemImage: "xmark") { dismiss() }
@@ -114,8 +109,8 @@ struct ReviewEntryView: View {
         .onChange(of: loadedImageID, initial: true) { _, _ in
             if case .ready(let image) = loader.state { palette = PhotoPalette.extract(from: image) }
         }
-        .onAppear { visible = true; ReviewOrientation.setReviewActive(true) }
-        .task(id: review.state?.assetIDs.last) { if let range = review.rangeTitle { showFeedback("回顾范围：\(range)") } }
+        .onAppear { actions.appear(); ReviewOrientation.setReviewActive(true) }
+        .task(id: review.state?.assetIDs.last) { if let range = review.rangeTitle { actions.showFeedback("回顾范围：\(range)") } }
         .statusBarHidden(true)
         .task(id: review.currentID) { loadCurrent(); similarity.start(currentID: review.currentID, assets: review.snapshot.assets) }
         .onChange(of: review.snapshot.assets) { _, _ in loadCurrent(); similarity.start(currentID: review.currentID, assets: review.snapshot.assets) }
@@ -124,28 +119,27 @@ struct ReviewEntryView: View {
             if phase == .active { similarity.start(currentID: review.currentID, assets: review.snapshot.assets) } else { similarity.pause() }
         }
         .task {
-            do {
-                try await pending?.reload()
-                if let pending { review.updatePending(pending.items); try await review.resumeAvoidingPending() }
-                if review.isComplete { controls = true }
-            } catch { showFeedback("待删记录或回顾位置暂时无法读取，请重试") }
+            await actions.prepare()
+            if review.isComplete { controls = true }
         }
-        .onChange(of: pending?.items) { _, items in if let items { review.updatePending(items) } }
-        .alert("这张照片已收藏，仍加入待删？", isPresented: Binding(get: { favoritePendingID != nil }, set: { if !$0 { favoritePendingID = nil } })) {
-            if let id = favoritePendingID { Button("仍加入待删", role: .destructive) { favoritePendingID = nil; Task { await markPending(id, confirmed: true) } } }
-            Button("取消", role: .cancel) { favoritePendingID = nil }
+        .onChange(of: pending?.items) { _, _ in actions.synchronizePending() }
+        .alert("这张照片已收藏，仍加入待删？", isPresented: Binding(get: { actions.favoritePendingID != nil }, set: { if !$0 { actions.dismissFavoriteConfirmation() } })) {
+            if let id = actions.favoritePendingID {
+                Button("仍加入待删", role: .destructive) { Task { await confirmPending(id) } }
+            }
+            Button("取消", role: .cancel) { actions.dismissFavoriteConfirmation() }
         } message: { Text("只加入待删记录，保留系统收藏。原片要在集中复核后才会删除。") }
         .onChange(of: review.currentID) { _, _ in scale = 1; baseScale = 1; offset = .zero; baseOffset = .zero; router.reset() }
-        .onDisappear { visible = false; exiting = false; loader.releaseMemory(); router.cancel(); similarity.pause(); ReviewOrientation.setReviewActive(false) }
+        .onDisappear { actions.disappear(); exiting = false; loader.releaseMemory(); router.cancel(); similarity.pause(); ReviewOrientation.setReviewActive(false) }
         .sheet(item: $comparison) { selection in
             if let pending { ComparisonView(groups: selection.groups, assets: selection.assets, pending: pending) }
         }
-        .alert("回顾位置未保存", isPresented: Binding(get: { error != nil }, set: { if !$0 { error = nil } })) {
-            Button("好", role: .cancel) { error = nil }
-        } message: { Text(error ?? "") }
-        .alert("待删操作未完成", isPresented: Binding(get: { pendingFailure != nil }, set: { if !$0 { pendingFailure = nil } })) {
-            Button("好", role: .cancel) { pendingFailure = nil }
-        } message: { Text(pendingFailure ?? "") }
+        .alert("回顾位置未保存", isPresented: Binding(get: { actions.error != nil }, set: { if !$0 { actions.dismissError() } })) {
+            Button("好", role: .cancel) { actions.dismissError() }
+        } message: { Text(actions.error ?? "") }
+        .alert("待删操作未完成", isPresented: Binding(get: { actions.pendingFailure != nil }, set: { if !$0 { actions.dismissPendingFailure() } })) {
+            Button("好", role: .cancel) { actions.dismissPendingFailure() }
+        } message: { Text(actions.pendingFailure ?? "") }
     }
     @ViewBuilder private func media(size: CGSize) -> some View {
         switch review.current {
@@ -203,7 +197,7 @@ struct ReviewEntryView: View {
                         Image(systemName: "checkmark.circle").font(.system(size: 44))
                         completionTitle
                     }
-                    Text(pendingRestoreID == nil ? "待删原片仍保留，可撤销或返回首页集中复核。" : "照片已保留，回顾位置尚未恢复。可重试或返回首页。")
+                    Text(!actions.needsPositionRecovery ? "待删原片仍保留，可撤销或返回首页集中复核。" : "照片已保留，回顾位置尚未恢复。可重试或返回首页。")
                         .font(.callout).multilineTextAlignment(.center).fixedSize(horizontal: false, vertical: true)
                     Button("返回回顾") { dismiss() }.buttonStyle(PhotoGlassButtonStyle()).accessibilityIdentifier("review.completed-back")
                 }.padding(compactToolbar ? 16 : 24).photoGlass(radius: 30).padding(.horizontal, 24).photoPage()
@@ -223,7 +217,7 @@ struct ReviewEntryView: View {
         }
     }
     private var completionTitle: some View {
-        Text(pendingRestoreID == nil ? "本轮已看完" : "待删已撤回").font(.title2.bold()).accessibilityIdentifier("review.completed")
+        Text(!actions.needsPositionRecovery ? "本轮已看完" : "待删已撤回").font(.title2.bold()).accessibilityIdentifier("review.completed")
     }
     private var toolbar: some View {
         Group {
@@ -235,8 +229,8 @@ struct ReviewEntryView: View {
         VStack(spacing: 2) {
             if case .available(let asset) = review.current {
                 Text(asset.creationDate.map { $0.formatted(.dateTime.year().month().day()) } ?? "日期未知")
-            } else { Text(review.isComplete ? (pendingRestoreID == nil ? "本轮完成" : "待删已撤回") : "当前项目不可用") }
-            Text(pendingRestoreID == nil ? "剩余 \(review.remainingCount) 项" : "位置待恢复")
+            } else { Text(review.isComplete ? (!actions.needsPositionRecovery ? "本轮完成" : "待删已撤回") : "当前项目不可用") }
+            Text(!actions.needsPositionRecovery ? "剩余 \(review.remainingCount) 项" : "位置待恢复")
                 .monospacedDigit().accessibilityIdentifier("review.position")
 #if DEBUG
                 .accessibilityValue(ProcessInfo.processInfo.arguments.contains("--random-preview-test") ? review.state?.assetIDs.joined(separator: ",") ?? "" : "")
@@ -262,8 +256,8 @@ struct ReviewEntryView: View {
             } label: { actionLabel("相似", icon: "rectangle.on.rectangle") }
                 .accessibilityLabel(similarityLabel)
                 .disabled(similarity.groups.isEmpty || pending == nil || actionBusy).accessibilityIdentifier("review.similar")
-            Button { Task { await undoLastAction() } } label: { actionLabel("撤销", icon: "arrow.uturn.backward") }
-                .disabled(!canUndo || actionBusy).accessibilityIdentifier("review.undo")
+            Button { Task { await actions.undo() } } label: { actionLabel("撤销", icon: "arrow.uturn.backward") }
+                .disabled(!actions.canUndo || actionBusy).accessibilityIdentifier("review.undo")
         }.font(.caption).buttonStyle(.plain).padding(.horizontal, 8).padding(.vertical, 8)
             .reviewControlGlass(light: stateBackground, radius: 26)
     }
@@ -277,15 +271,15 @@ struct ReviewEntryView: View {
         }.scrollIndicators(.hidden).accessibilityIdentifier("review.toolbar-scroll")
     }
     @ViewBuilder private var boundaryControl: some View {
-        if pendingRestoreID != nil {
-            Button { Task { await restorePendingPosition() } } label: {
+        if actions.needsPositionRecovery {
+            Button { Task { await actions.restorePosition() } } label: {
                 Text("重试回到照片").frame(maxWidth: .infinity, minHeight: 44).contentShape(Rectangle())
             }.buttonStyle(.plain).reviewControlGlass(light: stateBackground)
                 .disabled(review.isSaving || actionBusy).accessibilityIdentifier("review.restore-position")
         } else if let message = review.endMessage {
             if review.nearbySegment != nil {
                 Button {
-                    Task { do { try await review.exploreNearby() } catch { self.error = "请重试，仍停留在原来的位置。" } }
+                    Task { await actions.exploreNearby() }
                 } label: {
                     Label(review.nearbyTitle, systemImage: "arrow.right").font(.callout).frame(maxWidth: .infinity, minHeight: 44).contentShape(Rectangle())
                 }.buttonStyle(.plain).reviewControlGlass(light: stateBackground).disabled(review.isSaving || actionBusy).accessibilityIdentifier("review.nearby")
@@ -321,117 +315,43 @@ struct ReviewEntryView: View {
     private var isAvailable: Bool { if case .available = review.current { return true }; return false }
     private func navigate(_ kind: ReviewIntent.Kind) {
         guard !review.isSaving, !actionBusy else { return }
-        guard kind == .next ? review.canGoForward : review.canGoBack else {
-            if kind == .next && review.nearbySegment != nil { controls = true }
-            showFeedback(kind == .next ? "已经是这一段的最后一项" : "已经是这一段的第一项")
-            return
-        }
-        Task {
-            do { try await review.move(by: kind == .next ? 1 : -1); pendingRestoreID = nil }
-            catch { self.error = "请重试，仍停留在原来的位置。" }
-        }
+        if kind == .next && !review.canGoForward && review.nearbySegment != nil { controls = true }
+        Task { await actions.navigate(kind) }
     }
     private func emit(_ intent: ReviewIntent) {
-        guard intent.assetID == review.currentID, !review.isSaving, !pendingTransition else { return }
-        if intent.kind == .next || intent.kind == .previous {
-            navigate(intent.kind)
-        } else if isAvailable {
-            guard !actionBusy else { return }
+        guard intent.assetID == review.currentID, !review.isSaving, !actionBusy else { return }
+        if intent.kind == .next || intent.kind == .previous { navigate(intent.kind) }
+        else if isAvailable {
             onIntent(intent)
-            if intent.kind == .favorite, let favorites {
-                Task {
-                    do {
-                        let result = try await favorites.favorite(intent.assetID)
-                        if result.changed { lastUndo = result.journalSaved ? .favorite : nil }
-                        await refreshFacts()
-                        showFeedback(!result.journalSaved ? "已收藏，本地记录待核对" : result.changed ? (intent.assetID == review.currentID ? "已收藏" : "已收藏刚才操作的照片") : "这张照片已收藏")
-                    } catch FavoriteError.cancelled { await refreshFacts(); showFeedback("已取消收藏操作") }
-                    catch FavoriteError.busy { }
-                    catch { await refreshFacts(); showFeedback("收藏未完成，请重试") }
-                }
+            Task {
+                let advanced = await actions.perform(intent, transition: animatePendingExit)
+                finishPendingPresentation(advanced: advanced)
             }
-            if intent.kind == .pending, pending != nil { Task { await markPending(intent.assetID) } }
         }
     }
-    private var actionBusy: Bool { pendingTransition || favorites?.isBusy == true || pending?.isBusy == true }
+    private var actionBusy: Bool { actions.isBusy }
     private var pendingTitle: String {
         guard let pending else { return "待删" }
         let count = DeletionReviewModel.readyCount(pending.items, assets: review.snapshot.assets)
         let unknown = pending.items.count - count
         return "待删 \(count)" + (unknown > 0 ? " · 待核对 \(unknown)" : "")
     }
-    private var canUndo: Bool {
-        switch lastUndo {
-        case .pending: pending?.undoRecord != nil
-        case .favorite: favorites?.undoRecord != nil
-        case nil: false
-        }
+    private func confirmPending(_ id: String) async {
+        let advanced = await actions.confirmPending(id, transition: animatePendingExit)
+        finishPendingPresentation(advanced: advanced)
     }
-    private func markPending(_ id: String, confirmed: Bool = false) async {
-        guard let pending, !actionBusy, let sessionID = review.state?.id, id == review.currentID else { return }
-        pendingTransition = true
-        defer { pendingTransition = false; exiting = false }
-        do {
-            let changed = try await pending.mark(id, confirmedFavorite: confirmed)
-            if changed { lastUndo = .pending; pendingUndoSessionID = sessionID }
-            review.updatePending(pending.items)
-            guard visible, review.currentID == id, review.state?.id == sessionID else { return }
-            withAnimation(.easeIn(duration: usesReducedMotion ? 0.16 : 0.28)) { exiting = true }
-            try? await Task.sleep(for: .milliseconds(usesReducedMotion ? 170 : 290))
-            guard visible, review.currentID == id, review.state?.id == sessionID else { return }
-            do {
-                try await review.advanceAfterPending(assetID: id, sessionID: sessionID)
-                pendingRestoreID = nil
-                // Populate the next frame from the bounded neighbor cache before showing it.
-                loadCurrent()
-                var transaction = Transaction(); transaction.disablesAnimations = true
-                withTransaction(transaction) { exiting = false }
-                if review.isComplete { controls = true }
-                showFeedback(changed ? "已加入待删，原片仍保留" : "已跳过待删项目")
-            } catch { showFeedback("已加入待删，但位置未保存。可重试待删按钮或撤销") }
-        } catch PendingCoordinator.Failure.confirmFavorite { favoritePendingID = id }
-        catch { showFeedback("待删标记未保存，请重试") }
+    private func animatePendingExit() async {
+        withAnimation(.easeIn(duration: usesReducedMotion ? 0.16 : 0.28)) { exiting = true }
+        try? await Task.sleep(for: .milliseconds(usesReducedMotion ? 170 : 290))
     }
-    private func undoLastAction() async {
-        guard !actionBusy else { return }
-        if lastUndo == .pending, let pending {
-            do {
-                let originalID = pending.undoRecord?.assetID
-                try await pending.undo(); lastUndo = nil; review.updatePending(pending.items)
-                do {
-                    if let originalID { try await review.returnToUnmarked(originalID, sessionID: pendingUndoSessionID) }
-                    pendingRestoreID = nil
-                    showFeedback("已撤回待删标记")
-                } catch {
-                    pendingRestoreID = originalID
-                    pendingFailure = "已撤回待删标记，照片仍保留，但回顾位置未恢复。可重试回到照片。"
-                }
-            }
-            catch { pendingFailure = "撤回未完成，请核对待删记录并重试。" }
-        } else if lastUndo == .favorite { await undoFavorite(); if favorites?.undoRecord == nil { lastUndo = nil } }
-    }
-    private func restorePendingPosition() async {
-        guard let id = pendingRestoreID, !review.isSaving, !actionBusy else { return }
-        do {
-            try await review.returnToUnmarked(id, sessionID: pendingUndoSessionID)
-            pendingRestoreID = nil
-            showFeedback("已回到撤销的照片")
-        } catch { pendingFailure = "待删标记已撤回，回顾位置仍未保存，请稍后重试。" }
-    }
-    private func refreshFacts() async { review.updateLibrary(await PhotoLibraryGateway().snapshot()) }
-    private func undoFavorite() async {
-        guard let favorites else { return }
-        do {
-            let result = try await favorites.undo()
-            await refreshFacts()
-            showFeedback(result.journalSaved ? "已撤销收藏" : "收藏已还原，本地记录待核对")
-        } catch FavoriteError.changed { await refreshFacts(); showFeedback("照片状态已变化，未覆盖新的收藏状态") }
-        catch { await refreshFacts(); showFeedback("撤销未完成，请重试") }
-    }
-    private func showFeedback(_ text: String) {
-        let token = UUID(); feedbackToken = token; feedback = text
-        let duration: Double = lastUndo == .pending ? 5 : 2
-        Task { try? await Task.sleep(for: .seconds(duration)); if feedbackToken == token { feedback = nil } }
+    private func finishPendingPresentation(advanced: Bool) {
+        if advanced {
+            // Reveal the next frame only after populating its bounded cache.
+            loadCurrent()
+            var transaction = Transaction(); transaction.disablesAnimations = true
+            withTransaction(transaction) { exiting = false }
+            if review.isComplete { controls = true }
+        } else { exiting = false }
     }
     private func update(_ translation: CGSize) {
         router.update(x: translation.width, y: translation.height, assetID: review.currentID, blocked: pinching || scale > 1 || review.isSaving || actionBusy)
